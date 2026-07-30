@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-business: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-sageon-dark: #121212;
+  --color-sageon-deep: #0a0a0a;
+  --color-sageon-accent: #27272a;
+}
+
+/* 
+   ==========================================================================
+   THEME COLOR PALETTE: ELECTRIC GREEN, DARK & LIGHT GREY, WHITE & BLACK
+   Inspired by fernandes-media.com
+   ==========================================================================
+*/
+
+:root {
+  --electric-green: #BAFC50;
+  --electric-green-hover: #a8f235;
+  --electric-green-glow: rgba(186, 252, 80, 0.35);
+  
+  --dark-bg: #000000;
+  --dark-surface: #121212;
+  --dark-card: #18181b;
+  --dark-border: #27272a;
+
+  --light-bg: #f4f4f5;
+  --light-card: #ffffff;
+  --light-border: #e4e4e7;
+}
+
+body, html, #root {
+  background-color: #000000 !important;
+  color: #f4f4f5 !important;
+}
+
+/* Base page wrappers */
+.min-h-screen,
+main,
+div.min-h-screen {
+  background-color: #000000 !important;
+}
+
+/* Section background variations */
+section {
+  transition: background-color 0.3s ease !important;
+}
+
+.bg-slate-50,
+.dark\:bg-sageon-dark {
+  background-color: #121212 !important; /* Dark surface */
+}
+
+.bg-slate-100 {
+  background-color: #18181b !important; /* Charcoal dark card surface */
+}
+
+.bg-slate-200 {
+  background-color: #27272a !important; /* Medium dark border surface */
+}
+
+.dark\:bg-sageon-deep\/40,
+.bg-slate-50\/50 {
+  background-color: #000000 !important; /* Deep pitch black */
+}
+
+/* Card and container backgrounds - dark surfaces with crisp white text */
+.bg-white,
+.dark\:bg-sageon-deep,
+.bg-slate-900\/50,
+.bg-white\/80,
+.bg-white\/60,
+.dark\:bg-sageon-dark\/80,
+.dark\:bg-sageon-dark\/60 {
+  background-color: #18181b !important; /* Dark card background */
+  color: #f4f4f5 !important;
+}
+
+/* Footer styling - pitch dark with electric green highlights */
+footer,
+footer.bg-slate-950,
+.dark\:bg-slate-950 {
+  background-color: #000000 !important;
+  border-top: none !important;
+  border-top-color: transparent !important;
+}
+
+footer p, footer span, footer a {
+  color: #a1a1aa !important;
+}
+footer a:hover {
+  color: #BAFC50 !important;
+}
+footer h3, footer h4 {
+  color: #ffffff !important;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  letter-spacing: -0.025em !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.text-slate-900,
+.dark\:text-white,
+.text-slate-900.dark\:text-white {
+  color: #ffffff !important;
+}
+
+/* Paragraphs & Subtitles */
+p, li, label,
+.text-slate-700,
+.text-slate-800,
+.text-slate-600,
+.dark\:text-slate-300,
+.text-slate-500,
+.dark\:text-slate-400 {
+  color: #a1a1aa !important;
+}
+
+.text-slate-500,
+.dark\:text-slate-400,
+.text-slate-500.dark\:text-slate-400 {
+  color: #a1a1aa !important;
+}
+
+.text-slate-400,
+.dark\:text-slate-500 {
+  color: #71717a !important;
+}
+
+/* Primary Electric Green Accents (Text, Badges, Icons) */
+.text-blue-600,
+.dark\:text-blue-400,
+.text-blue-500,
+.text-red-500,
+.text-red-600,
+.group-hover\:text-blue-600,
+.dark\:group-hover\:text-blue-400,
+.text-\[\#e11d1d\] {
+  color: #BAFC50 !important;
+}
+
+/* Primary Electric Green Solid CTA Buttons */
+.bg-slate-900,
+.dark\:bg-blue-600,
+.bg-blue-600,
+.bg-\[\#e11d1d\] {
+  background-color: #BAFC50 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+.bg-slate-900:hover,
+.dark\:bg-blue-600:hover,
+.bg-blue-600:hover,
+.bg-\[\#e11d1d\]:hover {
+  background-color: #a8f235 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 25px rgba(186, 252, 80, 0.4) !important;
+}
+
+/* Secondary / Dark Grey Buttons */
+button.bg-slate-100,
+a.bg-slate-100,
+.cursor-pointer.bg-slate-100,
+button.dark\:bg-sageon-dark,
+a.dark\:bg-sageon-dark,
+.cursor-pointer.dark\:bg-sageon-dark {
+  background-color: #27272a !important;
+  color: #ffffff !important;
+}
+button.bg-slate-100:hover,
+a.bg-slate-100:hover,
+.cursor-pointer.bg-slate-100:hover,
+button.dark\:bg-sageon-dark:hover,
+a.dark\:bg-sageon-dark:hover,
+.cursor-pointer.dark\:bg-sageon-dark:hover {
+  background-color: #3f3f46 !important;
+  color: #BAFC50 !important;
+}
+
+@keyframes gradientMotion {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Borders and outlines */
+.border,
+.border-slate-200\/60,
+.dark\:border-sageon-accent\/60,
+.border-slate-100,
+.dark\:border-sageon-accent\/40,
+.border-slate-200,
+.dark\:border-sageon-accent\/80,
+.border-slate-300\/40,
+.border-blue-950\/40,
+.border-blue-950 {
+  border-color: #27272a !important;
+}
+
+/* Icon badge boxes in feature cards */
+.bg-slate-800 {
+  background-color: #27272a !important;
+  color: #BAFC50 !important;
+}
+
+/* Custom background patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Infinite Blog Carousel CSS variables */
+.blog-carousel-track {
+  --visible-count: 1;
+}
+@media (min-width: 640px) {
+  .blog-carousel-track {
+    --visible-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .blog-carousel-track {
+    --visible-count: 3;
+  }
+}
+
+/* Infinite Pricing Carousel CSS variables */
+.pricing-carousel-track {
+  --visible-count: 1;
+}
+@media (min-width: 640px) {
+  .pricing-carousel-track {
+    --visible-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .pricing-carousel-track {
+    --visible-count: 4;
+  }
+}
+
+/* 
+   ==========================================================================
+   HERO TEXT READABILITY AND ELEGANT TYPOGRAPHY OVERRIDES
+   ==========================================================================
+*/
+.hero-title {
+  font-family: "Montserrat", "Inter", sans-serif !important;
+  font-weight: 500 !important; /* Elegant medium weight, not overly bold or fat */
+  color: #ffffff !important; /* Forced crisp white */
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.hero-subtitle {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important; /* Lightweight, extremely clean and readable */
+  color: #f1f5f9 !important; /* Beautiful light off-white */
+  letter-spacing: 0.01em !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 
+   ==========================================================================
+   ULTRA-SHARP WHITE LOGO RENDERING
+   ==========================================================================
+*/
+.logo-white-crisp {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* 
+   ==========================================================================
+   MODERN INTERACTIVE ANIMATIONS & ACCENT EFFECTS (EASY TO TOGGLE/REVERT)
+   ==========================================================================
+*/
+
+/* Subtle Shimmer Beam on CTA Buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  transform: rotate(30deg) translateX(100%);
+}
+
+/* Smooth Soft Card Glow on Hover */
+.card-hover-glow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.card-hover-glow:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px -8px rgba(186, 252, 80, 0.25), 0 4px 12px -2px rgba(0, 0, 0, 0.5) !important;
+  border-color: #BAFC50 !important;
+}
+
+/* Pulse Ring for Badges & Active Elements */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s infinite;
+}
+
+/* Vibrant Animated Green Gradient for Contact Section */
+@keyframes greenGradientMotion {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-vibrant-green {
+  background: linear-gradient(-45deg, #000000, #0f380b, #031402, #184811, #000000);
+  background-size: 300% 300%;
+  animation: greenGradientMotion 8s ease infinite;
+}
+
+/* Continuous Horizontal Marquee Banner */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+
+
+
+

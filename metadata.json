@@ -1,0 +1,6 @@
+{
+  "name": "Sageon Agency",
+  "description": "Profesionāla mājaslapu un tīmekļa risinājumu izstrāde biznesam, portfolio un blogiem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
