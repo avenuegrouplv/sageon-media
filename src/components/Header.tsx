@@ -34,7 +34,7 @@ export default function Header() {
   const navLinks = [
     { name: "Sākums", path: "/" },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "Cenas", path: "/cenas" },
+    { name: "Pakalpojumi", path: "/pakalpojumi" },
     { name: "BUJ", path: "/buj" },
     { name: "Blogs", path: "/blogs" },
     { name: "Kontakti", path: "/kontakti" },

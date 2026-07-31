@@ -42,6 +42,7 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Darbi />} />
             <Route path="/darbi" element={<Darbi />} />
+            <Route path="/pakalpojumi" element={<Cenas />} />
             <Route path="/cenas" element={<Cenas />} />
             <Route path="/buj" element={<Buj />} />
             <Route path="/blogs" element={<Blogs />} />

@@ -98,10 +98,10 @@ const PORTFOLIO_ITEMS = [
 function LazyLoadSection({ children }: { children: ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.65, ease: [0.21, 0.47, 0.32, 0.98] }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="w-full"
     >
       {children}
@@ -187,7 +187,7 @@ export default function Home() {
   };
 
   // Infinite Pricing Carousel State
-  const [pricingIndex, setPricingIndex] = useState(7);
+  const [pricingIndex, setPricingIndex] = useState(8);
   const [disablePricingTransition, setDisablePricingTransition] = useState(false);
 
   useEffect(() => {
@@ -401,25 +401,21 @@ export default function Home() {
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
 
-      {/* 2. INTRO BLOCK: Sageon Agency positioning & copy */}
+      {/* 2. INTRO BLOCK: Ko mēs piedāvājam */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="py-16 md:py-20 bg-transparent overflow-visible relative z-10"
+        <section 
+          className="pt-2 sm:pt-8 md:pt-24 pb-16 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
           <div className="absolute -bottom-52 -left-20 w-[700px] h-[650px] bg-gradient-to-tr from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-16 relative z-10">
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-12 relative z-10">
             
             {/* SECTION 1: Intro Text & 5 Problem Cards */}
             <div className="space-y-12">
               {/* Main Section Header */}
-              <div className="text-center space-y-4 max-w-5xl mx-auto mb-16 md:mb-24">
+              <div className="text-center space-y-4 max-w-5xl mx-auto mb-12 md:mb-20">
                 <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                   <Sparkles className="h-3.5 w-3.5" />
                   <span>Ko mēs piedāvājam</span>
@@ -432,7 +428,9 @@ export default function Home() {
               {/* Zig-Zag 3-Row Feature Block */}
               <div className="space-y-12 md:space-y-16 max-w-[1600px] mx-auto">
                 {/* Row 1: Text Left, Image Right */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4">
+                <div 
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
+                >
                   <div className="lg:col-span-7 space-y-3">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                       Mājaslapas izstrāde
@@ -453,14 +451,15 @@ export default function Home() {
                 </div>
 
                 {/* Row 2: Image Left, Text Right */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4">
+                <div 
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
+                >
                   <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center">
-                    <div className="absolute w-[85%] h-[85%] bg-[#BAFC50]/15 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
-                      src="/part-2.webp" 
+                      src="/individuals-dizains-musdienu-tehnologijas.webp" 
                       alt="Individuāls dizains un mobilā pielāgotība" 
-                      referrerPolicy="no-referrer"
-                      className="relative z-10 w-full h-auto max-h-[300px] object-cover rounded-2xl drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                      className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                   <div className="lg:col-span-7 space-y-3">
@@ -474,7 +473,9 @@ export default function Home() {
                 </div>
 
                 {/* Row 3: Text Left, Image Right */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4">
+                <div 
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
+                >
                   <div className="lg:col-span-7 space-y-3">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                       Struktūra & rezultāts
@@ -484,18 +485,19 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
-                    <div className="absolute w-[85%] h-[85%] bg-[#BAFC50]/15 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
-                      alt="Digitālā vizītkarte un konversijas" 
-                      referrerPolicy="no-referrer"
-                      className="relative z-10 w-full h-auto max-h-[300px] object-cover rounded-2xl drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                      src="/uznemuma-digitala-vizitkarte.webp" 
+                      alt="Struktūra un rezultāts — uzņēmuma digitālā vizītkarte" 
+                      className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                 </div>
 
                 {/* Closing quote / CTA block */}
-                <div className="py-6 text-center max-w-4xl mx-auto">
+                <div 
+                  className="pt-6 text-center max-w-4xl mx-auto"
+                >
                   <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-r from-zinc-900/90 via-[#18181b] to-zinc-900/90 border border-[#BAFC50]/35 hover:border-[#BAFC50]/70 p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.6)] shadow-[#BAFC50]/5 transition-all duration-300">
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50] to-transparent opacity-70" />
                     
@@ -516,134 +518,156 @@ export default function Home() {
                         to="/kontakti"
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-[#BAFC50]/20 hover:scale-[1.02]"
                       >
-                        <span>Pieteikt konsultāciju</span>
+                        <span>Pieteikties konsultācijai</span>
                         <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      </LazyLoadSection>
 
-              {/* Sub-block: Kas kavē Jūsu izaugsmi */}
-              <div className="text-center space-y-4 max-w-5xl mx-auto pt-4">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
-                  <ShieldAlert className="h-3.5 w-3.5" />
-                  <span>Kas stāv ceļā Jūsu izaugsmei</span>
+      {/* 2B. KAS STĀV CEĻĀ JŪSU IZAUGSMEI */}
+      <LazyLoadSection>
+        <section 
+          className="py-16 md:py-24 bg-transparent overflow-visible relative z-10"
+        >
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-10 relative z-10">
+            {/* Sub-block: Kas kavē Jūsu izaugsmi */}
+            <div 
+              className="text-center space-y-4 max-w-5xl mx-auto"
+            >
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
+                <ShieldAlert className="h-3.5 w-3.5" />
+                <span>Kas stāv ceļā Jūsu izaugsmei</span>
+              </div>
+              <h3 className="text-xl md:text-3xl font-bold text-white tracking-tight">
+                Kas kavē Jūsu izaugsmi digitālajā vidē?
+              </h3>
+              <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
+                Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
+              </p>
+            </div>
+
+            {/* Creative 5-Card Balanced Grid Layout */}
+            <div 
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1700px] mx-auto pt-2"
+            >
+              {/* Point 1 */}
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
+                      01 / Iemesls
+                    </span>
+                    <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
+                      <ShieldAlert className="h-5 w-5" />
+                    </div>
+                  </div>
+                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                    Mājaslapa nerada uzticību
+                  </h4>
+                  <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
+                    Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas.
+                  </p>
                 </div>
-                <h3 className="text-xl md:text-3xl font-bold text-white tracking-tight">
-                  Kas kavē Jūsu izaugsmi digitālajā vidē?
-                </h3>
-                <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                  Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
-                </p>
               </div>
 
-              {/* Creative 5-Card Balanced Grid Layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1700px] mx-auto pt-2">
-                {/* Point 1 */}
-                <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                        01 / Iemesls
-                      </span>
-                      <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
-                        <ShieldAlert className="h-5 w-5" />
-                      </div>
+              {/* Point 2 */}
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
+                      02 / Iemesls
+                    </span>
+                    <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
+                      <TrendingDown className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                      Mājaslapa nerada uzticību
-                    </h4>
-                    <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                      Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas.
-                    </p>
                   </div>
+                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                    Apmeklētāji nekļūst par klientiem
+                  </h4>
+                  <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
+                    Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu.
+                  </p>
                 </div>
+              </div>
 
-                {/* Point 2 */}
-                <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                        02 / Iemesls
-                      </span>
-                      <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
-                        <TrendingDown className="h-5 w-5" />
-                      </div>
+              {/* Point 3 */}
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
+                      03 / Iemesls
+                    </span>
+                    <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
+                      <Search className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                      Apmeklētāji nekļūst par klientiem
-                    </h4>
-                    <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                      Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu.
-                    </p>
                   </div>
+                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                    Uzņēmumu grūti atrast Google
+                  </h4>
+                  <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
+                    Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu.
+                  </p>
                 </div>
+              </div>
 
-                {/* Point 3 */}
-                <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                        03 / Iemesls
-                      </span>
-                      <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
-                        <Search className="h-5 w-5" />
-                      </div>
+              {/* Point 4 */}
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
+                      04 / Iemesls
+                    </span>
+                    <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
+                      <Clock className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                      Uzņēmumu grūti atrast Google
-                    </h4>
-                    <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                      Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu.
-                    </p>
                   </div>
+                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                    Mājaslapa ielādējas lēni
+                  </h4>
+                  <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
+                    Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā.
+                  </p>
                 </div>
+              </div>
 
-                {/* Point 4 */}
-                <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                        04 / Iemesls
-                      </span>
-                      <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
-                        <Clock className="h-5 w-5" />
-                      </div>
+              {/* Point 5 */}
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl sm:col-span-2 lg:col-span-1">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
+                      05 / Iemesls
+                    </span>
+                    <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
+                      <HelpCircle className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                      Mājaslapa ielādējas lēni
-                    </h4>
-                    <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                      Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā.
-                    </p>
                   </div>
-                </div>
-
-                {/* Point 5 */}
-                <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl sm:col-span-2 lg:col-span-1">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                        05 / Iemesls
-                      </span>
-                      <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
-                        <HelpCircle className="h-5 w-5" />
-                      </div>
-                    </div>
-                    <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                      Piedāvājums nav pietiekami pārliecinošs
-                    </h4>
-                    <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                      Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību.
-                    </p>
-                  </div>
+                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                    Piedāvājums nav pietiekami pārliecinošs
+                  </h4>
+                  <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
+                    Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību.
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+      </LazyLoadSection>
 
+      {/* 2C. KĀPĒC IZVĒLĒTIES MŪS */}
+      <LazyLoadSection>
+        <section 
+          className="py-16 md:py-24 bg-transparent overflow-visible relative z-10"
+        >
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
-            <div className="space-y-10 pt-6">
+            <div className="space-y-10">
               <div className="text-center space-y-3 max-w-3xl mx-auto">
                 <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                   <Sparkles className="h-3.5 w-3.5" />
@@ -720,18 +744,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* KĀ NOTIEK SADARBĪBA SECTION */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <section 
           className="py-16 md:py-24 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-hidden z-10"
         >
           {/* Ambient Glow background */}
@@ -763,7 +782,7 @@ export default function Home() {
                 {/* Step 1 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:scale-105 group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">01</span>
                     </div>
@@ -775,7 +794,7 @@ export default function Home() {
                       1. Pirmā saruna
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Mūsu sadarbība sākas ar sarunu par Jūsu topošās mājaslapas mērķiem, biznesa darbības virzienu un Jūsu vēlmēm. Ja Jums jau ir savas idejas par mājaslapas struktūru, sadaļām vai piedāvātajiem pakalpojumiem, kopīgi tās pārrunājam, lai izprastu Jūsu vajadzības un izvēlētos piemērotāko risinājumu.
+                      Viss sākas ar sarunu par Jūsu topošās mājaslapas mērķiem, biznesa darbības virzienu un Jūsu vēlmēm. Ja Jums jau ir savas idejas par mājaslapas struktūru, sadaļām vai piedāvātajiem pakalpojumiem - lieliski, tās tad arī kopīgi pārrunāsim, lai labāk izprastu Jūsu vajadzības un izvēlētos piemērotāko risinājumu.
                     </p>
                   </div>
                 </div>
@@ -783,7 +802,7 @@ export default function Home() {
                 {/* Step 2 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:scale-105 group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">02</span>
                     </div>
@@ -795,7 +814,7 @@ export default function Home() {
                       2. Projekta izstrādes process
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Kad Jūsu topošās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai izveidotu pārdomātu un Jūsu uzņēmuma vajadzībām atbilstošu risinājumu.
+                      Kad iecerētās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai radītu pārdomātu un modernu digitālo vizītkarti.
                     </p>
                   </div>
                 </div>
@@ -803,7 +822,7 @@ export default function Home() {
                 {/* Step 3 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:scale-105 group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">03</span>
                     </div>
@@ -815,7 +834,7 @@ export default function Home() {
                       3. Projekta saskaņošana un nodošana
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Šajā posmā Jūs saņemsiet gandrīz pabeigtu mājaslapas projektu, kuru varēsiet rūpīgi pārskatīt un iesniegt savus komentārus vai ierosinājumus par nepieciešamajiem uzlabojumiem. Pēc visu saskaņoto izmaiņu veikšanas mājaslapa tiek publicēta Jūsu domēnā un nodota pilnīgā Jūsu rīcībā.
+                      Šajā posmā Jūs saņemsiet pabeigtu mājaslapas projektu, kuru varēsiet pārskatīt un iesniegt savus komentārus vai ierosinājumus par nepieciešamajiem uzlabojumiem. Pēc visu saskaņoto izmaiņu veikšanas mājaslapa tiek publicēta uz Jūsu domēna un nodota Jūsu rīcībā.
                     </p>
                   </div>
                 </div>
@@ -823,7 +842,7 @@ export default function Home() {
                 {/* Step 4 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:scale-105 group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">04</span>
                     </div>
@@ -835,7 +854,7 @@ export default function Home() {
                       4. Tehniskais atbalsts un uzturēšana
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Pēc mājaslapas nodošanas nepieciešamības gadījumā turpinām nodrošināt tehnisko atbalstu un uzturēšanu, kā arī veicam satura atjauninājumus, funkcionalitātes uzlabojumus un citus papildinājumus, atbilstoši Jūsu uzņēmuma vajadzībām.
+                      Pēc mājaslapas nodošanas nepieciešamības gadījumā mēs varam turpināt nodrošināt mājaslapas tehnisko atbalstu un uzturēšanu, kā arī veikt nepieciešamos satura atjauninājumus, funkcionalitātes izmaiņas un citus papildinājumus, atbilstoši Jūsu uzņēmuma vajadzībām.
                     </p>
                   </div>
                 </div>
@@ -844,16 +863,12 @@ export default function Home() {
             </div>
 
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* 3. MŪSU DARBI: Preview Block */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <section 
           className="pt-8 pb-8 md:pt-10 md:pb-10 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
@@ -924,16 +939,12 @@ export default function Home() {
             </div>
 
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* 4. CENAS UN PAKALPOJUMI */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <section 
           className="pt-8 pb-16 md:pt-10 md:pb-20 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
@@ -966,7 +977,7 @@ export default function Home() {
                       className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex flex-col justify-between"
                     >
                       <Link
-                        to="/cenas"
+                        to="/pakalpojumi"
                         className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
                           isBestChoice 
                             ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
@@ -1069,20 +1080,16 @@ export default function Home() {
               </div>
               <CtaButton
                 text="Uzzināt vairāk"
-                to="/cenas"
+                to="/pakalpojumi"
               />
             </div>
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* 5. BUJ / FAQ: Preview Block */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <section 
           className="py-16 md:py-20 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
@@ -1151,16 +1158,12 @@ export default function Home() {
             </div>
 
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* 6. BLOGS: Preview Block */}
       <LazyLoadSection>
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+        <section 
           className="py-16 md:py-20 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
@@ -1170,13 +1173,9 @@ export default function Home() {
           <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <span className="font-sans text-[11px] font-semibold text-[#BAFC50] tracking-wider uppercase block">Blogs</span>
                 <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Noderīga informācija
                 </h3>
-                <p className="text-xs md:text-sm text-zinc-400 font-light max-w-lg">
-                  Praktiski padomi par mājaslapu izstrādi, dizainu un ātrdarbību, kas palīdzēs Jūsu uzņēmumam augt.
-                </p>
               </div>
             </div>
 
@@ -1250,7 +1249,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </motion.section>
+        </section>
       </LazyLoadSection>
 
       {/* 7. KONTAKTI & SAZIŅAS FORMA */}

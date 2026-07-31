@@ -179,7 +179,7 @@ export default function Cenas() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#18181b] border border-zinc-800 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#BAFC50]" />
-            <span>Skaidras un caurspīdīgas cenas</span>
+            <span>Mūsu pakalpojumi</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
             Cenu <span className="text-[#BAFC50]">piedāvājumi</span>

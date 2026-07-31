@@ -1,11 +1,50 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import fs from 'fs';
 import {defineConfig} from 'vite';
+
+function syncRootImagesPlugin() {
+  const sync = () => {
+    try {
+      const rootDir = process.cwd();
+      const publicDir = path.join(rootDir, 'public');
+      if (!fs.existsSync(publicDir)) {
+        fs.mkdirSync(publicDir, { recursive: true });
+      }
+      const files = fs.readdirSync(rootDir);
+      for (const file of files) {
+        if (/\.(webp|png|jpg|jpeg|svg)$/i.test(file)) {
+          const srcPath = path.join(rootDir, file);
+          const destPath = path.join(publicDir, file);
+          if (fs.statSync(srcPath).isFile()) {
+            fs.copyFileSync(srcPath, destPath);
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error syncing root images:', e);
+    }
+  };
+
+  return {
+    name: 'sync-root-images',
+    buildStart() {
+      sync();
+    },
+    configureServer(server: any) {
+      sync();
+      server.middlewares.use((req: any, res: any, next: any) => {
+        sync();
+        next();
+      });
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [syncRootImagesPlugin(), react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

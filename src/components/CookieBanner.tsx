@@ -7,24 +7,18 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already responded to cookie prompt
-    const consent = localStorage.getItem("sageon_cookie_consent");
-    if (!consent) {
-      // Small delay for smooth pop-up entrance
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 800);
-      return () => clearTimeout(timer);
-    }
+    // Show cookie banner every time the page reloads
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 600);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("sageon_cookie_consent", "accepted");
     setIsVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("sageon_cookie_consent", "declined");
     setIsVisible(false);
   };
 

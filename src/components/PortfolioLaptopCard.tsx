@@ -28,27 +28,27 @@ export default function PortfolioLaptopCard({
 
   const content = (
     <div className="group block relative select-none w-full transition-all duration-150 ease-out p-2 sm:p-4 cursor-pointer">
-      {/* Tablet Graphic Container using /Portfolio2-1.webp */}
-      <div className="relative w-full aspect-[897/593] my-2 sm:my-4">
+      {/* Tablet Graphic Container using /Portfolio2-1-1.webp (897x553) */}
+      <div className="relative w-full aspect-[897/553] my-2 sm:my-4">
         
         {/* Website Content Screen Area inside tablet frame cutout (Placed behind tablet frame at z-10) */}
         <div 
-          className="absolute z-10 overflow-hidden bg-black flex flex-col justify-between rounded-none"
+          className="absolute z-10 overflow-hidden bg-black flex flex-col justify-between rounded-t-[8px] sm:rounded-t-[12px] md:rounded-t-[14px] rounded-b-none"
           style={{
-            top: '2.02%',
+            top: '2.17%',
             left: '1.34%',
             width: '97.32%',
-            height: '91.57%',
+            height: '88.97%',
           }}
         >
           {!isPlaceholder && image ? (
-            <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
               <img
                 src={image}
                 alt={title}
                 loading="lazy"
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover object-top transition-transform duration-300"
               />
             </div>
           ) : (
@@ -63,7 +63,7 @@ export default function PortfolioLaptopCard({
 
         {/* The Device Frame Image (Placed on top at z-20) */}
         <img
-          src="/Portfolio2-1.webp"
+          src="/Portfolio2-1-1.webp"
           alt={title}
           className="w-full h-full object-contain pointer-events-none select-none relative z-20 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] group-hover:drop-shadow-[0_20px_40px_rgba(186,252,80,0.15)] transition-all duration-300"
         />
