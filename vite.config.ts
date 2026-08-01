@@ -50,8 +50,11 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    esbuild: {
+      drop: ['console', 'debugger'] as ('console' | 'debugger')[],
+    },
     build: {
-      sourcemap: true,
+      sourcemap: false,
       minify: 'esbuild' as const,
       cssCodeSplit: true,
       target: 'es2020',

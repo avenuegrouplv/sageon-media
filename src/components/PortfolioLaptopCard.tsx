@@ -45,6 +45,12 @@ export default function PortfolioLaptopCard({
             <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
               <img
                 src={image}
+                srcSet={
+                  image.endsWith(".webp") && !image.includes("-800.webp")
+                    ? `${image.replace(".webp", "-800.webp")} 800w, ${image} 1200w`
+                    : undefined
+                }
+                sizes="(max-width: 640px) 480px, (max-width: 1024px) 800px, 1200px"
                 alt={title}
                 loading="lazy"
                 decoding="async"

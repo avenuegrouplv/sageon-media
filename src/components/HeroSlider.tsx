@@ -107,16 +107,21 @@ export default function HeroSlider() {
 
             {/* Laptop Image - Eager LCP loading without animation delay */}
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
-              <img
-                src="/Majaslapa-tavam-biznesam.webp"
-                alt="Web Izstrādes AĢENTŪRA - Sageon Media"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width={1180}
-                height={720}
-                className="w-[118%] sm:w-full h-auto object-contain max-w-none sm:max-w-[650px] lg:max-w-[1050px] xl:max-w-[1180px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] lg:drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)] scale-[1.25] sm:scale-100 lg:scale-[1.5] xl:scale-[1.6] origin-center py-4 sm:py-0"
-              />
+              <picture className="w-[118%] sm:w-full h-auto object-contain max-w-none sm:max-w-[650px] lg:max-w-[1050px] xl:max-w-[1180px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] lg:drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)] scale-[1.25] sm:scale-100 lg:scale-[1.5] xl:scale-[1.6] origin-center py-4 sm:py-0">
+                <source media="(max-width: 639px)" srcSet="/Majaslapa-tavam-biznesam-480.webp" type="image/webp" />
+                <source media="(max-width: 1023px)" srcSet="/Majaslapa-tavam-biznesam-768.webp" type="image/webp" />
+                <source media="(min-width: 1024px)" srcSet="/Majaslapa-tavam-biznesam-1200.webp" type="image/webp" />
+                <img
+                  src="/Majaslapa-tavam-biznesam-1200.webp"
+                  alt="Web Izstrādes AĢENTŪRA - Sageon Media"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width={1180}
+                  height={720}
+                  className="w-full h-auto object-contain pointer-events-none"
+                />
+              </picture>
               {/* Natural Ground Shadow */}
               <div className="w-[85%] sm:w-[95%] h-5 sm:h-7 bg-black/90 blur-xl rounded-full -mt-1 pointer-events-none" />
             </div>
