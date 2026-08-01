@@ -114,27 +114,27 @@ export default function Header() {
           <div className="relative">
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="flex items-center gap-2 px-3.5 py-1.5 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-[#BAFC50] text-[12.7px] font-bold tracking-wider uppercase rounded-full transition-all duration-300 shadow-sm cursor-pointer"
+              className="flex items-center gap-2.5 px-4.5 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-[#BAFC50] text-sm font-bold tracking-wider uppercase rounded-full transition-all duration-300 shadow-md cursor-pointer hover:shadow-[#BAFC50]/15"
             >
-              <Globe className="h-3.5 w-3.5 text-[#BAFC50]" />
-              <span>{currentLang}</span>
-              <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center border border-[#BAFC50]/30 ml-0.5">
-                <ChevronDown className={`h-3 w-3 text-[#BAFC50] transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
+              <Globe className="h-4.5 w-4.5 text-[#BAFC50]" />
+              <span className="text-sm tracking-widest">{currentLang}</span>
+              <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center border border-[#BAFC50]/40 ml-0.5">
+                <ChevronDown className={`h-3.5 w-3.5 text-[#BAFC50] transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
               </div>
             </button>
 
             {langDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-32 bg-[#18181b] border border-[#BAFC50]/30 shadow-2xl py-1 z-50 rounded-2xl overflow-hidden backdrop-blur-xl">
+              <div className="absolute right-0 mt-2 w-40 bg-[#18181b] border border-[#BAFC50]/40 shadow-2xl py-1.5 z-50 rounded-2xl overflow-hidden backdrop-blur-xl">
                 {["LV", "ENG", "RUS"].map((lang) => (
                   <button
                     key={lang}
                     onClick={() => selectLanguage(lang)}
-                    className={`w-full text-left px-4 py-2 font-sans text-xs font-bold tracking-wider hover:bg-zinc-800 transition-colors cursor-pointer flex items-center justify-between ${
+                    className={`w-full text-left px-4 py-2.5 font-sans text-xs sm:text-sm font-bold tracking-wider hover:bg-zinc-800 transition-colors cursor-pointer flex items-center justify-between ${
                       currentLang === lang ? "text-[#BAFC50]" : "text-slate-300 hover:text-white"
                     }`}
                   >
                     <span>{lang === "LV" ? "Latviešu" : lang === "ENG" ? "English" : "Русский"}</span>
-                    {currentLang === lang && <span className="w-1.5 h-1.5 rounded-full bg-[#BAFC50]" />}
+                    {currentLang === lang && <span className="w-2 h-2 rounded-full bg-[#BAFC50]" />}
                   </button>
                 ))}
               </div>

@@ -436,16 +436,15 @@ export default function Home() {
                       Mājaslapas izstrāde
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Mēs izstrādājam ātras, mūsdienīgas un pārdomātas mājaslapas, kas izceļ Jūsu zīmolu, uzrunā klientus un palīdz sasniegt Jūsu biznesa mērķus.
+                      Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu.
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
-                    <div className="absolute w-[85%] h-[85%] bg-[#BAFC50]/15 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
-                      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                      alt="Ātras un mūsdienīgas mājaslapas" 
-                      referrerPolicy="no-referrer"
-                      className="relative z-10 w-full h-auto max-h-[300px] object-cover rounded-2xl drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                      src="/Web-izstrades-agentura2.webp" 
+                      alt="Mājaslapas izstrāde tavam biznesam" 
+                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -455,19 +454,19 @@ export default function Home() {
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
                   <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center">
-                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/individuals-dizains-musdienu-tehnologijas.webp" 
                       alt="Individuāls dizains un mobilā pielāgotība" 
-                      className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
+                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
                   <div className="lg:col-span-7 space-y-3">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                      Dizains & mobilā pielāgotība
+                      Dizains & Mobile first
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Mēs apvienojam individuālu dizainu ar mūsdienīgām tehnoloģijām, lai mājaslapa būtu vizuāli pārliecinoša, ērti lietojama un ātra jebkurā ierīcē. Katra mājaslapa, kuru radām, tiek veidota atbilstoši Jūsu uzņēmuma identitātei, vajadzībām un izaugsmes mērķiem.
+                      Katram projektam mēs veidojam individuālu dizainu, kas atspoguļo Jūsu uzņēmuma identitāti un rada profesionālu pirmo iespaidu. Ikviens vizuālais elements vai sadaļa tiek pielāgots datoriem, planšetēm un viedtālruņiem. Tas Jūsu mājaslapas apmeklētājiem nodrošina vienotu, vizuāli pievilcīgu un patīkamu lietošanas pieredzi neatkarīgi no izmantotās ierīces.
                     </p>
                   </div>
                 </div>
@@ -481,7 +480,7 @@ export default function Home() {
                       Struktūra & rezultāts
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Mēs pievēršam uzmanību ne tikai tam, kā mājaslapa izskatās, bet arī tam, kā tā darbojas kā Jūsu uzņēmuma digitālā vizītkarte. Pārdomāta struktūra, skaidrs saturs un lietotājam ērta pieredze palīdz radīt uzticību un virzīt apmeklētāju līdz vēlamajai darbībai — saziņai, pieteikumam vai pirkumam.
+                      Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus.
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center">

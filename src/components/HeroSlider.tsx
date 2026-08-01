@@ -46,11 +46,11 @@ export default function HeroSlider() {
             <span>+371 26739899</span>
           </a>
           <a
-            href="mailto:sageon.agency@gmail.com"
+            href="mailto:sageon.media@gmail.com"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
           >
             <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
-            <span>sageon.agency@gmail.com</span>
+            <span>sageon.media@gmail.com</span>
           </a>
         </div>
 
@@ -70,7 +70,7 @@ export default function HeroSlider() {
                 Mēs radām mājaslapas, kas
               </h1>
               
-              <div className="min-h-[70px] sm:min-h-[80px] md:min-h-[90px] flex items-center justify-center lg:justify-start">
+              <div className="h-[90px] sm:h-[100px] md:h-[110px] lg:h-[120px] xl:h-[125px] flex items-center justify-center lg:justify-start overflow-hidden relative w-full">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={phraseIndex}
@@ -113,9 +113,8 @@ export default function HeroSlider() {
               className="relative z-10 w-full flex flex-col items-center justify-center"
             >
               <img
-                src="https://pub-8b5f837f405c4000a1344faa94e82086.r2.dev/Web-izstrades-agentura.webp"
+                src="/Majaslapa-tavam-biznesam.webp"
                 alt="Web Izstrādes Aģentūra - Sageon"
-                referrerPolicy="no-referrer"
                 className="w-[118%] sm:w-full h-auto object-contain max-w-none sm:max-w-[650px] lg:max-w-[1050px] xl:max-w-[1180px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] lg:drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)] scale-[1.25] sm:scale-100 lg:scale-[1.5] xl:scale-[1.6] origin-center py-4 sm:py-0"
               />
               {/* Natural Ground Shadow */}

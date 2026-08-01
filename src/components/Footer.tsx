@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Phone, Mail, MapPin, X, ArrowUp, Sparkles } from "lucide-react";
+import CookieModal from "./CookieModal";
+import PrivacyModal from "./PrivacyModal";
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState<"cookies" | "privacy" | null>(null);
@@ -79,8 +81,8 @@ export default function Footer() {
               <span className="text-slate-600 font-light">|</span>
               <p className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
-                <a href="mailto:sageon.agency@gmail.com" className="hover:text-[#BAFC50] transition-colors font-medium text-slate-200">
-                  sageon.agency@gmail.com
+                <a href="mailto:sageon.media@gmail.com" className="hover:text-[#BAFC50] transition-colors font-medium text-slate-200">
+                  sageon.media@gmail.com
                 </a>
               </p>
             </div>
@@ -126,71 +128,17 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* MODAL DIALOGS FOR POLICIES */}
-      {activeModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-[100]">
-          <div className="bg-sageon-deep border border-sageon-accent/60 p-6 md:p-8 max-w-lg w-full rounded-none relative shadow-2xl">
-            <button
-              onClick={() => setActiveModal(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white p-1"
-              aria-label="Aizvērt"
-            >
-              <X className="h-5 w-5" />
-            </button>
+      {/* MODAL DIALOG FOR COOKIE POLICY */}
+      <CookieModal
+        isOpen={activeModal === "cookies"}
+        onClose={() => setActiveModal(null)}
+      />
 
-            {activeModal === "cookies" ? (
-              <div className="space-y-4 text-left">
-                <h3 className="text-xl font-bold tracking-tight text-white uppercase font-sans border-b border-blue-500/20 pb-2">
-                  Sīkdatņu politika
-                </h3>
-                <div className="text-xs text-slate-400 space-y-3 leading-relaxed overflow-y-auto max-h-[60vh] pr-2">
-                  <p className="font-semibold text-slate-300">Kas ir sīkdatnes?</p>
-                  <p>
-                    Sīkdatnes (cookies) ir nelielas teksta datnes, kas tiek saglabātas Jūsu ierīcē (datorā vai mobilajā tālrunī), kad apmeklējat mēsu tīmekļa vietni. Tās palīdz vietnei atpazīt Jūsu ierīci un atcerēties informāciju par Jūsu darbībām vai izvēlēm.
-                  </p>
-                  <p className="font-semibold text-slate-300">Kā mēs izmantojam sīkdatnes?</p>
-                  <p>
-                    Mēs izmantojam nepieciešamās sīkdatnes, lai nodrošinātu mājaslapas pamata funkcionalitāti, drošību un ātrdarbību. Tāpat mēs varam izmantot analītiskās sīkdatnes, lai saprastu, kā apmeklētāji mijiedarbojas ar lapu, un uzlabotu tās saturu.
-                  </p>
-                  <p className="font-semibold text-slate-300">Kā kontrolēt sīkdatnes?</p>
-                  <p>
-                    Jūs varat pilnībā kontrolēt un dzēst sīkdatnes savas pārlūkprogrammas iestatījumos. Taču lūdzam ņemt vērā, ka dažu sīkdatņu atspējošana var ietekmēt vietnes pareizu darbību un lietojamību.
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4 text-left">
-                <h3 className="text-xl font-bold tracking-tight text-white uppercase font-sans border-b border-blue-500/20 pb-2">
-                  Privātuma politika
-                </h3>
-                <div className="text-xs text-slate-400 space-y-3 leading-relaxed overflow-y-auto max-h-[60vh] pr-2">
-                  <p className="font-semibold text-slate-300">Personas datu apstrāde</p>
-                  <p>
-                    Sageon Agency rūpējas par Jūsu privātumu un datu aizsardzību. Kad Jūs aizpildāt un iesniedzat mūsu saziņas formu, mēs iegūstam tādus datus kā Jūsu Vārds, E-pasts un pašu ziņojumu.
-                  </p>
-                  <p className="font-semibold text-slate-300">Datu apstrādes mērķis</p>
-                  <p>
-                    Iesniegtie dati tiek izmantoti tikai un vienīgi, lai sazinātos ar Jums, atbildētu uz Jūsu pieprasījumu, sagatavotu cenu piedāvājumu un sniegtu kvalitatīvu pakalpojumu. Jūsu dati nekad netiks nodoti trešajām personām bez Jūsu nepārprotamas piekrišanas.
-                  </p>
-                  <p className="font-semibold text-slate-300">Datu glabāšana</p>
-                  <p>
-                    Mēs glabājam personas datus tik ilgi, cik tas ir nepieciešams attiecīgā saziņas vai biznesa procesa nodrošināšanai, ievērojot spēkā esošos normatīvos aktus un Vispārīgo datu aizsardzības regulu (GDPR).
-                  </p>
-                </div>
-              </div>
-            )}
-
-            <div className="pt-6 border-t border-sageon-accent/60 mt-6 flex justify-end">
-              <button
-                onClick={() => setActiveModal(null)}
-                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold tracking-wider text-xs uppercase rounded-none transition-colors cursor-pointer"
-              >
-                Aizvērt
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* MODAL DIALOG FOR PRIVACY POLICY */}
+      <PrivacyModal
+        isOpen={activeModal === "privacy"}
+        onClose={() => setActiveModal(null)}
+      />
     </footer>
   );
 }
