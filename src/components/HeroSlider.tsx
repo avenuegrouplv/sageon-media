@@ -105,13 +105,8 @@ export default function HeroSlider() {
             <div className="absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-gradient-to-tr from-[#38b000]/55 via-[#BAFC50]/50 to-emerald-900/20 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none z-0" />
             <div className="absolute w-[90%] sm:w-[100%] h-[70%] sm:h-[80%] -bottom-8 sm:-bottom-10 bg-[#BAFC50]/40 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0" />
 
-            {/* Laptop Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative z-10 w-full flex flex-col items-center justify-center"
-            >
+            {/* Laptop Image - Eager LCP loading without animation delay */}
+            <div className="relative z-10 w-full flex flex-col items-center justify-center">
               <img
                 src="/Majaslapa-tavam-biznesam.webp"
                 alt="Web Izstrādes AĢENTŪRA - Sageon Media"
@@ -124,7 +119,7 @@ export default function HeroSlider() {
               />
               {/* Natural Ground Shadow */}
               <div className="w-[85%] sm:w-[95%] h-5 sm:h-7 bg-black/90 blur-xl rounded-full -mt-1 pointer-events-none" />
-            </motion.div>
+            </div>
           </div>
 
         </div>

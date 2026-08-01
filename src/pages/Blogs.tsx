@@ -372,6 +372,7 @@ export default function Blogs() {
                     src={post.image}
                     alt={post.title}
                     loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -415,6 +416,8 @@ export default function Blogs() {
                     <img
                       src={activeArticle.image}
                       alt={activeArticle.title}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />

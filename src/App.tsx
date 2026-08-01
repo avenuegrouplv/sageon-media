@@ -36,7 +36,7 @@ function AppContent() {
       <Header />
 
       {/* Core Multi-Page Views - Subpages have padding-top to avoid overlapping the fixed header */}
-      <div className={`flex-1 relative z-10 ${!isHome ? "pt-[80px]" : ""}`}>
+      <main id="main-content" className={`flex-1 relative z-10 ${!isHome ? "pt-[80px]" : ""}`}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -51,7 +51,7 @@ function AppContent() {
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>
-      </div>
+      </main>
 
       {/* 4-Column Professional Footer */}
       <Footer />

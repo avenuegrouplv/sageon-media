@@ -193,6 +193,8 @@ export default function Darbi() {
               <img
                 src={selectedImage}
                 alt="Darba palielināts priekšskatījums"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-[80vh] object-contain border border-zinc-800"
               />
             </div>

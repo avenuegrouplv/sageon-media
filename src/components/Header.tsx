@@ -12,16 +12,20 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Detect scroll to style header
+  // Detect scroll to style header with requestAnimationFrame throttling and state checks
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const next = window.scrollY > 20;
+          setIsScrolled((prev) => (prev !== next ? next : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -80,6 +84,8 @@ export default function Header() {
               src="/Logo-new.webp" 
               alt="Sageon Media - Mājaslapu Izstrādes Aģentūra Logo" 
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
               width={230}
               height={84}
               className="w-full h-full object-contain rounded-none" 

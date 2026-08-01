@@ -98,7 +98,11 @@ export default function Footer() {
             <div className="flex items-center justify-center w-[190px] h-[70px] sm:w-[220px] sm:h-[75px] bg-transparent">
               <img 
                 src="/Logo-new.webp" 
-                alt="Sageon Agency Logo" 
+                alt="Sageon Media Logo" 
+                loading="lazy"
+                decoding="async"
+                width={220}
+                height={75}
                 className="w-full h-full object-contain" 
               />
             </div>

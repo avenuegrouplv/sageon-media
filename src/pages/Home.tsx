@@ -494,6 +494,10 @@ export default function Home() {
                     <img 
                       src="/Web-izstrades-agentura2.webp" 
                       alt="Mājaslapas izstrāde tavam biznesam" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={380}
                       className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
@@ -508,6 +512,10 @@ export default function Home() {
                     <img 
                       src="/individuals-dizains-musdienu-tehnologijas.webp" 
                       alt="Individuāls dizains un mobilā pielāgotība" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={380}
                       className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
@@ -538,6 +546,10 @@ export default function Home() {
                     <img 
                       src="/uznemuma-digitala-vizitkarte.webp" 
                       alt="Struktūra un rezultāts — uzņēmuma digitālā vizītkarte" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
                       className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
@@ -1252,6 +1264,7 @@ export default function Home() {
                             src={post.image}
                             alt={post.title}
                             loading="lazy"
+                            decoding="async"
                             referrerPolicy="no-referrer"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
                           />
