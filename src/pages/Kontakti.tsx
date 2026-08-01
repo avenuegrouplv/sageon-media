@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { MapPin, MessageSquare, Clock } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 import PageNavButtons from "../components/PageNavButtons";
 
 export default function Kontakti() {
+  useEffect(() => {
+    document.title = "Kontakti & Pieteikt Projektu | Sageon Media";
+  }, []);
   return (
     <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
       {/* Background Grid Pattern */}

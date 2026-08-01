@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BookOpen, Sparkles, Hourglass, ArrowLeft, Calendar, Clock, ChevronRight, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
@@ -228,6 +228,14 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
 
 export default function Blogs() {
   const [activeArticle, setActiveArticle] = useState<typeof BLOG_POSTS[0] | null>(null);
+
+  useEffect(() => {
+    if (activeArticle) {
+      document.title = `${activeArticle.title} | Sageon Media Blogs`;
+    } else {
+      document.title = "Blogs & Raksti par Tīmekļa Izstrādi un SEO | Sageon Media";
+    }
+  }, [activeArticle]);
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">

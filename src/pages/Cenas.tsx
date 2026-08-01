@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { Check, Sparkles, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageNavButtons from "../components/PageNavButtons";
 import ContactForm from "../components/ContactForm";
 
 export default function Cenas() {
+  useEffect(() => {
+    document.title = "Pakalpojumi & Cenas | Sageon Media";
+  }, []);
   const pricingPlans = [
     {
       title: "Landing Page",

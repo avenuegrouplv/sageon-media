@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { HelpCircle } from "lucide-react";
 import PageNavButtons from "../components/PageNavButtons";
@@ -66,6 +66,10 @@ export const FAQ_DATA = [
 
 export default function Buj() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    document.title = "Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media";
+  }, []);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

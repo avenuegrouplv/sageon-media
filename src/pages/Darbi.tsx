@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FolderGit2, Sparkles, X } from "lucide-react";
 import PageNavButtons from "../components/PageNavButtons";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
@@ -72,6 +72,10 @@ const EMPTY_PORTFOLIO_CARDS = [
 
 export default function Darbi() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.title = "Mūsu Darbi & Portfolio | Sageon Media";
+  }, []);
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">

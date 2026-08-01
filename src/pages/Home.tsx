@@ -112,6 +112,10 @@ function LazyLoadSection({ children }: { children: ReactNode }) {
 export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
+  useEffect(() => {
+    document.title = "Sageon Media | Mājaslapu izstrāde un digitālie risinājumi";
+  }, []);
+
   // Take first 4 FAQ items for the Home page as requested
   const homeFaqs = FAQ_DATA.slice(0, 4);
 
@@ -187,7 +191,7 @@ export default function Home() {
   };
 
   // Infinite Pricing Carousel State
-  const [pricingIndex, setPricingIndex] = useState(8);
+  const [pricingIndex, setPricingIndex] = useState(0);
   const [disablePricingTransition, setDisablePricingTransition] = useState(false);
 
   useEffect(() => {
@@ -200,12 +204,12 @@ export default function Home() {
   }, [disablePricingTransition]);
 
   const handlePricingTransitionEnd = () => {
-    if (pricingIndex >= 14) {
+    if (pricingIndex >= 8) {
       setDisablePricingTransition(true);
-      setPricingIndex(7);
-    } else if (pricingIndex <= 6) {
+      setPricingIndex(4);
+    } else if (pricingIndex < 0) {
       setDisablePricingTransition(true);
-      setPricingIndex(13);
+      setPricingIndex(4);
     }
   };
 
