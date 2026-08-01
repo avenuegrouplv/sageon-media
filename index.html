@@ -7,39 +7,40 @@
     <meta name="description" content="Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei." />
     <meta name="keywords" content="mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains" />
     <meta name="author" content="Sageon Media" />
+    <link rel="canonical" href="https://sageon.media" />
     
+    <!-- Preload critical Hero LCP Image -->
+    <link rel="preload" as="image" href="/Majaslapa-tavam-biznesam.webp" fetchpriority="high" type="image/webp" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sageon Media | Mājaslapu izstrāde un digitālie risinājumi" />
     <meta property="og:description" content="Profesionāla mājaslapu un tīmekļa risinājumu izstrāde biznesam, portfolio un e-komercijai." />
-    <meta property="og:image" content="/Logo-new.webp" />
+    <meta property="og:image" content="https://sageon.media/Logo-new.webp" />
+    <meta property="og:url" content="https://sageon.media" />
     <meta property="og:locale" content="lv_LV" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sageon Media | Mājaslapu izstrāde" />
     <meta name="twitter:description" content="Profesionāla mājaslapu un tīmekļa risinājumu izstrāde." />
-    <meta name="twitter:image" content="/Logo-new.webp" />
+    <meta name="twitter:image" content="https://sageon.media/Logo-new.webp" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="/Logo-new.webp" />
-    <link rel="apple-touch-icon" href="/Logo-new.webp" />
+    <!-- Favicon with cache busting ?v=5 -->
+    <link rel="icon" type="image/webp" href="/Logo-new.webp?v=5" />
+    <link rel="apple-touch-icon" href="/Logo-new.webp?v=5" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data Fallback -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://sageon.media#organization",
       "name": "Sageon Media",
       "url": "https://sageon.media",
       "logo": "https://sageon.media/Logo-new.webp",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+371 26739899",
-        "contactType": "customer service",
-        "email": "sageon.media@gmail.com",
-        "availableLanguage": ["Latvian", "English"]
-      },
+      "email": "sageon.media@gmail.com",
+      "telephone": "+371 26739899",
       "sameAs": []
     }
     </script>
@@ -49,4 +50,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

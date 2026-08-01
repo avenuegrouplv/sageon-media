@@ -78,7 +78,10 @@ export default function Header() {
             {/* Colored Original Logo */}
             <img 
               src="/Logo-new.webp" 
-              alt="Sageon Agency Logo" 
+              alt="Sageon Media - Mājaslapu Izstrādes Aģentūra Logo" 
+              loading="eager"
+              width={230}
+              height={84}
               className="w-full h-full object-contain rounded-none" 
             />
           </div>

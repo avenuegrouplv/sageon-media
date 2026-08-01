@@ -32,6 +32,7 @@ import ContactForm from "../components/ContactForm";
 import CtaButton from "../components/CtaButton";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
+import SEOHead from "../components/SEOHead";
 import { FAQ_DATA } from "./Buj";
 import { BLOG_POSTS } from "./Blogs";
 
@@ -390,6 +391,51 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-hidden">
+      <SEOHead
+        title="Sageon Media | Mājaslapu izstrāde un digitālie risinājumi"
+        description="Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://sageon.media#organization",
+            "name": "Sageon Media",
+            "url": "https://sageon.media",
+            "logo": "https://sageon.media/Logo-new.webp",
+            "email": "sageon.media@gmail.com",
+            "telephone": "+371 26739899"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://sageon.media#website",
+            "url": "https://sageon.media",
+            "name": "Sageon Media",
+            "description": "Profesionāla mājaslapu izstrāde un digitālie risinājumi jūsu biznesam."
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://sageon.media#webpage",
+            "url": "https://sageon.media",
+            "name": "Sageon Media | Mājaslapu izstrāde un digitālie risinājumi",
+            "description": "Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei.",
+            "isPartOf": { "@id": "https://sageon.media#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": homeFaqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
       {/* Seamless Continuous Full-Page Grid Pattern & Fluid Green Lighting */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { MapPin, MessageSquare, Clock } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 import PageNavButtons from "../components/PageNavButtons";
+import SEOHead from "../components/SEOHead";
 
 export default function Kontakti() {
   useEffect(() => {
@@ -9,6 +10,39 @@ export default function Kontakti() {
   }, []);
   return (
     <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
+      <SEOHead
+        title="Kontakti & Pieteikt Projektu | Sageon Media"
+        description="Sazinies ar Sageon Media komandu. Pieteikt mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": "https://sageon.media/kontakti#webpage",
+            "url": "https://sageon.media/kontakti",
+            "name": "Kontakti & Pieteikt Projektu | Sageon Media",
+            "description": "Sazinies ar Sageon Media komandu. Pieteikt mājaslapas izstrādi.",
+            "isPartOf": { "@id": "https://sageon.media#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Sākums",
+                "item": "https://sageon.media"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Kontakti",
+                "item": "https://sageon.media/kontakti"
+              }
+            ]
+          }
+        ]}
+      />
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
       

@@ -3,6 +3,7 @@ import { FolderGit2, Sparkles, X } from "lucide-react";
 import PageNavButtons from "../components/PageNavButtons";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import ContactForm from "../components/ContactForm";
+import SEOHead from "../components/SEOHead";
 
 const MOCK_PORTFOLIO_CARDS = [
   {
@@ -79,6 +80,39 @@ export default function Darbi() {
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+      <SEOHead
+        title="Mūsu Darbi & Portfolio | Sageon Media"
+        description="Apskatiet Sageon Media izstrādāto mājaslapu portfolio un veiktos projektus. Mūsdienīgs tīmekļa dizains, augsta ātrdarbība un meklētāju optimizācija."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://sageon.media/portfolio#webpage",
+            "url": "https://sageon.media/portfolio",
+            "name": "Mūsu Darbi & Portfolio | Sageon Media",
+            "description": "Apskatiet Sageon Media izstrādāto mājaslapu portfolio un veiktos projektus.",
+            "isPartOf": { "@id": "https://sageon.media#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Sākums",
+                "item": "https://sageon.media"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Portfolio",
+                "item": "https://sageon.media/portfolio"
+              }
+            ]
+          }
+        ]}
+      />
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 

@@ -114,7 +114,12 @@ export default function HeroSlider() {
             >
               <img
                 src="/Majaslapa-tavam-biznesam.webp"
-                alt="Web Izstrādes Aģentūra - Sageon"
+                alt="Web Izstrādes AĢENTŪRA - Sageon Media"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={1180}
+                height={720}
                 className="w-[118%] sm:w-full h-auto object-contain max-w-none sm:max-w-[650px] lg:max-w-[1050px] xl:max-w-[1180px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] lg:drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)] scale-[1.25] sm:scale-100 lg:scale-[1.5] xl:scale-[1.6] origin-center py-4 sm:py-0"
               />
               {/* Natural Ground Shadow */}

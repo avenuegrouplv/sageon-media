@@ -3,6 +3,7 @@ import { Check, Sparkles, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageNavButtons from "../components/PageNavButtons";
 import ContactForm from "../components/ContactForm";
+import SEOHead from "../components/SEOHead";
 
 export default function Cenas() {
   useEffect(() => {
@@ -169,6 +170,57 @@ export default function Cenas() {
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+      <SEOHead
+        title="Pakalpojumi & Cenas | Sageon Media"
+        description="Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Landing lapas, multi-page biznesa vietnes, e-komercija un tehniskā uzturēšana."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://sageon.media/pakalpojumi#webpage",
+            "url": "https://sageon.media/pakalpojumi",
+            "name": "Pakalpojumi & Cenas | Sageon Media",
+            "description": "Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu.",
+            "isPartOf": { "@id": "https://sageon.media#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Sākums",
+                "item": "https://sageon.media"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Pakalpojumi un Cenas",
+                "item": "https://sageon.media/pakalpojumi"
+              }
+            ]
+          },
+          ...pricingPlans.map(plan => ({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": plan.title,
+            "description": plan.subtitle,
+            "provider": {
+              "@type": "Organization",
+              "name": "Sageon Media",
+              "url": "https://sageon.media"
+            },
+            ...(plan.price ? {
+              "offers": {
+                "@type": "Offer",
+                "price": plan.price,
+                "priceCurrency": "EUR"
+              }
+            } : {})
+          }))
+        ]}
+      />
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 

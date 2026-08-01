@@ -4,6 +4,7 @@ import { HelpCircle } from "lucide-react";
 import PageNavButtons from "../components/PageNavButtons";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
 import CtaButton from "../components/CtaButton";
+import SEOHead from "../components/SEOHead";
 
 export const FAQ_DATA = [
   {
@@ -77,6 +78,51 @@ export default function Buj() {
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+      <SEOHead
+        title="Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media"
+        description="Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi, izmaksām, izstrādes laiku, SEO un tehnisko atbalstu no Sageon Media."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://sageon.media/buj#webpage",
+            "url": "https://sageon.media/buj",
+            "name": "Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media",
+            "description": "Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi un pakalpojumiem.",
+            "isPartOf": { "@id": "https://sageon.media#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Sākums",
+                "item": "https://sageon.media"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "BUJ",
+                "item": "https://sageon.media/buj"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQ_DATA.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 

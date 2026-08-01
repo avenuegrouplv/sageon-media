@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BookOpen, Sparkles, Hourglass, ArrowLeft, Calendar, Clock, ChevronRight, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
+import SEOHead from "../components/SEOHead";
 
 export const BLOG_POSTS = [
   {
@@ -239,6 +240,96 @@ export default function Blogs() {
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+      <SEOHead
+        title={activeArticle ? `${activeArticle.title} | Sageon Media Blogs` : "Blogs & Raksti par Tīmekļa Izstrādi un SEO | Sageon Media"}
+        description={activeArticle ? activeArticle.excerpt : "Noderīgi raksti, eksperta padomi un jaunumi par mājaslapu izstrādi, SEO optimizāciju, konversiju uzlabošanu un digitālo mārketingu no Sageon Media."}
+        ogImage={activeArticle ? activeArticle.image : "/Logo-new.webp"}
+        ogType={activeArticle ? "article" : "website"}
+        schema={
+          activeArticle ? [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "@id": `https://sageon.media/blogs#${activeArticle.id}`,
+              "headline": activeArticle.title,
+              "description": activeArticle.excerpt,
+              "image": activeArticle.image,
+              "datePublished": "2026-07-17",
+              "author": {
+                "@type": "Organization",
+                "name": "Sageon Media",
+                "url": "https://sageon.media"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Sageon Media",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://sageon.media/Logo-new.webp"
+                }
+              },
+              "mainEntityOfPage": `https://sageon.media/blogs`
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Sākums",
+                  "item": "https://sageon.media"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blogs",
+                  "item": "https://sageon.media/blogs"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": activeArticle.title,
+                  "item": `https://sageon.media/blogs`
+                }
+              ]
+            }
+          ] : [
+            {
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              "@id": "https://sageon.media/blogs#blog",
+              "name": "Sageon Media Blogs",
+              "description": "Padomi par mājaslapu izstrādi, SEO un digitālo mārketingu.",
+              "blogPost": BLOG_POSTS.map(post => ({
+                "@type": "BlogPosting",
+                "headline": post.title,
+                "description": post.excerpt,
+                "image": post.image,
+                "url": `https://sageon.media/blogs`
+              }))
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Sākums",
+                  "item": "https://sageon.media"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blogs",
+                  "item": "https://sageon.media/blogs"
+                }
+              ]
+            }
+          ]
+        }
+      />
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 

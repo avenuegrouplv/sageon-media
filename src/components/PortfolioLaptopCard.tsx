@@ -65,6 +65,9 @@ export default function PortfolioLaptopCard({
         <img
           src="/Portfolio2-1-1.webp"
           alt={title}
+          width={897}
+          height={553}
+          loading="lazy"
           className="w-full h-full object-contain pointer-events-none select-none relative z-20 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] group-hover:drop-shadow-[0_20px_40px_rgba(186,252,80,0.15)] transition-all duration-300"
         />
       </div>
