@@ -380,9 +380,9 @@ export default function Blogs() {
 
                 {/* Content Area */}
                 <div className="p-5 space-y-3.5">
-                  <h2 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
+                  <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
                     {post.title}
-                  </h2>
+                  </h3>
                   
                   <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3">
                     {post.excerpt}

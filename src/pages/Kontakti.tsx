@@ -67,19 +67,19 @@ export default function Kontakti() {
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 dark:text-slate-400 text-xs md:text-sm font-light border border-slate-200/60 dark:border-sageon-accent/60 bg-white dark:bg-sageon-deep/40 p-6 md:p-8 rounded-2xl shadow-md">
           <div className="space-y-3">
-            <h2 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
+            <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
               <Clock className="h-4 w-4 text-blue-500" />
               Darba laiks
-            </h2>
+            </h3>
             <p className="leading-relaxed">
               Esam pieejami un atbildam uz e-pastiem katru darba dienu no <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 līdz 18:00</strong>. Nedēļas nogalēs saņemtās ziņas apstrādājam pirmdienas rītā.
             </p>
           </div>
           <div className="space-y-3">
-            <h2 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
+            <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
               <MapPin className="h-4 w-4 text-blue-500" />
               Lokācija & Sadarbība
-            </h2>
+            </h3>
             <p className="leading-relaxed">
               Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>. Nepieciešamības gadījumā organizējam video zvanus (Google Meet / Zoom), lai precizētu detaļas.
             </p>

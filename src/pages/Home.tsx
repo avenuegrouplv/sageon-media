@@ -97,34 +97,16 @@ const PORTFOLIO_ITEMS = [
 ];
 
 function LazyLoadSection({ children }: { children: ReactNode }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { rootMargin: "120px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div
-      ref={ref}
-      className={`w-full transition-all duration-700 ease-out cv-auto ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full"
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -509,19 +491,15 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
-                    <picture className="relative z-10 w-full flex items-center justify-center">
-                      <source media="(max-width: 639px)" srcSet="/Web-izstrades-agentura2-480.webp" type="image/webp" />
-                      <source media="(min-width: 640px)" srcSet="/Web-izstrades-agentura2-780.webp" type="image/webp" />
-                      <img 
-                        src="/Web-izstrades-agentura2-780.webp" 
-                        alt="Mājaslapas izstrāde tavam biznesam" 
-                        loading="lazy"
-                        decoding="async"
-                        width={600}
-                        height={380}
-                        className="w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
-                      />
-                    </picture>
+                    <img 
+                      src="/Web-izstrades-agentura2.webp" 
+                      alt="Mājaslapas izstrāde tavam biznesam" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={380}
+                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                    />
                   </div>
                 </div>
 
@@ -531,20 +509,15 @@ export default function Home() {
                 >
                   <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
-                    <picture className="relative z-10 w-full flex items-center justify-center">
-                      <source media="(max-width: 639px)" srcSet="/individuals-dizains-musdienu-tehnologijas-480.webp" type="image/webp" />
-                      <source media="(max-width: 1023px)" srcSet="/individuals-dizains-musdienu-tehnologijas-768.webp" type="image/webp" />
-                      <source media="(min-width: 1024px)" srcSet="/individuals-dizains-musdienu-tehnologijas-1200.webp" type="image/webp" />
-                      <img 
-                        src="/individuals-dizains-musdienu-tehnologijas-1200.webp" 
-                        alt="Individuāls dizains un mobilā pielāgotība" 
-                        loading="lazy"
-                        decoding="async"
-                        width={600}
-                        height={380}
-                        className="w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
-                      />
-                    </picture>
+                    <img 
+                      src="/individuals-dizains-musdienu-tehnologijas.webp" 
+                      alt="Individuāls dizains un mobilā pielāgotība" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={380}
+                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                    />
                   </div>
                   <div className="lg:col-span-7 space-y-3">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
@@ -570,20 +543,15 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
-                    <picture className="relative z-10 w-full flex items-center justify-center">
-                      <source media="(max-width: 639px)" srcSet="/uznemuma-digitala-vizitkarte-480.webp" type="image/webp" />
-                      <source media="(max-width: 1023px)" srcSet="/uznemuma-digitala-vizitkarte-768.webp" type="image/webp" />
-                      <source media="(min-width: 1024px)" srcSet="/uznemuma-digitala-vizitkarte-1200.webp" type="image/webp" />
-                      <img 
-                        src="/uznemuma-digitala-vizitkarte-1200.webp" 
-                        alt="Struktūra un rezultāts — uzņēmuma digitālā vizītkarte" 
-                        loading="lazy"
-                        decoding="async"
-                        width={600}
-                        height={400}
-                        className="w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
-                      />
-                    </picture>
+                    <img 
+                      src="/uznemuma-digitala-vizitkarte.webp" 
+                      alt="Struktūra un rezultāts — uzņēmuma digitālā vizītkarte" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
+                      className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
+                    />
                   </div>
                 </div>
 
@@ -782,9 +750,9 @@ export default function Home() {
                     <Target className="h-7 w-7" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Skaidra biznesa stratēģija
-                    </h3>
+                    </h4>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Katrs projekts tiek veidots ar konkrētu mērķi — palīdzēt uzņēmumam iegūt vairāk pieprasījumu un veicināt biznesa izaugsmi.
                     </p>
@@ -797,9 +765,9 @@ export default function Home() {
                     <Settings className="h-7 w-7" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Individuāla pieeja
-                    </h3>
+                    </h4>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Katrs uzņēmums ir atšķirīgs, tāpēc risinājumus mēs pielāgojam tieši Jūsu biznesa nozarei, auditorijai un mērķiem.
                     </p>
@@ -812,9 +780,9 @@ export default function Home() {
                     <Zap className="h-7 w-7" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Mūsdienīgi risinājumi
-                    </h3>
+                    </h4>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Mēs izmantojam jaunākās tehnoloģijas, lai mājaslapa būtu ātra, responsīva, intuitīva un viegli pārskatāma.
                     </p>
@@ -827,9 +795,9 @@ export default function Home() {
                     <TrendingUp className="h-7 w-7" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Ilgtermiņa sadarbība
-                    </h3>
+                    </h4>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Mēs ne tikai izstrādājam mājaslapu, bet arī palīdzam tai attīstīties un pielāgoties uzņēmuma izaugsmei.
                     </p>
@@ -972,9 +940,9 @@ export default function Home() {
             
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Ieskats mūsu nesenajos projektos
-                </h2>
+                </h3>
               </div>
             </div>
 
@@ -1047,9 +1015,9 @@ export default function Home() {
           <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Sadarbības iespējas
-                </h2>
+                </h3>
               </div>
             </div>
 
@@ -1192,9 +1160,9 @@ export default function Home() {
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
             <div className="text-center space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 Biežāk uzdotie jautājumi
-              </h2>
+              </h3>
               <p className="text-xs md:text-sm text-zinc-300 font-light max-w-md mx-auto text-center">
                 Pirmās atbildes, lai palīdzētu Jums ātri izprast mūsu sadarbības principus.
               </p>
@@ -1266,9 +1234,9 @@ export default function Home() {
           <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Noderīga informācija
-                </h2>
+                </h3>
               </div>
             </div>
 

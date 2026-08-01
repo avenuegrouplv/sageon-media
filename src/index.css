@@ -45,12 +45,6 @@ div.min-h-screen {
 }
 
 /* Section background variations */
-/* Content visibility optimization for off-screen sections */
-.cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 600px;
-}
-
 section {
   transition: background-color 0.3s ease !important;
 }

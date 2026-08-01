@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# AI Studio and Deployment Caches
+.aistudio/
+assets/
+.netlify/
+.cache/
+bun.lock
