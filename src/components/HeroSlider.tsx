@@ -108,7 +108,7 @@ export default function HeroSlider() {
             {/* Laptop Image - Eager LCP loading without animation delay */}
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
               <img
-                src="/Majaslapa-tavam-biznesam.webp"
+                src="/majaslapa-tavam-biznesam.webp"
                 alt="Web Izstrādes AĢENTŪRA - Sageon Media"
                 loading="eager"
                 fetchPriority="high"

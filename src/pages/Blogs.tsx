@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { BookOpen, Sparkles, Hourglass, ArrowLeft, Calendar, Clock, ChevronRight, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
@@ -11,9 +12,9 @@ export const BLOG_POSTS = [
     category: "Optimizācija",
     date: "17.07.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Tīmekļa meklēšana piedzīvo milzīgas pārmaiņas. Uzziniet, kā optimizēt savu mājaslapu GEO (Generative Engine Optimization) standartiem, lai ChatGPT, Gemini un citi mākslīgā intelekta aģenti ieteiktu tieši Jūsu uzņēmumu.",
-    content: `Tīmekļa meklēšana šobrīd piedzīvo lielākās pārmaiņas kopš Google pirmsākumiem. Tradicionālo meklētājprogrammu vietā arvien vairāk lietotāju izmanto AI aģentus, ChatGPT, Google Gemini un Perplexity, lai saņemtu tūlītējas, personalizētas atbildes un ieteikumus. Šo jauno disciplīnu sauc par GEO (Generative Engine Optimization) jeb ģeneratīvo dzinēju optimizāciju.
+    content: `Tīmekļa meklēšana šobrīd piedzīvo lielākās pārmaiņas kopš Google pirmsākumiem. Tradicionālo meklētājprogrammu vietā arvien vairāk lietotāju izmanto AI aģentus, ChatGPT, Google Gemini un Perplexity, lai saņemtu tūlītējas, personalizētas atbildes un ieteikumus. Šo jauno disciplīnu sauc par **GEO (Generative Engine Optimization)** jeb ģeneratīvo dzinēju optimizāciju.
 
 ### Kāpēc tradicionālais SEO vairs nav pilnīgs?
 
@@ -21,13 +22,13 @@ Tradicionālo meklētājprogrammu rezultātos lietotājs saņem vienkāršu sai�
 
 ### Kā optimizēt mājaslapu AI aģentiem?
 
-1. Strukturēti dati un Schema marķējums:
+1. **Strukturēti dati un Schema marķējums:**
 AI aģenti uztver un nolasa mājaslapu saturu caur skaidru datu struktūru. Izmantojot detalizētu JSON-LD Schema marķējumu, Jūs palīdzat AI labāk saprast Jūsu pakalpojumus, darba laikus, cenas un klientu atsauksmes.
 
-2. Dabiskās valodas un jautājumu-atbilžu saturs:
+2. **Dabiskās valodas un jautājumu-atbilžu saturs:**
 AI vaicājumi visbiežāk tiek formulēti kā pilni jautājumi. Saturs, kas veidots skaidrā, dabiskā valodā un tieši atbild uz biežāk uzdotajiem jautājumiem ("Cik maksā...", "Kāpēc izvēlēties..."), ir daudz piemērotāks AI dzinēju apstrādei.
 
-3. Zīmola pieminējumi un atsauksmes tīmeklī:
+3. **Zīmola pieminējumi un atsauksmes tīmeklī:**
 AI mācās no uzticamiem ārējiem avotiem. Jo biežāk Jūsu uzņēmums ir pozitīvi minēts nozares portālos, katalogos un atsauksmju vietnēs (Google Business, Trustpilot), jo lielāka ir iespēja, ka AI ieteiks tieši Jūs.
 
 Sageon Media savos projektos jau šodien iestrādā visus nepieciešamos tehniskos parametrus, lai Jūsu zīmols būtu līderpozīcijās ne tikai Google meklētājā, bet arī visu populārāko mākslīgā intelekta aģentu ieteikumos.`
@@ -38,15 +39,15 @@ Sageon Media savos projektos jau šodien iestrādā visus nepieciešamos tehnisk
     category: "Optimizācija",
     date: "14.07.2026",
     readTime: "4 min lasīšana",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Lapas ielādes ātrums ir pirmais iespaids par Jūsu uzņēmumu tīmeklī. Uzziniet, kā katra milisekunde ietekmē lietotāju pacietību un konversijas rādītājus.",
     content: `Mūsdienu dinamiskajā pasaulē lietotāju pacietība tīmeklī mērāma sekundes desmitdaļās. Ja Jūsu mājaslapa ielādējas ilgāk par 3 sekundēm, vairāk nekā puse apmeklētāju to pametīs vēl pirms satura ieraudzīšanas.
 
 ### Kāpēc ātrums ir tik svarīgs?
 
-1. Lietotāju pieredze (UX): Ātra mājaslapa rada uzticamību un profesionālu tēlu. Lietotāji jūtas ērti un labprātāk pārlūko citas Jūsu sadaļas.
-2. Mobilā responsivitāte: Ļoti bieži lietotāji tīmekli pārlūko, izmantojot mobilos datus (3G/4G/5G). Šādos apstākļos smagas lapas ar neoptimizētiem attēliem var ielādēties pat desmitiem sekunžu.
-3. Konversijas rādītāji: Pētījumi rāda, ka ielādes laika samazināšana par vienu sekundi var palielināt konversijas rādītājus pat par 20%.
+1. **Lietotāju pieredze (UX):** Ātra mājaslapa rada uzticamību un profesionālu tēlu. Lietotāji jūtas ērti un labprātāk pārlūko citas Jūsu sadaļas.
+2. **Mobilā responsivitāte:** Ļoti bieži lietotāji tīmekli pārlūko, izmantojot mobilos datus (3G/4G/5G). Šādos apstākļos smagas lapas ar neoptimizētiem attēliem var ielādēties pat desmitiem sekunžu.
+3. **Konversijas rādītāji:** Pētījumi rāda, ka ielādes laika samazināšana par vienu sekundi var palielināt konversijas rādītājus pat par 20%.
 
 ### Kā mēs panākam maksimālu ātrumu?
 
@@ -58,17 +59,17 @@ Sageon Media izmanto modernākās izstrādes tehnoloģijas (piemēram, React un 
     category: "Dizains",
     date: "08.07.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Skaists dizains ir tikai puse no uzvaras. Pārdomāta lietotāju pieredze (UX) ir tas, kas palīdz pārvērst parastus apmeklētājus par reāliem maksājošiem klientiem.",
     content: `Mājaslapas dizainam ir jābūt ne tikai estētiskam, bet arī funkcionālam. Izcils UI/UX dizains vada lietotāju pa skaidru ceļu līdz vēlamajam rezultātam – pirkumam, pieteikumam vai saziņai.
 
 ### 5 būtiskākie principi konversijas veicināšanai:
 
-1. Skaidrs un redzams CTA (Call to Action): Saziņas un pieteikuma pogām ir jābūt pamanāmām, kontrastējošās krāsās un izvietotām loģiskās vietās.
-2. Vizuālā hierarhija: Svarīgākajai informācijai un virsrakstiem ir jābūt lielākiem un skaidriem. Lietotājam jāspēj 5 sekunžu laikā saprast, ko Jūs piedāvājat.
-3. Vienkārša navigācija: Nesarežģījiet izvēlni. Svarīgākajām sadaļām jābūt viegli pieejamām ar vienu klikšķi.
-4. Gaisa un telpas izmantošana (White Space): Neaizpildiet katru pikseli ar tekstu vai elementiem. Brīva telpa palīdz acīm atpūsties un koncentrēties uz galveno saturu.
-5. Uzticības elementi: Izvietojiet klientu atsauksmes, sadarbības partneru logo vai paveikto darbu piemērus redzamā vietā.
+1. **Skaidrs un redzams CTA (Call to Action):** Saziņas un pieteikuma pogām ir jābūt pamanāmām, kontrastējošās krāsās un izvietotām loģiskās vietās.
+2. **Vizuālā hierarhija:** Svarīgākajai informācijai un virsrakstiem ir jābūt lielākiem un skaidriem. Lietotājam jāspēj 5 sekunžu laikā saprast, ko Jūs piedāvājat.
+3. **Vienkārša navigācija:** Nesarežģījiet izvēlni. Svarīgākajām sadaļām jābūt viegli pieejamām ar vienu klikšķi.
+4. **Gaisa un telpas izmantošana (White Space):** Neaizpildiet katru pikseli ar tekstu vai elementiem. Brīva telpa palīdz acīm atpūsties un koncentrēties uz galveno saturu.
+5. **Uzticības elementi:** Izvietojiet klientu atsauksmes, sadarbības partneru logo vai paveikto darbu piemērus redzamā vietā.
 
 Mēs Sageon Media katru dizainu veidojam no nulles, analizējot Jūsu mērķauditorijas paradumus, lai izstrādātu maksimāli efektīvu pārdošanas instrumentu.`
   },
@@ -78,15 +79,15 @@ Mēs Sageon Media katru dizainu veidojam no nulles, analizējot Jūsu mērķaudi
     category: "Drošība",
     date: "29.06.2026",
     readTime: "4 min lasīšana",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Mājaslapas palaišana ir tikai sākums. Regulāri drošības atjauninājumi un rezerves kopijas pasargā Jūsu biznesu no negaidītiem datu zudumiem un uzbrukumiem.",
     content: `Daudzi uzņēmumi uzskata, ka pēc mājaslapas nodošanas ekspluatācijā par to var aizmirst. Tomēr tīmeklis nepārtraukti mainās – rodas jaunas drošības ievainojamības, spraudņu atjauninājumi un serveru tehnoloģiju pārmaiņas.
 
 ### Kāpēc uzturēšana ir kritiski svarīga?
 
-1. Aizsardzība pret uzbrukumiem: Novecojusi programmatūra un spraudņi ir galvenais mērķis hakeru uzbrukumiem. Regulāri atjauninājumi aizver drošības caurumus.
-2. Regulāras rezerves kopijas (Backups): Ja kaut kas noiet greizi vai serverim rodas tehniskas kļūmes, aktuāla rezerves kopija ļauj atjaunot lapas darbību dažu minūšu laikā.
-3. Tehniskā stabilitāte: Gadu gaitā tīmekļa pārlūki (Chrome, Safari, Firefox) tiek atjaunināti. Regulāra pārbaude garantē, ka lapa vienmēr izskatīsies un darbosies perfekti.
+1. **Aizsardzība pret uzbrukumiem:** Novecojusi programmatūra un spraudņi ir galvenais mērķis hakeru uzbrukumiem. Regulāri atjauninājumi aizver drošības caurumus.
+2. **Regulāras rezerves kopijas (Backups):** Ja kaut kas noiet greizi vai serverim rodas tehniskas kļūmes, aktuāla rezerves kopija ļauj atjaunot lapas darbību dažu minūšu laikā.
+3. **Tehniskā stabilitāte:** Gadu gaitā tīmekļa pārlūki (Chrome, Safari, Firefox) tiek atjaunināti. Regulāra pārbaude garantē, ka lapa vienmēr izskatīsies un darbosies perfekti.
 
 Mūsu uzturēšanas plāns parūpējas par visu tehnisko pusi, lai Jūs varētu pilnībā koncentrēties uz sava biznesa vadību, zinot, ka mājaslapa ir drošās rokās.`
   },
@@ -96,19 +97,19 @@ Mūsu uzturēšanas plāns parūpējas par visu tehnisko pusi, lai Jūs varētu 
     category: "Pārdošana",
     date: "25.06.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Labi izstrādāta mājaslapa strādā bez brīvdienām un pusdienlaika pārtraukumiem. Uzziniet, kā pareizi strukturēts saturs un skaidri aicinājumi uz darbību pārvērš nejaušus apmeklētājus par ilgtermiņa klientiem.",
     content: `Daudzi uzņēmumu īpašnieki uzskata mājaslapu par statisku vizītkarti. Patiesībā pareizi veidota mājaslapa ir Jūsu labākais pārdošanas speciālists, kas strādā 24 stundas diennaktī, 7 dienas nedēļā.
 
 ### Kāpēc mājaslapa pārdod efektīvāk?
 
-1. Apmeklētāja vadīšana pa pārdošanas piltuvi:
+1. **Apmeklētāja vadīšana pa pārdošanas piltuvi:**
 Katrai sadaļai ir jāsniedz atbilde uz konkrētu klienta jautājumu un pakāpeniski jānovada viņš līdz saziņas vai pieteikuma formai.
 
-2. Šaubu kliedēšana pirms saziņas:
+2. **Šaubu kliedēšana pirms saziņas:**
 Biežāk uzdotie jautājumi (BUJ), caurspīdīga cenu politika un iepriekšējo klientu atsauksmes kliedē apmeklētāja šaubas un rada uzticamību.
 
-3. Neatliekams pieteikuma aicinājums (CTA):
+3. **Neatliekams pieteikuma aicinājums (CTA):**
 Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvana iespējām un formām ir jābūt organiski integrētām un viegli sasniedzamām no jebkuras ierīces.`
   },
   {
@@ -117,15 +118,15 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Lietojamība",
     date: "21.06.2026",
     readTime: "4 min lasīšana",
-    image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Vairums Jūsu klientu pirmo iespaidu par uzņēmumu gūst savā telefonā. Uzziniet, kāpēc Mobile-First dizains un skārienekrānam draudzīga navigācija nosaka biznesa veiksmi.",
     content: `Vairāk nekā 70% no visas tīmekļa satiksmes šodien nāk no mobilajām ierīcēm. Ja Jūsu mājaslapa telefonā izskatās neērta, teksts ir par mazu vai pogas ir grūti nospiežamas, Jūs zaudējat lielāko daļu no saviem klientiem.
 
 ### Mobile-First pieejas būtiskākie ieguvumi:
 
-1. Apmeklētāju noturēšana: Mobilajā ierīcē lietotāja uzmanība ir īpaši trausla. Skaidra navigācija un lieli, viegli nospiežami elementi padara pārlūkošanu patīkamu.
-2. Google meklēšanas reitingi: Google jau gadiem izmanto Mobile-First indeksāciju — tas nozīmē, ka Jūsu lapas pozīciju meklēšanas rezultātos nosaka tieši tās mobilā versija.
-3. Ātra un ērta saziņa: Mobilajā versijā saziņas pogas ļauj veikt zvanu vai nosūtīt ziņu ar vienu vienīgu pieskārienu.`
+1. **Apmeklētāju noturēšana:** Mobilajā ierīcē lietotāja uzmanība ir īpaši trausla. Skaidra navigācija un lieli, viegli nospiežami elementi padara pārlūkošanu patīkamu.
+2. **Google meklēšanas reitingi:** Google jau gadiem izmanto Mobile-First indeksāciju — tas nozīmē, ka Jūsu lapas pozīciju meklēšanas rezultātos nosaka tieši tās mobilā versija.
+3. **Ātra un ērta saziņa:** Mobilajā versijā saziņas pogas ļauj veikt zvanu vai nosūtīt ziņu ar vienu vienīgu pieskārienu.`
   },
   {
     id: "landing-page-vs-website",
@@ -133,17 +134,17 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Stratēģija",
     date: "15.06.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Vai Jūsu biznesam piemērotāka ir mērķtiecīga Landing lapa vai apjomīga Multiple Page mājaslapa? Apskatām katra modeļa priekšrocības un piemērotību konkrētiem mērķiem.",
     content: `Pareizas mājaslapas arhitektūras izvēle ir pirmais un svarīgākais solis projekta plānošanā. Nepareizs formāts var apgrūtināt lietotājus vai sadārdzināt izstrādi.
 
 ### Landing Page (Vienas lapas risinājums):
-- Kam piemērots: Konkrēta pakalpojuma, produkta vai kampaņas reklamēšanai.
-- Priekšrocības: Augsts konversijas rādītājs, mērķtiecīga un lineāra apmeklētāja vadīšana, ātra izstrāde.
+- **Kam piemērots:** Konkrēta pakalpojuma, produkta vai kampaņas reklamēšanai.
+- **Priekšrocības:** Augsts konversijas rādītājs, mērķtiecīga un lineāra apmeklētāja vadīšana, ātra izstrāde.
 
 ### Multiple Page (Daudzu lapu risinājums):
-- Kam piemērots: Uzņēmumiem ar plašu pakalpojumu klāstu, uzņēmuma vēsturi un blogu.
-- Priekšrocības: Lieliskas iespējas apjomīgai SEO optimizācijai, katram pakalpojumam atsevišķa detalizēta sadaļa.`
+- **Kam piemērots:** Uzņēmumiem ar plašu pakalpojumu klāstu, uzņēmuma vēsturi un blogu.
+- **Priekšrocības:** Lieliskas iespējas apjomīgai SEO optimizācijai, katram pakalpojumam atsevišķa detalizēta sadaļa.`
   },
   {
     id: "seo-fundamentals-2026",
@@ -151,15 +152,15 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "SEO",
     date: "10.06.2026",
     readTime: "6 min lasīšana",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Meklētājprogrammu optimizācija nav vienreizējs darbs, bet gan stratēģisks ieguldījums. Atklājiet svarīgākos atslēgvārdu, tehnisko uzlabojumu un satura optimizācijas stūrakmeņus.",
     content: `Katru dienu miljoniem cilvēku meklē pakalpojumus Google meklētājā. Nonākšana pirmajā lapā nodrošina nepārtrauktu, kvalitatīvu un bezmaksas potenciālo klientu plūsmu.
 
 ### Kā sasniegt augstas pozīcijas Google?
 
-1. Tehniskā SEO tīrība: Ātrs lapas ātrums, pareizs HTML marķējums, SSL drošības sertifikāts un mobilā pielāgotība.
-2. Kvalitatīvs saturs: Saturs, kas sniedz patiesu vērtību, izmantojot mērķtiecīgus nozares atslēgvārdus.
-3. Vietējais SEO (Local SEO): Google Business profila sakārtošana un kartes integrācija, lai piesaistītu vietējos pircējus.`
+1. **Tehniskā SEO tīrība:** Ātrs lapas ātrums, pareizs HTML marķējums, SSL drošības sertifikāts un mobilā pielāgotība.
+2. **Kvalitatīvs saturs:** Saturs, kas sniedz patiesu vērtību, izmantojot mērķtiecīgus nozares atslēgvārdus.
+3. **Vietējais SEO (Local SEO):** Google Business profila sakārtošana un kartes integrācija, lai piesaistītu vietējos pircējus.`
   },
   {
     id: "custom-vs-template-website",
@@ -167,15 +168,15 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Izstrāde",
     date: "04.06.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Gatavās veidnes var šķist lēts sākums, taču slēptās izmaksas, lēns ātrums un ierobežota pielāgojamība bieži kļūst par šķērsli uzņēmuma tālākajai izaugsmei.",
     content: `Gatavie mājaslapu konstruktori no pirmā acu uzmetiena šķiet pievilcīgs un lēts veids, kā izveidot lapu pašu spēkiem. Tomēr praksē uzņēmumi ātri saskaras ar nemanāmiem šķēršļiem.
 
 ### Kāpēc pielāgota izstrāde atmaksājas?
 
-1. Unikāls dizains bez ierobežojumiem: Jūsu zīmols neizskatīsies pēc simtiem citu uzņēmumu, kas izmanto tās pašas bezmaksas veidnes.
-2. Lapas ātrums un koda tīrība: Konstruktori satur daudz lieka koda, kas palēnina lapu un pasliktina Google pozīcijas.
-3. Drošība un mērogojamība: Pielāgots risinājums spēj augt kopā ar Jūsu biznesu un nav atkarīgs no trešo pušu platformu nosacījumiem.`
+1. **Unikāls dizains bez ierobežojumiem:** Jūsu zīmols neizskatīsies pēc simtiem citu uzņēmumu, kas izmanto tās pašas bezmaksas veidnes.
+2. **Lapas ātrums un koda tīrība:** Konstruktori satur daudz lieka koda, kas palēnina lapu un pasliktina Google pozīcijas.
+3. **Drošība un mērogojamība:** Pielāgots risinājums spēj augt kopā ar Jūsu biznesu un nav atkarīgs no trešo pušu platformu nosacījumiem.`
   },
   {
     id: "brand-visual-identity",
@@ -183,15 +184,15 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Dizains",
     date: "28.05.2026",
     readTime: "4 min lasīšana",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Dizains pauž uzņēmuma vērtības vēl pirms tiek izlasīts pirmais teikums. Kā izvēlēties pareizos krāsu akcentus un tipogrāfiju, kas rada tūlītēju uzticību.",
     content: `Digitālajā vidē pirmais iespaids veidojas milisekunžu laikā. Krāsu palete, šriftu izvēle un vizuālais stils tiešā veidā ietekmē to, kā klienti uztver Jūsu pakalpojumu kvalitāti.
 
 ### Pārdomātas vizuālās identitātes spēks:
 
-1. Uzticamības radīšana: Profesionāli saskaņotas krāsas un tipogrāfija pauž stabilitāti un nopietnu attieksmi pret darbu.
-2. Atpazīstamība: Vienots stils visos kanālos – no mājaslapas līdz sociālajiem tīkliem – palīdz klientiem uzreiz atpazīt Jūsu zīmolu.
-3. Emocionālā saikne: Krāsas izraisa konkrētas sajūtas: zaļā pauž izaugsmi un mieru, tumšie toņi piešķir eleganci un ekskluzivitāti.`
+1. **Uzticamības radīšana:** Profesionāli saskaņotas krāsas un tipogrāfija pauž stabilitāti un nopietnu attieksmi pret darbu.
+2. **Atpazīstamība:** Vienots stils visos kanālos – no mājaslapas līdz sociālajiem tīkliem – palīdz klientiem uzreiz atpazīt Jūsu zīmolu.
+3. **Emocionālā saikne:** Krāsas izraisa konkrētas sajūtas: zaļā pauž izaugsmi un mieru, tumšie toņi piešķir eleganci un ekskluzivitāti.`
   },
   {
     id: "micro-interactions-animations",
@@ -199,15 +200,15 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Dizains",
     date: "22.05.2026",
     readTime: "4 min lasīšana",
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Pārdomātas pogu reakcijas, plūstošas pārejas un subtilas animācijas piešķir mājaslapai dzīvīgumu, uzlabojot lietošanas prieku un iesaisti.",
     content: `Lielisks dizains slēpjas detaļās. Subtilas mikro-interakcijas un animācijas padara mājaslapas lietošanu intuitīvu, mūsdienīgu un patīkamu.
 
 ### Kāpēc animācijām ir nozīme?
 
-1. Atsaucības sajūta (Feedback): Kad lietotājs uzvirza kursoru pogai vai aizpilda lauku, neliela vizuāla reakcija apstiprina, ka darbība ir reģistrēta.
-2. Uzmanības piesaistīšana svarīgākajam: Plūstošas parādīšanās animācijas palīdz pievērst skatienu svarīgākajiem piedāvājumiem un aicinājumiem uz darbību.
-3. Elegants kopiespaids: Mūsdienīgs, plūstošs interfeiss atšķir premiālu mājaslapu no vienkāršas un statiskas šablona lapas.`
+1. **Atsaucības sajūta (Feedback):** Kad lietotājs uzvirza kursoru pogai vai aizpilda lauku, neliela vizuāla reakcija apstiprina, ka darbība ir reģistrēta.
+2. **Uzmanības piesaistīšana svarīgākajam:** Plūstošas parādīšanās animācijas palīdz pievērst skatienu svarīgākajiem piedāvājumiem un aicinājumiem uz darbību.
+3. **Elegants kopiespaids:** Mūsdienīgs, plūstošs interfeiss atšķir premiālu mājaslapu no vienkāršas un statiskas šablona lapas.`
   },
   {
     id: "effective-copywriting",
@@ -215,33 +216,45 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
     category: "Saturs",
     date: "16.05.2026",
     readTime: "5 min lasīšana",
-    image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop",
     excerpt: "Pat visskaistākais dizains nestrādās, ja teksti būs sarežģīti vai garlaicīgi. Uzziniet, kā rakstīt īsi, konkrēti un uz klientu ieguvumiem orientēti.",
     content: `Mājaslapas apmeklētāji nelasa katru vārdu — viņi pārskata lapu skatieniem, meklējot atbildes uz savām vajadzībām. Tāpēc tekstam ir jābūt īsam, precīzam un uz ieguvumiem orientētam.
 
 ### Efektīva mājaslapas teksta noteikumi:
 
-1. Fokuss uz klienta ieguvumu: Tā vietā, lai tikai uzskaitītu pakalpojumus, paskaidrojiet, kādu problēmu Jūs atrisināt klienta labā.
-2. Īsi un trāpīgi virsraksti: Lielie virsraksti ir pirmie, ko pamanīs apmeklētājs. Tiem ir jābūt skaidriem un piesaistošiem.
-3. Skaidrs aicinājums uz darbību: Sakiet apmeklētājam tieši, kas jādara tālāk: "Pieteikties konsultācijai", "Aprēķināt izmaksas" vai "Sazināties ar mums".`
+1. **Fokuss uz klienta ieguvumu:** Tā vietā, lai tikai uzskaitītu pakalpojumus, paskaidrojiet, kādu problēmu Jūs atrisināt klienta labā.
+2. **Īsi un trāpīgi virsraksti:** Lielie virsraksti ir pirmie, ko pamanīs apmeklētājs. Tiem ir jābūt skaidriem un piesaistošiem.
+3. **Skaidrs aicinājums uz darbību:** Sakiet apmeklētājam tieši, kas jādara tālāk: "Pieteikties konsultācijai", "Aprēķināt izmaksas" vai "Sazināties ar mums".`
   }
 ];
 
 export default function Blogs() {
   const [activeArticle, setActiveArticle] = useState<typeof BLOG_POSTS[0] | null>(null);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const articleId = searchParams.get("id");
+    if (articleId) {
+      const post = BLOG_POSTS.find(p => p.id === articleId);
+      if (post) {
+        setActiveArticle(post);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (activeArticle) {
       document.title = `${activeArticle.title} | Sageon Media Blogs`;
     } else {
-      document.title = "Blogs & Raksti par Tīmekļa Izstrādi un SEO | Sageon Media";
+      document.title = "Blogs & Noderīgi raksti | Sageon Media";
     }
   }, [activeArticle]);
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
-        title={activeArticle ? `${activeArticle.title} | Sageon Media Blogs` : "Blogs & Raksti par Tīmekļa Izstrādi un SEO | Sageon Media"}
+        title={activeArticle ? `${activeArticle.title} | Sageon Media Blogs` : "Blogs & Noderīgi raksti | Sageon Media"}
         description={activeArticle ? activeArticle.excerpt : "Noderīgi raksti, nozares jaunumi un ieteikumi par mājaslapu izstrādi, SEO optimizāciju, konversiju uzlabošanu un digitālo mārketingu."}
         ogImage={activeArticle ? activeArticle.image : "/Logo-new.webp"}
         ogType={activeArticle ? "article" : "website"}
@@ -374,6 +387,9 @@ export default function Blogs() {
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
+                    }}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>

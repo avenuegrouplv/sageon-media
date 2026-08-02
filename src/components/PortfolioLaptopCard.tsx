@@ -52,11 +52,15 @@ export default function PortfolioLaptopCard({
                 className="w-full h-full object-cover object-top transition-transform duration-300"
               />
             </div>
-          ) : (
+          ) : isPlaceholder ? (
             <div className="relative w-full h-full flex flex-col items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-center">
               <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-zinc-800/90 group-hover:bg-[#BAFC50] border border-zinc-700 group-hover:border-[#BAFC50] flex items-center justify-center transition-all duration-150 ease-out shadow-md">
                 <Plus className="h-5 w-5 text-[#BAFC50] group-hover:text-black transition-colors duration-150 ease-out" />
               </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
+            </div>
+          ) : (
+            <div className="relative w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-950 to-black flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
             </div>
           )}
@@ -64,7 +68,7 @@ export default function PortfolioLaptopCard({
 
         {/* The Device Frame Image (Placed on top at z-20) */}
         <img
-          src="/Portfolio2-1-1.webp"
+          src="/portfolio.webp"
           alt={title}
           width={897}
           height={553}

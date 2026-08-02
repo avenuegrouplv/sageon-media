@@ -6,25 +6,40 @@ export default function PageNavButtons() {
   const location = useLocation();
 
   const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
   };
 
   const handleGoHome = () => {
     if (location.pathname === "/") {
       const hero = document.getElementById("hero-section");
       if (hero) {
-        hero.scrollIntoView({ behavior: "smooth" });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(hero, { duration: 1.2 });
+        } else {
+          hero.scrollIntoView({ behavior: "smooth" });
+        }
       } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }
     } else {
       navigate("/");
-      // Let standard route ScrollToTop handle the instant scroll or trigger smooth scroll after navigation
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }, 50);
     }
   };

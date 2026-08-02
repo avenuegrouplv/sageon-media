@@ -49,7 +49,11 @@ export default function Header() {
       e.preventDefault();
       const contactSec = document.getElementById("contact-section");
       if (contactSec) {
-        contactSec.scrollIntoView({ behavior: "smooth" });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(contactSec, { duration: 1.2 });
+        } else {
+          contactSec.scrollIntoView({ behavior: "smooth" });
+        }
       } else {
         navigate("/kontakti");
       }

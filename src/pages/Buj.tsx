@@ -189,7 +189,7 @@ export default function Buj() {
         {/* FAQ bottom text & button (no frame) */}
         <div className="text-center space-y-5 pt-10 max-w-2xl mx-auto">
           <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-            Neatradi atbildi uz savu jautājumu? Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem jautājumiem.
+            Neatradi atbildi uz savu jautājumu? Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem.
           </p>
           <div className="flex items-center justify-center pt-2">
             <CtaButton text="Uzdod savu jautājumu" to="/kontakti" />

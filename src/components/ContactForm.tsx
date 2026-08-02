@@ -72,7 +72,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
               {title || "Pieteikt mājaslapas izstrādi vai konsultāciju"}
             </h2>
             <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-normal text-center drop-shadow">
-              {subtitle || "Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem Taviem jautājumiem."}
+              {subtitle || "Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."}
             </p>
           </div>
         )}

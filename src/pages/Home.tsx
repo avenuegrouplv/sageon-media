@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactNode } from "react";
+import { useState, useRef, useEffect, ReactNode, TouchEvent, TransitionEvent } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -73,6 +73,7 @@ const PORTFOLIO_ITEMS = [
     brand: "enzimi.lv",
     displayLink: "https://enzimi.lv",
     description: "Enzimi ir fermentatīvo produktu un ekoloģisko risinājumu platforma. Mājaslapa nodrošina pārskatāmu produktu katalogu, tehniskos aprakstus un ērtu saziņu ar speciālistiem.",
+    image: "",
     link: "https://enzimi.lv",
     isPlaceholder: false
   },
@@ -82,6 +83,7 @@ const PORTFOLIO_ITEMS = [
     brand: "Latvijas Restarts",
     displayLink: "https://latvijasrestarts.lv",
     description: "Latvijas Restarts ir sabiedrisko un biznesa iniciatīvu platforma, kas nodrošina informācijas apmaiņu, rakstus un pieteikumu iesniegšanu ilgtspējīgai izaugsmei.",
+    image: "",
     link: "https://latvijasrestarts.lv",
     isPlaceholder: false
   },
@@ -91,6 +93,7 @@ const PORTFOLIO_ITEMS = [
     brand: "Demontāža 24",
     displayLink: "https://demontaza24.eu",
     description: "Demontāža 24 ir specializēts būvju, ēku un metāla konstrukciju demontāžas pakalpojumu dienests. Mājaslapa nodrošina ātru pakalpojumu pieteikšanu un servisa aprakstus.",
+    image: "",
     link: "https://demontaza24.eu",
     isPlaceholder: false
   }
@@ -99,10 +102,10 @@ const PORTFOLIO_ITEMS = [
 function LazyLoadSection({ children }: { children: ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="w-full"
     >
       {children}
@@ -121,47 +124,65 @@ export default function Home() {
   const homeFaqs = FAQ_DATA.slice(0, 4);
 
   // Infinite Carousel State
-  const totalBlogPosts = BLOG_POSTS.length;
-  const [activeIndex, setActiveIndex] = useState(totalBlogPosts);
+  const [activeIndex, setActiveIndex] = useState(BLOG_POSTS.length);
   const [disableTransition, setDisableTransition] = useState(false);
-  const [isBlogHovered, setIsBlogHovered] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const isBlogAnimatingRef = useRef(false);
 
   // Reset transition state after seamless jump
   useEffect(() => {
     if (disableTransition) {
       const timer = setTimeout(() => {
         setDisableTransition(false);
+        isBlogAnimatingRef.current = false;
       }, 50);
       return () => clearTimeout(timer);
     }
   }, [disableTransition]);
 
-  // Continuous auto-scrolling interval for Blog carousel
-  useEffect(() => {
-    if (isBlogHovered || disableTransition) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => prev + 1);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isBlogHovered, disableTransition]);
-
-  const handleTransitionEnd = () => {
-    if (activeIndex >= totalBlogPosts * 2) {
+  const handleTransitionEnd = (e: TransitionEvent) => {
+    if (e.target !== e.currentTarget) return;
+    const total = BLOG_POSTS.length;
+    if (activeIndex >= 2 * total) {
       setDisableTransition(true);
-      setActiveIndex(activeIndex - totalBlogPosts);
-    } else if (activeIndex < totalBlogPosts) {
+      setActiveIndex((prev) => prev - total);
+    } else if (activeIndex < total) {
       setDisableTransition(true);
-      setActiveIndex(activeIndex + totalBlogPosts);
+      setActiveIndex((prev) => prev + total);
+    } else {
+      isBlogAnimatingRef.current = false;
     }
   };
 
   const scrollBlog = (direction: 'left' | 'right') => {
-    if (disableTransition) return;
+    if (disableTransition || isBlogAnimatingRef.current) return;
+    isBlogAnimatingRef.current = true;
     
     if (direction === 'right') {
       setActiveIndex((prev) => prev + 1);
     } else {
       setActiveIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 40;
+    if (distance > minSwipeDistance) {
+      scrollBlog('right');
+    } else if (distance < -minSwipeDistance) {
+      scrollBlog('left');
     }
   };
 
@@ -182,7 +203,8 @@ export default function Home() {
     }
   }, [disablePortfolioTransition]);
 
-  const handlePortfolioTransitionEnd = () => {
+  const handlePortfolioTransitionEnd = (e: TransitionEvent) => {
+    if (e.target !== e.currentTarget) return;
     if (portfolioIndex >= 12) {
       setDisablePortfolioTransition(true);
       setPortfolioIndex(6);
@@ -214,7 +236,8 @@ export default function Home() {
     }
   }, [disablePricingTransition]);
 
-  const handlePricingTransitionEnd = () => {
+  const handlePricingTransitionEnd = (e: TransitionEvent) => {
+    if (e.target !== e.currentTarget) return;
     if (pricingIndex >= 8) {
       setDisablePricingTransition(true);
       setPricingIndex(4);
@@ -263,7 +286,7 @@ export default function Home() {
     {
       title: "Multi-page",
       subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
-      price: "1290",
+      price: "980",
       period: "vienreizējs maksājums",
       badge: "Labākā izvēle biznesam",
       features: [
@@ -280,7 +303,7 @@ export default function Home() {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas (CMS) integrācija",
+        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 2-3 nedēļas"
       ],
       cta: "Pieteikt biznesa lapu",
@@ -307,7 +330,7 @@ export default function Home() {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas (CMS) integrācija",
+        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 3-5 nedēļas"
       ],
       cta: "Pieteikt e-komercijas lapu",
@@ -532,8 +555,8 @@ export default function Home() {
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
-                      src="/Web-izstrades-agentura2.webp" 
-                      alt="Mājaslapas izstrāde tavam biznesam" 
+                      src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
+                      alt="Iedod savam biznesam jaunu uzrāvienu" 
                       loading="lazy"
                       decoding="async"
                       width={600}
@@ -551,7 +574,7 @@ export default function Home() {
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/individuals-dizains-musdienu-tehnologijas.webp" 
-                      alt="Individuāls dizains un mobilā pielāgotība" 
+                      alt="Individuāls dizains un mūsdienu tehnoloģijas" 
                       loading="lazy"
                       decoding="async"
                       width={600}
@@ -584,8 +607,8 @@ export default function Home() {
                   <div className="lg:col-span-5 relative group flex items-center justify-center">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
-                      src="/uznemuma-digitala-vizitkarte.webp" 
-                      alt="Struktūra un rezultāts — uzņēmuma digitālā vizītkarte" 
+                      src="/Web-izstrades-agentura.webp" 
+                      alt="Web izstrādes aģentūra — struktūra un rezultāts" 
                       loading="lazy"
                       decoding="async"
                       width={600}
@@ -857,7 +880,7 @@ export default function Home() {
             <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
               <div>
                 <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed">
-                  Mūsu risinājumi ir ideāli piemēroti tirdzniecības, ražošanas un būvniecības uzņēmumiem, kā arī dažādu nozaru pakalpojumu sniedzējiem un individuālajiem komersantiem.
+                  Neatkarīgi no tā, vai darbojaties tirdzniecības, ražošanas, būvniecības, pārtikas nozarē vai sniedzat jebkāda veida pakalpojumus, mēs piedāvājam izstrādāt tādu mājaslapu, kas strādās Jūsu biznesa labā, tajā skaitā - ietaupīs Jūsu laiku, uzlabos klientu apkalpošanu un uzticību, kā arī veicinās uzņēmuma izaugsmi un konkurētspēju.
                 </p>
               </div>
               <div className="shrink-0">
@@ -1177,7 +1200,6 @@ export default function Home() {
                       image={item.image}
                       link={item.link}
                       isPlaceholder={item.isPlaceholder}
-                      subtitle={item.subtitle}
                       description={item.description}
                     />
                   </div>
@@ -1275,7 +1297,7 @@ export default function Home() {
             {/* FAQ bottom text & buttons (no frame) */}
             <div className="text-center space-y-5 pt-8 max-w-2xl mx-auto">
               <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                Neatradi atbildi uz savu jautājumu? Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem jautājumiem.
+                Neatradi atbildi uz savu jautājumu? Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
                 <CtaButton text="Lasīt citus BUJ" to="/buj" />
@@ -1307,9 +1329,10 @@ export default function Home() {
 
             {/* State-controlled Infinite Carousel Slider */}
             <div 
-              className="overflow-hidden w-full relative"
-              onMouseEnter={() => setIsBlogHovered(true)}
-              onMouseLeave={() => setIsBlogHovered(false)}
+              className="overflow-hidden w-full relative touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <div 
                 onTransitionEnd={handleTransitionEnd}
@@ -1324,7 +1347,7 @@ export default function Home() {
                     className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex"
                   >
                     <Link
-                      to="/blogs"
+                      to={`/blogs?id=${post.id}`}
                       className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
                     >
                       <div>
@@ -1335,6 +1358,9 @@ export default function Home() {
                             loading="lazy"
                             decoding="async"
                             referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
+                            }}
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
                           />
                         </div>
@@ -1387,7 +1413,7 @@ export default function Home() {
       <LazyLoadSection>
         <ContactForm 
           title="Pieteikt mājaslapas izstrādi vai konsultāciju" 
-          subtitle="Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem Taviem jautājumiem."
+          subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."
         />
       </LazyLoadSection>
 

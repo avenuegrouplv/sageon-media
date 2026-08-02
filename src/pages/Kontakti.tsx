@@ -12,7 +12,7 @@ export default function Kontakti() {
     <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
       <SEOHead
         title="Kontakti | Sageon Media"
-        description="Sazinies ar Sageon Media komandu. Pieteikt biznesa mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem."
+        description="Sazinies ar Sageon Media komandu, lai pieteiktu biznesa mājaslapas izstrādi, saņemtu bezmaksas konsultāciju vai uzdotu jautājumus par citiem digitālajiem pakalpojumiem."
         schema={[
           {
             "@context": "https://schema.org",
@@ -20,7 +20,7 @@ export default function Kontakti() {
             "@id": "https://sageonmedia.eu/kontakti#webpage",
             "url": "https://sageonmedia.eu/kontakti",
             "name": "Kontakti | Sageon Media",
-            "description": "Sazinies ar Sageon Media komandu. Pieteikt biznesa mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem.",
+            "description": "Sazinies ar Sageon Media komandu, lai pieteiktu biznesa mājaslapas izstrādi, saņemtu bezmaksas konsultāciju vai uzdotu jautājumus par citiem digitālajiem pakalpojumiem.",
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {

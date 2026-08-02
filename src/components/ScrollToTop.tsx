@@ -7,17 +7,25 @@ export default function ScrollToTop() {
 
   // Automatically scroll to top on route change
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant"
-    });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+    }
   }, [pathname]);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (

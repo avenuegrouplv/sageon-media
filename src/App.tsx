@@ -4,6 +4,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
+import SmoothScroll from "./components/SmoothScroll";
 
 // Core Home page (hero view loads instantly)
 import Home from "./pages/Home";
@@ -65,9 +66,11 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      {/* Automatically reset scroll position to top on route change */}
-      <ScrollToTop />
-      <AppContent />
+      <SmoothScroll>
+        {/* Automatically reset scroll position to top on route change */}
+        <ScrollToTop />
+        <AppContent />
+      </SmoothScroll>
     </Router>
   );
 }

@@ -38,7 +38,7 @@ export default function Cenas() {
     {
       title: "Multi-page",
       subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
-      price: "1290",
+      price: "980",
       period: "vienreizējs maksājums",
       badge: "Labākā izvēle biznesam",
       features: [
@@ -55,7 +55,7 @@ export default function Cenas() {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas (CMS) integrācija",
+        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 2-3 nedēļas"
       ],
       cta: "Pieteikt biznesa lapu",
@@ -81,7 +81,7 @@ export default function Cenas() {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas (CMS) integrācija",
+        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 3-5 nedēļas"
       ],
       cta: "Pieteikt e-komercijas lapu",
@@ -196,7 +196,7 @@ export default function Cenas() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Pakalpojumi",
+                "name": "Pakalpojumi un Cenas",
                 "item": "https://sageonmedia.eu/pakalpojumi"
               }
             ]
@@ -337,7 +337,7 @@ export default function Cenas() {
         <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">
           <ContactForm 
             title="Saņemt cenas piedāvājumu" 
-            subtitle="Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem Taviem jautājumiem." 
+            subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem." 
           />
         </div>
 

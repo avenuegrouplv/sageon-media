@@ -5,9 +5,9 @@
 ## Navigation & Core Pages
 
 - [Sākums](https://sageonmedia.eu/): Agency overview, workflow stages, interactive pricing calculator, and core service offerings.
-- [Portfolio](https://sageonmedia.eu/portfolio): Real client work showcase (including Travel with Martins, Avenue Group, Avangart) and project inquiry forms.
-- [Pakalpojumi](https://sageonmedia.eu/pakalpojumi): Pricing plans (Landing page from €490, Multi-page from €1290, E-commerce from €1890, Maintenance from €50/mo).
-- [BUJ](https://sageonmedia.eu/buj): Development timelines (5-7 days for landing pages, 2-3 weeks for multi-page), payment terms, security, and mobile optimization FAQs.
+- [Mūsu Darbi / Portfolio](https://sageonmedia.eu/portfolio): Real client work showcase (including Avenue Group, Travel with Martins, Avangart) and project inquiry forms.
+- [Pakalpojumi un Cenas](https://sageonmedia.eu/pakalpojumi): Pricing plans (Landing page from €490, Multi-page from €1290, E-commerce from €1890, Maintenance from €50/mo).
+- [Biežāk Uzdotie Jautājumi (BUJ)](https://sageonmedia.eu/buj): Development timelines (5-7 days for landing pages, 2-3 weeks for multi-page), payment terms, security, and mobile optimization FAQs.
 - [Blogs](https://sageonmedia.eu/blogs): Articles and expert insights on web development, SEO optimization, and Generative Engine Optimization (GEO).
 - [Kontakti](https://sageonmedia.eu/kontakti): Contact information, direct inquiry form, email, and phone contact details.
 

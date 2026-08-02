@@ -51,7 +51,9 @@ const MOCK_PORTFOLIO_CARDS = [
     tech: "React, Web katalogs",
     description: "Enzimi ir fermentatīvo produktu un ekoloģisko risinājumu platforma. Mājaslapa nodrošina pārskatāmu produktu katalogu, tehniskos aprakstus un ērtu saziņu ar speciālistiem.",
     placeholderColor: "from-emerald-500/10 to-slate-500/10",
-    link: "https://enzimi.lv"
+    image: "",
+    link: "https://enzimi.lv",
+    isPlaceholder: false
   },
   {
     id: 5,
@@ -62,7 +64,9 @@ const MOCK_PORTFOLIO_CARDS = [
     tech: "React, Informatīvā platforma",
     description: "Latvijas Restarts ir sabiedrisko un biznesa iniciatīvu platforma, kas nodrošina informācijas apmaiņu, rakstus un pieteikumu iesniegšanu ilgtspējīgai izaugsmei.",
     placeholderColor: "from-blue-500/10 to-slate-500/10",
-    link: "https://latvijasrestarts.lv"
+    image: "",
+    link: "https://latvijasrestarts.lv",
+    isPlaceholder: false
   },
   {
     id: 6,
@@ -73,7 +77,9 @@ const MOCK_PORTFOLIO_CARDS = [
     tech: "React, Servisa platforma",
     description: "Demontāža 24 ir specializēts būvju, ēku un metāla konstrukciju demontāžas pakalpojumu dienests. Mājaslapa nodrošina ātru pakalpojumu pieteikšanu un servisa aprakstus.",
     placeholderColor: "from-amber-500/10 to-slate-500/10",
-    link: "https://demontaza24.eu"
+    image: "",
+    link: "https://demontaza24.eu",
+    isPlaceholder: false
   }
 ];
 
@@ -92,21 +98,21 @@ export default function Darbi() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = "Mūsu Darbi & Portfolio | Sageon Media";
+    document.title = "Portfolio | Sageon Media";
   }, []);
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
-        title="Mūsu Darbi & Portfolio | Sageon Media"
-        description="Mūsu izstrādāto mājaslapu portfolio. Mūsdienīgs tīmekļa dizains, augsta ātrdarbība un Google meklētāja optimizācija."
+        title="Portfolio | Sageon Media"
+        description="Mūsu neseno mājaslapu portfolio. Mūsdienīgs mājaslapas dizains, augsta ātrdarbība un Google meklētāja optimizācija."
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "@id": "https://sageonmedia.eu/portfolio#webpage",
             "url": "https://sageonmedia.eu/portfolio",
-            "name": "Mūsu Darbi & Portfolio | Sageon Media",
+            "name": "Portfolio | Sageon Media",
             "description": "Mūsu izstrādāto mājaslapu portfolio. Mūsdienīgs tīmekļa dizains, augsta ātrdarbība un Google meklētāja optimizācija.",
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
@@ -162,6 +168,7 @@ export default function Darbi() {
               image={card.image}
               link={card.link}
               description={card.description}
+              isPlaceholder={card.isPlaceholder}
             />
           ))}
 
@@ -193,7 +200,7 @@ export default function Darbi() {
         <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">
           <ContactForm 
             title="Saņemt cenas piedāvājumu" 
-            subtitle="Droši sazinies ar mums, zvani vai raksti, un mēs atbildēsim uz visiem Taviem jautājumiem." 
+            subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem." 
           />
         </div>
 
