@@ -172,16 +172,16 @@ export default function Cenas() {
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
         title="Pakalpojumi & Cenas | Sageon Media"
-        description="Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Landing lapas, multi-page biznesa vietnes, e-komercija un tehniskā uzturēšana."
+        description="Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Sazinieties ar mums jau šodien."
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": "https://sageon.media/pakalpojumi#webpage",
-            "url": "https://sageon.media/pakalpojumi",
+            "@id": "https://sageonmedia.eu/pakalpojumi#webpage",
+            "url": "https://sageonmedia.eu/pakalpojumi",
             "name": "Pakalpojumi & Cenas | Sageon Media",
-            "description": "Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu.",
-            "isPartOf": { "@id": "https://sageon.media#website" }
+            "description": "Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Sazinieties ar mums jau šodien.",
+            "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {
             "@context": "https://schema.org",
@@ -191,13 +191,13 @@ export default function Cenas() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Sākums",
-                "item": "https://sageon.media"
+                "item": "https://sageonmedia.eu"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Pakalpojumi un Cenas",
-                "item": "https://sageon.media/pakalpojumi"
+                "name": "Pakalpojumi",
+                "item": "https://sageonmedia.eu/pakalpojumi"
               }
             ]
           },
@@ -209,7 +209,7 @@ export default function Cenas() {
             "provider": {
               "@type": "Organization",
               "name": "Sageon Media",
-              "url": "https://sageon.media"
+              "url": "https://sageonmedia.eu"
             },
             ...(plan.price ? {
               "offers": {
@@ -229,7 +229,7 @@ export default function Cenas() {
       <div className="absolute top-1/2 -right-24 w-[800px] h-[800px] bg-gradient-to-bl from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
       <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] bg-gradient-to-tr from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-      <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 py-20 md:py-28 space-y-16 relative z-10">
+      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 md:py-20 space-y-12 relative z-10">
         
         {/* Header Block */}
         <div className="text-center space-y-4">

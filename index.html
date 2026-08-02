@@ -7,14 +7,22 @@
     <meta name="description" content="Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei." />
     <meta name="keywords" content="mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains" />
     <meta name="author" content="Sageon Media" />
-    <link rel="canonical" href="https://sageon.media" />
+    <meta name="geo.region" content="LV" />
+    <meta name="geo.placename" content="Latvija / Remote Services Worldwide" />
+    <link rel="canonical" href="https://sageonmedia.eu" />
+    <link rel="alternate" href="https://sageonmedia.eu" hreflang="lv" />
+    <link rel="alternate" href="https://sageonmedia.eu/en" hreflang="en" />
+    <link rel="alternate" href="https://sageonmedia.eu/ru" hreflang="ru" />
+    <link rel="alternate" href="https://sageonmedia.eu" hreflang="x-default" />
     
-    <!-- DNS Prefetch & Preconnect for Fonts & Assets -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <!-- Preconnect & Google Fonts for Inter & Montserrat (Full weights & Latin-Ext) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Preload critical local fonts fallback -->
+    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Preload critical Hero LCP Image & Logo -->
     <link rel="preload" as="image" href="/Majaslapa-tavam-biznesam.webp" fetchpriority="high" type="image/webp" />
@@ -24,15 +32,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sageon Media | Mājaslapu izstrāde un digitālie risinājumi" />
     <meta property="og:description" content="Profesionāla mājaslapu un tīmekļa risinājumu izstrāde biznesam, portfolio un e-komercijai." />
-    <meta property="og:image" content="https://sageon.media/Logo-new.webp" />
-    <meta property="og:url" content="https://sageon.media" />
+    <meta property="og:image" content="https://sageonmedia.eu/Logo-new.webp" />
+    <meta property="og:url" content="https://sageonmedia.eu" />
     <meta property="og:locale" content="lv_LV" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sageon Media | Mājaslapu izstrāde" />
     <meta name="twitter:description" content="Profesionāla mājaslapu un tīmekļa risinājumu izstrāde." />
-    <meta name="twitter:image" content="https://sageon.media/Logo-new.webp" />
+    <meta name="twitter:image" content="https://sageonmedia.eu/Logo-new.webp" />
 
     <!-- Favicon with cache busting ?v=5 -->
     <link rel="icon" type="image/webp" href="/Logo-new.webp?v=5" />
@@ -42,14 +50,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://sageon.media#organization",
+      "@type": "ProfessionalService",
+      "@id": "https://sageonmedia.eu#organization",
       "name": "Sageon Media",
-      "url": "https://sageon.media",
-      "logo": "https://sageon.media/Logo-new.webp",
+      "url": "https://sageonmedia.eu",
+      "logo": "https://sageonmedia.eu/Logo-new.webp",
       "email": "sageon.media@gmail.com",
       "telephone": "+371 26739899",
-      "sameAs": []
+      "priceRange": "$$",
+      "knowsLanguage": ["lv", "en", "ru"],
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Latvia"
+        },
+        {
+          "@type": "Place",
+          "name": "Worldwide"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+371 26739899",
+        "email": "sageon.media@gmail.com",
+        "contactType": "customer service",
+        "availableLanguage": ["lv", "en", "ru"]
+      }
     }
     </script>
   </head>

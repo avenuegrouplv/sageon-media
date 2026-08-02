@@ -39,22 +39,22 @@ import { BLOG_POSTS } from "./Blogs";
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: "Komercīpašumu un privātīpašumu apsaimniekošana I Juridiskā pārvaldība",
-    brand: "Avenue Group",
-    displayLink: "https://avenuegroup.lv",
-    description: "Avenue Group ir nekustamo īpašumu pārvaldības un juridisko pakalpojumu platforma. Mājaslapa nodrošina pārskatāmu pakalpojumu katalogu, atsauksmes un elastīgas saziņas iespējas jaunām sadarbībām. Tās dizains izceļ uzņēmuma uzticamību un profesionālo pieredzi.",
-    image: "/Avenuegroup-portfolio.webp",
-    link: "https://avenuegroup.lv",
-    isPlaceholder: false
-  },
-  {
-    id: 2,
     title: "Vairāk ceļo un vairāk nopelni",
     brand: "Travel with Martins",
     displayLink: "https://travelwithmartins.com",
     description: "Travel with Martins ir personīgā ceļojumu emuāra un konsultāciju platforma. Tā palīdz lietotājiem plānot un organizēt neizmirstamus braucienus, sniedzot praktiskus padomus un iedvesmojošus ceļvežus. Vietne veidota ar uzsvaru uz vizuāli bagātu saturu un ērtu pieteikumu noformēšanu.",
     image: "/Travel-with-Martins-portfolio.webp",
     link: "https://travelwithmartins.com",
+    isPlaceholder: false
+  },
+  {
+    id: 2,
+    title: "Komercīpašumu un privātīpašumu apsaimniekošana I Juridiskā pārvaldība",
+    brand: "Avenue Group",
+    displayLink: "https://avenuegroup.lv",
+    description: "Avenue Group ir nekustamo īpašumu pārvaldības un juridisko pakalpojumu platforma. Mājaslapa nodrošina pārskatāmu pakalpojumu katalogu, atsauksmes un elastīgas saziņas iespējas jaunām sadarbībām. Tās dizains izceļ uzņēmuma uzticamību un profesionālo pieredzi.",
+    image: "/Avenuegroup-portfolio.webp",
+    link: "https://avenuegroup.lv",
     isPlaceholder: false
   },
   {
@@ -69,30 +69,30 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 4,
-    title: "Tava Jaunā Mājaslapa",
-    subtitle: "Piesaki sava biznesa mājaslapas izstrādi un sasniedz klientus efektīvāk.",
-    description: "Šeit var atrasties Tava uzņēmuma jaunā un mūsdienīgā mājaslapa. Mēs izstrādāsim unikālu dizainu, kas piesaistīs klientus un veicinās pārdošanu. Piesaki savu projektu jau šodien un padari savu zīmolu pamanāmu digitālajā vidē.",
-    displayLink: "tavaprojekts.lv",
-    link: "/kontakti",
-    isPlaceholder: true
+    title: "Enzimi I Fermentatīvie produkti un ekoloģiskie risinājumi",
+    brand: "enzimi.lv",
+    displayLink: "https://enzimi.lv",
+    description: "Enzimi ir fermentatīvo produktu un ekoloģisko risinājumu platforma. Mājaslapa nodrošina pārskatāmu produktu katalogu, tehniskos aprakstus un ērtu saziņu ar speciālistiem.",
+    link: "https://enzimi.lv",
+    isPlaceholder: false
   },
   {
     id: 5,
-    title: "Piesaki Izstrādi",
-    subtitle: "Mēs izveidosim ātru, drošu un estētisku risinājumu tieši tavām vajadzībām.",
-    description: "Izveido mērķtiecīgu un uzticamu web risinājumu savam biznesam. Mēs nodrošinām pilnu izstrādes ciklu no skices līdz gatavai lapai ar ātrdarbības optimizāciju. Padari savu zīmolu pamanāmu un ērti sasniedzamu katram apmeklētājam.",
-    displayLink: "biznesam.lv",
-    link: "/kontakti",
-    isPlaceholder: true
+    title: "Latvijas Restarts I Sabiedriskā un biznesa platforma",
+    brand: "Latvijas Restarts",
+    displayLink: "https://latvijasrestarts.lv",
+    description: "Latvijas Restarts ir sabiedrisko un biznesa iniciatīvu platforma, kas nodrošina informācijas apmaiņu, rakstus un pieteikumu iesniegšanu ilgtspējīgai izaugsmei.",
+    link: "https://latvijasrestarts.lv",
+    isPlaceholder: false
   },
   {
     id: 6,
-    title: "Tavs Web Risinājums",
-    subtitle: "Sazinies ar mums, lai apspriestu savu ideju un saņemtu bezmaksas konsultāciju.",
-    description: "Gatavs risinājums Tavam jaunajam projektam vai tiešsaistes pakalpojumam. Nodrošinām responsīvu dizainu, SEO optimizāciju un nevainojamu darbību visās ierīcēs. Sazinies ar mums un saņem bezmaksas konsultāciju par savu ieceri.",
-    displayLink: "jaunslapa.lv",
-    link: "/kontakti",
-    isPlaceholder: true
+    title: "Demontāža 24 I Būvju un ēku demontāžas pakalpojumi",
+    brand: "Demontāža 24",
+    displayLink: "https://demontaza24.eu",
+    description: "Demontāža 24 ir specializēts būvju, ēku un metāla konstrukciju demontāžas pakalpojumu dienests. Mājaslapa nodrošina ātru pakalpojumu pieteikšanu un servisa aprakstus.",
+    link: "https://demontaza24.eu",
+    isPlaceholder: false
   }
 ];
 
@@ -114,15 +114,17 @@ export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "Sageon Media | Mājaslapu izstrāde un digitālie risinājumi";
+    document.title = "Sageon Media | Biznesa mājaslapu izstrāde un digitālie risinājumi";
   }, []);
 
   // Take first 4 FAQ items for the Home page as requested
   const homeFaqs = FAQ_DATA.slice(0, 4);
 
   // Infinite Carousel State
-  const [activeIndex, setActiveIndex] = useState(5);
+  const totalBlogPosts = BLOG_POSTS.length;
+  const [activeIndex, setActiveIndex] = useState(totalBlogPosts);
   const [disableTransition, setDisableTransition] = useState(false);
+  const [isBlogHovered, setIsBlogHovered] = useState(false);
 
   // Reset transition state after seamless jump
   useEffect(() => {
@@ -134,14 +136,22 @@ export default function Home() {
     }
   }, [disableTransition]);
 
+  // Continuous auto-scrolling interval for Blog carousel
+  useEffect(() => {
+    if (isBlogHovered || disableTransition) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => prev + 1);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isBlogHovered, disableTransition]);
+
   const handleTransitionEnd = () => {
-    // There are 5 cards in BLOG_POSTS. Set 1 is 0..4, Set 2 is 5..9, Set 3 is 10..14.
-    if (activeIndex >= 10) {
+    if (activeIndex >= totalBlogPosts * 2) {
       setDisableTransition(true);
-      setActiveIndex(5);
-    } else if (activeIndex <= 4) {
+      setActiveIndex(activeIndex - totalBlogPosts);
+    } else if (activeIndex < totalBlogPosts) {
       setDisableTransition(true);
-      setActiveIndex(9);
+      setActiveIndex(activeIndex + totalBlogPosts);
     }
   };
 
@@ -392,35 +402,56 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-hidden">
       <SEOHead
-        title="Sageon Media | Mājaslapu izstrāde un digitālie risinājumi"
-        description="Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei."
+        title="Sageon Media | Biznesa mājaslapu izstrāde un digitālie risinājumi"
+        description="Sageon Media piedāvā profesionālu biznesa mājaslapu izstrādi, adaptīvu dizainu, kā arī SEO optimizāciju jūsu biznesa izaugsmei."
         schema={[
           {
             "@context": "https://schema.org",
-            "@type": "Organization",
-            "@id": "https://sageon.media#organization",
+            "@type": "ProfessionalService",
+            "@id": "https://sageonmedia.eu#organization",
             "name": "Sageon Media",
-            "url": "https://sageon.media",
-            "logo": "https://sageon.media/Logo-new.webp",
+            "url": "https://sageonmedia.eu",
+            "logo": "https://sageonmedia.eu/Logo-new.webp",
             "email": "sageon.media@gmail.com",
-            "telephone": "+371 26739899"
+            "telephone": "+371 26739899",
+            "priceRange": "$$",
+            "knowsLanguage": ["lv", "en", "ru"],
+            "areaServed": [
+              { "@type": "Country", "name": "Latvia" },
+              { "@type": "Place", "name": "Worldwide" }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+371 26739899",
+              "email": "sageon.media@gmail.com",
+              "contactType": "customer service",
+              "availableLanguage": ["lv", "en", "ru"]
+            }
           },
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "@id": "https://sageon.media#website",
-            "url": "https://sageon.media",
+            "@id": "https://sageonmedia.eu#website",
+            "url": "https://sageonmedia.eu",
             "name": "Sageon Media",
             "description": "Profesionāla mājaslapu izstrāde un digitālie risinājumi jūsu biznesam."
           },
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": "https://sageon.media#webpage",
-            "url": "https://sageon.media",
+            "@id": "https://sageonmedia.eu#webpage",
+            "url": "https://sageonmedia.eu",
             "name": "Sageon Media | Mājaslapu izstrāde un digitālie risinājumi",
             "description": "Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei.",
-            "isPartOf": { "@id": "https://sageon.media#website" }
+            "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {
             "@context": "https://schema.org",
@@ -451,6 +482,26 @@ export default function Home() {
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
 
+      {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
+      <LazyLoadSection>
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-8 sm:pt-12 pb-4 relative z-10">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-r from-zinc-950 via-zinc-900/90 to-zinc-950 border border-zinc-800 hover:border-[#BAFC50]/40 p-6 sm:p-8 md:p-10 shadow-2xl transition-all duration-300">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#BAFC50]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col items-center justify-center text-center mx-auto">
+              <div className="space-y-3 max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
+                <div className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-1">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  <span>Ko mēs piedāvājam</span>
+                </div>
+                <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
+                  Vai Jums ir nepieciešams mūsdienīga mājaslapa biznesam, bet nevēlaties pārmaksāt un gaidīt nedēļām ilgi? <span className="text-[#BAFC50] font-bold">Mums ir Jums ko piedāvāt.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </LazyLoadSection>
+
       {/* 2. INTRO BLOCK: Ko mēs piedāvājam */}
       <LazyLoadSection>
         <section 
@@ -460,23 +511,12 @@ export default function Home() {
           <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
           <div className="absolute -bottom-52 -left-20 w-[700px] h-[650px] bg-gradient-to-tr from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-12 relative z-10">
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-12 relative z-10">
             
             {/* SECTION 1: Intro Text & 5 Problem Cards */}
             <div className="space-y-12">
-              {/* Main Section Header */}
-              <div className="text-center space-y-4 max-w-5xl mx-auto mb-12 md:mb-20">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  <span>Ko mēs piedāvājam</span>
-                </div>
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                  Mājaslapa, kas strādā Jūsu biznesa labā
-                </h2>
-              </div>
-
               {/* Zig-Zag 3-Row Feature Block */}
-              <div className="space-y-12 md:space-y-16 max-w-[1600px] mx-auto">
+              <div className="space-y-12 md:space-y-16 max-w-[1380px] mx-auto">
                 {/* Row 1: Text Left, Image Right */}
                 <div 
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
@@ -498,7 +538,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                      className="relative z-10 w-[88%] h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                     />
                   </div>
                 </div>
@@ -516,7 +556,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.03] transition-transform duration-500"
+                      className="relative z-10 w-[88%] h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                     />
                   </div>
                   <div className="lg:col-span-7 space-y-3">
@@ -550,7 +590,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={400}
-                      className="relative z-10 w-full h-auto max-h-[400px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-[1.02] transition-transform duration-500"
+                      className="relative z-10 w-[88%] h-auto max-h-[350px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                     />
                   </div>
                 </div>
@@ -577,7 +617,7 @@ export default function Home() {
                     <div className="mt-5">
                       <Link
                         to="/kontakti"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-[#BAFC50]/20 hover:scale-[1.02]"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold text-xs uppercase tracking-wider transition-colors duration-300 shadow-md shadow-[#BAFC50]/20"
                       >
                         <span>Pieteikties konsultācijai</span>
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -596,7 +636,7 @@ export default function Home() {
         <section 
           className="py-16 md:py-24 bg-transparent overflow-visible relative z-10"
         >
-          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-10 relative z-10">
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* Sub-block: Kas kavē Jūsu izaugsmi */}
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto"
@@ -605,9 +645,9 @@ export default function Home() {
                 <ShieldAlert className="h-3.5 w-3.5" />
                 <span>Kas stāv ceļā Jūsu izaugsmei</span>
               </div>
-              <h3 className="text-xl md:text-3xl font-bold text-white tracking-tight">
+              <h2 className="text-xl md:text-3xl font-bold text-white tracking-tight">
                 Kas kavē Jūsu izaugsmi digitālajā vidē?
-              </h3>
+              </h2>
               <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
                 Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
               </p>
@@ -615,7 +655,7 @@ export default function Home() {
 
             {/* Creative 5-Card Balanced Grid Layout */}
             <div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1700px] mx-auto pt-2"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1380px] mx-auto pt-2"
             >
               {/* Point 1 */}
               <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
@@ -628,9 +668,9 @@ export default function Home() {
                       <ShieldAlert className="h-5 w-5" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                  <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
                     Mājaslapa nerada uzticību
-                  </h4>
+                  </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas.
                   </p>
@@ -648,9 +688,9 @@ export default function Home() {
                       <TrendingDown className="h-5 w-5" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                  <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
                     Apmeklētāji nekļūst par klientiem
-                  </h4>
+                  </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu.
                   </p>
@@ -668,9 +708,9 @@ export default function Home() {
                       <Search className="h-5 w-5" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                  <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
                     Uzņēmumu grūti atrast Google
-                  </h4>
+                  </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu.
                   </p>
@@ -688,9 +728,9 @@ export default function Home() {
                       <Clock className="h-5 w-5" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                  <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
                     Mājaslapa ielādējas lēni
-                  </h4>
+                  </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā.
                   </p>
@@ -708,9 +748,9 @@ export default function Home() {
                       <HelpCircle className="h-5 w-5" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
+                  <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
                     Piedāvājums nav pietiekami pārliecinošs
-                  </h4>
+                  </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību.
                   </p>
@@ -726,7 +766,7 @@ export default function Home() {
         <section 
           className="py-16 md:py-24 bg-transparent overflow-visible relative z-10"
         >
-          <div className="px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 w-full max-w-[1700px] mx-auto space-y-10 relative z-10">
+          <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
             <div className="space-y-10">
               <div className="text-center space-y-3 max-w-3xl mx-auto">
@@ -743,16 +783,16 @@ export default function Home() {
               </div>
 
               {/* 4 Solution Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 text-left max-w-[1600px] mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 text-left max-w-[1380px] mx-auto">
                 {/* Card 1 */}
                 <div className="group flex items-start gap-5 p-7 bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 rounded-2xl shadow-md transition-all duration-300">
                   <div className="p-3.5 bg-zinc-800 text-[#BAFC50] rounded-xl shrink-0 mt-0.5 shadow-sm group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
                     <Target className="h-7 w-7" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Skaidra biznesa stratēģija
-                    </h4>
+                    </h3>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Katrs projekts tiek veidots ar konkrētu mērķi — palīdzēt uzņēmumam iegūt vairāk pieprasījumu un veicināt biznesa izaugsmi.
                     </p>
@@ -765,9 +805,9 @@ export default function Home() {
                     <Settings className="h-7 w-7" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Individuāla pieeja
-                    </h4>
+                    </h3>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Katrs uzņēmums ir atšķirīgs, tāpēc risinājumus mēs pielāgojam tieši Jūsu biznesa nozarei, auditorijai un mērķiem.
                     </p>
@@ -780,9 +820,9 @@ export default function Home() {
                     <Zap className="h-7 w-7" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Mūsdienīgi risinājumi
-                    </h4>
+                    </h3>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Mēs izmantojam jaunākās tehnoloģijas, lai mājaslapa būtu ātra, responsīva, intuitīva un viegli pārskatāma.
                     </p>
@@ -795,9 +835,9 @@ export default function Home() {
                     <TrendingUp className="h-7 w-7" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
+                    <h3 className="font-extrabold text-white text-lg md:text-xl uppercase tracking-wide group-hover:text-[#BAFC50] transition-colors">
                       Ilgtermiņa sadarbība
-                    </h4>
+                    </h3>
                     <p className="text-base text-zinc-200 font-normal mt-2.5 leading-relaxed">
                       Mēs ne tikai izstrādājam mājaslapu, bet arī palīdzam tai attīstīties un pielāgoties uzņēmuma izaugsmei.
                     </p>
@@ -809,6 +849,31 @@ export default function Home() {
         </section>
       </LazyLoadSection>
 
+      {/* CALLOUT BANNER 2: Virs "Sadarbības posmi" */}
+      <LazyLoadSection>
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-8 sm:pt-12 pb-4 relative z-10">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-r from-zinc-950 via-zinc-900/90 to-zinc-950 border border-zinc-800 hover:border-[#BAFC50]/40 p-6 sm:p-8 md:p-10 shadow-2xl transition-all duration-300">
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 bg-[#BAFC50]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
+              <div>
+                <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed">
+                  Mūsu risinājumi ir ideāli piemēroti tirdzniecības, ražošanas un būvniecības uzņēmumiem, kā arī dažādu nozaru pakalpojumu sniedzējiem un individuālajiem komersantiem.
+                </p>
+              </div>
+              <div className="shrink-0">
+                <Link
+                  to="/kontakti"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-bold text-sm sm:text-base tracking-wide rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-colors duration-300"
+                >
+                  <span>Pieteikties konsultācijai</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </LazyLoadSection>
+
       {/* KĀ NOTIEK SADARBĪBA SECTION */}
       <LazyLoadSection>
         <section 
@@ -817,7 +882,7 @@ export default function Home() {
           {/* Ambient Glow background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#BAFC50]/12 via-[#38b000]/12 to-transparent rounded-full blur-[160px] pointer-events-none z-0" />
 
-          <div className="w-full max-w-[1700px] mx-auto space-y-16 relative z-10">
+          <div className="w-full max-w-[1380px] mx-auto space-y-16 relative z-10">
             
             {/* Header */}
             <div className="text-center space-y-4 max-w-4xl mx-auto">
@@ -875,7 +940,7 @@ export default function Home() {
                       2. Projekta izstrādes process
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Kad iecerētās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai radītu pārdomātu un modernu digitālo vizītkarti.
+                      Kad iecerētās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai radītu mūsdienīgu, pārdomātu un modernu Jūsu biznesa digitālo vizītkarti.
                     </p>
                   </div>
                 </div>
@@ -927,83 +992,7 @@ export default function Home() {
         </section>
       </LazyLoadSection>
 
-      {/* 3. MŪSU DARBI: Preview Block */}
-      <LazyLoadSection>
-        <section 
-          className="pt-8 pb-8 md:pt-10 md:pb-10 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
-        >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -right-24 w-[800px] h-[700px] bg-gradient-to-tl from-[#38b000]/32 via-[#BAFC50]/25 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-
-          <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
-            
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
-              <div className="space-y-2 text-left">
-                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                  Ieskats mūsu nesenajos projektos
-                </h3>
-              </div>
-            </div>
-
-            {/* Portfolio Carousel Track */}
-            <div className="overflow-hidden w-full relative">
-              <div 
-                onTransitionEnd={handlePortfolioTransitionEnd}
-                className={`flex blog-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
-                }}
-              >
-                {[...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS].map((item, index) => (
-                  <div 
-                    key={`${item.id}-${index}`} 
-                    className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col justify-between"
-                  >
-                    <PortfolioLaptopCard
-                      title={item.title}
-                      brand={item.brand}
-                      displayLink={item.displayLink}
-                      image={item.image}
-                      link={item.link}
-                      isPlaceholder={item.isPlaceholder}
-                      subtitle={item.subtitle}
-                      description={item.description}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Controls (< > and Skatīt visus button) below Portfolio cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6">
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => scrollPortfolio('left')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Iepriekšējais darbs"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button 
-                  onClick={() => scrollPortfolio('right')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Nākamais darbs"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-              <CtaButton
-                text="Skatīt visus"
-                to="/portfolio"
-              />
-            </div>
-
-          </div>
-        </section>
-      </LazyLoadSection>
-
-      {/* 4. CENAS UN PAKALPOJUMI */}
+      {/* 3. PAKALPOJUMI */}
       <LazyLoadSection>
         <section 
           className="pt-8 pb-16 md:pt-10 md:pb-20 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
@@ -1012,12 +1001,12 @@ export default function Home() {
           <div className="absolute -top-48 -left-36 w-[750px] h-[750px] bg-gradient-to-r from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
           <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-gradient-to-tl from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-          <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
+          <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                  Sadarbības iespējas
-                </h3>
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                  Piedāvātie pakalpojumi
+                </h2>
               </div>
             </div>
 
@@ -1122,7 +1111,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Uzzināt vairāk button) below Pricing cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6">
+            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPricing('left')}
@@ -1148,6 +1137,82 @@ export default function Home() {
         </section>
       </LazyLoadSection>
 
+      {/* 4. MŪSU DARBI: Preview Block */}
+      <LazyLoadSection>
+        <section 
+          className="pt-8 pb-8 md:pt-10 md:pb-10 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
+        >
+          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 -right-24 w-[800px] h-[700px] bg-gradient-to-tl from-[#38b000]/32 via-[#BAFC50]/25 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+
+          <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
+            
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
+              <div className="space-y-2 text-left">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                  Ieskats mūsu nesenajos projektos
+                </h2>
+              </div>
+            </div>
+
+            {/* Portfolio Carousel Track */}
+            <div className="overflow-hidden w-full relative">
+              <div 
+                onTransitionEnd={handlePortfolioTransitionEnd}
+                className={`flex blog-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                style={{ 
+                  transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
+                }}
+              >
+                {[...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS].map((item, index) => (
+                  <div 
+                    key={`${item.id}-${index}`} 
+                    className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col justify-between"
+                  >
+                    <PortfolioLaptopCard
+                      title={item.title}
+                      brand={item.brand}
+                      displayLink={item.displayLink}
+                      image={item.image}
+                      link={item.link}
+                      isPlaceholder={item.isPlaceholder}
+                      subtitle={item.subtitle}
+                      description={item.description}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Controls (< > and Skatīt visus button) below Portfolio cards on the right */}
+            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => scrollPortfolio('left')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Iepriekšējais darbs"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button 
+                  onClick={() => scrollPortfolio('right')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Nākamais darbs"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+              <CtaButton
+                text="Skatīt visus"
+                to="/portfolio"
+              />
+            </div>
+
+          </div>
+        </section>
+      </LazyLoadSection>
+
       {/* 5. BUJ / FAQ: Preview Block */}
       <LazyLoadSection>
         <section 
@@ -1160,9 +1225,9 @@ export default function Home() {
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
             <div className="text-center space-y-3">
-              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 Biežāk uzdotie jautājumi
-              </h3>
+              </h2>
               <p className="text-xs md:text-sm text-zinc-300 font-light max-w-md mx-auto text-center">
                 Pirmās atbildes, lai palīdzētu Jums ātri izprast mūsu sadarbības principus.
               </p>
@@ -1231,17 +1296,21 @@ export default function Home() {
           <div className="absolute -top-48 -right-36 w-[800px] h-[800px] bg-gradient-to-bl from-[#BAFC50]/30 via-[#38b000]/24 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
           <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-gradient-to-tr from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-          <div className="w-full max-w-[1700px] mx-auto space-y-8 relative z-10">
+          <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
               <div className="space-y-2 text-left">
-                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Noderīga informācija
-                </h3>
+                </h2>
               </div>
             </div>
 
             {/* State-controlled Infinite Carousel Slider */}
-            <div className="overflow-hidden w-full relative">
+            <div 
+              className="overflow-hidden w-full relative"
+              onMouseEnter={() => setIsBlogHovered(true)}
+              onMouseLeave={() => setIsBlogHovered(false)}
+            >
               <div 
                 onTransitionEnd={handleTransitionEnd}
                 className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-500 ease-out"}`}
@@ -1270,9 +1339,9 @@ export default function Home() {
                           />
                         </div>
                         <div className="p-5 space-y-3">
-                          <h4 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
+                          <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
                             {post.title}
-                          </h4>
+                          </h3>
                           <p className="text-xs text-zinc-400 font-light line-clamp-2">
                             {post.excerpt}
                           </p>
@@ -1288,7 +1357,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Lasīt visu blogu button) below Blog cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6">
+            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollBlog('left')}

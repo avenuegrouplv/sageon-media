@@ -6,22 +6,46 @@ import SEOHead from "../components/SEOHead";
 
 export default function Kontakti() {
   useEffect(() => {
-    document.title = "Kontakti & Pieteikt Projektu | Sageon Media";
+    document.title = "Kontakti | Sageon Media";
   }, []);
   return (
     <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
       <SEOHead
-        title="Kontakti & Pieteikt Projektu | Sageon Media"
-        description="Sazinies ar Sageon Media komandu. Pieteikt mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem."
+        title="Kontakti | Sageon Media"
+        description="Sazinies ar Sageon Media komandu. Pieteikt biznesa mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem."
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "@id": "https://sageon.media/kontakti#webpage",
-            "url": "https://sageon.media/kontakti",
-            "name": "Kontakti & Pieteikt Projektu | Sageon Media",
-            "description": "Sazinies ar Sageon Media komandu. Pieteikt mājaslapas izstrādi.",
-            "isPartOf": { "@id": "https://sageon.media#website" }
+            "@id": "https://sageonmedia.eu/kontakti#webpage",
+            "url": "https://sageonmedia.eu/kontakti",
+            "name": "Kontakti | Sageon Media",
+            "description": "Sazinies ar Sageon Media komandu. Pieteikt biznesa mājaslapas izstrādi, saņemt bezmaksas konsultāciju vai uzdot jautājumus par digitālajiem pakalpojumiem.",
+            "isPartOf": { "@id": "https://sageonmedia.eu#website" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://sageonmedia.eu#organization",
+            "name": "Sageon Media",
+            "url": "https://sageonmedia.eu",
+            "logo": "https://sageonmedia.eu/Logo-new.webp",
+            "email": "sageon.media@gmail.com",
+            "telephone": "+371 26739899",
+            "priceRange": "$$",
+            "knowsLanguage": ["lv", "en", "ru"],
+            "areaServed": [
+              { "@type": "Country", "name": "Latvia" },
+              { "@type": "Place", "name": "Worldwide" }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            ]
           },
           {
             "@context": "https://schema.org",
@@ -31,13 +55,13 @@ export default function Kontakti() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Sākums",
-                "item": "https://sageon.media"
+                "item": "https://sageonmedia.eu"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Kontakti",
-                "item": "https://sageon.media/kontakti"
+                "item": "https://sageonmedia.eu/kontakti"
               }
             ]
           }
@@ -47,7 +71,7 @@ export default function Kontakti() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
       
       {/* Intro section */}
-      <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 pt-16 md:pt-20 pb-2 space-y-3 text-center">
+      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-16 md:pt-20 pb-2 space-y-3 text-center">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
           <MessageSquare className="h-3.5 w-3.5" />
           <span>Sazināties ar mums</span>
@@ -64,7 +88,7 @@ export default function Kontakti() {
       <ContactForm hideHeader={true} />
 
       {/* Extra business information card for contact page */}
-      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 py-12">
+      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 dark:text-slate-400 text-xs md:text-sm font-light border border-slate-200/60 dark:border-sageon-accent/60 bg-white dark:bg-sageon-deep/40 p-6 md:p-8 rounded-2xl shadow-md">
           <div className="space-y-3">
             <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">

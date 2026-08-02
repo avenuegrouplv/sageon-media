@@ -63,7 +63,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
         className="absolute -bottom-36 -left-20 w-[850px] h-[850px] bg-gradient-to-tr from-[#38b000]/25 via-[#BAFC50]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0"
       />
 
-      <div className="w-full max-w-[1600px] mx-auto space-y-10 relative z-10 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
+      <div className="w-full max-w-[1380px] mx-auto space-y-10 relative z-10 px-4 sm:px-6 md:px-10 lg:px-12">
         
         {/* Section Heading */}
         {!hideHeader && (

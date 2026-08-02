@@ -4,18 +4,18 @@
 
 ## Navigation & Core Pages
 
-- [Sākums](https://sageon.media/): Agency overview, workflow stages, interactive pricing calculator, and core service offerings.
-- [Mūsu Darbi / Portfolio](https://sageon.media/portfolio): Real client work showcase (including Avenue Group, Travel with Martins, Avangart) and project inquiry forms.
-- [Pakalpojumi un Cenas](https://sageon.media/pakalpojumi): Pricing plans (Landing page from €490, Multi-page from €1290, E-commerce from €1890, Maintenance from €50/mo).
-- [Biežāk Uzdotie Jautājumi (BUJ)](https://sageon.media/buj): Development timelines (5-7 days for landing pages, 2-3 weeks for multi-page), payment terms, security, and mobile optimization FAQs.
-- [Blogs](https://sageon.media/blogs): Articles and expert insights on web development, SEO optimization, and Generative Engine Optimization (GEO).
-- [Kontakti](https://sageon.media/kontakti): Contact information, direct inquiry form, email, and phone contact details.
+- [Sākums](https://sageonmedia.eu/): Agency overview, workflow stages, interactive pricing calculator, and core service offerings.
+- [Portfolio](https://sageonmedia.eu/portfolio): Real client work showcase (including Travel with Martins, Avenue Group, Avangart) and project inquiry forms.
+- [Pakalpojumi](https://sageonmedia.eu/pakalpojumi): Pricing plans (Landing page from €490, Multi-page from €1290, E-commerce from €1890, Maintenance from €50/mo).
+- [BUJ](https://sageonmedia.eu/buj): Development timelines (5-7 days for landing pages, 2-3 weeks for multi-page), payment terms, security, and mobile optimization FAQs.
+- [Blogs](https://sageonmedia.eu/blogs): Articles and expert insights on web development, SEO optimization, and Generative Engine Optimization (GEO).
+- [Kontakti](https://sageonmedia.eu/kontakti): Contact information, direct inquiry form, email, and phone contact details.
 
 ## Allowed Crawling & AI Agent Guidance
 
 - **Allowed Crawlers:** All search engine indexers and AI agents (Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot) are permitted to crawl and index all public URLs listed above.
-- **Sitemap Location:** https://sageon.media/sitemap.xml
-- **Robots Location:** https://sageon.media/robots.txt
+- **Sitemap Location:** https://sageonmedia.eu/sitemap.xml
+- **Robots Location:** https://sageonmedia.eu/robots.txt
 
 ## Contact & Operational Info
 

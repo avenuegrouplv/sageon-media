@@ -69,7 +69,7 @@ export default function Buj() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media";
+    document.title = "Biežāk uzdotie jautājumi | Sageon Media";
   }, []);
 
   const toggleAccordion = (index: number) => {
@@ -79,17 +79,17 @@ export default function Buj() {
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
-        title="Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media"
-        description="Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi, izmaksām, izstrādes laiku, SEO un tehnisko atbalstu no Sageon Media."
+        title="Biežāk uzdotie jautājumi | Sageon Media"
+        description="Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi, izmaksām, izstrādes laiku, SEO un Sageon Media tehnisko atbalstu."
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": "https://sageon.media/buj#webpage",
-            "url": "https://sageon.media/buj",
-            "name": "Biežāk Uzdotie Jautājumi (BUJ) | Sageon Media",
-            "description": "Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi un pakalpojumiem.",
-            "isPartOf": { "@id": "https://sageon.media#website" }
+            "@id": "https://sageonmedia.eu/buj#webpage",
+            "url": "https://sageonmedia.eu/buj",
+            "name": "Biežāk uzdotie jautājumi | Sageon Media",
+            "description": "Atbildes uz biežāk uzdotajiem jautājumiem par mājaslapu izstrādi, izmaksām, izstrādes laiku, SEO un Sageon Media tehnisko atbalstu.",
+            "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {
             "@context": "https://schema.org",
@@ -99,13 +99,13 @@ export default function Buj() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Sākums",
-                "item": "https://sageon.media"
+                "item": "https://sageonmedia.eu"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "BUJ",
-                "item": "https://sageon.media/buj"
+                "item": "https://sageonmedia.eu/buj"
               }
             ]
           },
@@ -131,7 +131,7 @@ export default function Buj() {
       <div className="absolute top-1/2 -left-24 w-[800px] h-[800px] bg-gradient-to-tr from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
       <div className="absolute -bottom-40 right-1/4 w-[750px] h-[750px] bg-gradient-to-tl from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
-      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-20 md:py-28 space-y-12 relative z-10">
+      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 md:py-20 space-y-12 relative z-10">
         
         {/* Header Block */}
         <div className="text-center space-y-4">

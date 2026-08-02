@@ -74,7 +74,7 @@ export default function Header() {
           : "bg-[#0a0a0a]/95 backdrop-blur-md py-2 shadow-md border-zinc-800/80"
       }`}
     >
-      <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 flex justify-between items-center relative">
+      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
         
         {/* LOGO AREA */}
         <Link to="/" className="flex items-center gap-3 group shrink-0">

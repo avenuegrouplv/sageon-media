@@ -19,8 +19,10 @@ export default function SEOHead({
   schema,
 }: SEOProps) {
   const location = useLocation();
-  const canonicalUrl = `https://sageon.media${location.pathname === "/" ? "" : location.pathname}`;
-  const fullOgImage = ogImage.startsWith("http") ? ogImage : `https://sageon.media${ogImage}`;
+  const path = location.pathname === "/" ? "" : location.pathname;
+  const baseUrl = "https://sageonmedia.eu";
+  const canonicalUrl = `${baseUrl}${path}`;
+  const fullOgImage = ogImage.startsWith("http") ? ogImage : `${baseUrl}${ogImage}`;
 
   useEffect(() => {
     // Update Title
@@ -37,12 +39,14 @@ export default function SEOHead({
       element.setAttribute("content", content);
     };
 
-    // Helper to update link tags
-    const updateLink = (rel: string, href: string) => {
-      let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+    // Helper to update link tags with optional attributes like hreflang
+    const updateLink = (rel: string, href: string, hreflang?: string) => {
+      const selector = hreflang ? `link[rel="${rel}"][hreflang="${hreflang}"]` : `link[rel="${rel}"]`;
+      let element = document.querySelector(selector) as HTMLLinkElement | null;
       if (!element) {
         element = document.createElement("link");
         element.setAttribute("rel", rel);
+        if (hreflang) element.setAttribute("hreflang", hreflang);
         document.head.appendChild(element);
       }
       element.setAttribute("href", href);
@@ -52,8 +56,16 @@ export default function SEOHead({
     updateMeta('meta[name="description"]', "name", "description", description);
     updateMeta('meta[name="keywords"]', "name", "keywords", keywords);
 
-    // Canonical Link
+    // GEO & Global Remote Service Meta Tags
+    updateMeta('meta[name="geo.region"]', "name", "geo.region", "LV");
+    updateMeta('meta[name="geo.placename"]', "name", "geo.placename", "Latvija / Remote Services Worldwide");
+
+    // Canonical & Hreflang Links
     updateLink("canonical", canonicalUrl);
+    updateLink("alternate", canonicalUrl, "lv");
+    updateLink("alternate", `${baseUrl}/en${path}`, "en");
+    updateLink("alternate", `${baseUrl}/ru${path}`, "ru");
+    updateLink("alternate", canonicalUrl, "x-default");
 
     // Open Graph
     updateMeta('meta[property="og:title"]', "property", "og:title", title);
@@ -62,6 +74,8 @@ export default function SEOHead({
     updateMeta('meta[property="og:image"]', "property", "og:image", fullOgImage);
     updateMeta('meta[property="og:type"]', "property", "og:type", ogType);
     updateMeta('meta[property="og:locale"]', "property", "og:locale", "lv_LV");
+    updateMeta('meta[property="og:locale:alternate"][content="en_US"]', "property", "og:locale:alternate", "en_US");
+    updateMeta('meta[property="og:locale:alternate"][content="ru_RU"]', "property", "og:locale:alternate", "ru_RU");
 
     // Twitter Cards
     updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");

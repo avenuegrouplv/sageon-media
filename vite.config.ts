@@ -51,7 +51,7 @@ export default defineConfig(() => {
       },
     },
     build: {
-      sourcemap: true,
+      sourcemap: false,
       minify: 'esbuild' as const,
       cssCodeSplit: true,
       target: 'es2020',

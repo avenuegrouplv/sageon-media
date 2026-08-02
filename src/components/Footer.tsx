@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="bg-black text-slate-300 relative z-10 font-sans border-0 border-transparent">
       <div className="pt-8 pb-8 sm:pt-10 sm:pb-10">
         {/* TOP SECTION: Seko Mums on Left, Nav Links (Row 1) & Contacts (Row 2) on Right */}
-        <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between items-center gap-6 pb-6">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 pb-6">
           
           {/* Left Column: Seko Mums with Icons */}
           <div className="flex flex-col items-center md:items-start space-y-2">
@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
 
         {/* LOGO & BOTTOM COPYRIGHT SECTOR */}
-        <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 pt-6 flex flex-col items-center gap-6">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 flex flex-col items-center gap-6">
           {/* Centered Logo */}
           <Link to="/" className="flex items-center justify-center group shrink-0">
             <div className="flex items-center justify-center w-[190px] h-[70px] sm:w-[220px] sm:h-[75px] bg-transparent">
