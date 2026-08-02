@@ -1,16 +1,17 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, MessageSquare, Globe } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
+import { Language, PageKey } from "../i18n/types";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("LV");
   
   const location = useLocation();
-  const navigate = useNavigate();
+  const { lang, t, switchLanguage, getLocalizedPath } = useLanguage();
 
   // Detect scroll to style header with requestAnimationFrame throttling and state checks
   useEffect(() => {
@@ -35,40 +36,25 @@ export default function Header() {
     setLangDropdownOpen(false);
   }, [location.pathname]);
 
-  const navLinks = [
-    { name: "Sākums", path: "/" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "Pakalpojumi", path: "/pakalpojumi" },
-    { name: "BUJ", path: "/buj" },
-    { name: "Blogs", path: "/blogs" },
-    { name: "Kontakti", path: "/kontakti" },
+  const navLinks: { key: PageKey; name: string; path: string }[] = [
+    { key: "home", name: t.nav.home, path: getLocalizedPath("home") },
+    { key: "portfolio", name: t.nav.portfolio, path: getLocalizedPath("portfolio") },
+    { key: "services", name: t.nav.services, path: getLocalizedPath("services") },
+    { key: "faq", name: t.nav.faq, path: getLocalizedPath("faq") },
+    { key: "blog", name: t.nav.blog, path: getLocalizedPath("blog") },
+    { key: "contact", name: t.nav.contact, path: getLocalizedPath("contact") },
   ];
 
-  const handleContactClick = (e: React.MouseEvent) => {
-    if (location.pathname === "/") {
-      e.preventDefault();
-      const contactSec = document.getElementById("contact-section");
-      if (contactSec) {
-        if ((window as any).lenis) {
-          (window as any).lenis.scrollTo(contactSec, { duration: 1.2 });
-        } else {
-          contactSec.scrollIntoView({ behavior: "smooth" });
-        }
-      } else {
-        navigate("/kontakti");
-      }
-    } else {
-      navigate("/kontakti");
-    }
-  };
-
-  const selectLanguage = (lang: string) => {
-    setCurrentLang(lang);
+  const handleSelectLanguage = (targetLang: Language) => {
+    switchLanguage(targetLang);
     setLangDropdownOpen(false);
+    setIsOpen(false);
   };
 
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/ru";
   const isTransparent = isHome && !isScrolled;
+
+  const langDisplayCode = lang === "LV" ? "LV" : lang === "EN" ? "EN" : "RU";
 
   return (
     <header
@@ -81,12 +67,12 @@ export default function Header() {
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
         
         {/* LOGO AREA */}
-        <Link to="/" className="flex items-center gap-3 group shrink-0">
+        <Link to={getLocalizedPath("home")} className="flex items-center gap-3 group shrink-0">
           <div className="relative flex items-center justify-center w-[200px] h-[70px] md:w-[230px] md:h-[84px] bg-transparent">
             {/* Colored Original Logo */}
             <img 
               src="/Logo-new.webp" 
-              alt="Sageon Media - Mājaslapu Izstrādes Aģentūra Logo" 
+              alt="Sageon Media Logo" 
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -103,7 +89,7 @@ export default function Header() {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
-                <li key={link.name}>
+                <li key={link.key}>
                   <Link
                     to={link.path}
                     className={`font-business text-[13.8px] font-normal tracking-widest uppercase transition-colors relative py-1 ${
@@ -130,7 +116,7 @@ export default function Header() {
               className="flex items-center gap-2.5 px-4.5 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-[#BAFC50] text-sm font-bold tracking-wider uppercase rounded-full transition-all duration-300 shadow-md cursor-pointer hover:shadow-[#BAFC50]/15"
             >
               <Globe className="h-4.5 w-4.5 text-[#BAFC50]" />
-              <span className="text-sm tracking-widest">{currentLang}</span>
+              <span className="text-sm tracking-widest">{langDisplayCode}</span>
               <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center border border-[#BAFC50]/40 ml-0.5">
                 <ChevronDown className={`h-3.5 w-3.5 text-[#BAFC50] transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
               </div>
@@ -138,16 +124,20 @@ export default function Header() {
 
             {langDropdownOpen && (
               <div className="absolute right-0 mt-2 w-40 bg-[#18181b] border border-[#BAFC50]/40 shadow-2xl py-1.5 z-50 rounded-2xl overflow-hidden backdrop-blur-xl">
-                {["LV", "ENG", "RUS"].map((lang) => (
+                {([
+                  { code: "LV" as Language, label: "Latviešu" },
+                  { code: "EN" as Language, label: "English" },
+                  { code: "RU" as Language, label: "Русский" },
+                ]).map((item) => (
                   <button
-                    key={lang}
-                    onClick={() => selectLanguage(lang)}
+                    key={item.code}
+                    onClick={() => handleSelectLanguage(item.code)}
                     className={`w-full text-left px-4 py-2.5 font-sans text-xs sm:text-sm font-bold tracking-wider hover:bg-zinc-800 transition-colors cursor-pointer flex items-center justify-between ${
-                      currentLang === lang ? "text-[#BAFC50]" : "text-slate-300 hover:text-white"
+                      lang === item.code ? "text-[#BAFC50]" : "text-slate-300 hover:text-white"
                     }`}
                   >
-                    <span>{lang === "LV" ? "Latviešu" : lang === "ENG" ? "English" : "Русский"}</span>
-                    {currentLang === lang && <span className="w-2 h-2 rounded-full bg-[#BAFC50]" />}
+                    <span>{item.label}</span>
+                    {lang === item.code && <span className="w-2 h-2 rounded-full bg-[#BAFC50]" />}
                   </button>
                 ))}
               </div>
@@ -177,7 +167,7 @@ export default function Header() {
         <div className="lg:hidden absolute top-full left-0 w-full bg-[#121212]/98 backdrop-blur-md border-b border-zinc-800 shadow-xl transition-all duration-300 py-6 px-6 space-y-6 z-50">
           <ul className="space-y-4">
             {navLinks.map((link) => (
-              <li key={link.name}>
+              <li key={link.key}>
                 <Link
                   to={link.path}
                   className={`block font-business text-sm font-normal uppercase tracking-widest py-1.5 ${
@@ -198,20 +188,24 @@ export default function Header() {
           <div className="space-y-2">
             <p className="text-xs font-business tracking-widest uppercase text-slate-400 flex items-center gap-1.5">
               <Globe className="h-3.5 w-3.5 text-[#BAFC50]" />
-              Valoda
+              {lang === "LV" ? "Valoda" : lang === "EN" ? "Language" : "Язык"}
             </p>
             <div className="flex gap-3">
-              {["LV", "ENG", "RUS"].map((lang) => (
+              {([
+                { code: "LV" as Language, name: "LV" },
+                { code: "EN" as Language, name: "EN" },
+                { code: "RU" as Language, name: "RU" },
+              ]).map((item) => (
                 <button
-                  key={lang}
-                  onClick={() => selectLanguage(lang)}
+                  key={item.code}
+                  onClick={() => handleSelectLanguage(item.code)}
                   className={`px-3 py-1.5 border font-business text-xs font-normal tracking-widest transition-colors rounded-xl cursor-pointer ${
-                    currentLang === lang
+                    lang === item.code
                       ? "border-[#BAFC50] text-[#BAFC50] font-medium bg-[#BAFC50]/10"
                       : "border-zinc-800 text-slate-300 hover:text-white"
                   }`}
                 >
-                  {lang}
+                  {item.name}
                 </button>
               ))}
             </div>

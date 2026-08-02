@@ -4,116 +4,48 @@ import PageNavButtons from "../components/PageNavButtons";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import ContactForm from "../components/ContactForm";
 import SEOHead from "../components/SEOHead";
-
-const MOCK_PORTFOLIO_CARDS = [
-  {
-    id: 1,
-    title: "Vairāk ceļo un vairāk nopelni",
-    brand: "Travel with Martins",
-    displayLink: "https://travelwithmartins.com",
-    category: "Ceļojumu aģentūra un Emuārs",
-    tech: "React, Ceļojumu emuāru platforma",
-    description: "Travel with Martins ir personīgā ceļojumu emuāra un konsultāciju platforma. Tā palīdz lietotājiem plānot un organizēt neizmirstamus braucienus, sniedzot praktiskus padomus un iedvesmojošus ceļvežus. Vietne veidota ar uzsvaru uz vizuāli bagātu saturu un ērtu pieteikumu noformēšanu.",
-    placeholderColor: "from-blue-500/10 to-slate-500/10",
-    image: "/Travel-with-Martins-portfolio.webp",
-    link: "https://travelwithmartins.com"
-  },
-  {
-    id: 2,
-    title: "Komercīpašumu un privātīpašumu apsaimniekošana I Juridiskā pārvaldība",
-    brand: "Avenue Group",
-    displayLink: "https://avenuegroup.lv",
-    category: "Būvniecība un Nekustamie Īpašumi",
-    tech: "React, Tailwind, Premium Web dizains",
-    description: "Avenue Group ir nekustamo īpašumu pārvaldības un juridisko pakalpojumu platforma. Mājaslapa nodrošina pārskatāmu pakalpojumu katalogu, atsauksmes un elastīgas saziņas iespējas jaunām sadarbībām. Tās dizains izceļ uzņēmuma uzticamību un profesionālo pieredzi.",
-    placeholderColor: "from-blue-500/10 to-slate-500/10",
-    image: "/Avenuegroup-portfolio.webp",
-    link: "https://avenuegroup.lv"
-  },
-  {
-    id: 3,
-    title: "Premium dizaina mēbeles I Ekskluzīvas koka kāpnes",
-    brand: "Avangart",
-    displayLink: "https://avangart.lv",
-    category: "Dizains un Ražošana",
-    tech: "React, Premium Web katalogs",
-    description: "Avangart ir ekskluzīvs mēbeļu un koka kāpņu ražošanas uzņēmuma digitālais katalogs. Mājaslapa kalpo kā vizuālā galerija ar detalizētiem fotouzņēmumiem un produktu aprakstiem. Tās dizains atspoguļo augstākās kvalitātes meistardarbu, eleganci un individuālu pieeju.",
-    placeholderColor: "from-blue-500/10 to-slate-500/10",
-    image: "/Avangart-portfolio.webp",
-    link: "https://avangart.lv"
-  },
-  {
-    id: 4,
-    title: "Enzimi I Fermentatīvie produkti un ekoloģiskie risinājumi",
-    brand: "enzimi.lv",
-    displayLink: "https://enzimi.lv",
-    category: "Ekoloģija un Biotehnoloģijas",
-    tech: "React, Web katalogs",
-    description: "Enzimi ir fermentatīvo produktu un ekoloģisko risinājumu platforma. Mājaslapa nodrošina pārskatāmu produktu katalogu, tehniskos aprakstus un ērtu saziņu ar speciālistiem.",
-    placeholderColor: "from-emerald-500/10 to-slate-500/10",
-    image: "",
-    link: "https://enzimi.lv",
-    isPlaceholder: false
-  },
-  {
-    id: 5,
-    title: "Latvijas Restarts I Sabiedriskā un biznesa platforma",
-    brand: "Latvijas Restarts",
-    displayLink: "https://latvijasrestarts.lv",
-    category: "Bizness un Informācija",
-    tech: "React, Informatīvā platforma",
-    description: "Latvijas Restarts ir sabiedrisko un biznesa iniciatīvu platforma, kas nodrošina informācijas apmaiņu, rakstus un pieteikumu iesniegšanu ilgtspējīgai izaugsmei.",
-    placeholderColor: "from-blue-500/10 to-slate-500/10",
-    image: "",
-    link: "https://latvijasrestarts.lv",
-    isPlaceholder: false
-  },
-  {
-    id: 6,
-    title: "Demontāža 24 I Būvju un ēku demontāžas pakalpojumi",
-    brand: "Demontāža 24",
-    displayLink: "https://demontaza24.eu",
-    category: "Būvniecība un Demontāža",
-    tech: "React, Servisa platforma",
-    description: "Demontāža 24 ir specializēts būvju, ēku un metāla konstrukciju demontāžas pakalpojumu dienests. Mājaslapa nodrošina ātru pakalpojumu pieteikšanu un servisa aprakstus.",
-    placeholderColor: "from-amber-500/10 to-slate-500/10",
-    image: "",
-    link: "https://demontaza24.eu",
-    isPlaceholder: false
-  }
-];
-
-const EMPTY_PORTFOLIO_CARDS = [
-  {
-    id: 101,
-    title: "Tava Jaunā Mājaslapa",
-    subtitle: "Piesaki sava biznesa mājaslapas izstrādi un sasniedz klientus efektīvāk.",
-    description: "Šeit var atrasties Tava uzņēmuma jaunā un mūsdienīgā mājaslapa. Mēs izstrādāsim unikālu dizainu, kas piesaistīs klientus un veicinās pārdošanu. Piesaki savu projektu jau šodien un padari savu zīmolu pamanāmu digitālajā vidē.",
-    displayLink: "tavaprojekts.lv",
-    link: "/kontakti"
-  }
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Darbi() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { lang, t, getLocalizedPath } = useLanguage();
 
   useEffect(() => {
-    document.title = "Portfolio | Sageon Media";
-  }, []);
+    document.title = t.seo.portfolio.title;
+  }, [t.seo.portfolio.title]);
+
+  const portfolioCards = t.portfolioItems;
+
+  const emptyPortfolioCard = {
+    id: 101,
+    title: lang === "LV" ? "Tava Jaunā Mājaslapa" : lang === "EN" ? "Your New Website" : "Ваш новый сайт",
+    subtitle: lang === "LV" 
+      ? "Piesaki sava biznesa mājaslapas izstrādi un sasniedz klientus efektīvāk." 
+      : lang === "EN" 
+        ? "Apply for your business website development and reach customers effectively." 
+        : "Закажите разработку сайта для вашего бизнеса и привлекайте клиентов эффективнее.",
+    description: lang === "LV" 
+      ? "Šeit var atrasties Tava uzņēmuma jaunā un mūsdienīgā mājaslapa. Mēs izstrādāsim unikālu dizainu, kas piesaistīs klientus un veicinās pārdošanu. Piesaki savu projektu jau šodien un padari savu zīmolu pamanāmu digitālajā vidē." 
+      : lang === "EN" 
+        ? "Your company's modern new website can be here. We will build a unique design that attracts clients and boosts sales. Apply today!" 
+        : "Здесь может быть новый современный сайт вашей компании. Мы разработаем уникальный дизайн, который привлечет клиентов и увеличит продажи.",
+    displayLink: "tavaprojekts.lv",
+    link: getLocalizedPath("contact")
+  };
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
-        title="Portfolio | Sageon Media"
-        description="Mūsu neseno mājaslapu portfolio. Mūsdienīgs mājaslapas dizains, augsta ātrdarbība un Google meklētāja optimizācija."
+        title={t.seo.portfolio.title}
+        description={t.seo.portfolio.description}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "@id": "https://sageonmedia.eu/portfolio#webpage",
             "url": "https://sageonmedia.eu/portfolio",
-            "name": "Portfolio | Sageon Media",
-            "description": "Mūsu izstrādāto mājaslapu portfolio. Mūsdienīgs tīmekļa dizains, augsta ātrdarbība un Google meklētāja optimizācija.",
+            "name": t.seo.portfolio.title,
+            "description": t.seo.portfolio.description,
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {
@@ -123,7 +55,7 @@ export default function Darbi() {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Sākums",
+                "name": lang === "LV" ? "Sākums" : lang === "EN" ? "Home" : "Главная",
                 "item": "https://sageonmedia.eu"
               },
               {
@@ -150,16 +82,16 @@ export default function Darbi() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#18181b] border border-zinc-800 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase shadow-sm">
             <FolderGit2 className="h-3.5 w-3.5 text-[#BAFC50]" />
-            <span>Mūsu Portfolio</span>
+            <span>{t.nav.portfolio}</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
-            Mūsu <span className="text-[#BAFC50]">nesenie projekti</span>
+            {lang === "LV" ? <>Mūsu <span className="text-[#BAFC50]">nesenie projekti</span></> : lang === "EN" ? <>Our <span className="text-[#BAFC50]">Recent Projects</span></> : <>Наши <span className="text-[#BAFC50]">недавние проекты</span></>}
           </h1>
         </div>
 
         {/* Portfolio Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4">
-          {MOCK_PORTFOLIO_CARDS.map((card) => (
+          {portfolioCards.map((card) => (
             <PortfolioLaptopCard
               key={card.id}
               title={card.title}
@@ -172,18 +104,16 @@ export default function Darbi() {
             />
           ))}
 
-          {/* Empty/Placeholder laptops */}
-          {EMPTY_PORTFOLIO_CARDS.map((card) => (
-            <PortfolioLaptopCard
-              key={card.id}
-              title={card.title}
-              displayLink={card.displayLink}
-              link={card.link}
-              isPlaceholder={true}
-              subtitle={card.subtitle}
-              description={card.description}
-            />
-          ))}
+          {/* Empty/Placeholder laptop */}
+          <PortfolioLaptopCard
+            key={emptyPortfolioCard.id}
+            title={emptyPortfolioCard.title}
+            displayLink={emptyPortfolioCard.displayLink}
+            link={emptyPortfolioCard.link}
+            isPlaceholder={true}
+            subtitle={emptyPortfolioCard.subtitle}
+            description={emptyPortfolioCard.description}
+          />
         </div>
 
         {/* Informative Callout */}
@@ -192,15 +122,19 @@ export default function Darbi() {
             <Sparkles className="h-5 w-5 text-[#BAFC50]" />
           </div>
           <p className="text-sm md:text-base text-white font-bold tracking-tight">
-            Mēs izstrādājam unikālas un ātras mājaslapas. Sazinieties ar mums jau šodien!
+            {lang === "LV" 
+              ? "Mēs izstrādājam unikālas un ātras mājaslapas. Sazinieties ar mums jau šodien!" 
+              : lang === "EN" 
+                ? "We build unique and fast websites. Contact us today!" 
+                : "Мы создаем уникальные и быстрые сайты. Свяжитесь с нами сегодня!"}
           </p>
         </div>
 
         {/* Dynamic Contact Form for Pricing Proposal Request */}
         <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">
           <ContactForm 
-            title="Saņemt cenas piedāvājumu" 
-            subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem." 
+            title={lang === "LV" ? "Saņemt cenas piedāvājumu" : lang === "EN" ? "Get a Pricing Offer" : "Получить предложение по цене"} 
+            subtitle={t.contactForm.defaultSubtitle} 
           />
         </div>
 
@@ -212,11 +146,11 @@ export default function Darbi() {
                 onClick={() => setSelectedImage(null)}
                 className="absolute -top-10 right-0 text-white hover:text-[#BAFC50] transition-colors flex items-center gap-2 text-[11px] font-sans font-semibold uppercase tracking-widest cursor-pointer"
               >
-                Aizvērt <X className="h-5 w-5" />
+                {lang === "LV" ? "Aizvērt" : lang === "EN" ? "Close" : "Закрыть"} <X className="h-5 w-5" />
               </button>
               <img
                 src={selectedImage}
-                alt="Darba palielināts priekšskatījums"
+                alt="Preview"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-auto max-h-[80vh] object-contain border border-zinc-800"

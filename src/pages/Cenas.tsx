@@ -1,186 +1,33 @@
 import { useEffect } from "react";
-import { Check, Sparkles, MessageSquare } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageNavButtons from "../components/PageNavButtons";
 import ContactForm from "../components/ContactForm";
 import SEOHead from "../components/SEOHead";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Cenas() {
+  const { lang, t, getLocalizedPath } = useLanguage();
+
   useEffect(() => {
-    document.title = "Pakalpojumi & Cenas | Sageon Media";
-  }, []);
-  const pricingPlans = [
-    {
-      title: "Landing Page",
-      subtitle: "Vienas lapas mājaslapa vai reprezentācija",
-      price: "490",
-      period: "vienreizējs maksājums",
-      badge: "Populārs jauniem projektiem",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Vienas lapas mājaslapa līdz 5 sadaļām divās valodās",
-        "Viena attēla pievienošana katrā sadaļā",
-        "Viena hero attēla pievienošana mājaslapas augšdaļā",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde (papildus samaksa)",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Izstrādes laiks: 5-7 darba dienas"
-      ],
-      cta: "Pieteikt Landing lapu",
-      highlight: false
-    },
-    {
-      title: "Multi-page",
-      subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
-      price: "980",
-      period: "vienreizējs maksājums",
-      badge: "Labākā izvēle biznesam",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Mājaslapa līdz 8 lapām divās valodās",
-        "Attēlu pievienošana (kopā līdz 20 attēliem)",
-        "Galerijas pievienošana (papildus samaksa)",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
-        "Izstrādes laiks: 2-3 nedēļas"
-      ],
-      cta: "Pieteikt biznesa lapu",
-      highlight: true
-    },
-    {
-      title: "E-Komercija",
-      subtitle: "Profesionāls un pelnošs interneta veikals",
-      price: "1950",
-      period: "vienreizējs maksājums",
-      badge: "Pilna tirdzniecības sistēma",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Katalogs līdz 90 precēm divās valodās",
-        "Maksājumu sistēmas integrācija (Stripe, PayPal u.c.)",
-        "Attēlu pievienošana (skaits pēc vienošanās)",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
-        "Izstrādes laiks: 3-5 nedēļas"
-      ],
-      cta: "Pieteikt e-komercijas lapu",
-      highlight: false
-    },
-    {
-      title: "Uzturēšana",
-      subtitle: "Mēneša abonēšanas maksa",
-      price: "49",
-      period: "mēneša abonēšanas maksa",
-      badge: "Miers un drošība Jums",
-      features: [
-        "Satura izmaiņas līdz 1 stundai mēnesī",
-        "Mājaslapas ātrdarbības analīze",
-        "Search Console datu uzraudzība",
-        "Google Analytics datu analīze",
-        "Mājaslapas SSL sertifikāta uzraudzība",
-        "Tehnisko kļūdu novēršana",
-        "Konsultācijas un tehniskais atbalsts",
-        "Abonements atceļams jebkurā laikā"
-      ],
-      cta: "Pieteikt uzturēšanu",
-      highlight: false
-    },
-    {
-      title: "Google pakalpojumi",
-      subtitle: "Pilns Google rīku komplekts biznesam",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "Google rīki",
-      features: [
-        "Google Business Profile izveide vai konfigurācija",
-        "Google Search Console konfigurēšana",
-        "Google Analytics 4 konfigurēšana",
-        "Google Tag Manager integrācija",
-        "Google Maps integrācija mājaslapā",
-        "Sitemap.xml konfigurēšana",
-        "Robots.txt konfigurēšana",
-        "Domēna verifikācija Google pakalpojumos",
-        "Mājaslapas iesniegšana Google indeksācijai"
-      ],
-      cta: "Pieteikt Google pakalpojumus",
-      highlight: false
-    },
-    {
-      title: "Individuāli risinājumi",
-      subtitle: "Pielāgota funkcionalitāte pēc pieprasījuma",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "Pielāgota izstrāde",
-      features: [
-        "Pielāgotu funkciju izstrāde pēc klienta vajadzībām",
-        "Cenu kalkulatoru integrācija",
-        "Rezervāciju un kalendāru sistēmu integrācija",
-        "Daudzsoļu pieteikumu formas",
-        "Dokumentu augšupielādes izstrāde",
-        "Klientu portālu izstrāde",
-        "API integrācijas ar ārējām sistēmām",
-        "AI čatbotu un virtuālo asistentu integrācija",
-        "Citu individuālu risinājumu izstrāde pēc vienošanās"
-      ],
-      cta: "Pieteikt funkciju izstrādi",
-      highlight: false
-    },
-    {
-      title: "SEO optimizācija",
-      subtitle: "Organiskās meklēšanas optimizācija",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "SEO optimizācija",
-      features: [
-        "Atslēgvārdu izpēte galvenajām lapām",
-        "Meta virsrakstu optimizācija",
-        "Meta aprakstu optimizācija",
-        "Attēlu ALT atribūtu optimizācija",
-        "Canonical URL pārbaude",
-        "Sociālo tīklu metadatu optimizācija",
-        "Iekšējo saišu pārbaude un optimizācija",
-        "Pamata tehniskā SEO analīze",
-        "Mājaslapas ātrdarbības analīze"
-      ],
-      cta: "Pieteikt SEO optimizāciju",
-      highlight: false
-    }
-  ];
+    document.title = t.seo.services.title;
+  }, [t.seo.services.title]);
+
+  const pricingPlans = t.pricingPlans;
 
   return (
     <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
-        title="Pakalpojumi & Cenas | Sageon Media"
-        description="Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Sazinieties ar mums jau šodien."
+        title={t.seo.services.title}
+        description={t.seo.services.description}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "@id": "https://sageonmedia.eu/pakalpojumi#webpage",
             "url": "https://sageonmedia.eu/pakalpojumi",
-            "name": "Pakalpojumi & Cenas | Sageon Media",
-            "description": "Izvēlieties sev piemērotāko mājaslapu izstrādes un digitālo pakalpojumu plānu. Sazinieties ar mums jau šodien.",
+            "name": t.seo.services.title,
+            "description": t.seo.services.description,
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {
@@ -190,13 +37,13 @@ export default function Cenas() {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Sākums",
+                "name": lang === "LV" ? "Sākums" : lang === "EN" ? "Home" : "Главная",
                 "item": "https://sageonmedia.eu"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Pakalpojumi un Cenas",
+                "name": lang === "LV" ? "Pakalpojumi un Cenas" : lang === "EN" ? "Services & Pricing" : "Услуги и цены",
                 "item": "https://sageonmedia.eu/pakalpojumi"
               }
             ]
@@ -235,20 +82,24 @@ export default function Cenas() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#18181b] border border-zinc-800 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#BAFC50]" />
-            <span>Mūsu pakalpojumi</span>
+            <span>{t.nav.services}</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
-            Cenu <span className="text-[#BAFC50]">piedāvājumi</span>
+            {lang === "LV" ? <>Cenu <span className="text-[#BAFC50]">piedāvājumi</span></> : lang === "EN" ? <>Pricing <span className="text-[#BAFC50]">Offers</span></> : <>Пакеты <span className="text-[#BAFC50]">услуг</span></>}
           </h1>
           <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-light text-center">
-            Izvēlieties Jūsu biznesa mērķiem visatbilstošāko mājaslapas izstrādes vai uzturēšanas plānu. Nav nekādu slēptu izmaksu — visi nosacījumi ir skaidri un caurskatāmi.
+            {lang === "LV" 
+              ? "Izvēlieties Jūsu biznesa mērķiem visatbilstošāko mājaslapas izstrādes vai uzturēšanas plānu. Nav nekādu slēptu izmaksu — visi nosacījumi ir skaidri un caurskatāmi." 
+              : lang === "EN" 
+                ? "Choose the plan that best fits your business goals. No hidden costs — transparent terms." 
+                : "Выберите план, который лучше всего соответствует вашим бизнес-целям. Никаких скрытых платежей."}
           </p>
         </div>
 
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pricingPlans.map((plan, index) => {
-            const isBestChoice = plan.badge === "Labākā izvēle biznesam";
+            const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
             return (
               <div
                 key={index}
@@ -318,7 +169,7 @@ export default function Cenas() {
               {/* CTA Action Button */}
               <div className="p-6 pt-0">
                 <Link
-                  to="/kontakti"
+                  to={getLocalizedPath("contact")}
                   className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
                     plan.highlight
                       ? "bg-[#BAFC50] hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
@@ -336,8 +187,8 @@ export default function Cenas() {
         {/* Dynamic Contact Form for Pricing Proposal Request */}
         <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">
           <ContactForm 
-            title="Saņemt cenas piedāvājumu" 
-            subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem." 
+            title={lang === "LV" ? "Saņemt cenas piedāvājumu" : lang === "EN" ? "Get a Pricing Offer" : "Получить предложение по цене"} 
+            subtitle={t.contactForm.defaultSubtitle} 
           />
         </div>
 

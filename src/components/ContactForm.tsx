@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
-import { Send, CheckCircle2, Sparkles } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 interface ContactFormProps {
   title?: string;
@@ -10,11 +11,12 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ title, subtitle, hideHeader = false }: ContactFormProps) {
+  const { lang, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "Pieteikt biznesa lapu",
+    service: t.contactForm.serviceOptions.multi,
     message: ""
   });
   const [submitted, setSubmitted] = useState(false);
@@ -30,7 +32,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
     setTimeout(() => {
       setSubmitted(true);
       setLoading(false);
-      setFormData({ name: "", email: "", phone: "", service: "Pieteikt biznesa lapu", message: "" });
+      setFormData({ name: "", email: "", phone: "", service: t.contactForm.serviceOptions.multi, message: "" });
     }, 800);
   };
 
@@ -69,10 +71,10 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
         {!hideHeader && (
           <div className="text-center space-y-3">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight text-center drop-shadow-lg">
-              {title || "Pieteikt mājaslapas izstrādi vai konsultāciju"}
+              {title || t.contactForm.defaultTitle}
             </h2>
             <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-normal text-center drop-shadow">
-              {subtitle || "Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."}
+              {subtitle || t.contactForm.defaultSubtitle}
             </p>
           </div>
         )}
@@ -83,9 +85,15 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
             <div>
               <h3 className="text-lg font-bold uppercase tracking-tight text-white flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#BAFC50] animate-ping" />
-                Nosūtiet mums ziņu
+                {lang === "LV" ? "Nosūtiet mums ziņu" : lang === "EN" ? "Send us a message" : "Отправьте нам сообщение"}
               </h3>
-              <p className="text-xs text-zinc-400 font-light mt-1">Aizpildiet zemāk esošo formu un mēs sazināsimies ar Jums.</p>
+              <p className="text-xs text-zinc-400 font-light mt-1">
+                {lang === "LV" 
+                  ? "Aizpildiet zemāk esošo formu un mēs sazināsimies ar Jums." 
+                  : lang === "EN" 
+                    ? "Fill out the form below and we will contact you." 
+                    : "Заполните форму ниже, и мы свяжемся с Вами."}
+              </p>
             </div>
           </div>
 
@@ -98,15 +106,15 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#BAFC50]/10 text-[#BAFC50] border border-[#BAFC50]/30 mb-2">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-white uppercase tracking-tight">Paldies. Jūsu ziņa ir nosūtīta.</h3>
+              <h3 className="text-2xl font-bold text-white uppercase tracking-tight">{t.contactForm.successTitle}</h3>
               <p className="text-zinc-400 text-sm max-w-sm mx-auto font-light">
-                Mūsu komanda jau ir saņēmusi Jūsu pieteikumu un sazināsies ar Jums tuvākajā laikā.
+                {t.contactForm.successMessage}
               </p>
               <button
                 onClick={() => setSubmitted(false)}
                 className="mt-4 px-6 py-2.5 border border-zinc-700 hover:border-[#BAFC50] transition-colors text-xs font-semibold uppercase tracking-wider text-white hover:text-[#BAFC50] cursor-pointer rounded-xl shadow-sm"
               >
-                Sūtīt jaunu ziņu
+                {lang === "LV" ? "Sūtīt jaunu ziņu" : lang === "EN" ? "Send another message" : "Отправить еще сообщение"}
               </button>
             </motion.div>
           ) : (
@@ -115,7 +123,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                 {/* Vārds Input */}
                 <div className="space-y-2">
                   <label htmlFor="form-name" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                    Vārds <span className="text-[#BAFC50] font-bold">*</span>
+                    {t.contactForm.nameLabel} <span className="text-[#BAFC50] font-bold">*</span>
                   </label>
                   <input
                     type="text"
@@ -131,7 +139,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                 {/* E-pasts Input */}
                 <div className="space-y-2">
                   <label htmlFor="form-email" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                    E-pasts <span className="text-[#BAFC50] font-bold">*</span>
+                    {t.contactForm.emailLabel} <span className="text-[#BAFC50] font-bold">*</span>
                   </label>
                   <input
                     type="email"
@@ -147,7 +155,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                 {/* Tālrunis Input */}
                 <div className="space-y-2">
                   <label htmlFor="form-phone" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                    Tālrunis <span className="text-[#BAFC50] font-bold">*</span>
+                    {t.contactForm.phoneLabel} <span className="text-[#BAFC50] font-bold">*</span>
                   </label>
                   <input
                     type="tel"
@@ -161,10 +169,10 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                 </div>
               </div>
 
-              {/* Mājaslapas veids / Pakalpojuma izvēlne (Dropdown Select) */}
+              {/* Mājaslapas veids / Pakalpojuma izvēlne */}
               <div className="space-y-2">
                 <label htmlFor="form-service" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                  Izvēlieties pieteikumu vai pakalpojumu <span className="text-[#BAFC50] font-bold">*</span>
+                  {t.contactForm.serviceLabel} <span className="text-[#BAFC50] font-bold">*</span>
                 </label>
                 <select
                   id="form-service"
@@ -172,21 +180,18 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                   className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl cursor-pointer"
                 >
-                  <option value="Pieteikt Landing lapu">Pieteikt Landing lapu (Landing Page)</option>
-                  <option value="Pieteikt biznesa lapu">Pieteikt biznesa lapu (Multi-page)</option>
-                  <option value="Pieteikt e-komercijas lapu">Pieteikt e-komercijas lapu (E-Komercija)</option>
-                  <option value="Pieteikt uzturēšanu">Pieteikt uzturēšanu</option>
-                  <option value="Google pakalpojumi">Google pakalpojumi</option>
-                  <option value="Individuāli risinājumi biznesam">Individuāli risinājumi biznesam</option>
-                  <option value="SEO optimizācija">SEO optimizācija</option>
-                  <option value="Cita iecere / Konsultācija">Cita iecere / Konsultācija</option>
+                  <option value={t.contactForm.serviceOptions.landing}>{t.contactForm.serviceOptions.landing}</option>
+                  <option value={t.contactForm.serviceOptions.multi}>{t.contactForm.serviceOptions.multi}</option>
+                  <option value={t.contactForm.serviceOptions.ecommerce}>{t.contactForm.serviceOptions.ecommerce}</option>
+                  <option value={t.contactForm.serviceOptions.maintenance}>{t.contactForm.serviceOptions.maintenance}</option>
+                  <option value={t.contactForm.serviceOptions.other}>{t.contactForm.serviceOptions.other}</option>
                 </select>
               </div>
 
               {/* Ziņa Input */}
               <div className="space-y-2">
                 <label htmlFor="form-message" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                  Ziņa <span className="text-[#BAFC50] font-bold">*</span>
+                  {t.contactForm.messageLabel} <span className="text-[#BAFC50] font-bold">*</span>
                 </label>
                 <textarea
                   id="form-message"
@@ -194,7 +199,13 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Aprakstiet savu projektu, mērķus un vēlamo izstrādes laiku..."
+                  placeholder={
+                    lang === "LV" 
+                      ? "Aprakstiet savu projektu, mērķus un vēlamo izstrādes laiku..."
+                      : lang === "EN"
+                        ? "Describe your project, goals, and desired timeline..."
+                        : "Опишите ваш проект, цели и желаемые сроки..."
+                  }
                   className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl placeholder-zinc-500 resize-none"
                 />
               </div>
@@ -206,7 +217,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                   disabled={loading}
                   className="w-full md:w-auto px-10 py-4 bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold tracking-widest text-xs uppercase transition-all duration-300 rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(186,252,80,0.5)] flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? "Sūta..." : "Sūtīt ziņu"}
+                  {loading ? t.contactForm.submittingBtn : t.contactForm.submitBtn}
                   <Send className="h-4 w-4 stroke-[2.5]" />
                 </button>
               </div>

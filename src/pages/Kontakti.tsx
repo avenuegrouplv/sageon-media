@@ -3,24 +3,28 @@ import { MapPin, MessageSquare, Clock } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 import PageNavButtons from "../components/PageNavButtons";
 import SEOHead from "../components/SEOHead";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Kontakti() {
+  const { lang, t } = useLanguage();
+
   useEffect(() => {
-    document.title = "Kontakti | Sageon Media";
-  }, []);
+    document.title = t.seo.contact.title;
+  }, [t.seo.contact.title]);
+
   return (
     <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
       <SEOHead
-        title="Kontakti | Sageon Media"
-        description="Sazinies ar Sageon Media komandu, lai pieteiktu biznesa mājaslapas izstrādi, saņemtu bezmaksas konsultāciju vai uzdotu jautājumus par citiem digitālajiem pakalpojumiem."
+        title={t.seo.contact.title}
+        description={t.seo.contact.description}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             "@id": "https://sageonmedia.eu/kontakti#webpage",
             "url": "https://sageonmedia.eu/kontakti",
-            "name": "Kontakti | Sageon Media",
-            "description": "Sazinies ar Sageon Media komandu, lai pieteiktu biznesa mājaslapas izstrādi, saņemtu bezmaksas konsultāciju vai uzdotu jautājumus par citiem digitālajiem pakalpojumiem.",
+            "name": t.seo.contact.title,
+            "description": t.seo.contact.description,
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
           },
           {

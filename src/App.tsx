@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 import SmoothScroll from "./components/SmoothScroll";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 // Core Home page (hero view loads instantly)
 import Home from "./pages/Home";
@@ -26,7 +27,7 @@ function PageLoader() {
 
 function AppContent() {
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/ru";
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#000000] text-white transition-colors duration-300 relative overflow-x-hidden">
@@ -40,6 +41,7 @@ function AppContent() {
       <main id="main-content" className={`flex-1 relative z-10 ${!isHome ? "pt-[80px]" : ""}`}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            {/* LV Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Darbi />} />
             <Route path="/darbi" element={<Darbi />} />
@@ -48,6 +50,23 @@ function AppContent() {
             <Route path="/buj" element={<Buj />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/kontakti" element={<Kontakti />} />
+
+            {/* EN Routes */}
+            <Route path="/en" element={<Home />} />
+            <Route path="/en/portfolio" element={<Darbi />} />
+            <Route path="/en/services" element={<Cenas />} />
+            <Route path="/en/faq" element={<Buj />} />
+            <Route path="/en/blog" element={<Blogs />} />
+            <Route path="/en/contact" element={<Kontakti />} />
+
+            {/* RU Routes */}
+            <Route path="/ru" element={<Home />} />
+            <Route path="/ru/portfolio" element={<Darbi />} />
+            <Route path="/ru/uslugi" element={<Cenas />} />
+            <Route path="/ru/voprosy" element={<Buj />} />
+            <Route path="/ru/blog" element={<Blogs />} />
+            <Route path="/ru/kontakty" element={<Kontakti />} />
+
             {/* Fallback route back to home */}
             <Route path="*" element={<Home />} />
           </Routes>
@@ -66,11 +85,13 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      <SmoothScroll>
-        {/* Automatically reset scroll position to top on route change */}
-        <ScrollToTop />
-        <AppContent />
-      </SmoothScroll>
+      <LanguageProvider>
+        <SmoothScroll>
+          {/* Automatically reset scroll position to top on route change */}
+          <ScrollToTop />
+          <AppContent />
+        </SmoothScroll>
+      </LanguageProvider>
     </Router>
   );
 }

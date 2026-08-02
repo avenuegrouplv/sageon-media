@@ -33,8 +33,7 @@ import CtaButton from "../components/CtaButton";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
 import SEOHead from "../components/SEOHead";
-import { FAQ_DATA } from "./Buj";
-import { BLOG_POSTS } from "./Blogs";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const PORTFOLIO_ITEMS = [
   {
@@ -114,17 +113,20 @@ function LazyLoadSection({ children }: { children: ReactNode }) {
 }
 
 export default function Home() {
+  const { lang, t, getLocalizedPath } = useLanguage();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "Sageon Media | Biznesa mājaslapu izstrāde un digitālie risinājumi";
-  }, []);
+    document.title = t.seo.home.title;
+  }, [t.seo.home.title]);
 
-  // Take first 4 FAQ items for the Home page as requested
-  const homeFaqs = FAQ_DATA.slice(0, 4);
+  // Take first 4 FAQ items for the Home page
+  const homeFaqs = (t.faqItems || []).slice(0, 4);
+  const blogPostsList = t.blogPosts || [];
+  const portfolioItemsList = t.portfolioItems || PORTFOLIO_ITEMS;
 
   // Infinite Carousel State
-  const [activeIndex, setActiveIndex] = useState(BLOG_POSTS.length);
+  const [activeIndex, setActiveIndex] = useState(blogPostsList.length || 3);
   const [disableTransition, setDisableTransition] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
@@ -143,7 +145,7 @@ export default function Home() {
 
   const handleTransitionEnd = (e: TransitionEvent) => {
     if (e.target !== e.currentTarget) return;
-    const total = BLOG_POSTS.length;
+    const total = blogPostsList.length;
     if (activeIndex >= 2 * total) {
       setDisableTransition(true);
       setActiveIndex((prev) => prev - total);
@@ -256,177 +258,26 @@ export default function Home() {
     }
   };
 
-  const pricingPlans = [
-    {
-      title: "Landing Page",
-      subtitle: "Vienas lapas mājaslapa vai reprezentācija",
-      price: "490",
-      period: "vienreizējs maksājums",
-      badge: "Populārs jauniem projektiem",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Vienas lapas mājaslapa līdz 5 sadaļām divās valodās",
-        "Viena attēla pievienošana katrā sadaļā",
-        "Viena hero attēla pievienošana mājaslapas augšdaļā",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde (papildus samaksa)",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Izstrādes laiks: 5-7 darba dienas"
-      ],
-      cta: "Pieteikt Landing lapu",
-      highlight: false,
-      icon: <Zap className="h-5 w-5 text-amber-500" />
-    },
-    {
-      title: "Multi-page",
-      subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
-      price: "980",
-      period: "vienreizējs maksājums",
-      badge: "Labākā izvēle biznesam",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Mājaslapa līdz 8 lapām divās valodās",
-        "Attēlu pievienošana (kopā līdz 20 attēliem)",
-        "Galerijas pievienošana (papildus samaksa)",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
-        "Izstrādes laiks: 2-3 nedēļas"
-      ],
-      cta: "Pieteikt biznesa lapu",
-      highlight: true,
-      icon: <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-    },
-    {
-      title: "E-Komercija",
-      subtitle: "Profesionāls un pelnošs interneta veikals",
-      price: "1950",
-      period: "vienreizējs maksājums",
-      badge: "Pilna tirdzniecības sistēma",
-      features: [
-        "Unikāls UI/UX dizains",
-        "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Katalogs līdz 90 precēm divās valodās",
-        "Maksājumu sistēmas integrācija (Stripe, PayPal u.c.)",
-        "Attēlu pievienošana (skaits pēc vienošanās)",
-        "WhatsApp saziņas integrācija",
-        "Kontaktformas integrācija",
-        "Sociālo tīklu integrācija",
-        "Pamata SEO optimizācija",
-        "Search Console pieslēgšana",
-        "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
-        "Izstrādes laiks: 3-5 nedēļas"
-      ],
-      cta: "Pieteikt e-komercijas lapu",
-      highlight: false,
-      icon: <Sparkles className="h-5 w-5 text-purple-500" />
-    },
-    {
-      title: "Uzturēšana",
-      subtitle: "Mēneša abonēšanas maksa",
-      price: "49",
-      period: "mēneša abonēšanas maksa",
-      badge: "Miers un drošība Jums",
-      features: [
-        "Satura izmaiņas līdz 1 stundai mēnesī",
-        "Mājaslapas ātrdarbības analīze",
-        "Search Console datu uzraudzība",
-        "Google Analytics datu analīze",
-        "Mājaslapas SSL sertifikāta uzraudzība",
-        "Tehnisko kļūdu novēršana",
-        "Konsultācijas un tehniskais atbalsts",
-        "Abonements atceļams jebkurā laikā"
-      ],
-      cta: "Pieteikt uzturēšanu",
-      highlight: false,
-      icon: <ShieldCheck className="h-5 w-5 text-blue-500" />
-    },
-    {
-      title: "Google pakalpojumi",
-      subtitle: "Pilns Google rīku komplekts biznesam",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "Google rīki",
-      features: [
-        "Google Business Profile izveide vai konfigurācija",
-        "Google Search Console konfigurēšana",
-        "Google Analytics 4 konfigurēšana",
-        "Google Tag Manager integrācija",
-        "Google Maps integrācija mājaslapā",
-        "Sitemap.xml konfigurēšana",
-        "Robots.txt konfigurēšana",
-        "Domēna verifikācija Google pakalpojumos",
-        "Mājaslapas iesniegšana Google indeksācijai"
-      ],
-      cta: "Pieteikt Google pakalpojumus",
-      highlight: false,
-      icon: <Globe className="h-5 w-5 text-emerald-500" />
-    },
-    {
-      title: "Individuāli risinājumi",
-      subtitle: "Pielāgota funkcionalitāte pēc pieprasījuma",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "Pielāgota izstrāde",
-      features: [
-        "Pielāgotu funkciju izstrāde pēc klienta vajadzībām",
-        "Cenu kalkulatoru integrācija",
-        "Rezervāciju un kalendāru sistēmu integrācija",
-        "Daudzsoļu pieteikumu formas",
-        "Dokumentu augšupielādes izstrāde",
-        "Klientu portālu izstrāde",
-        "API integrācijas ar ārējām sistēmām",
-        "AI čatbotu un virtuālo asistentu integrācija",
-        "Citu individuālu risinājumu izstrāde pēc vienošanās"
-      ],
-      cta: "Pieteikt funkciju izstrādi",
-      highlight: false,
-      icon: <Settings className="h-5 w-5 text-[#BAFC50]" />
-    },
-    {
-      title: "SEO optimizācija",
-      subtitle: "Organiskās meklēšanas optimizācija",
-      price: "",
-      period: "Pēc vienošanās",
-      badge: "SEO optimizācija",
-      features: [
-        "Atslēgvārdu izpēte galvenajām lapām",
-        "Meta virsrakstu optimizācija",
-        "Meta aprakstu optimizācija",
-        "Attēlu ALT atribūtu optimizācija",
-        "Canonical URL pārbaude",
-        "Sociālo tīklu metadatu optimizācija",
-        "Iekšējo saišu pārbaude un optimizācija",
-        "Pamata tehniskā SEO analīze",
-        "Mājaslapas ātrdarbības analīze"
-      ],
-      cta: "Pieteikt SEO optimizāciju",
-      highlight: false,
-      icon: <Search className="h-5 w-5 text-amber-400" />
-    }
+  const planIcons = [
+    <Zap className="h-5 w-5 text-amber-500" />,
+    <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    <Sparkles className="h-5 w-5 text-purple-500" />,
+    <ShieldCheck className="h-5 w-5 text-blue-500" />,
+    <Globe className="h-5 w-5 text-emerald-500" />,
+    <Settings className="h-5 w-5 text-[#BAFC50]" />,
+    <Search className="h-5 w-5 text-amber-400" />
   ];
+
+  const pricingPlans = (t.pricingPlans || []).map((plan, idx) => ({
+    ...plan,
+    icon: planIcons[idx % planIcons.length]
+  }));
 
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-hidden">
       <SEOHead
-        title="Sageon Media | Biznesa mājaslapu izstrāde un digitālie risinājumi"
-        description="Sageon Media piedāvā profesionālu biznesa mājaslapu izstrādi, adaptīvu dizainu, kā arī SEO optimizāciju jūsu biznesa izaugsmei."
+        title={t.seo.home.title}
+        description={t.seo.home.description}
         schema={[
           {
             "@context": "https://schema.org",
@@ -639,7 +490,7 @@ export default function Home() {
                     
                     <div className="mt-5">
                       <Link
-                        to="/kontakti"
+                        to={getLocalizedPath("contact")}
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold text-xs uppercase tracking-wider transition-colors duration-300 shadow-md shadow-[#BAFC50]/20"
                       >
                         <span>Pieteikties konsultācijai</span>
@@ -1153,7 +1004,7 @@ export default function Home() {
               </div>
               <CtaButton
                 text="Uzzināt vairāk"
-                to="/pakalpojumi"
+                to={getLocalizedPath('services')}
               />
             </div>
           </div>
@@ -1188,7 +1039,7 @@ export default function Home() {
                   transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
                 }}
               >
-                {[...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS].map((item, index) => (
+                {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
                   <div 
                     key={`${item.id}-${index}`} 
                     className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col justify-between"
@@ -1227,7 +1078,7 @@ export default function Home() {
               </div>
               <CtaButton
                 text="Skatīt visus"
-                to="/portfolio"
+                to={getLocalizedPath('portfolio')}
               />
             </div>
 
@@ -1300,8 +1151,8 @@ export default function Home() {
                 Neatradi atbildi uz savu jautājumu? Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <CtaButton text="Lasīt citus BUJ" to="/buj" />
-                <CtaButton text="Uzdod savu jautājumu" to="/kontakti" />
+                <CtaButton text="Lasīt citus BUJ" to={getLocalizedPath('faq')} />
+                <CtaButton text="Uzdod savu jautājumu" to={getLocalizedPath('contact')} />
               </div>
             </div>
 
@@ -1341,13 +1192,13 @@ export default function Home() {
                   transform: `translateX(calc(-${activeIndex} * (100% / var(--visible-count))))`,
                 }}
               >
-                {[...BLOG_POSTS, ...BLOG_POSTS, ...BLOG_POSTS].map((post, index) => (
+                {[...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
                   <div 
                     key={`${post.id}-${index}`} 
                     className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex"
                   >
                     <Link
-                      to={`/blogs?id=${post.id}`}
+                      to={`${getLocalizedPath('blog')}?id=${post.id}`}
                       className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
                     >
                       <div>
@@ -1402,7 +1253,7 @@ export default function Home() {
               </div>
               <CtaButton
                 text="Lasīt blogu"
-                to="/blogs"
+                to={getLocalizedPath('blog')}
               />
             </div>
           </div>

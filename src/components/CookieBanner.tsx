@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { Cookie } from "lucide-react";
 import CookieModal from "./CookieModal";
 import PrivacyModal from "./PrivacyModal";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const { lang, t } = useLanguage();
 
   useEffect(() => {
     // Show cookie banner every time the page reloads
@@ -48,15 +50,15 @@ export default function CookieBanner() {
                 <div className="space-y-1 text-left">
                   <h4 className="font-bold text-white text-xs sm:text-sm font-sans tracking-tight flex items-center gap-2">
                     <Cookie className="h-4 w-4 text-[#BAFC50] sm:hidden" />
-                    <span>Sīkdatņu paziņojums</span>
+                    <span>{lang === "LV" ? "Sīkdatņu paziņojums" : lang === "EN" ? "Cookie Notice" : "Уведомление о cookie"}</span>
                   </h4>
                   <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-                    Mēs izmantojam sīkdatnes, lai uzlabotu Jūsu lietošanas pieredzi, nodrošinātu vietnes darbību un analizētu apmeklētāju plūsmu. Jūs varat piekrist visām sīkdatnēm vai pielāgot savas izvēles. Vairāk informācijas mūsu{" "}
+                    {t.cookies.bannerText}{" "}
                     <button
                       onClick={() => setIsPrivacyOpen(true)}
-                      className="text-zinc-300 font-light cursor-pointer"
+                      className="text-[#BAFC50] font-normal underline cursor-pointer"
                     >
-                      Privātuma politikā
+                      {t.footer.privacy}
                     </button>.
                   </p>
                 </div>
@@ -69,7 +71,7 @@ export default function CookieBanner() {
                   onClick={handleAcceptAll}
                   className="px-5 py-2 sm:py-2.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-bold text-xs sm:text-sm tracking-wide rounded-full shadow-md hover:shadow-[#BAFC50]/20 transition-all duration-200 cursor-pointer active:scale-95"
                 >
-                  Piekrītu visām
+                  {t.cookies.acceptBtn}
                 </button>
 
                 {/* Button 2: Pielāgot */}
@@ -77,7 +79,7 @@ export default function CookieBanner() {
                   onClick={() => setIsModalOpen(true)}
                   className="px-5 py-2 sm:py-2.5 bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-xs sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95"
                 >
-                  Pielāgot
+                  {t.cookies.detailsBtn}
                 </button>
 
                 {/* Button 3: Noraidīt */}
@@ -85,7 +87,7 @@ export default function CookieBanner() {
                   onClick={handleDeclineOptional}
                   className="px-5 py-2 sm:py-2.5 bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-xs sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95"
                 >
-                  Noraidīt
+                  {t.cookies.declineBtn}
                 </button>
               </div>
 
