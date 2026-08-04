@@ -138,7 +138,9 @@ export default function PortfolioLaptopCard({
                   decoding="async"
                   referrerPolicy="no-referrer"
                   className={`w-full h-full object-cover object-top ${
-                    isVelobiedriba ? "scale-[1.05] origin-top" : ""
+                    isVelobiedriba 
+                      ? "scale-[1.05] origin-top" 
+                      : ""
                   }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-75 pointer-events-none" />
@@ -274,11 +276,8 @@ export default function PortfolioLaptopCard({
               <Clock className="h-7 w-7 text-[#BAFC50]" />
             </div>
 
-            {/* Title & Message */}
-            <div className="space-y-2.5">
-              <h3 className="text-xl font-bold text-white tracking-tight">
-                {lang === "EN" ? "Website in Development" : lang === "RU" ? "Сайт в разработке" : "Mājaslapa izstrādes stadijā"}
-              </h3>
+            {/* Message */}
+            <div>
               <p className="text-sm text-zinc-300 leading-relaxed font-normal">
                 {lang === "EN" 
                   ? "This website is currently in development and has not been connected to a domain yet." 

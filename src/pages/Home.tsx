@@ -227,8 +227,14 @@ export default function Home() {
   };
 
   // Infinite Portfolio Carousel State
-  const [portfolioIndex, setPortfolioIndex] = useState(6);
+  const totalPortfolioCount = portfolioItemsList.length;
+  const [portfolioIndex, setPortfolioIndex] = useState(totalPortfolioCount);
   const [disablePortfolioTransition, setDisablePortfolioTransition] = useState(false);
+
+  // Sync portfolioIndex if language or portfolio length changes
+  useEffect(() => {
+    setPortfolioIndex(portfolioItemsList.length);
+  }, [portfolioItemsList.length]);
 
   useEffect(() => {
     if (disablePortfolioTransition) {
@@ -241,12 +247,13 @@ export default function Home() {
 
   const handlePortfolioTransitionEnd = (e: TransitionEvent) => {
     if (e.target !== e.currentTarget) return;
-    if (portfolioIndex >= 12) {
+    const total = portfolioItemsList.length;
+    if (portfolioIndex >= 2 * total) {
       setDisablePortfolioTransition(true);
-      setPortfolioIndex(6);
-    } else if (portfolioIndex <= 5) {
+      setPortfolioIndex((prev) => prev - total);
+    } else if (portfolioIndex < total) {
       setDisablePortfolioTransition(true);
-      setPortfolioIndex(11);
+      setPortfolioIndex((prev) => prev + total);
     }
   };
 
