@@ -34,7 +34,7 @@ export default function Kontakti() {
             "name": "Sageon Media",
             "url": "https://sageonmedia.eu",
             "logo": "https://sageonmedia.eu/Logo-new.webp",
-            "email": "sageon.media@gmail.com",
+            "email": "info@sageonmedia.eu",
             "telephone": "+371 26739899",
             "priceRange": "$$",
             "knowsLanguage": ["lv", "en", "ru"],
@@ -109,7 +109,7 @@ export default function Kontakti() {
               Lokācija & Sadarbība
             </h3>
             <p className="leading-relaxed">
-              Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>. Nepieciešamības gadījumā organizējam video zvanus (Google Meet / Zoom), lai precizētu detaļas.
+              Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>.
             </p>
           </div>
         </div>

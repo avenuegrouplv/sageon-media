@@ -22,6 +22,7 @@ export interface PortfolioItem {
   image: string;
   link: string;
   isPlaceholder: boolean;
+  tags?: string[];
 }
 
 export interface PricingPlan {
@@ -155,6 +156,7 @@ export interface Translations {
   };
   cookies: {
     bannerText: string;
+    privacyLinkText: string;
     acceptBtn: string;
     declineBtn: string;
     detailsBtn: string;

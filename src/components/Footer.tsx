@@ -79,8 +79,8 @@ export default function Footer() {
               <span className="text-slate-600 font-light">|</span>
               <p className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
-                <a href="mailto:sageon.media@gmail.com" className="hover:text-[#BAFC50] transition-colors font-medium text-slate-200">
-                  sageon.media@gmail.com
+                <a href="mailto:info@sageonmedia.eu" className="hover:text-[#BAFC50] transition-colors font-medium text-slate-200">
+                  info@sageonmedia.eu
                 </a>
               </p>
             </div>

@@ -11,12 +11,12 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sageonmedia.eu/portfolio</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/portfolio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/portfolio" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/portfolio" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/portfolio" />
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://sageonmedia.eu/projekti</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/projekti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/projects" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/proekty" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/projekti" />
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ShieldCheck, Mail, Phone, ExternalLink } from "lucide-react";
 
@@ -7,10 +8,28 @@ interface PrivacyModalProps {
 }
 
 export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.stop();
+      }
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        if (lenis) {
+          lenis.start();
+        }
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div data-lenis-prevent className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -27,6 +46,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            data-lenis-prevent
             className="relative w-full max-w-2xl bg-[#121215] border border-zinc-800 rounded-2xl p-6 sm:p-8 text-white shadow-2xl z-10 max-h-[85vh] flex flex-col font-sans"
           >
             {/* Header */}
@@ -55,7 +75,11 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
             </div>
 
             {/* Scrollable Body Content */}
-            <div className="py-5 overflow-y-auto space-y-6 pr-2 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed flex-1 scrollbar-thin scrollbar-thumb-zinc-700">
+            <div 
+              data-lenis-prevent
+              onWheel={(e) => e.stopPropagation()}
+              className="py-5 overflow-y-auto space-y-6 pr-2 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed flex-1 scrollbar-thin scrollbar-thumb-zinc-700"
+            >
               
               {/* Section 1 */}
               <div className="space-y-2.5">
@@ -63,10 +87,10 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                   <span className="text-[#BAFC50]">1.</span> Ievads
                 </h4>
                 <p>
-                  Datu pārzinis un vietnes administrators SIA &quot;Avenue Group&quot;, Reģ.Nr. 40203647938, juridiskā adrese Rīga, Brīvības gatve 386/2-5A (turpmāk – &quot;mēs&quot;, &quot;mūsu&quot; vai &quot;uzņēmums&quot;) apņemas aizsargāt un respektēt Jūsu privātumu. Šī privātuma politika skaidro, kā mēs apkopojam, izmantojam, uzglabājam un aizsargājam Jūsu personas datus saskaņā ar Vispārīgo datu aizsardzības regulu (GDPR) un Latvijas Republikas tiesību aktiem.
+                  Datu pārzinis un vietnes administrators SIA &quot;XXXXXX&quot;, reģ. Nr. XXXXXXX, juridiskā adrese: Rīga, XXXXXXX (turpmāk – &quot;mēs&quot;, &quot;mūsu&quot; vai &quot;Uzņēmums&quot;), apņemas aizsargāt un ievērot Jūsu tiesības uz privātumu. Šajā Privātuma politikā ir skaidrots, kā mēs apkopojam, izmantojam, glabājam un aizsargājam Jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (Vispārīgā datu aizsardzības regula jeb GDPR) un Latvijas Republikas piemērojamajiem normatīvajiem aktiem.
                 </p>
                 <p>
-                  Izmantojot mūsu mājas lapu un pakalpojumus, Jūs piekrītat šajā politikā aprakstītajai datu vākšanai un izmantošanai.
+                  Lūdzam iepazīties ar šo Privātuma politiku pirms mūsu mājaslapas un pakalpojumu izmantošanas. Izmantojot mūsu mājaslapu un pakalpojumus, Jūs apliecināt, ka esat iepazinies ar šo Privātuma politiku.
                 </p>
 
                 <div className="p-4 bg-zinc-900/80 border border-zinc-800 rounded-xl space-y-2 mt-3">
@@ -74,9 +98,9 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                     Kontaktinformācija:
                   </h5>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-xs text-zinc-300">
-                    <a href="mailto:sageon.media@gmail.com" className="flex items-center gap-2 hover:text-[#BAFC50] transition-colors">
+                    <a href="mailto:info@sageonmedia.eu" className="flex items-center gap-2 hover:text-[#BAFC50] transition-colors">
                       <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
-                      <span>E-pasts: sageon.media@gmail.com</span>
+                      <span>E-pasts: info@sageonmedia.eu</span>
                     </a>
                     <a href="tel:26739899" className="flex items-center gap-2 hover:text-[#BAFC50] transition-colors">
                       <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />

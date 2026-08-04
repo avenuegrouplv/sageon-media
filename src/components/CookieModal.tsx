@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ExternalLink, Cookie, Mail, Check, ShieldCheck } from "lucide-react";
 
@@ -12,6 +12,24 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
   const [analytics, setAnalytics] = useState(true);
   const [functional, setFunctional] = useState(true);
   const [marketing, setMarketing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.stop();
+      }
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        if (lenis) {
+          lenis.start();
+        }
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
 
   const handleSave = (customAnalytics: boolean, customFunctional: boolean, customMarketing: boolean) => {
     localStorage.setItem(
@@ -30,7 +48,7 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div data-lenis-prevent className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -47,6 +65,7 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            data-lenis-prevent
             className="relative w-full max-w-2xl bg-[#121215] border border-zinc-800 rounded-2xl p-6 sm:p-8 text-white shadow-2xl z-10 max-h-[88vh] flex flex-col font-sans"
           >
             {/* Header */}
@@ -75,7 +94,11 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
             </div>
 
             {/* Scrollable Body Content */}
-            <div className="py-5 overflow-y-auto space-y-6 pr-2 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed flex-1 scrollbar-thin scrollbar-thumb-zinc-700">
+            <div 
+              data-lenis-prevent
+              onWheel={(e) => e.stopPropagation()}
+              className="py-5 overflow-y-auto space-y-6 pr-2 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed flex-1 scrollbar-thin scrollbar-thumb-zinc-700"
+            >
               
               {/* Section 1: Kas ir sīkdatnes? */}
               <div className="space-y-2">
@@ -270,10 +293,10 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
                   <p className="text-xs text-zinc-300">
                     Ja Jums ir jautājumi par mūsu sīkdatņu politiku, lūdzu, sazinieties ar mums:{" "}
                     <a
-                      href="mailto:sageon.media@gmail.com"
+                      href="mailto:info@sageonmedia.eu"
                       className="text-[#BAFC50] hover:underline font-medium"
                     >
-                      sageon.media@gmail.com
+                      info@sageonmedia.eu
                     </a>
                   </p>
                 </div>

@@ -43,7 +43,7 @@ export default function Cenas() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": lang === "LV" ? "Pakalpojumi un Cenas" : lang === "EN" ? "Services & Pricing" : "Услуги и цены",
+                "name": lang === "LV" ? "Pakalpojumi un Cenas" : lang === "EN" ? "Services & Pricing" : "Услуги",
                 "item": "https://sageonmedia.eu/pakalpojumi"
               }
             ]
@@ -85,7 +85,7 @@ export default function Cenas() {
             <span>{t.nav.services}</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
-            {lang === "LV" ? <>Cenu <span className="text-[#BAFC50]">piedāvājumi</span></> : lang === "EN" ? <>Pricing <span className="text-[#BAFC50]">Offers</span></> : <>Пакеты <span className="text-[#BAFC50]">услуг</span></>}
+            {lang === "LV" ? <>Cenu <span className="text-[#BAFC50]">piedāvājumi</span></> : lang === "EN" ? <>Pricing <span className="text-[#BAFC50]">Offers</span></> : <>Ценовые <span className="text-[#BAFC50]">предложения</span></>}
           </h1>
           <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-light text-center">
             {lang === "LV" 
@@ -183,6 +183,15 @@ export default function Cenas() {
           );
         })}
         </div>
+
+        {/* VAT Notice */}
+        <p className="text-center text-xs text-zinc-400/80 font-light select-text -mt-9 mb-8">
+          {lang === "LV" 
+            ? "Maksājumiem PVN šobrīd netiek piemērots" 
+            : lang === "EN" 
+              ? "VAT is currently not applied to payments" 
+              : "НДС в настоящее время к платежам не применяется"}
+        </p>
 
         {/* Dynamic Contact Form for Pricing Proposal Request */}
         <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">

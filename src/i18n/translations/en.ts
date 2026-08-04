@@ -3,7 +3,7 @@ import { Translations } from "../types";
 export const enTranslations: Translations = {
   nav: {
     home: "Home",
-    portfolio: "Portfolio",
+    portfolio: "Projects",
     services: "Services",
     faq: "FAQ",
     blog: "Blog",
@@ -16,8 +16,8 @@ export const enTranslations: Translations = {
       description: "Sageon Media offers high-performance business website development, modern UI/UX design, and SEO optimization to scale your business.",
     },
     portfolio: {
-      title: "Portfolio | Sageon Media",
-      description: "Explore our recent web development portfolio. Modern website design, fast loading speeds, and Google search optimization.",
+      title: "Projects | Sageon Media",
+      description: "Explore our recent client projects. Modern website design, fast loading speeds, and Google search optimization.",
     },
     services: {
       title: "Services & Pricing | Sageon Media",
@@ -49,7 +49,7 @@ export const enTranslations: Translations = {
     portfolioTitle: "Featured Projects & Success Stories",
     portfolioSubtitle: "Discover our latest client projects that helped businesses achieve new growth milestones and elevate their brand presence.",
     portfolioViewAll: "View Full Portfolio",
-    whyChooseUsTitle: "Why Choose Sageon Media?",
+    whyChooseUsTitle: "Clear Strategy",
     whyChooseUsSubtitle: "We don't just build visually attractive websites. We create thoughtful digital architecture that attracts visitors and turns them into paying clients.",
     pillars: [
       {
@@ -155,10 +155,11 @@ export const enTranslations: Translations = {
     cookies: "Cookie Policy",
   },
   cookies: {
-    bannerText: "Our website uses cookies to ensure the best browsing experience and analytics performance.",
+    bannerText: "We use cookies to improve your user experience, ensure site operation, and analyze visitor traffic. You can accept all cookies or customize your choices. More information in our",
+    privacyLinkText: "Privacy Policy.",
     acceptBtn: "Accept All",
-    declineBtn: "Essential Only",
-    detailsBtn: "More Information",
+    declineBtn: "Decline",
+    detailsBtn: "Customize",
   },
   portfolioItems: [
     {
@@ -166,60 +167,77 @@ export const enTranslations: Translations = {
       title: "Travel More and Earn More",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
-      description: "Travel with Martins is a personal travel blog and consultation platform. It guides users in planning unforgettable trips with practical advice and inspiring guidebooks. Built with a rich visual layout and simple booking requests.",
+      description: "This is a personal travel and consultation website in the tourism sector, structured with travel destinations, practical guides, booking requests, and travel tips. Within the project, we developed a unique design, custom brand logo, engaging service descriptions, and clear content architecture.",
       image: "/Travel-with-Martins-portfolio.webp",
       link: "https://travelwithmartins.com",
-      isPlaceholder: false
+      isPlaceholder: false,
+      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Destination Guides"]
     },
     {
       id: 2,
-      title: "Commercial & Residential Property Management | Legal Governance",
+      title: "Commercial Property Management | Legal Governance",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
-      description: "Avenue Group is a real estate management and legal services corporate platform. The website provides a clean service catalog, testimonials, and flexible contact forms for new partnerships.",
+      description: "The website represents real estate management and legal services, structured with commercial management sections, a service catalog, and inquiry forms. We crafted a unique corporate design, custom brand logo, and professional service descriptions.",
       image: "/Avenuegroup-portfolio.webp",
       link: "https://avenuegroup.lv",
-      isPlaceholder: false
+      isPlaceholder: false,
+      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "CMS", "Brand Logo", "Service Descriptions", "Mobile First", "Blog Articles", "Stripe"]
     },
     {
       id: 3,
       title: "Premium Design Furniture | Exclusive Wooden Stairs",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
-      description: "Avangart is a digital showcase catalog for an exclusive wooden stair and luxury furniture manufacturer. It features high-resolution product photography and detailed craftsmanship specs.",
+      description: "Exclusive wooden stair and luxury furniture manufacturer website featuring information on collaboration opportunities with architects, a portfolio gallery, and request form. We designed a unique premium layout, stylish logo, and workflow descriptions highlighting supreme craftsmanship.",
       image: "/Avangart-portfolio.webp",
       link: "https://avangart.lv",
-      isPlaceholder: false
+      isPlaceholder: false,
+      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Image Galleries"]
     },
     {
       id: 4,
-      title: "Enzimi | Enzymatic Products & Ecological Solutions",
-      brand: "enzimi.lv",
-      displayLink: "https://enzimi.lv",
-      description: "Enzimi is an eco-solution and enzymatic product catalog platform. The website delivers technical documentation and seamless inquiry channels for industrial clients.",
-      image: "",
-      link: "https://enzimi.lv",
-      isPlaceholder: false
+      title: "Latvijas Restarts | For the Future of Latvia",
+      brand: "Latvijas Restarts",
+      displayLink: "https://latvijasrestarts.lv",
+      description: "An initiative bringing together professionals across fields to overcome crises and drive Latvia's dynamic development. It advocates for a strong, self-sufficient, and competitive nation where economic growth and effective governance ensure prosperity.",
+      image: "/latvijas-restarts-portfolio.webp",
+      link: "https://latvijasrestarts.lv",
+      isPlaceholder: false,
+      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Member Profiles", "Mobile First"]
     },
     {
       id: 5,
-      title: "Latvijas Restarts | Public & Business Platform",
-      brand: "Latvijas Restarts",
-      displayLink: "https://latvijasrestarts.lv",
-      description: "Latvijas Restarts is a public initiative platform facilitating information exchange, articles, and project submission for sustainable economic growth.",
+      title: "Enzimi | Fermented Beverages",
+      brand: "enzimi.lv",
+      displayLink: "https://enzimi.lv",
+      description: "This fermented beverage website in biotechnology features a product catalog and information on home-brewing for personal use. We crafted a unique design, custom logo, and detailed product descriptions.",
       image: "",
-      link: "https://latvijasrestarts.lv",
-      isPlaceholder: false
+      link: "https://enzimi.lv",
+      isPlaceholder: false,
+      tags: ["Landing page", "Custom UI/UX", "Brand Logo", "Product Catalog", "Mobile First"]
     },
     {
       id: 6,
       title: "Demontāža 24 | Demolition & Dismantling Services",
       brand: "Demontāža 24",
-      displayLink: "https://demontaza24.eu",
-      description: "Demontāža 24 is a specialized building and industrial dismantling service provider. The website offers rapid service estimation and quick request forms.",
-      image: "",
+      displayLink: "demontaza24",
+      description: "This building dismantling and demolition service website in construction features a dynamic structure with service options, completed project galleries, and quick cost calculation forms. We developed a unique, bold design, brand logo, and clear service descriptions for fast lead generation.",
+      image: "/demontaza24-portfolio.webp",
       link: "https://demontaza24.eu",
-      isPlaceholder: false
+      isPlaceholder: false,
+      tags: ["Multi-page", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First"]
+    },
+    {
+      id: 7,
+      title: "Velobiedrība | Safe Cycling Enthusiasts Association",
+      brand: "Velobiedrība",
+      displayLink: "velobiedriba",
+      description: "An association of cycling enthusiasts hosting trainings and events to promote safe cycling on Latvian roads.",
+      image: "/velobiedriba-portfolio.webp",
+      link: "https://velobiedriba.lv",
+      isPlaceholder: false,
+      tags: ["Landing page", "Custom UI/UX", "Gallery", "Mobile First", "Content"]
     }
   ],
   pricingPlans: [
@@ -361,9 +379,9 @@ export const enTranslations: Translations = {
       category: "Optimization",
       date: "17.07.2026",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
       excerpt: "Web search is undergoing a fundamental transformation. Learn how to optimize your website for GEO (Generative Engine Optimization) so ChatGPT, Gemini, and AI assistants recommend your business.",
-      content: `Web search is experiencing its biggest shift since the inception of Google. Instead of browsing traditional search links, millions of users now rely on AI assistants such as ChatGPT, Google Gemini, and Perplexity for instant, personalized recommendations. This evolving discipline is known as **GEO (Generative Engine Optimization)**.
+      content: `Web search is experiencing its biggest shift since the inception of Google. Instead of browsing traditional search links, millions of users now rely on AI assistants such as ChatGPT, Google Gemini, and Perplexity for instant, personalized recommendations. This evolving discipline is known as GEO (Generative Engine Optimization).
 
 ### Why Traditional SEO Alone Is No Longer Enough
 
@@ -371,13 +389,13 @@ In standard search engine results, users receive a list of links. AI agents, how
 
 ### How to Optimize Your Site for AI Agents:
 
-1. **Structured Data & Schema Markup:**
+1. Structured Data & Schema Markup:
 AI agents read website content through structured data. Implementing comprehensive JSON-LD Schema markup helps AI models accurately interpret your services, business hours, pricing, and client reviews.
 
-2. **Natural Language Q&A Content:**
-AI prompts are formatted as full natural questions. Content structured in clear conversational language directly answering key user questions (\"How much does...\", \"Why choose...\") is far more likely to be picked up by AI engines.
+2. Natural Language Q&A Content:
+AI prompts are formatted as full natural questions. Content structured in clear conversational language directly answering key user questions ("How much does...", "Why choose...") is far more likely to be picked up by AI engines.
 
-3. **Brand Mentions & Web Citations:**
+3. Brand Mentions & Web Citations:
 AI models learn from authoritative web sources. The more your business is cited across industry directories and review portals (Google Business, Trustpilot), the higher your probability of being recommended by AI.
 
 At Sageon Media, every project incorporates these advanced parameters so your brand leads in both Google Search and modern AI recommendations.`
@@ -388,15 +406,15 @@ At Sageon Media, every project incorporates these advanced parameters so your br
       category: "Optimization",
       date: "14.07.2026",
       readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
       excerpt: "Website speed shapes your brand's crucial first impression online. Discover how milliseconds affect user engagement, bounce rates, and conversion metrics.",
       content: `In today's fast-paced world, online user patience is measured in fractions of a second. If your website takes longer than 3 seconds to load, over 50% of visitors abandon the page before seeing any content.
 
 ### Why Speed Is Essential:
 
-1. **User Experience (UX):** A fast website projects professionalism and trustworthiness. Visitors stay longer and browse more pages comfortably.
-2. **Mobile Responsiveness:** Mobile traffic often relies on cellular data networks. Unoptimized images and heavy scripts can cause massive delay on smartphones.
-3. **Conversion Rates:** Studies demonstrate that reducing page load times by just one second can boost sales conversions by up to 20%.
+1. User Experience (UX): A fast website projects professionalism and trustworthiness. Visitors stay longer and browse more pages comfortably.
+2. Mobile Responsiveness: Mobile traffic often relies on cellular data networks. Unoptimized images and heavy scripts can cause massive delay on smartphones.
+3. Conversion Rates: Studies demonstrate that reducing page load times by just one second can boost sales conversions by up to 20%.
 
 ### How We Maximize Speed:
 
@@ -408,17 +426,17 @@ Sageon Media utilizes modern frameworks (React and Vite), lightweight WebP image
       category: "Design",
       date: "08.07.2026",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/5-butiskakie-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "A beautiful design is only half the battle. Strategic user experience (UX) design converts casual browsers into active paying clients.",
       content: `Website design must be both aesthetically pleasing and functional. Outstanding UI/UX design seamlessly guides visitors toward desired action — making a purchase, booking a call, or submitting an inquiry.
 
 ### 5 Key Conversion Principles:
 
-1. **Clear and Prominent CTAs:** Action buttons must feature high-contrast styling and logical page placement.
-2. **Visual Hierarchy:** Essential information and headings should be bold and legible within 5 seconds.
-3. **Intuitive Navigation:** Keep menus simple so key pages are accessible within a single click.
-4. **Strategic White Space:** Avoid cluttering every pixel with text. Negative space allows eyes to rest and focus on core messages.
-5. **Trust Indicators:** Display customer testimonials, client logos, and case studies prominently.
+1. Clear and Prominent CTAs: Action buttons must feature high-contrast styling and logical page placement.
+2. Visual Hierarchy: Essential information and headings should be bold and legible within 5 seconds.
+3. Intuitive Navigation: Keep menus simple so key pages are accessible within a single click.
+4. Strategic White Space: Avoid cluttering every pixel with text. Negative space allows eyes to rest and focus on core messages.
+5. Trust Indicators: Display customer testimonials, client logos, and case studies prominently.
 
 We build every custom interface from scratch at Sageon Media, analyzing user behavior to turn your website into a high-yield sales channel.`
     },
@@ -428,15 +446,15 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Security",
       date: "29.06.2026",
       readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
       excerpt: "Launching a website is just the beginning. Regular security updates and automated backups safeguard your business against unexpected cyber threats.",
       content: `Many business owners assume a website can be forgotten once deployed. However, the web environment evolves rapidly with new security vulnerabilities and server updates.
 
 ### Why Continuous Maintenance Matters:
 
-1. **Protection Against Exploits:** Outdated plugins and code are primary targets for cyberattacks. Timely updates patch security loopholes.
-2. **Automated Cloud Backups:** In case of server malfunctions, recent backups allow full site restoration within minutes.
-3. **Long-Term Stability:** Web browsers (Chrome, Safari, Firefox) constantly release updates. Ongoing testing guarantees perfect cross-browser compatibility.`
+1. Protection Against Exploits: Outdated plugins and code are primary targets for cyberattacks. Timely updates patch security loopholes.
+2. Automated Cloud Backups: In case of server malfunctions, recent backups allow full site restoration within minutes.
+3. Long-Term Stability: Web browsers (Chrome, Safari, Firefox) constantly release updates. Ongoing testing guarantees perfect cross-browser compatibility.`
     },
     {
       id: "website-as-sales-rep",
@@ -444,15 +462,15 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Sales",
       date: "25.06.2026",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/majaslapa-ka-24-7-pardosanas-specialists-ka- parverst-apmekletajus-realos-pieteikumos.webp",
       excerpt: "A well-crafted website operates non-stop without holidays or breaks. Learn how structured content and call-to-actions transform visitors into long-term clients.",
       content: `A website is far more than a static digital business card. Designed properly, it functions as your top sales executive working 24 hours a day, 7 days a week.
 
 ### Key Factors for High Sales Conversion:
 
-1. **Guiding Visitors Through the Sales Funnel:** Each section answers a specific customer question, gently moving them toward a booking or contact form.
-2. **Eliminating Pre-Purchase Hesitation:** FAQs, transparent pricing, and client reviews resolve buyer doubts before initial contact.
-3. **Accessible Action Triggers (CTAs):** Contact buttons, click-to-call links, and quick forms should be integrated organically for instant reach.`
+1. Guiding Visitors Through the Sales Funnel: Each section answers a specific customer question, gently moving them toward a booking or contact form.
+2. Eliminating Pre-Purchase Hesitation: FAQs, transparent pricing, and client reviews resolve buyer doubts before initial contact.
+3. Accessible Action Triggers (CTAs): Contact buttons, click-to-call links, and quick forms should be integrated organically for instant reach.`
     },
     {
       id: "mobile-first-design",
@@ -466,9 +484,9 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
 
 ### Core Benefits of Mobile-First Development:
 
-1. **Higher Visitor Retention:** Touch-friendly buttons and clear navigation keep mobile visitors engaged.
-2. **Google Search Rankings:** Google evaluates sites primarily through Mobile-First indexing — meaning your mobile site directly dictates search rankings.
-3. **One-Tap Communication:** Mobile interfaces enable visitors to call or message your business with a single tap.`
+1. Higher Visitor Retention: Touch-friendly buttons and clear navigation keep mobile visitors engaged.
+2. Google Search Rankings: Google evaluates sites primarily through Mobile-First indexing — meaning your mobile site directly dictates search rankings.
+3. One-Tap Communication: Mobile interfaces enable visitors to call or message your business with a single tap.`
     },
     {
       id: "landing-page-vs-website",
@@ -481,12 +499,12 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       content: `Selecting the right web architecture is the foundational step of project planning. Choosing the wrong format can complicate navigation or inflate costs.
 
 ### Landing Page (Single-Page Solution):
-- **Best for:** Promoting a specific product, single service, or marketing campaign.
-- **Benefits:** High conversion rates, laser-focused user flow, rapid development.
+- Best for: Promoting a specific product, single service, or marketing campaign.
+- Benefits: High conversion rates, laser-focused user flow, rapid development.
 
 ### Multi-Page Website:
-- **Best for:** Companies with diverse service offerings, company history, and active content publishing.
-- **Benefits:** Extensive opportunities for organic SEO optimization and dedicated service pages.`
+- Best for: Companies with diverse service offerings, company history, and active content publishing.
+- Benefits: Extensive opportunities for organic SEO optimization and dedicated service pages.`
     },
     {
       id: "seo-fundamentals-2026",
@@ -500,9 +518,9 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
 
 ### How to Achieve High Google Ranks:
 
-1. **Technical SEO Hygiene:** Fast site speed, clean HTML markup, SSL security, and mobile responsiveness.
-2. **High-Value Content:** Authoritative content addressing user intent using targeted industry keywords.
-3. **Local SEO:** Optimizing Google Business Profile and local map integrations for nearby buyers.`
+1. Technical SEO Hygiene: Fast site speed, clean HTML markup, SSL security, and mobile responsiveness.
+2. High-Value Content: Authoritative content addressing user intent using targeted industry keywords.
+3. Local SEO: Optimizing Google Business Profile and local map integrations for nearby buyers.`
     },
     {
       id: "custom-vs-template-website",
@@ -516,9 +534,9 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
 
 ### Why Custom Web Development Wins:
 
-1. **Tailored Unique Branding:** Stand out from competitors using generic visual templates.
-2. **Clean Code & Superior Speed:** No bloated code or unnecessary plugins slowing down your site speed.
-3. **Full Scalability & Control:** Custom software grows with your business without platform lock-in.`
+1. Tailored Unique Branding: Stand out from competitors using generic visual templates.
+2. Clean Code & Superior Speed: No bloated code or unnecessary plugins slowing down your site speed.
+3. Full Scalability & Control: Custom software grows with your business without platform lock-in.`
     }
   ]
 };

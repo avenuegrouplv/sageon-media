@@ -25,10 +25,10 @@ export default function Darbi() {
         ? "Apply for your business website development and reach customers effectively." 
         : "Закажите разработку сайта для вашего бизнеса и привлекайте клиентов эффективнее.",
     description: lang === "LV" 
-      ? "Šeit var atrasties Tava uzņēmuma jaunā un mūsdienīgā mājaslapa. Mēs izstrādāsim unikālu dizainu, kas piesaistīs klientus un veicinās pārdošanu. Piesaki savu projektu jau šodien un padari savu zīmolu pamanāmu digitālajā vidē." 
+      ? "Šeit var atrasties Tava uzņēmuma jaunā un mūsdienīgā mājaslapa. Projekta ietvaros izstrādāsim unikālu dizainu, atpazīstamu logo un piesaistošus pakalpojumu aprakstus tavai nozarei." 
       : lang === "EN" 
-        ? "Your company's modern new website can be here. We will build a unique design that attracts clients and boosts sales. Apply today!" 
-        : "Здесь может быть новый современный сайт вашей компании. Мы разработаем уникальный дизайн, который привлечет клиентов и увеличит продажи.",
+        ? "Your company's modern new website can be here. We will craft a unique design, custom logo, and engaging service descriptions tailored to your industry." 
+        : "Здесь может быть новый современный сайт вашей компании. Мы разработаем уникальный дизайн, логотип и описания услуг для вашей сферы.",
     displayLink: "tavaprojekts.lv",
     link: getLocalizedPath("contact")
   };
@@ -42,8 +42,8 @@ export default function Darbi() {
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": "https://sageonmedia.eu/portfolio#webpage",
-            "url": "https://sageonmedia.eu/portfolio",
+            "@id": `https://sageonmedia.eu${getLocalizedPath('portfolio')}#webpage`,
+            "url": `https://sageonmedia.eu${getLocalizedPath('portfolio')}`,
             "name": t.seo.portfolio.title,
             "description": t.seo.portfolio.description,
             "isPartOf": { "@id": "https://sageonmedia.eu#website" }
@@ -61,8 +61,8 @@ export default function Darbi() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Portfolio",
-                "item": "https://sageonmedia.eu/portfolio"
+                "name": t.nav.portfolio,
+                "item": `https://sageonmedia.eu${getLocalizedPath('portfolio')}`
               }
             ]
           }
@@ -90,7 +90,7 @@ export default function Darbi() {
         </div>
 
         {/* Portfolio Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4">
           {portfolioCards.map((card) => (
             <PortfolioLaptopCard
               key={card.id}
@@ -101,6 +101,7 @@ export default function Darbi() {
               link={card.link}
               description={card.description}
               isPlaceholder={card.isPlaceholder}
+              tags={card.tags}
             />
           ))}
 

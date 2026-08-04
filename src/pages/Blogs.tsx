@@ -26,6 +26,19 @@ export default function Blogs() {
   useEffect(() => {
     if (activeArticle) {
       document.title = `${activeArticle.title} | Sageon Media`;
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.stop();
+      }
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        if (lenis) {
+          lenis.start();
+        }
+        document.body.style.overflow = originalStyle;
+      };
     } else {
       document.title = t.seo.blog.title;
     }
@@ -203,11 +216,16 @@ export default function Blogs() {
         {/* Detailed Modal Reader */}
         <AnimatePresence>
           {activeArticle && (
-            <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-[100]">
+            <div 
+              data-lenis-prevent
+              onWheel={(e) => e.stopPropagation()}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-[100]"
+            >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                data-lenis-prevent
                 className="bg-zinc-900 border border-zinc-800 max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl relative shadow-2xl flex flex-col justify-between"
               >
                 {/* Header with image */}
@@ -239,7 +257,7 @@ export default function Blogs() {
 
                   {/* Body Text */}
                   <div className="px-6 py-6 text-zinc-300 space-y-4 text-xs md:text-sm font-light leading-relaxed whitespace-pre-wrap">
-                    {activeArticle.content}
+                    {activeArticle.content.replace(/\*\*/g, "").replace(/\*/g, "")}
                   </div>
                 </div>
 

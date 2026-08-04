@@ -55,11 +55,12 @@ export default function CookieBanner() {
                   <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                     {t.cookies.bannerText}{" "}
                     <button
+                      type="button"
                       onClick={() => setIsPrivacyOpen(true)}
-                      className="text-[#BAFC50] font-normal underline cursor-pointer"
+                      className="text-zinc-300 font-light hover:text-white cursor-pointer transition-colors inline"
                     >
-                      {t.footer.privacy}
-                    </button>.
+                      {t.cookies.privacyLinkText}
+                    </button>
                   </p>
                 </div>
               </div>

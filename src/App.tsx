@@ -43,6 +43,7 @@ function AppContent() {
           <Routes>
             {/* LV Routes */}
             <Route path="/" element={<Home />} />
+            <Route path="/projekti" element={<Darbi />} />
             <Route path="/portfolio" element={<Darbi />} />
             <Route path="/darbi" element={<Darbi />} />
             <Route path="/pakalpojumi" element={<Cenas />} />
@@ -53,6 +54,7 @@ function AppContent() {
 
             {/* EN Routes */}
             <Route path="/en" element={<Home />} />
+            <Route path="/en/projects" element={<Darbi />} />
             <Route path="/en/portfolio" element={<Darbi />} />
             <Route path="/en/services" element={<Cenas />} />
             <Route path="/en/faq" element={<Buj />} />
@@ -61,6 +63,7 @@ function AppContent() {
 
             {/* RU Routes */}
             <Route path="/ru" element={<Home />} />
+            <Route path="/ru/proekty" element={<Darbi />} />
             <Route path="/ru/portfolio" element={<Darbi />} />
             <Route path="/ru/uslugi" element={<Cenas />} />
             <Route path="/ru/voprosy" element={<Buj />} />
