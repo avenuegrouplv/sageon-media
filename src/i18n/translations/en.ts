@@ -182,7 +182,7 @@ export const enTranslations: Translations = {
       image: "/Avenuegroup-portfolio.webp",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "CMS", "Brand Logo", "Service Descriptions", "Mobile First", "Blog Articles", "Stripe"]
+      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "CMS", "Stripe", "Brand Logo", "Service Descriptions", "Mobile First", "Blog Articles"]
     },
     {
       id: 3,

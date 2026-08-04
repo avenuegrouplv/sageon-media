@@ -182,7 +182,7 @@ export const lvTranslations: Translations = {
       image: "/Avenuegroup-portfolio.webp",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti", "Stripe"]
+      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
     },
     {
       id: 3,

@@ -66,7 +66,7 @@ export default function HeroSlider() {
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-4">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 -mt-14 sm:-mt-18 lg:-mt-24 pb-6 md:pb-8">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-2 sm:-mt-18 lg:-mt-24 pb-6 md:pb-8">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
@@ -167,7 +167,7 @@ export default function HeroSlider() {
                 decoding="async"
                 width={1180}
                 height={720}
-                className="w-full h-auto object-contain max-w-[700px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] scale-[1.25] lg:scale-[1.40] translate-x-[70px] lg:translate-x-[180px] translate-y-[38px] origin-center py-2 sm:py-0"
+                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[180px] translate-y-0 lg:translate-y-[38px] scale-100 lg:scale-[1.40] origin-center mx-auto py-2 sm:py-0"
               />
             </div>
           </div>

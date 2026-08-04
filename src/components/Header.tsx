@@ -148,15 +148,16 @@ export default function Header() {
         {/* MOBILE TRIGGER */}
         <div className="flex items-center gap-3 lg:hidden">
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className={`p-2 transition-colors border rounded-xl cursor-pointer ${
+            className={`p-2 transition-colors border rounded-xl cursor-pointer touch-manipulation ${
               isTransparent 
                 ? "text-white hover:text-white border-white/20" 
                 : "text-slate-200 hover:text-white border-zinc-800"
             }`}
             aria-label="Izvēlne"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -164,15 +165,16 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-[#121212]/98 backdrop-blur-md border-b border-zinc-800 shadow-xl transition-all duration-300 py-6 px-6 space-y-6 z-50">
-          <ul className="space-y-4">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#121212]/98 backdrop-blur-xl border-b border-zinc-800 shadow-2xl transition-all duration-300 py-4 px-5 space-y-4 z-[60] max-h-[80vh] overflow-y-auto">
+          <ul className="space-y-2">
             {navLinks.map((link) => (
               <li key={link.key}>
                 <Link
                   to={link.path}
-                  className={`block font-business text-sm font-normal uppercase tracking-widest py-1.5 ${
+                  onClick={() => setIsOpen(false)}
+                  className={`block font-business text-sm font-medium uppercase tracking-widest py-1.5 ${
                     location.pathname === link.path
-                      ? "text-[#BAFC50] font-medium"
+                      ? "text-[#BAFC50]"
                       : "text-slate-200 hover:text-white"
                   }`}
                 >
@@ -182,15 +184,15 @@ export default function Header() {
             ))}
           </ul>
 
-          <hr className="border-zinc-800" />
+          <hr className="border-zinc-800/80" />
 
           {/* Languages selection list on Mobile */}
           <div className="space-y-2">
-            <p className="text-xs font-business tracking-widest uppercase text-slate-400 flex items-center gap-1.5">
+            <p className="text-xs font-business tracking-widest uppercase text-slate-400 flex items-center gap-1.5 font-bold">
               <Globe className="h-3.5 w-3.5 text-[#BAFC50]" />
               {lang === "LV" ? "Valoda" : lang === "EN" ? "Language" : "Язык"}
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {([
                 { code: "LV" as Language, name: "LV" },
                 { code: "EN" as Language, name: "EN" },
@@ -198,10 +200,11 @@ export default function Header() {
               ]).map((item) => (
                 <button
                   key={item.code}
+                  type="button"
                   onClick={() => handleSelectLanguage(item.code)}
-                  className={`px-3 py-1.5 border font-business text-xs font-normal tracking-widest transition-colors rounded-xl cursor-pointer ${
+                  className={`px-3.5 py-1.5 border font-business text-xs font-bold tracking-widest transition-colors rounded-xl cursor-pointer touch-manipulation ${
                     lang === item.code
-                      ? "border-[#BAFC50] text-[#BAFC50] font-medium bg-[#BAFC50]/10"
+                      ? "border-[#BAFC50] text-[#BAFC50] bg-[#BAFC50]/10"
                       : "border-zinc-800 text-slate-300 hover:text-white"
                   }`}
                 >

@@ -56,7 +56,7 @@ const PORTFOLIO_ITEMS = [
     image: "/Avenuegroup-portfolio.webp",
     link: "https://avenuegroup.lv",
     isPlaceholder: false,
-    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti", "Stripe"]
+    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
   },
   {
     id: 3,
@@ -118,10 +118,10 @@ const PORTFOLIO_ITEMS = [
 function LazyLoadSection({ children }: { children: ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0.9, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20px" }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="w-full"
     >
       {children}
@@ -315,7 +315,7 @@ export default function Home() {
   }));
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-hidden">
+    <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-x-hidden">
       <SEOHead
         title={t.seo.home.title}
         description={t.seo.home.description}
@@ -407,7 +407,7 @@ export default function Home() {
                   <div className="w-6 h-6 rounded-full bg-[#BAFC50]/15 border border-[#BAFC50]/40 flex items-center justify-center shrink-0 text-[#BAFC50]">
                     <Check className="h-3.5 w-3.5 stroke-[3]" />
                   </div>
-                  <span className="text-sm sm:text-base font-semibold text-zinc-100 tracking-tight whitespace-nowrap">
+                  <span className="text-xs sm:text-sm md:text-base font-semibold text-zinc-100 tracking-tight">
                     {item}
                   </span>
                 </div>
@@ -605,8 +605,8 @@ export default function Home() {
                       Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu.
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative group flex items-center justify-center">
-                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/30 rounded-full blur-[80px] pointer-events-none z-0" />
+                  <div className="lg:col-span-5 relative flex items-center justify-center">
+                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/25 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
@@ -615,7 +615,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-full h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                      className="relative z-10 w-full h-auto max-h-[335px] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -747,8 +747,8 @@ export default function Home() {
                       >
                         <div>
                           {/* Header Section */}
-                          <div className="p-6 border-b border-zinc-800/80 text-left space-y-4 relative">
-                            <div className="flex items-center justify-between min-h-[28px]">
+                          <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
+                            <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
                               <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
                                 isBestChoice 
                                   ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
@@ -758,39 +758,39 @@ export default function Home() {
                               </span>
                             </div>
                             
-                            <div className="space-y-1.5 h-[88px] min-h-[88px] flex flex-col justify-start items-start pt-1">
+                            <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
                               {plan.title === "Multi-page" ? (
-                                <h3 className="text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
+                                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
                                   {plan.title}
                                 </h3>
                               ) : (
-                                <h3 className="text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
                               )}
-                              <p className="text-sm font-normal text-zinc-300">
+                              <p className="text-xs sm:text-sm font-normal text-zinc-300">
                                 {plan.subtitle}
                               </p>
                             </div>
 
                             {/* Highly visible high-contrast pricing tag container */}
-                            <div className="pt-3 pb-2 mt-2 border-l-4 border-[#BAFC50] pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
+                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-auto sm:h-[56px] sm:min-h-[56px]">
                               {plan.price ? (
                                 <>
-                                  <span className="text-lg font-black text-[#BAFC50]">€</span>
-                                  <span className="text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                                  <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
+                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
                                     / {plan.period}
                                   </span>
                                 </>
                               ) : (
-                                <span className="text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
+                                <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
                                   {plan.period}
                                 </span>
                               )}
                             </div>
                           </div>
 
-                          {/* Features List */}
-                          <ul className="p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                          {/* Features List - Hidden on mobile for compact overview, visible on desktop */}
+                          <ul className="hidden sm:block p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
                             {plan.features.map((feature, fIndex) => (
                               <li key={fIndex} className="flex items-start gap-2.5">
                                 <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
@@ -803,9 +803,9 @@ export default function Home() {
                         </div>
 
                         {/* CTA Action Button */}
-                        <div className="p-6 pt-0">
+                        <div className="p-4 sm:p-6 sm:pt-0 pt-2">
                           <span
-                            className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
+                            className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
                               plan.highlight
                                 ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
                                 : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
@@ -820,15 +820,6 @@ export default function Home() {
                 })}
               </div>
             </div>
-
-            {/* VAT Notice directly below pricing cards */}
-            <p className="text-xs text-zinc-400/80 font-light select-text text-center sm:text-left -mt-9 mb-2 px-1 sm:px-3">
-              {lang === 'EN' 
-                ? "VAT is currently not applied to payments" 
-                : lang === 'RU' 
-                  ? "НДС в настоящее время к платежам не применяется" 
-                  : "Maksājumiem PVN šobrīd netiek piemērots"}
-            </p>
 
             {/* Controls (< > and Uzzināt vairāk button) below Pricing cards */}
             <div className="flex flex-col sm:flex-row justify-end items-center gap-3 px-1 sm:px-3">
