@@ -29,6 +29,8 @@ export interface PricingPlan {
   title: string;
   subtitle: string;
   price: string;
+  originalPrice?: string;
+  pricePrefix?: string;
   period: string;
   badge: string;
   features: string[];

@@ -82,10 +82,10 @@ export default function Buj() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#18181b] border border-zinc-800 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase shadow-sm">
             <HelpCircle className="h-3.5 w-3.5 text-[#BAFC50]" />
-            <span>{t.nav.faq}</span>
+            <span>{lang === "LV" ? "Biežāk uzdotie jautājumi" : t.nav.faq}</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
-            {lang === "LV" ? <>Biežāk uzdotie <span className="text-[#BAFC50]">jautājumi</span></> : lang === "EN" ? <>Frequently Asked <span className="text-[#BAFC50]">Questions</span></> : <>Часто задаваемые <span className="text-[#BAFC50]">вопросы</span></>}
+            {lang === "LV" ? <>Te ir viss, kas Jūs <span className="text-[#BAFC50]">varētu interesēt</span></> : lang === "EN" ? <>Frequently Asked <span className="text-[#BAFC50]">Questions</span></> : <>Часто задаваемые <span className="text-[#BAFC50]">вопросы</span></>}
           </h1>
           <p className="text-sm md:text-base text-zinc-300 max-w-xl mx-auto font-light text-center">
             {t.faqPage.subtitle}

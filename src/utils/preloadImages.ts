@@ -8,7 +8,7 @@ const CRITICAL_IMAGES = [
   "/Avangart-portfolio.webp",
   "/Avenuegroup-portfolio.webp",
   "/latvijas-restarts-portfolio.webp",
-  "/travel-with-martins-portfolio.webp",
+  "/Travel-with-martins.webp",
   "/Iedod-savam-biznesam-jaunu-uzravienu.webp",
   "/dizains-mobile-first.webp",
   "/Web-izstrades-agentura.webp",

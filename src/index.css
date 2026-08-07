@@ -75,6 +75,31 @@
   --light-border: #e4e4e7;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 body, html, #root {
   background-color: #000000 !important;
   color: #f4f4f5 !important;

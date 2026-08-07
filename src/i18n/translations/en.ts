@@ -164,11 +164,11 @@ export const enTranslations: Translations = {
   portfolioItems: [
     {
       id: 1,
-      title: "Travel More and Earn More",
+      title: "Traveling can become a lifestyle",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
       description: "This is a personal travel and consultation website in the tourism sector, structured with travel destinations, practical guides, booking requests, and travel tips. Within the project, we developed a unique design, custom brand logo, engaging service descriptions, and clear content architecture.",
-      image: "/Travel-with-Martins-portfolio.webp",
+      image: "/Travel-with-martins.webp",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
       tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Destination Guides"]
@@ -244,7 +244,7 @@ export const enTranslations: Translations = {
     {
       title: "Landing Page",
       subtitle: "Single-page website or digital presentation",
-      price: "490",
+      price: "300",
       period: "one-time payment",
       badge: "Popular for New Projects",
       features: [
@@ -269,7 +269,9 @@ export const enTranslations: Translations = {
     {
       title: "Multi-page",
       subtitle: "Full-scale corporate business website",
-      price: "980",
+      originalPrice: "980",
+      pricePrefix: "from",
+      price: "450",
       period: "one-time payment",
       badge: "Best Choice for Business",
       features: [
@@ -341,11 +343,11 @@ export const enTranslations: Translations = {
   faqItems: [
     {
       question: "How much does website development cost and what factors influence the price?",
-      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page starts at €490, a Multi-page corporate website starts at €980, and an E-Commerce online store starts at €1950. All estimates are agreed upon prior to launch with zero hidden charges."
+      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page costs €300, a Multi-page corporate website starts at €450, and an E-Commerce online store starts at €1950. All estimates are agreed upon prior to launch with zero hidden charges."
     },
     {
       question: "How long does it take to complete a website?",
-      answer: "Turnaround times depend on project scope and content readiness. A Landing Page is built in 5–7 business days, a corporate Multi-page site takes 2–3 weeks, and complex E-Commerce projects take 3–5 weeks."
+      answer: "Turnaround time is individual and depends on the chosen plan as well as content readiness. A simple Landing Page is built in 2–5 business days, a corporate Multi-page site takes 2–3 weeks on average, while large E-Commerce projects take 3–5 weeks."
     },
     {
       question: "Will I be able to update website content independently?",

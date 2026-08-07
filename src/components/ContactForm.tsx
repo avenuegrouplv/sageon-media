@@ -39,7 +39,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
   return (
     <section 
       id="contact-section" 
-      className="relative py-20 md:py-28 overflow-visible font-sans text-left text-white bg-transparent"
+      className="relative py-12 md:py-16 overflow-visible font-sans text-left text-white bg-transparent"
     >
       {/* Background Mesh Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0" />

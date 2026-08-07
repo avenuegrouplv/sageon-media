@@ -13,33 +13,37 @@ export default function CookieBanner() {
 
   useEffect(() => {
     try {
-      const existing = localStorage.getItem("sageon_cookie_consent");
-      if (existing) {
+      const sessionConsent = sessionStorage.getItem("sageon_cookie_consent");
+      if (sessionConsent) {
         return;
       }
     } catch (e) {
-      console.warn("localStorage read error", e);
+      console.warn("sessionStorage read error", e);
     }
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 1200);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleAcceptAll = () => {
     try {
-      localStorage.setItem("sageon_cookie_consent", JSON.stringify({ necessary: true, analytics: true, functional: true, marketing: true }));
+      const val = JSON.stringify({ necessary: true, analytics: true, functional: true, marketing: true });
+      sessionStorage.setItem("sageon_cookie_consent", val);
+      localStorage.setItem("sageon_cookie_consent", val);
     } catch (e) {
-      console.warn("localStorage write error", e);
+      console.warn("storage write error", e);
     }
     setIsVisible(false);
   };
 
   const handleDeclineOptional = () => {
     try {
-      localStorage.setItem("sageon_cookie_consent", JSON.stringify({ necessary: true, analytics: false, functional: false, marketing: false }));
+      const val = JSON.stringify({ necessary: true, analytics: false, functional: false, marketing: false });
+      sessionStorage.setItem("sageon_cookie_consent", val);
+      localStorage.setItem("sageon_cookie_consent", val);
     } catch (e) {
-      console.warn("localStorage write error", e);
+      console.warn("storage write error", e);
     }
     setIsVisible(false);
   };
@@ -53,7 +57,7 @@ export default function CookieBanner() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-0 left-0 right-0 z-[99] bg-[#121215]/98 backdrop-blur-xl border-t border-zinc-800/90 shadow-[0_-15px_50px_rgba(0,0,0,0.9)] text-white py-4 sm:py-5 px-4 sm:px-6 md:px-10 lg:px-12"
+            className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#121215]/98 backdrop-blur-xl border-t border-zinc-800/90 shadow-[0_-15px_50px_rgba(0,0,0,0.9)] text-white py-4 sm:py-5 px-4 sm:px-6 md:px-10 lg:px-12"
           >
             <div className="w-full max-w-[1380px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 md:gap-10 lg:gap-14">
               

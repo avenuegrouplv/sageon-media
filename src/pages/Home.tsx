@@ -38,11 +38,11 @@ import { useLanguage } from "../i18n/LanguageContext";
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: "Vairāk ceļo un vairāk nopelni",
+    title: "Ceļošana var kļūt par dzīvesveidu",
     brand: "Travel with Martins",
     displayLink: "https://travelwithmartins.com",
     description: "Šī ir personīgā ceļojumu un konsultāciju mājaslapa tūrisma nozarē, kuras struktūrā iekļauti ceļojumu galamērķi, praktiski ceļveži, konsultāciju pieteikumi un padomi. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, kā arī saistoši pakalpojumu apraksti un pārdomāta informācijas arhitektūra.",
-    image: "/Travel-with-Martins-portfolio.webp",
+    image: "/Travel-with-martins.webp",
     link: "https://travelwithmartins.com",
     isPlaceholder: false,
     tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
@@ -427,9 +427,17 @@ export default function Home() {
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto"
             >
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
-                <ShieldAlert className="h-3.5 w-3.5" />
-                <span>Kas stāv ceļā Jūsu izaugsmei digitālajā vidē</span>
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center">
+                <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
+                <span className="text-center leading-tight">
+                  {lang === 'en' ? (
+                    <>What stands in the way<br />of your digital growth</>
+                  ) : lang === 'ru' ? (
+                    <>Что стоит на пути<br />вашего цифрового роста</>
+                  ) : (
+                    <>Kas stāv ceļā<br />Jūsu izaugsmei digitālajā vidē</>
+                  )}
+                </span>
               </div>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
                 Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
@@ -624,7 +632,7 @@ export default function Home() {
                 <div 
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
-                  <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center">
+                  <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center mx-auto w-full">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/dizains-mobile-first.webp" 
@@ -634,7 +642,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-[88%] h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
                     />
                   </div>
                   <div className="lg:col-span-7 space-y-3">
@@ -659,7 +667,7 @@ export default function Home() {
                       Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus.
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative group flex items-center justify-center translate-x-[20px] lg:translate-x-[75px]">
+                  <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full translate-x-0 lg:translate-x-[75px]">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/Web-izstrades-agentura.webp" 
@@ -669,7 +677,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={400}
-                      className="relative z-10 w-[88%] h-auto max-h-[350px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[350px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
                     />
                   </div>
                 </div>
@@ -706,145 +714,146 @@ export default function Home() {
       {/* 3. PAKALPOJUMI */}
       <LazyLoadSection>
         <section 
-          className="pt-8 pb-16 md:pt-10 md:pb-20 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
+          className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 -left-36 w-[750px] h-[750px] bg-gradient-to-r from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
           <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-gradient-to-tl from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2">
               <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                  {lang === 'en' ? "Services & Pricing" : lang === 'ru' ? "Услуги и цены" : "Piedāvātie pakalpojumi un cenas"}
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                  {lang === 'en' ? (
+                    <>Services &amp;<br />Pricing</>
+                  ) : lang === 'ru' ? (
+                    <>Услуги и<br />цены</>
+                  ) : (
+                    <>Piedāvātie pakalpojumi<br />un cenas</>
+                  )}
                 </h2>
               </div>
             </div>
 
-            {/* 4 core pricing models comparison carousel track */}
-            <div className="overflow-hidden w-full relative">
-              <div 
-                onTransitionEnd={handlePricingTransitionEnd}
-                className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
-                }}
-              >
-                {[...pricingPlans, ...pricingPlans, ...pricingPlans].map((plan, index) => {
-                  const isBestChoice = plan.badge === "Labākā izvēle biznesam";
-                  return (
-                    <div 
-                      key={`${plan.title}-${index}`} 
-                      className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex flex-col justify-between"
+            {/* 4 core pricing cards: Stacked vertically 1-by-1 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {pricingPlans.slice(0, 4).map((plan, index) => {
+                const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
+                return (
+                  <div 
+                    key={`${plan.title}-${index}`} 
+                    className="flex flex-col justify-between"
+                  >
+                    <Link
+                      to={getLocalizedPath('services')}
+                      className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
+                        isBestChoice 
+                          ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
+                          : "border-zinc-800 hover:border-[#BAFC50]"
+                      }`}
                     >
-                      <Link
-                        to="/pakalpojumi"
-                        className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
-                          isBestChoice 
-                            ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
-                            : "border-zinc-800 hover:border-[#BAFC50]"
-                        }`}
-                      >
-                        <div>
-                          {/* Header Section */}
-                          <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
-                            <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
-                              <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
-                                isBestChoice 
-                                  ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
-                                  : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
-                              }`}>
-                                {isBestChoice ? "★ " : ""}{plan.badge}
-                              </span>
-                            </div>
-                            
-                            <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
-                              {plan.title === "Multi-page" ? (
-                                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
-                                  {plan.title}
-                                </h3>
-                              ) : (
-                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
-                              )}
-                              <p className="text-xs sm:text-sm font-normal text-zinc-300">
-                                {plan.subtitle}
-                              </p>
-                            </div>
-
-                            {/* Highly visible high-contrast pricing tag container */}
-                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-auto sm:h-[56px] sm:min-h-[56px]">
-                              {plan.price ? (
-                                <>
-                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
-                                    / {plan.period}
-                                  </span>
-                                </>
-                              ) : (
-                                <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
-                                  {plan.period}
-                                </span>
-                              )}
-                            </div>
+                      <div>
+                        {/* Header Section */}
+                        <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
+                          <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
+                            <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
+                              isBestChoice 
+                                ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
+                                : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
+                            }`}>
+                              {isBestChoice ? "★ " : ""}{plan.badge}
+                            </span>
+                          </div>
+                          
+                          <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
+                            {plan.title === "Multi-page" ? (
+                              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
+                                {plan.title}
+                              </h3>
+                            ) : (
+                              <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                            )}
+                            <p className="text-xs sm:text-sm font-normal text-zinc-300">
+                              {plan.subtitle}
+                            </p>
                           </div>
 
-                          {/* Features List - Hidden on mobile for compact overview, visible on desktop */}
-                          <ul className="hidden sm:block p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
-                            {plan.features.map((feature, fIndex) => (
-                              <li key={fIndex} className="flex items-start gap-2.5">
-                                <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
-                                  <Check className="h-4 w-4 stroke-[2.5]" />
+                          {/* Highly visible high-contrast pricing tag container */}
+                          <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
+                            {plan.originalPrice ? (
+                              <>
+                                <div className="relative flex items-center gap-1">
+                                  <span className="text-base sm:text-lg font-black text-zinc-400">€</span>
+                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
+                                    {plan.originalPrice}
+                                  </span>
+                                  <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[72px] sm:translate-x-[96px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                    <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
+                                  </div>
                                 </div>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
+                                <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1.5 sm:ml-2 text-zinc-300">
+                                  / {plan.period}
+                                </span>
+                              </>
+                            ) : plan.price ? (
+                              <div className="flex items-center gap-1">
+                                {plan.pricePrefix && (
+                                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                                    {plan.pricePrefix}
+                                  </span>
+                                )}
+                                <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                  / {plan.period}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
+                                {plan.period}
+                              </span>
+                            )}
+                          </div>
                         </div>
 
-                        {/* CTA Action Button */}
-                        <div className="p-4 sm:p-6 sm:pt-0 pt-2">
-                          <span
-                            className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
-                              plan.highlight
-                                ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
-                                : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
-                            }`}
-                          >
-                            {plan.cta}
-                          </span>
-                        </div>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
+                        {/* Features List */}
+                        <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                          {plan.features.map((feature, fIndex) => (
+                            <li key={fIndex} className="flex items-start gap-2.5">
+                              <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
+                                <Check className="h-4 w-4 stroke-[2.5]" />
+                              </div>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* CTA Action Button */}
+                      <div className="p-4 sm:p-6 sm:pt-0 pt-2">
+                        <span
+                          className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
+                            plan.highlight
+                              ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
+                              : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
+                          }`}
+                        >
+                          {plan.cta}
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Controls (< > and Uzzināt vairāk button) below Pricing cards */}
-            <div className="flex flex-col sm:flex-row justify-end items-center gap-3 px-1 sm:px-3">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => scrollPricing('left')}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                    aria-label="Iepriekšējā cena"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <button 
-                    onClick={() => scrollPricing('right')}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                    aria-label="Nākamā cena"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
-                <CtaButton
-                  text="Uzzināt vairāk"
-                  to={getLocalizedPath('services')}
-                />
-              </div>
+            {/* Uzzināt vairāk button */}
+            <div className="flex justify-end items-center mt-6">
+              <CtaButton
+                text={lang === 'en' ? "Learn More" : lang === 'ru' ? "Узнать больше" : "Uzzināt vairāk"}
+                to={getLocalizedPath('services')}
+              />
             </div>
           </div>
         </section>
@@ -853,7 +862,7 @@ export default function Home() {
       {/* 4. MŪSU DARBI: Preview Block */}
       <LazyLoadSection>
         <section 
-          className="pt-8 pb-8 md:pt-10 md:pb-10 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
+          className="pt-4 pb-6 md:pt-6 md:pb-8 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
@@ -861,63 +870,36 @@ export default function Home() {
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2">
               <div className="space-y-2 text-left">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                  Ieskats mūsu nesenajos projektos
+                  {lang === 'en' ? "Insight into Our Recent Projects" : lang === 'ru' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
                 </h2>
               </div>
             </div>
 
-            {/* Portfolio Carousel Track */}
-            <div className="overflow-hidden w-full relative">
-              <div 
-                onTransitionEnd={handlePortfolioTransitionEnd}
-                className={`flex portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
-                }}
-              >
-                {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
-                  <div 
-                    key={`${item.id}-${index}`} 
-                    className="w-full sm:w-1/2 lg:w-1/2 p-3 sm:p-5 flex-shrink-0 flex flex-col justify-between"
-                  >
-                    <PortfolioLaptopCard
-                      title={item.title}
-                      brand={item.brand}
-                      displayLink={item.displayLink}
-                      image={item.image}
-                      link={item.link}
-                      isPlaceholder={item.isPlaceholder}
-                      description={item.description}
-                      tags={item.tags}
-                    />
-                  </div>
-                ))}
-              </div>
+            {/* First 3 Portfolio Items: Grid layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+              {portfolioItemsList.slice(0, 3).map((item) => (
+                <div key={item.id} className="flex flex-col justify-between h-full">
+                  <PortfolioLaptopCard
+                    title={item.title}
+                    brand={item.brand}
+                    displayLink={item.displayLink}
+                    image={item.image}
+                    link={item.link}
+                    isPlaceholder={item.isPlaceholder}
+                    description={item.description}
+                    tags={item.tags}
+                  />
+                </div>
+              ))}
             </div>
 
-            {/* Controls (< > and Skatīt visus button) below Portfolio cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => scrollPortfolio('left')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Iepriekšējais darbs"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button 
-                  onClick={() => scrollPortfolio('right')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Nākamais darbs"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
+            {/* Skatīt visus button on the right */}
+            <div className="flex justify-end items-center mt-6">
               <CtaButton
-                text="Skatīt visus"
+                text={lang === 'en' ? "View All" : lang === 'ru' ? "Смотреть все" : "Skatīt visus"}
                 to={getLocalizedPath('portfolio')}
               />
             </div>
@@ -929,7 +911,7 @@ export default function Home() {
       {/* 2C. KĀPĒC IZVĒLĒTIES MŪS */}
       <LazyLoadSection>
         <section 
-          className="py-16 md:py-24 bg-transparent overflow-visible relative z-10"
+          className="py-10 md:py-14 bg-transparent overflow-visible relative z-10"
         >
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
@@ -1083,7 +1065,7 @@ export default function Home() {
       {/* KĀ NOTIEK SADARBĪBA SECTION */}
       <LazyLoadSection>
         <section 
-          className="py-16 md:py-24 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-hidden z-10"
+          className="py-10 md:py-14 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-hidden z-10"
         >
           {/* Ambient Glow background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#BAFC50]/12 via-[#38b000]/12 to-transparent rounded-full blur-[160px] pointer-events-none z-0" />
@@ -1201,7 +1183,7 @@ export default function Home() {
       {/* 5. BUJ / FAQ: Preview Block */}
       <LazyLoadSection>
         <section 
-          className="py-16 md:py-20 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
+          className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -bottom-52 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-t from-[#38b000]/32 via-[#BAFC50]/25 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
@@ -1272,7 +1254,7 @@ export default function Home() {
       {/* 6. BLOGS: Preview Block */}
       <LazyLoadSection>
         <section 
-          className="py-16 md:py-20 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
+          className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 -right-36 w-[800px] h-[800px] bg-gradient-to-bl from-[#BAFC50]/30 via-[#38b000]/24 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
