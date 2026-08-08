@@ -212,10 +212,10 @@ export const enTranslations: Translations = {
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       description: "This fermented beverage website in biotechnology features a product catalog and information on home-brewing for personal use. We crafted a unique design, custom logo, and detailed product descriptions.",
-      image: "",
+      image: "/enzimi-portfolio.webp",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Custom UI/UX", "Brand Logo", "Product Catalog", "Mobile First"]
+      tags: ["Landing page", "Custom UI/UX", "Brand Logo", "Product Catalog", "Shopping Cart", "Mobile First"]
     },
     {
       id: 6,

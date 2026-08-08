@@ -310,7 +310,7 @@ a.dark\:bg-sageon-dark:hover,
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
 }
 
-/* Infinite Portfolio Carousel CSS variables - 2 items on desktop */
+/* Infinite Portfolio Carousel CSS variables - 3 items on desktop */
 .portfolio-carousel-track {
   --visible-count: 1;
 }
@@ -321,7 +321,7 @@ a.dark\:bg-sageon-dark:hover,
 }
 @media (min-width: 1024px) {
   .portfolio-carousel-track {
-    --visible-count: 2;
+    --visible-count: 3;
   }
 }
 

@@ -45,7 +45,10 @@ export default function PortfolioLaptopCard({
     cleanDomain.toLowerCase().includes("velobiedriba") ||
     link.toLowerCase().includes("velobiedriba") ||
     title.toLowerCase().includes("velobiedrīb") ||
-    title.toLowerCase().includes("velobiedriba");
+    title.toLowerCase().includes("velobiedriba") ||
+    cleanDomain.toLowerCase().includes("enzimi") ||
+    link.toLowerCase().includes("enzimi") ||
+    title.toLowerCase().includes("enzimi");
 
   const isVelobiedriba =
     cleanDomain.toLowerCase().includes("velobiedriba") ||
@@ -184,7 +187,7 @@ export default function PortfolioLaptopCard({
         <div className="flex-1 flex flex-col justify-between space-y-3 pt-1">
           <div className="space-y-2.5">
             {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 flex-wrap">
+            <div className="flex items-center justify-between gap-2 flex-wrap min-h-[28px]">
               {/* Top-Left Corner: Domain Address Badge */}
               <button
                 type="button"
@@ -216,22 +219,30 @@ export default function PortfolioLaptopCard({
               </div>
             </div>
 
-            {/* Title */}
-            <h3 className="text-base sm:text-lg font-extrabold text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug pt-1 select-text cursor-text">
-              {title}
-            </h3>
+            {/* Title - Fixed Height Block for 1 or 2 lines */}
+            <div className="h-[3rem] sm:h-[3.25rem] flex items-center">
+              <h3 className="text-base sm:text-lg font-extrabold text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
+                {title}
+              </h3>
+            </div>
 
-            {/* Detailed Description */}
-            {description && (
-              <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text">
-                {description}
-              </p>
-            )}
+            {/* Detailed Description - Fixed Height Block for 3 lines */}
+            <div className="h-[4rem] sm:h-[4.5rem] overflow-hidden">
+              {description ? (
+                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-3">
+                  {description}
+                </p>
+              ) : (
+                <p className="text-xs sm:text-sm text-zinc-500 italic select-text cursor-text">
+                  {subtitle || ""}
+                </p>
+              )}
+            </div>
           </div>
 
-          {/* Deliverables Badges / Tags */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-center gap-1.5 sm:gap-2">
-            {activeTags.map((tag, idx) => (
+          {/* Deliverables Badges / Tags - Fixed Height Block */}
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[4rem] sm:h-[4.5rem] overflow-hidden">
+            {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}
                 className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text"

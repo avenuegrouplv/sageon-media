@@ -86,10 +86,10 @@ const PORTFOLIO_ITEMS = [
     brand: "enzimi.lv",
     displayLink: "https://enzimi.lv",
     description: "Šī ir fermentēto dzērienu mājaslapa bio-tehnoloģiju nozarē, kurā izveidots produktu katalogs, kā arī informācija par dzērienu ražošanu mājas apstākļos savām vajadzībām. Lapai radīts unikāls dizains, pārdomāts logo un detalizēti produktu apraksti.",
-    image: "",
+    image: "/enzimi-portfolio.webp",
     link: "https://enzimi.lv",
     isPlaceholder: false,
-    tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Mobile First"]
+    tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
   },
   {
     id: 6,
@@ -230,6 +230,7 @@ export default function Home() {
   const totalPortfolioCount = portfolioItemsList.length;
   const [portfolioIndex, setPortfolioIndex] = useState(totalPortfolioCount);
   const [disablePortfolioTransition, setDisablePortfolioTransition] = useState(false);
+  const isAnimatingPortfolioRef = useRef(false);
 
   // Sync portfolioIndex if language or portfolio length changes
   useEffect(() => {
@@ -247,6 +248,8 @@ export default function Home() {
 
   const handlePortfolioTransitionEnd = (e: TransitionEvent) => {
     if (e.target !== e.currentTarget) return;
+    if (e.propertyName && e.propertyName !== 'transform') return;
+    isAnimatingPortfolioRef.current = false;
     const total = portfolioItemsList.length;
     if (portfolioIndex >= 2 * total) {
       setDisablePortfolioTransition(true);
@@ -258,17 +261,22 @@ export default function Home() {
   };
 
   const scrollPortfolio = (direction: 'left' | 'right') => {
-    if (disablePortfolioTransition) return;
+    if (disablePortfolioTransition || isAnimatingPortfolioRef.current) return;
+    isAnimatingPortfolioRef.current = true;
     if (direction === 'right') {
       setPortfolioIndex((prev) => prev + 1);
     } else {
       setPortfolioIndex((prev) => prev - 1);
     }
+    setTimeout(() => {
+      isAnimatingPortfolioRef.current = false;
+    }, 550);
   };
 
   // Infinite Pricing Carousel State
-  const [pricingIndex, setPricingIndex] = useState(0);
+  const [pricingIndex, setPricingIndex] = useState(4);
   const [disablePricingTransition, setDisablePricingTransition] = useState(false);
+  const isAnimatingPricingRef = useRef(false);
 
   useEffect(() => {
     if (disablePricingTransition) {
@@ -281,22 +289,29 @@ export default function Home() {
 
   const handlePricingTransitionEnd = (e: TransitionEvent) => {
     if (e.target !== e.currentTarget) return;
-    if (pricingIndex >= 8) {
+    if (e.propertyName && e.propertyName !== 'transform') return;
+    isAnimatingPricingRef.current = false;
+    const total = 4;
+    if (pricingIndex >= 2 * total) {
       setDisablePricingTransition(true);
-      setPricingIndex(4);
-    } else if (pricingIndex < 0) {
+      setPricingIndex((prev) => prev - total);
+    } else if (pricingIndex < total) {
       setDisablePricingTransition(true);
-      setPricingIndex(4);
+      setPricingIndex((prev) => prev + total);
     }
   };
 
   const scrollPricing = (direction: 'left' | 'right') => {
-    if (disablePricingTransition) return;
+    if (disablePricingTransition || isAnimatingPricingRef.current) return;
+    isAnimatingPricingRef.current = true;
     if (direction === 'right') {
       setPricingIndex((prev) => prev + 1);
     } else {
       setPricingIndex((prev) => prev - 1);
     }
+    setTimeout(() => {
+      isAnimatingPricingRef.current = false;
+    }, 550);
   };
 
   const planIcons = [
@@ -735,121 +750,145 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 4 core pricing cards: Stacked vertically 1-by-1 on mobile, 4 columns on desktop */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {pricingPlans.slice(0, 4).map((plan, index) => {
-                const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
-                return (
-                  <div 
-                    key={`${plan.title}-${index}`} 
-                    className="flex flex-col justify-between"
-                  >
-                    <Link
-                      to={getLocalizedPath('services')}
-                      className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
-                        isBestChoice 
-                          ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
-                          : "border-zinc-800 hover:border-[#BAFC50]"
-                      }`}
+            {/* Infinite Pricing Carousel Slider */}
+            <div className="overflow-hidden w-full relative touch-pan-y">
+              <div 
+                onTransitionEnd={handlePricingTransitionEnd}
+                className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                style={{ 
+                  transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
+                }}
+              >
+                {[...pricingPlans.slice(0, 4), ...pricingPlans.slice(0, 4), ...pricingPlans.slice(0, 4)].map((plan, index) => {
+                  const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
+                  return (
+                    <div 
+                      key={`${plan.title}-${index}`} 
+                      className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col justify-between"
                     >
-                      <div>
-                        {/* Header Section */}
-                        <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
-                          <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
-                            <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
-                              isBestChoice 
-                                ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
-                                : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
-                            }`}>
-                              {isBestChoice ? "★ " : ""}{plan.badge}
-                            </span>
-                          </div>
-                          
-                          <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
-                            {plan.title === "Multi-page" ? (
-                              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
-                                {plan.title}
-                              </h3>
-                            ) : (
-                              <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
-                            )}
-                            <p className="text-xs sm:text-sm font-normal text-zinc-300">
-                              {plan.subtitle}
-                            </p>
+                      <Link
+                        to={getLocalizedPath('services')}
+                        className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
+                          isBestChoice 
+                            ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
+                            : "border-zinc-800 hover:border-[#BAFC50]"
+                        }`}
+                      >
+                        <div>
+                          {/* Header Section */}
+                          <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
+                            <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
+                              <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
+                                isBestChoice 
+                                  ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
+                                  : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
+                              }`}>
+                                {isBestChoice ? "★ " : ""}{plan.badge}
+                              </span>
+                            </div>
+                            
+                            <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
+                              {plan.title === "Multi-page" ? (
+                                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
+                                  {plan.title}
+                                </h3>
+                              ) : (
+                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                              )}
+                              <p className="text-xs sm:text-sm font-normal text-zinc-300">
+                                {plan.subtitle}
+                              </p>
+                            </div>
+
+                            {/* Highly visible high-contrast pricing tag container */}
+                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
+                              {plan.originalPrice ? (
+                                <>
+                                  <div className="relative flex items-center gap-1">
+                                    <span className="text-base sm:text-lg font-black text-zinc-400">€</span>
+                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
+                                      {plan.originalPrice}
+                                    </span>
+                                    <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[72px] sm:translate-x-[96px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                                      <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                      <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
+                                    </div>
+                                  </div>
+                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1.5 sm:ml-2 text-zinc-300">
+                                    / {plan.period}
+                                  </span>
+                                </>
+                              ) : plan.price ? (
+                                <div className="flex items-center gap-1">
+                                  {plan.pricePrefix && (
+                                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                                      {plan.pricePrefix}
+                                    </span>
+                                  )}
+                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                    / {plan.period}
+                                  </span>
+                                </div>
+                              ) : (
+                                <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
+                                  {plan.period}
+                                </span>
+                              )}
+                            </div>
                           </div>
 
-                          {/* Highly visible high-contrast pricing tag container */}
-                          <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
-                            {plan.originalPrice ? (
-                              <>
-                                <div className="relative flex items-center gap-1">
-                                  <span className="text-base sm:text-lg font-black text-zinc-400">€</span>
-                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
-                                    {plan.originalPrice}
-                                  </span>
-                                  <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[72px] sm:translate-x-[96px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                    <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
-                                  </div>
+                          {/* Features List */}
+                          <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                            {plan.features.map((feature, fIndex) => (
+                              <li key={fIndex} className="flex items-start gap-2.5">
+                                <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
+                                  <Check className="h-4 w-4 stroke-[2.5]" />
                                 </div>
-                                <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1.5 sm:ml-2 text-zinc-300">
-                                  / {plan.period}
-                                </span>
-                              </>
-                            ) : plan.price ? (
-                              <div className="flex items-center gap-1">
-                                {plan.pricePrefix && (
-                                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                                    {plan.pricePrefix}
-                                  </span>
-                                )}
-                                <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                                <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
-                                  / {plan.period}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
-                                {plan.period}
-                              </span>
-                            )}
-                          </div>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
 
-                        {/* Features List */}
-                        <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
-                          {plan.features.map((feature, fIndex) => (
-                            <li key={fIndex} className="flex items-start gap-2.5">
-                              <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
-                                <Check className="h-4 w-4 stroke-[2.5]" />
-                              </div>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* CTA Action Button */}
-                      <div className="p-4 sm:p-6 sm:pt-0 pt-2">
-                        <span
-                          className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
-                            plan.highlight
-                              ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
-                              : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
-                          }`}
-                        >
-                          {plan.cta}
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
+                        {/* CTA Action Button */}
+                        <div className="p-4 sm:p-6 sm:pt-0 pt-2">
+                          <span
+                            className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
+                              plan.highlight
+                                ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
+                                : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
+                            }`}
+                          >
+                            {plan.cta}
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Uzzināt vairāk button */}
-            <div className="flex justify-end items-center mt-6">
+            {/* Controls (< > and Uzzināt vairāk button) below pricing cards on the right */}
+            <div className="flex justify-end items-center gap-3 mt-6">
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => scrollPricing('left')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Iepriekšējais pakalpojums"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button 
+                  onClick={() => scrollPricing('right')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Nākamais pakalpojums"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
               <CtaButton
                 text={lang === 'en' ? "Learn More" : lang === 'ru' ? "Узнать больше" : "Uzzināt vairāk"}
                 to={getLocalizedPath('services')}
@@ -878,26 +917,53 @@ export default function Home() {
               </div>
             </div>
 
-            {/* First 3 Portfolio Items: Grid layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-              {portfolioItemsList.slice(0, 3).map((item) => (
-                <div key={item.id} className="flex flex-col justify-between h-full">
-                  <PortfolioLaptopCard
-                    title={item.title}
-                    brand={item.brand}
-                    displayLink={item.displayLink}
-                    image={item.image}
-                    link={item.link}
-                    isPlaceholder={item.isPlaceholder}
-                    description={item.description}
-                    tags={item.tags}
-                  />
-                </div>
-              ))}
+            {/* Infinite Portfolio Carousel Slider */}
+            <div className="overflow-hidden w-full relative touch-pan-y">
+              <div 
+                onTransitionEnd={handlePortfolioTransitionEnd}
+                className={`flex portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                style={{ 
+                  transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
+                }}
+              >
+                {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
+                  <div 
+                    key={`${item.id}-${index}`} 
+                    className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col justify-between h-full"
+                  >
+                    <PortfolioLaptopCard
+                      title={item.title}
+                      brand={item.brand}
+                      displayLink={item.displayLink}
+                      image={item.image}
+                      link={item.link}
+                      isPlaceholder={item.isPlaceholder}
+                      description={item.description}
+                      tags={item.tags}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Skatīt visus button on the right */}
-            <div className="flex justify-end items-center mt-6">
+            {/* Controls (< > and Skatīt visus button) below portfolio cards on the right */}
+            <div className="flex justify-end items-center gap-3 mt-6">
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => scrollPortfolio('left')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Iepriekšējais projekts"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button 
+                  onClick={() => scrollPortfolio('right')}
+                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  aria-label="Nākamais projekts"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
               <CtaButton
                 text={lang === 'en' ? "View All" : lang === 'ru' ? "Смотреть все" : "Skatīt visus"}
                 to={getLocalizedPath('portfolio')}

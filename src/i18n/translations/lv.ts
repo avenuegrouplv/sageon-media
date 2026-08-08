@@ -212,10 +212,10 @@ export const lvTranslations: Translations = {
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       description: "Šī ir fermentēto dzērienu mājaslapa bio-tehnoloģiju nozarē, kurā izveidots produktu katalogs, kā arī informācija par dzērienu ražošanu mājas apstākļos savām vajadzībām. Lapai radīts unikāls dizains, pārdomāts logo un detalizēti produktu apraksti.",
-      image: "",
+      image: "/enzimi-portfolio.webp",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Mobile First"]
+      tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
     },
     {
       id: 6,

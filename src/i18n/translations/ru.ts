@@ -212,10 +212,10 @@ export const ruTranslations: Translations = {
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       description: "Сайт ферментированных напитков в био-технологической сфере с каталогом продукции и информацией о домашнем приготовлении напитков для личных нужд. Для сайта был создан уникальный дизайн, продуманный логотип и подробные описания продуктов.",
-      image: "",
+      image: "/enzimi-portfolio.webp",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Уникальный UI/UX", "Логотип бренда", "Каталог продукции", "Адаптивность"]
+      tags: ["Landing page", "Уникальный UI/UX", "Логотип бренда", "Каталог продукции", "Корзина товаров", "Адаптивность"]
     },
     {
       id: 6,
