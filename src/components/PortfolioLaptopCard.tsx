@@ -114,7 +114,7 @@ export default function PortfolioLaptopCard({
     <>
       <div
         onClick={handleCardClick}
-        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-3.5 sm:p-5 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 sm:p-6 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
@@ -220,16 +220,16 @@ export default function PortfolioLaptopCard({
             </div>
 
             {/* Title - Fixed Height Block for 1 or 2 lines */}
-            <div className="h-[3rem] sm:h-[3.25rem] flex items-center">
+            <div className="h-[3.25rem] sm:h-[3.5rem] flex items-center">
               <h3 className="text-base sm:text-lg font-extrabold text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
                 {title}
               </h3>
             </div>
 
-            {/* Detailed Description - Fixed Height Block for 3 lines */}
-            <div className="h-[4rem] sm:h-[4.5rem] overflow-hidden">
+            {/* Detailed Description - Fixed Height Block for 4 lines */}
+            <div className="h-[5.5rem] sm:h-[6rem] overflow-hidden">
               {description ? (
-                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-3">
+                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-4">
                   {description}
                 </p>
               ) : (
@@ -241,7 +241,7 @@ export default function PortfolioLaptopCard({
           </div>
 
           {/* Deliverables Badges / Tags - Fixed Height Block */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[4rem] sm:h-[4.5rem] overflow-hidden">
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[4.25rem] sm:h-[4.75rem] overflow-hidden">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}

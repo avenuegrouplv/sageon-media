@@ -90,7 +90,7 @@ export default function HeroSlider() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-6 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start"
+            className="lg:col-span-6 xl:col-span-6 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start pt-[30px]"
           >
             {/* Agency Badge */}
             <motion.div 
@@ -167,7 +167,7 @@ export default function HeroSlider() {
                 decoding="async"
                 width={1180}
                 height={720}
-                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[180px] translate-y-0 lg:translate-y-[38px] scale-100 lg:scale-[1.40] origin-center mx-auto py-2 sm:py-0"
+                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[120px] translate-y-[30px] lg:translate-y-[68px] scale-100 lg:scale-[1.40] origin-center mx-auto py-2 sm:py-0"
               />
             </div>
           </div>
