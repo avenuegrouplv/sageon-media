@@ -35,8 +35,12 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      lenis.destroy();
-      delete (window as any).lenis;
+      try {
+        lenis.destroy();
+      } catch (e) {
+        // Ignore destroy error if already disposed
+      }
+      (window as any).lenis = undefined;
     };
   }, []);
 

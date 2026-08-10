@@ -167,7 +167,7 @@ export default function HeroSlider() {
                 decoding="async"
                 width={1180}
                 height={720}
-                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[120px] translate-y-0 lg:translate-y-[68px] scale-[0.88] sm:scale-100 lg:scale-[1.40] origin-center mx-auto py-1 sm:py-0"
+                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[800px] xl:max-w-[950px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[50px] translate-y-0 lg:translate-y-[40px] scale-[0.88] sm:scale-100 lg:scale-[1.18] origin-center mx-auto py-1 sm:py-0"
               />
             </div>
           </div>

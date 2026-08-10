@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 import SmoothScroll from "./components/SmoothScroll";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { LanguageProvider } from "./i18n/LanguageContext";
 
 // Core Home page (hero view loads instantly)
@@ -87,14 +88,16 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <LanguageProvider>
-        <SmoothScroll>
-          {/* Automatically reset scroll position to top on route change */}
-          <ScrollToTop />
-          <AppContent />
-        </SmoothScroll>
-      </LanguageProvider>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <LanguageProvider>
+          <SmoothScroll>
+            {/* Automatically reset scroll position to top on route change */}
+            <ScrollToTop />
+            <AppContent />
+          </SmoothScroll>
+        </LanguageProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
