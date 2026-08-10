@@ -56,7 +56,7 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-32 sm:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-16">
+    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-20 sm:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
       <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -64,10 +64,10 @@ export default function HeroSlider() {
       <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[#BAFC50]/12 rounded-full blur-2xl pointer-events-none" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-4 sm:pt-4">
+      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-4">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-6 sm:-mt-16 lg:-mt-20 pb-4 sm:pb-6 md:pb-8">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-12 sm:-mt-16 lg:-mt-20 pb-2 sm:pb-6 md:pb-8">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
@@ -84,14 +84,14 @@ export default function HeroSlider() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-8 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-2 sm:pt-4">
           
           {/* Left Text Column */}
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-8 sm:mt-0 pt-6 lg:pt-[40px]"
+            className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-2 sm:mt-0 pt-1 lg:pt-[40px]"
           >
             {/* Agency Badge */}
             <motion.div 

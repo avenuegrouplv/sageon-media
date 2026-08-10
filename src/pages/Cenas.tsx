@@ -100,10 +100,12 @@ export default function Cenas() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pricingPlans.map((plan, index) => {
             const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
+            const isMultiPage = plan.title === "Multi-page";
+            const mobileOrderClass = isMultiPage ? "order-first md:order-none" : "order-none";
             return (
               <div
                 key={index}
-                className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden ${
+                className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden ${mobileOrderClass} ${
                   isBestChoice 
                     ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
                     : "border-zinc-800 hover:border-[#BAFC50]"

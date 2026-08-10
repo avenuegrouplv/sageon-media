@@ -187,11 +187,7 @@ export default function Header() {
           <hr className="border-zinc-800/80" />
 
           {/* Languages selection list on Mobile */}
-          <div className="space-y-2">
-            <p className="text-xs font-business tracking-widest uppercase text-slate-400 flex items-center gap-1.5 font-bold">
-              <Globe className="h-3.5 w-3.5 text-[#BAFC50]" />
-              {lang === "LV" ? "Valoda" : lang === "EN" ? "Language" : "Язык"}
-            </p>
+          <div className="pt-1">
             <div className="flex gap-2.5">
               {([
                 { code: "LV" as Language, name: "LV" },

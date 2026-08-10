@@ -495,9 +495,20 @@ export default function Home() {
   };
 
   // Infinite Pricing Carousel State
-  const [pricingIndex, setPricingIndex] = useState(4);
+  const [pricingIndex, setPricingIndex] = useState(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return 5; // Default to Multi-page card on mobile
+    }
+    return 4; // Default to Landing page on desktop
+  });
   const [disablePricingTransition, setDisablePricingTransition] = useState(false);
   const isAnimatingPricingRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setPricingIndex(5);
+    }
+  }, []);
 
   useEffect(() => {
     if (disablePricingTransition) {
@@ -545,10 +556,12 @@ export default function Home() {
     <Search className="h-5 w-5 text-amber-400" />
   ];
 
-  const pricingPlans = (t.pricingPlans || []).map((plan, idx) => ({
+  const rawPlans = (t.pricingPlans || []).map((plan, idx) => ({
     ...plan,
     icon: planIcons[idx % planIcons.length]
   }));
+
+  const pricingPlans = rawPlans;
 
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-x-hidden">
@@ -640,7 +653,7 @@ export default function Home() {
 
       {/* UZTICĪBAS JOSLA / TRUST BANNER */}
       <LazyLoadSection>
-        <div className="w-full bg-[#111115]/90 border-y border-zinc-800/80 backdrop-blur-md py-4 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-10 sm:mt-16 md:mt-20 mb-8 sm:mb-12">
+        <div className="w-full bg-transparent sm:bg-[#111115]/90 border-y border-zinc-800/40 sm:border-zinc-800/80 sm:backdrop-blur-md py-3 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-6 sm:mt-12 md:mt-16 mb-6 sm:mb-12">
           <div className="w-full max-w-[1380px] mx-auto">
             {/* Desktop Layout */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center justify-between">
@@ -656,23 +669,23 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Mobile Layout: Interactive High-Tech Glass Grid */}
-            <div className="grid sm:hidden grid-cols-2 gap-2.5">
+            {/* Mobile Layout: Clean Transparent Glowing Cards (No Gray Box) */}
+            <div className="grid sm:hidden grid-cols-2 gap-3">
               {trustItems.map((item, idx) => {
                 const trustIcons = [Sparkles, Zap, ShieldCheck, TrendingUp];
                 const IconComp = trustIcons[idx % trustIcons.length];
                 return (
                   <div 
                     key={idx} 
-                    className="relative group bg-[#1c1d22] border border-zinc-700/80 rounded-xl p-3 flex flex-col justify-between gap-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 active:scale-[0.98]"
+                    className="relative group bg-transparent border border-[#BAFC50]/25 hover:border-[#BAFC50]/60 rounded-xl p-3 flex flex-col justify-between gap-2.5 overflow-hidden transition-all duration-300 active:scale-[0.98]"
                   >
-                    <div className="absolute -right-2 -bottom-2 w-16 h-16 bg-[#BAFC50]/12 rounded-full blur-xl pointer-events-none" />
+                    <div className="absolute -right-2 -bottom-2 w-14 h-14 bg-[#BAFC50]/10 rounded-full blur-lg pointer-events-none" />
                     <div className="flex items-center justify-between w-full">
-                      <div className="w-7 h-7 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50]/45 flex items-center justify-center shrink-0 text-[#BAFC50] shadow-[0_0_14px_rgba(186,252,80,0.25)]">
+                      <div className="w-7 h-7 rounded-lg bg-[#BAFC50]/15 border border-[#BAFC50]/40 flex items-center justify-center shrink-0 text-[#BAFC50] shadow-[0_0_12px_rgba(186,252,80,0.2)]">
                         <IconComp className="h-3.5 w-3.5 stroke-[2.5]" />
                       </div>
                     </div>
-                    <span className="text-[11px] font-semibold text-white leading-snug tracking-tight">
+                    <span className="text-[11.5px] font-semibold text-white leading-snug tracking-tight">
                       {item}
                     </span>
                   </div>
@@ -895,9 +908,9 @@ export default function Home() {
               <div className="space-y-12 md:space-y-16 max-w-[1380px] mx-auto">
                 {/* Row 1: Text Left, Image Right */}
                 <div 
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-12 items-center py-2 md:py-4"
                 >
-                  <div className="lg:col-span-7 space-y-3">
+                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                       Mājaslapas izstrāde
                     </h3>
@@ -905,7 +918,7 @@ export default function Home() {
                       Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu.
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative flex items-center justify-center">
+                  <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/25 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
@@ -915,7 +928,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-full h-auto max-h-[335px] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300"
+                      className="relative z-10 w-[88%] sm:w-full h-auto max-h-[335px] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 mx-auto"
                     />
                   </div>
                 </div>
@@ -937,7 +950,7 @@ export default function Home() {
                       className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
                     />
                   </div>
-                  <div className="lg:col-span-7 space-y-3">
+                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                       Dizains & Mobile first
                     </h3>
@@ -951,7 +964,7 @@ export default function Home() {
                 <div 
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
-                  <div className="lg:col-span-7 space-y-3">
+                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                       Struktūra & rezultāts
                     </h3>
