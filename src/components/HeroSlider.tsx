@@ -56,17 +56,18 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-22 sm:pt-24 pb-4 sm:pb-10 md:pb-16">
+    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-32 sm:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
-      <div className="absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[#BAFC50]/12 rounded-full blur-2xl pointer-events-none" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-4">
+      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-4 sm:pt-4">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-2 sm:-mt-18 lg:-mt-24 pb-4 md:pb-8">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-6 sm:-mt-16 lg:-mt-20 pb-4 sm:pb-6 md:pb-8">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
@@ -83,14 +84,14 @@ export default function HeroSlider() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-0 sm:pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-8 sm:pt-4">
           
           {/* Left Text Column */}
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-6 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start -mt-3 lg:mt-0 pt-0 lg:pt-[30px]"
+            className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-8 sm:mt-0 pt-6 lg:pt-[40px]"
           >
             {/* Agency Badge */}
             <motion.div 
@@ -119,14 +120,14 @@ export default function HeroSlider() {
                     : "Мы разрабатываем современные сайты, которые..."}
               </h1>
               
-              <div className="h-[80px] sm:h-[90px] md:h-[100px] lg:h-[105px] xl:h-[110px] flex items-center justify-center lg:justify-start overflow-hidden relative w-full">
+              <div className="min-h-[75px] sm:h-[90px] md:h-[100px] lg:h-[105px] xl:h-[110px] flex items-center justify-center lg:justify-start relative w-full my-1">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={`${lang}-${phraseIndex}`}
-                    initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block drop-shadow-[0_0_20px_rgba(186,252,80,0.35)] text-center lg:text-left"
                   >
                     {phrases[phraseIndex % phrases.length]}
@@ -155,8 +156,9 @@ export default function HeroSlider() {
 
           {/* Right Image Column */}
           <div className="lg:col-span-6 xl:col-span-6 relative flex flex-col items-center justify-center translate-x-0 lg:translate-x-0 mt-1 mb-0 lg:my-0">
-            <div className="absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-gradient-to-tr from-[#38b000]/55 via-[#BAFC50]/50 to-emerald-900/20 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none z-0" />
-            <div className="absolute w-[90%] sm:w-[100%] h-[70%] sm:h-[80%] -bottom-8 sm:-bottom-10 bg-[#BAFC50]/40 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0" />
+            <div className="hidden sm:block absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-gradient-to-tr from-[#38b000]/55 via-[#BAFC50]/50 to-emerald-900/20 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none z-0" />
+            <div className="hidden sm:block absolute w-[90%] sm:w-[100%] h-[70%] sm:h-[80%] -bottom-8 sm:-bottom-10 bg-[#BAFC50]/40 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0" />
+            <div className="sm:hidden absolute w-[95%] h-[80%] -bottom-4 bg-[#BAFC50]/20 rounded-full blur-2xl pointer-events-none z-0" />
 
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
               <img

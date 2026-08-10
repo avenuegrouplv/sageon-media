@@ -118,9 +118,9 @@ const PORTFOLIO_ITEMS = [
 function LazyLoadSection({ children }: { children: ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0.9, y: 10 }}
+      initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.01 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="w-full"
     >
@@ -267,7 +267,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+        <AnimatePresence mode="wait" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -622,20 +622,25 @@ export default function Home() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
       {/* Irregular Glowing Green Orbs Flowing Seamlessly From Top to Bottom */}
-      <div className="absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/16 to-transparent rounded-full blur-[170px] pointer-events-none z-0" />
-      <div className="absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-gradient-to-bl from-[#38b000]/26 via-[#BAFC50]/18 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
-      <div className="absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-gradient-to-tr from-[#BAFC50]/24 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-gradient-to-tl from-[#38b000]/28 via-[#BAFC50]/20 to-transparent rounded-full blur-[200px] pointer-events-none z-0" />
-      <div className="absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-gradient-to-bl from-[#38b000]/25 via-[#BAFC50]/22 to-transparent rounded-full blur-[185px] pointer-events-none z-0" />
-      <div className="absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-gradient-to-tr from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/16 to-transparent rounded-full blur-[170px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-gradient-to-bl from-[#38b000]/26 via-[#BAFC50]/18 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-gradient-to-tr from-[#BAFC50]/24 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-gradient-to-tl from-[#38b000]/28 via-[#BAFC50]/20 to-transparent rounded-full blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-gradient-to-bl from-[#38b000]/25 via-[#BAFC50]/22 to-transparent rounded-full blur-[185px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-gradient-to-tr from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
+
+      {/* Lightweight Mobile-Optimized Ambient Glows */}
+      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[#BAFC50]/15 rounded-full blur-2xl pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[#38b000]/15 rounded-full blur-2xl pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[#BAFC50]/15 rounded-full blur-2xl pointer-events-none z-0" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
 
       {/* UZTICĪBAS JOSLA / TRUST BANNER */}
       <LazyLoadSection>
-        <div className="w-full bg-[#111115]/90 border-y border-zinc-800/80 backdrop-blur-md py-3.5 sm:py-5 px-3.5 sm:px-6 md:px-12 relative z-20 my-2 sm:my-4">
+        <div className="w-full bg-[#111115]/90 border-y border-zinc-800/80 backdrop-blur-md py-4 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-10 sm:mt-16 md:mt-20 mb-8 sm:mb-12">
           <div className="w-full max-w-[1380px] mx-auto">
             {/* Desktop Layout */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center justify-between">
@@ -681,7 +686,7 @@ export default function Home() {
       {/* KAS STĀV CEĻĀ JŪSU IZAUGSMEI */}
       <LazyLoadSection>
         <section 
-          className="pt-6 pb-4 sm:py-12 md:py-16 bg-transparent overflow-visible relative z-10"
+          className="pt-16 sm:pt-28 md:pt-36 pb-10 sm:pb-20 mt-6 sm:mt-12 bg-transparent overflow-visible relative z-10"
         >
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* Sub-block: Kas kavē Jūsu izaugsmi */}
@@ -841,7 +846,7 @@ export default function Home() {
 
       {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
       <LazyLoadSection>
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-4 sm:pt-12 pb-4 relative z-10">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-16 sm:pt-28 md:pt-36 pb-8 relative z-10">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
             <div className="space-y-3 flex flex-col items-center justify-center text-center">
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
@@ -876,7 +881,7 @@ export default function Home() {
       {/* 2. INTRO BLOCK: Ko mēs piedāvājam */}
       <LazyLoadSection>
         <section 
-          className="pt-4 sm:pt-8 md:pt-24 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
+          className="pt-10 sm:pt-16 md:pt-28 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
