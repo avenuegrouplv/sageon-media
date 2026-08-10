@@ -13,7 +13,8 @@ const SECONDARY_IMAGES = [
   "/Avenuegroup-portfolio.webp",
   "/latvijas-restarts-portfolio.webp",
   "/enzimi-portfolio.webp",
-  "/Travel-with-martins.webp"
+  "/Travel-with-martins.webp",
+  "/beauty-portfolio.webp"
 ];
 
 const preloadedSet = new Set<string>();

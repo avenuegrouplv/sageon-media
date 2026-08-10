@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { FolderGit2, Sparkles, X } from "lucide-react";
+import { FolderGit2, X } from "lucide-react";
 import PageNavButtons from "../components/PageNavButtons";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import ContactForm from "../components/ContactForm";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../i18n/LanguageContext";
 
-export default function Darbi() {
+export default function Projekti() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { lang, t, getLocalizedPath } = useLanguage();
 
@@ -115,20 +115,6 @@ export default function Darbi() {
             subtitle={emptyPortfolioCard.subtitle}
             description={emptyPortfolioCard.description}
           />
-        </div>
-
-        {/* Informative Callout */}
-        <div className="bg-[#18181b] p-6 md:p-8 text-center space-y-3 border border-zinc-800 max-w-3xl mx-auto rounded-2xl shadow-sm">
-          <div className="inline-flex p-2 bg-[#BAFC50]/10 text-[#BAFC50] mb-1 rounded-lg">
-            <Sparkles className="h-5 w-5 text-[#BAFC50]" />
-          </div>
-          <p className="text-sm md:text-base text-white font-bold tracking-tight">
-            {lang === "LV" 
-              ? "Mēs izstrādājam unikālas un ātras mājaslapas. Sazinieties ar mums jau šodien!" 
-              : lang === "EN" 
-                ? "We build unique and fast websites. Contact us today!" 
-                : "Мы создаем уникальные и быстрые сайты. Свяжитесь с нами сегодня!"}
-          </p>
         </div>
 
         {/* Dynamic Contact Form for Pricing Proposal Request */}

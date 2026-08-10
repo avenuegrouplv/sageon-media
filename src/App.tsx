@@ -12,7 +12,7 @@ import { LanguageProvider } from "./i18n/LanguageContext";
 import Home from "./pages/Home";
 
 // Lazy-loaded sub-pages
-const Darbi = lazy(() => import("./pages/Darbi"));
+const Projekti = lazy(() => import("./pages/Projekti"));
 const Cenas = lazy(() => import("./pages/Cenas"));
 const Buj = lazy(() => import("./pages/Buj"));
 const Blogs = lazy(() => import("./pages/Blogs"));
@@ -44,9 +44,9 @@ function AppContent() {
           <Routes>
             {/* LV Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/projekti" element={<Darbi />} />
-            <Route path="/portfolio" element={<Darbi />} />
-            <Route path="/darbi" element={<Darbi />} />
+            <Route path="/projekti" element={<Projekti />} />
+            <Route path="/portfolio" element={<Projekti />} />
+            <Route path="/darbi" element={<Projekti />} />
             <Route path="/pakalpojumi" element={<Cenas />} />
             <Route path="/cenas" element={<Cenas />} />
             <Route path="/buj" element={<Buj />} />
@@ -55,8 +55,8 @@ function AppContent() {
 
             {/* EN Routes */}
             <Route path="/en" element={<Home />} />
-            <Route path="/en/projects" element={<Darbi />} />
-            <Route path="/en/portfolio" element={<Darbi />} />
+            <Route path="/en/projects" element={<Projekti />} />
+            <Route path="/en/portfolio" element={<Projekti />} />
             <Route path="/en/services" element={<Cenas />} />
             <Route path="/en/faq" element={<Buj />} />
             <Route path="/en/blog" element={<Blogs />} />
@@ -64,8 +64,8 @@ function AppContent() {
 
             {/* RU Routes */}
             <Route path="/ru" element={<Home />} />
-            <Route path="/ru/proekty" element={<Darbi />} />
-            <Route path="/ru/portfolio" element={<Darbi />} />
+            <Route path="/ru/proekty" element={<Projekti />} />
+            <Route path="/ru/portfolio" element={<Projekti />} />
             <Route path="/ru/uslugi" element={<Cenas />} />
             <Route path="/ru/voprosy" element={<Buj />} />
             <Route path="/ru/blog" element={<Blogs />} />

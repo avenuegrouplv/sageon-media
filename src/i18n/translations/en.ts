@@ -238,6 +238,17 @@ export const enTranslations: Translations = {
       link: "https://velobiedriba.lv",
       isPlaceholder: false,
       tags: ["Landing page", "Custom UI/UX", "Gallery", "Mobile First", "Content"]
+    },
+    {
+      id: 8,
+      title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
+      brand: "Beauty studio",
+      displayLink: "beautystudio",
+      description: "Beauty service provider website with a custom design and descriptions. Features an integrated shopping cart, calendar, and application form.",
+      image: "/beauty-portfolio.webp",
+      link: "https://beautystudio.lv",
+      isPlaceholder: false,
+      tags: ["Multi-page", "Custom UI/UX", "Mobile First", "Shopping Cart", "Calendar", "Application Form"]
     }
   ],
   pricingPlans: [

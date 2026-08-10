@@ -112,6 +112,17 @@ const PORTFOLIO_ITEMS = [
     link: "https://velobiedriba.lv",
     isPlaceholder: false,
     tags: ["Landing page", "Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
+  },
+  {
+    id: 8,
+    title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
+    brand: "Beauty studio",
+    displayLink: "beautystudio",
+    description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
+    image: "/beauty-portfolio.webp",
+    link: "https://beautystudio.lv",
+    isPlaceholder: false,
+    tags: ["Multi-page", "Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
   }
 ];
 
@@ -1099,7 +1110,7 @@ export default function Home() {
                                     <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
                                       {plan.originalPrice}
                                     </span>
-                                    <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[72px] sm:translate-x-[96px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                                    <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[40px] sm:translate-x-[52px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                                       <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
                                       <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
                                     </div>
@@ -1162,7 +1173,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Uzzināt vairāk button) below pricing cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6">
+            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPricing('left')}
@@ -1237,7 +1248,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Skatīt visus button) below portfolio cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6">
+            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPortfolio('left')}

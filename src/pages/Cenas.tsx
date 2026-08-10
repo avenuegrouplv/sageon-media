@@ -146,7 +146,7 @@ export default function Cenas() {
                             <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
                               {plan.originalPrice}
                             </span>
-                            <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[72px] sm:translate-x-[96px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                            <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[40px] sm:translate-x-[52px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                               <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
                               <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
                             </div>

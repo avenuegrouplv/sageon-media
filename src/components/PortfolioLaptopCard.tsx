@@ -48,7 +48,10 @@ export default function PortfolioLaptopCard({
     title.toLowerCase().includes("velobiedriba") ||
     cleanDomain.toLowerCase().includes("enzimi") ||
     link.toLowerCase().includes("enzimi") ||
-    title.toLowerCase().includes("enzimi");
+    title.toLowerCase().includes("enzimi") ||
+    cleanDomain.toLowerCase().includes("beauty") ||
+    link.toLowerCase().includes("beauty") ||
+    title.toLowerCase().includes("beauty");
 
   const isVelobiedriba =
     cleanDomain.toLowerCase().includes("velobiedriba") ||
@@ -241,7 +244,7 @@ export default function PortfolioLaptopCard({
           </div>
 
           {/* Deliverables Badges / Tags - Fixed Height Block */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[4.25rem] sm:h-[4.75rem] overflow-hidden">
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[4.5rem] sm:min-h-[5.25rem] overflow-visible">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}
