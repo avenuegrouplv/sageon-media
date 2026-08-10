@@ -677,13 +677,13 @@ export default function Home() {
         <div className="w-full bg-transparent sm:bg-[#111115]/90 border-y border-zinc-800/40 sm:border-zinc-800/80 sm:backdrop-blur-md py-3 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-6 sm:mt-12 md:mt-16 mb-6 sm:mb-12">
           <div className="w-full max-w-[1380px] mx-auto">
             {/* Desktop Layout */}
-            <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center justify-between">
+            <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 xl:gap-6 items-center justify-between">
               {trustItems.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 justify-center sm:justify-start lg:justify-center">
-                  <div className="w-6 h-6 rounded-full bg-[#BAFC50]/15 border border-[#BAFC50]/40 flex items-center justify-center shrink-0 text-[#BAFC50]">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
+                <div key={idx} className="flex items-center gap-2.5 xl:gap-3 justify-center sm:justify-start lg:justify-center min-w-0">
+                  <div className="w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-[#BAFC50]/15 border border-[#BAFC50]/40 flex items-center justify-center shrink-0 text-[#BAFC50]">
+                    <Check className="h-3 w-3 xl:h-3.5 xl:w-3.5 stroke-[3]" />
                   </div>
-                  <span className="text-xs sm:text-sm md:text-base font-semibold text-zinc-100 tracking-tight">
+                  <span className="text-xs lg:text-[13px] xl:text-sm font-semibold text-zinc-100 tracking-tight whitespace-nowrap">
                     {item}
                   </span>
                 </div>

@@ -84,6 +84,19 @@ html {
   max-width: 100%;
 }
 
+/* Elegant, proportional desktop scale reduction (~90% scale on desktop monitors) */
+@media (min-width: 1280px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 body, html, #root {
   background-color: #000000 !important;
   color: #f4f4f5 !important;
