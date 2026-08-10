@@ -129,6 +129,223 @@ function LazyLoadSection({ children }: { children: ReactNode }) {
   );
 }
 
+function ProblemCardsMobileSlider({ lang }: { lang: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const cards = [
+    {
+      num: "01 / Iemesls",
+      Icon: ShieldAlert,
+      title: lang === 'en' ? "Website doesn't build trust" : lang === 'ru' ? "Сайт не вызывает доверия" : "Mājaslapa nerada uzticību",
+      desc: lang === 'en' 
+        ? "Outdated design, unclear information, or complex navigation can create a negative first impression and deter potential clients."
+        : lang === 'ru'
+        ? "Устаревший дизайн, непонятная информация или сложная навигация создают негативное первое впечатление."
+        : "Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas."
+    },
+    {
+      num: "02 / Iemesls",
+      Icon: TrendingDown,
+      title: lang === 'en' ? "Visitors don't convert to clients" : lang === 'ru' ? "Посетители не становятся клиентами" : "Apmeklētāji nekļūst par klientiem",
+      desc: lang === 'en'
+        ? "Without a clear structure and compelling call to action, visitors leave without buying or reaching out."
+        : lang === 'ru'
+        ? "Без четкой структуры и убедительного призыва к действию посетители уходят без покупки или обращения."
+        : "Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu."
+    },
+    {
+      num: "03 / Iemesls",
+      Icon: Search,
+      title: lang === 'en' ? "Hard to find on Google" : lang === 'ru' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google",
+      desc: lang === 'en'
+        ? "Without quality SEO optimization, potential clients find your competitors first."
+        : lang === 'ru'
+        ? "Без качественной SEO-оптимизации потенциальные клиенты сначала находят ваших конкурентов."
+        : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu."
+    },
+    {
+      num: "04 / Iemesls",
+      Icon: Clock,
+      title: lang === 'en' ? "Website loads slowly" : lang === 'ru' ? "Сайт загружается медленно" : "Mājaslapa ielādējas lēni",
+      desc: lang === 'en'
+        ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
+        : lang === 'ru'
+        ? "Медленная загрузка ухудшает пользовательский опыт, снижает эффективность рекламы и позиции в Google."
+        : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā."
+    },
+    {
+      num: "05 / Iemesls",
+      Icon: HelpCircle,
+      title: lang === 'en' ? "Offer is not convincing enough" : lang === 'ru' ? "Предложение недостаточно убедительно" : "Piedāvājums nav pietiekami pārliecinošs",
+      desc: lang === 'en'
+        ? "Without clearly showing company advantages and client benefits, it's harder for clients to decide."
+        : lang === 'ru'
+        ? "Если на сайте не показаны преимущества компании, клиенту сложнее принять решение."
+        : "Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību."
+    }
+  ];
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % cards.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % cards.length);
+    }, 8500);
+    return () => clearInterval(timer);
+  }, [isPaused, cards.length]);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 35) {
+        nextSlide();
+      } else if (diff < -35) {
+        prevSlide();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    setTimeout(() => setIsPaused(false), 3500);
+  };
+
+  const currentCard = cards[currentIndex];
+  const IconComp = currentCard.Icon;
+
+  const variants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 0.96,
+    }),
+    center: {
+      x: "0%",
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 0.96,
+    }),
+  };
+
+  return (
+    <div className="sm:hidden w-full relative px-1 py-1 mb-2">
+      <div 
+        className="relative overflow-hidden w-full"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between min-h-[175px]"
+          >
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs text-amber-500/80 font-semibold uppercase tracking-wider">
+                  {currentCard.num}
+                </span>
+                <div className="p-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl">
+                  <IconComp className="h-4.5 w-4.5" />
+                </div>
+              </div>
+              <h3 className="font-bold text-white text-base leading-snug tracking-tight">
+                {currentCard.title}
+              </h3>
+              <p className="text-xs text-zinc-300 font-light leading-relaxed">
+                {currentCard.desc}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation controls - positioned tightly right below the card */}
+      <div className="flex items-center justify-between pt-2 px-1 relative z-20">
+        {/* Left: Indicator dots */}
+        <div className="flex items-center gap-1.5">
+          {cards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setDirection(idx > currentIndex ? 1 : -1);
+                setCurrentIndex(idx);
+                setIsPaused(true);
+                setTimeout(() => setIsPaused(false), 3500);
+              }}
+              aria-label={`Pāriet uz ${idx + 1}. kartiņu`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? "w-6 bg-amber-400" : "w-2 bg-zinc-700/70"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Right: Prev & Next navigation buttons */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              prevSlide();
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3500);
+            }}
+            aria-label="Iepriekšējā kartiņa"
+            className="p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <button
+            onClick={() => {
+              nextSlide();
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3500);
+            }}
+            aria-label="Nākamā kartiņa"
+            className="p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const { lang, t, getLocalizedPath } = useLanguage();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -414,9 +631,10 @@ export default function Home() {
 
       {/* UZTICĪBAS JOSLA / TRUST BANNER */}
       <LazyLoadSection>
-        <div className="w-full bg-[#111115]/90 border-y border-zinc-800/80 backdrop-blur-md py-4 sm:py-5 px-4 sm:px-6 md:px-12 relative z-20 my-2 sm:my-4">
+        <div className="w-full bg-[#111115]/90 border-y border-zinc-800/80 backdrop-blur-md py-3.5 sm:py-5 px-3.5 sm:px-6 md:px-12 relative z-20 my-2 sm:my-4">
           <div className="w-full max-w-[1380px] mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center justify-between">
+            {/* Desktop Layout */}
+            <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center justify-between">
               {trustItems.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 justify-center sm:justify-start lg:justify-center">
                   <div className="w-6 h-6 rounded-full bg-[#BAFC50]/15 border border-[#BAFC50]/40 flex items-center justify-center shrink-0 text-[#BAFC50]">
@@ -428,6 +646,30 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* Mobile Layout: Interactive High-Tech Glass Grid */}
+            <div className="grid sm:hidden grid-cols-2 gap-2.5">
+              {trustItems.map((item, idx) => {
+                const trustIcons = [Sparkles, Zap, ShieldCheck, TrendingUp];
+                const IconComp = trustIcons[idx % trustIcons.length];
+                return (
+                  <div 
+                    key={idx} 
+                    className="relative group bg-[#1c1d22] border border-zinc-700/80 rounded-xl p-3 flex flex-col justify-between gap-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 active:scale-[0.98]"
+                  >
+                    <div className="absolute -right-2 -bottom-2 w-16 h-16 bg-[#BAFC50]/12 rounded-full blur-xl pointer-events-none" />
+                    <div className="flex items-center justify-between w-full">
+                      <div className="w-7 h-7 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50]/45 flex items-center justify-center shrink-0 text-[#BAFC50] shadow-[0_0_14px_rgba(186,252,80,0.25)]">
+                        <IconComp className="h-3.5 w-3.5 stroke-[2.5]" />
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-semibold text-white leading-snug tracking-tight">
+                      {item}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </LazyLoadSection>
@@ -435,22 +677,45 @@ export default function Home() {
       {/* KAS STĀV CEĻĀ JŪSU IZAUGSMEI */}
       <LazyLoadSection>
         <section 
-          className="py-12 md:py-16 bg-transparent overflow-visible relative z-10"
+          className="pt-6 pb-4 sm:py-12 md:py-16 bg-transparent overflow-visible relative z-10"
         >
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* Sub-block: Kas kavē Jūsu izaugsmi */}
             <div 
-              className="text-center space-y-4 max-w-5xl mx-auto"
+              className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center">
-                <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
+              <div className="inline-flex items-center justify-center px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
                 <span className="text-center leading-tight">
                   {lang === 'en' ? (
-                    <>What stands in the way<br />of your digital growth</>
+                    <>
+                      <span className="inline-flex items-center gap-1.5 justify-center">
+                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
+                        <span>What stands in the way</span>
+                      </span>
+                      <br className="sm:hidden" />
+                      <span className="hidden sm:inline"> </span>
+                      <span>of your digital growth</span>
+                    </>
                   ) : lang === 'ru' ? (
-                    <>Что стоит на пути<br />вашего цифрового роста</>
+                    <>
+                      <span className="inline-flex items-center gap-1.5 justify-center">
+                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
+                        <span>Что стоит на пути</span>
+                      </span>
+                      <br className="sm:hidden" />
+                      <span className="hidden sm:inline"> </span>
+                      <span>вашего цифрового роста</span>
+                    </>
                   ) : (
-                    <>Kas stāv ceļā<br />Jūsu izaugsmei digitālajā vidē</>
+                    <>
+                      <span className="inline-flex items-center gap-1.5 justify-center">
+                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
+                        <span>Kas stāv ceļā</span>
+                      </span>
+                      <br className="sm:hidden" />
+                      <span className="hidden sm:inline"> </span>
+                      <span>Jūsu izaugsmei digitālajā vidē</span>
+                    </>
                   )}
                 </span>
               </div>
@@ -459,9 +724,12 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Creative 5-Card Balanced Grid Layout */}
+            {/* Mobile Slideshow */}
+            <ProblemCardsMobileSlider lang={lang} />
+
+            {/* Creative 5-Card Balanced Grid Layout (Desktop / Tablet) */}
             <div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1380px] mx-auto pt-2"
+              className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1380px] mx-auto pt-2"
             >
               {/* Point 1 */}
               <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
@@ -569,7 +837,7 @@ export default function Home() {
 
       {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
       <LazyLoadSection>
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-8 sm:pt-12 pb-4 relative z-10">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-4 sm:pt-12 pb-4 relative z-10">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
             <div className="space-y-3 flex flex-col items-center justify-center text-center">
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
@@ -604,7 +872,7 @@ export default function Home() {
       {/* 2. INTRO BLOCK: Ko mēs piedāvājam */}
       <LazyLoadSection>
         <section 
-          className="pt-2 sm:pt-8 md:pt-24 pb-16 md:pb-24 bg-transparent overflow-visible relative z-10"
+          className="pt-4 sm:pt-8 md:pt-24 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />

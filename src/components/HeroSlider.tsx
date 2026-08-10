@@ -56,17 +56,17 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-20 sm:pt-24 pb-4 sm:pb-10 md:pb-16">
+    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-22 sm:pt-24 pb-4 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
       <div className="absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-4">
+      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-4">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-2 sm:-mt-18 lg:-mt-24 pb-6 md:pb-8">
+        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-2 sm:-mt-18 lg:-mt-24 pb-4 md:pb-8">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
@@ -83,14 +83,14 @@ export default function HeroSlider() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-0 sm:pt-2">
           
           {/* Left Text Column */}
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-6 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start pt-[30px]"
+            className="lg:col-span-6 xl:col-span-6 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start -mt-3 lg:mt-0 pt-0 lg:pt-[30px]"
           >
             {/* Agency Badge */}
             <motion.div 
@@ -154,7 +154,7 @@ export default function HeroSlider() {
           </motion.div>
 
           {/* Right Image Column */}
-          <div className="lg:col-span-6 xl:col-span-6 relative flex flex-col items-center justify-center translate-x-0 lg:translate-x-0 mt-4 mb-2 lg:my-0">
+          <div className="lg:col-span-6 xl:col-span-6 relative flex flex-col items-center justify-center translate-x-0 lg:translate-x-0 mt-1 mb-0 lg:my-0">
             <div className="absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-gradient-to-tr from-[#38b000]/55 via-[#BAFC50]/50 to-emerald-900/20 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none z-0" />
             <div className="absolute w-[90%] sm:w-[100%] h-[70%] sm:h-[80%] -bottom-8 sm:-bottom-10 bg-[#BAFC50]/40 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0" />
 
@@ -167,7 +167,7 @@ export default function HeroSlider() {
                 decoding="async"
                 width={1180}
                 height={720}
-                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[120px] translate-y-[30px] lg:translate-y-[68px] scale-100 lg:scale-[1.40] origin-center mx-auto py-2 sm:py-0"
+                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[940px] xl:max-w-[1100px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[120px] translate-y-0 lg:translate-y-[68px] scale-[0.88] sm:scale-100 lg:scale-[1.40] origin-center mx-auto py-1 sm:py-0"
               />
             </div>
           </div>
