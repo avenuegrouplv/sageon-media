@@ -2,7 +2,6 @@
 const HERO_CRITICAL = [
   "/Logo-new.webp",
   "/Hero.webp",
-  "/Majaslapa-tavam-biznesam.webp"
 ];
 
 const SECONDARY_IMAGES = [
@@ -38,16 +37,22 @@ export function preloadImages(urls: string[] = HERO_CRITICAL) {
 // Safely schedule preloading after main thread initial mount
 if (typeof window !== "undefined") {
   const schedulePreload = () => {
+    // Always preload hero LCP assets first
     preloadImages(HERO_CRITICAL);
-    setTimeout(() => {
-      preloadImages(SECONDARY_IMAGES);
-    }, 1500);
+
+    // On mobile devices, DO NOT preload secondary images to preserve bandwidth and lower TBT
+    const isMobile = window.innerWidth < 768 || ("ontouchstart" in window);
+    if (!isMobile) {
+      setTimeout(() => {
+        preloadImages(SECONDARY_IMAGES);
+      }, 3500);
+    }
   };
 
   if ("requestIdleCallback" in window) {
-    (window as any).requestIdleCallback(schedulePreload);
+    (window as any).requestIdleCallback(schedulePreload, { timeout: 3500 });
   } else {
-    setTimeout(schedulePreload, 300);
+    setTimeout(schedulePreload, 1000);
   }
 }
 

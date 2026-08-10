@@ -3,12 +3,15 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
-    // Only initialize Lenis on desktop (non-coarse pointer) devices
-    const isTouchDevice =
+    // Only initialize Lenis on desktop non-touch devices
+    const isTouchOrMobile =
       typeof window !== "undefined" &&
-      (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window);
+      ((window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.innerWidth < 1024);
 
-    if (isTouchDevice) {
+    if (isTouchOrMobile) {
       return;
     }
 

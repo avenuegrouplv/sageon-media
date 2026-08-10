@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -11,11 +11,16 @@ interface State {
 
 export default class ErrorBoundary extends Component<Props, State> {
   declare props: Props;
-  
-  public state: State = {
-    hasError: false,
-    error: null,
-  };
+  declare state: State;
+  declare setState: Component<Props, State>["setState"];
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null,
+    };
+  }
 
   public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
@@ -36,13 +41,25 @@ export default class ErrorBoundary extends Component<Props, State> {
           <p className="text-sm text-zinc-400 max-w-md">
             Lūdzu, pārlādējiet lapu, lai turpinātu pārlūkošanu.
           </p>
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            className="px-5 py-2.5 bg-[#BAFC50] text-black font-bold text-sm rounded-full hover:bg-[#a8f235] transition-colors cursor-pointer"
-          >
-            Pārlādēt lapu
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                this.setState({ hasError: false, error: null });
+                window.location.href = "/";
+              }}
+              className="px-6 py-2.5 bg-[#BAFC50] text-black font-extrabold text-sm rounded-full hover:bg-[#a8f235] transition-colors cursor-pointer shadow-lg shadow-[#BAFC50]/20"
+            >
+              Atgriezties sākumlapā
+            </button>
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="px-6 py-2.5 bg-zinc-800 text-zinc-200 font-bold text-sm rounded-full hover:bg-zinc-700 transition-colors cursor-pointer border border-zinc-700"
+            >
+              Pārlādēt lapu
+            </button>
+          </div>
         </div>
       );
     }

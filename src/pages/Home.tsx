@@ -220,20 +220,24 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     return () => clearInterval(timer);
   }, [isPaused, cards.length]);
 
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleHeroTouchStart = (e: TouchEvent) => {
     setIsPaused(true);
     if (e?.touches?.[0]) {
       touchStartX.current = e.touches[0].clientX;
+    } else if (e?.targetTouches?.[0]) {
+      touchStartX.current = e.targetTouches[0].clientX;
     }
   };
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleHeroTouchMove = (e: TouchEvent) => {
     if (e?.touches?.[0]) {
       touchEndX.current = e.touches[0].clientX;
+    } else if (e?.targetTouches?.[0]) {
+      touchEndX.current = e.targetTouches[0].clientX;
     }
   };
 
-  const handleTouchEnd = () => {
+  const handleHeroTouchEnd = () => {
     if (touchStartX.current !== null && touchEndX.current !== null) {
       const diff = touchStartX.current - touchEndX.current;
       if (diff > 35) {
@@ -272,9 +276,9 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
         className="relative overflow-hidden w-full"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        onTouchStart={handleHeroTouchStart}
+        onTouchMove={handleHeroTouchMove}
+        onTouchEnd={handleHeroTouchEnd}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -312,7 +316,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
       {/* Navigation controls - positioned tightly right below the card */}
       <div className="flex items-center justify-between pt-2 px-1 relative z-20">
         {/* Left: Indicator dots */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           {cards.map((_, idx) => (
             <button
               key={idx}
@@ -323,10 +327,12 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
                 setTimeout(() => setIsPaused(false), 3500);
               }}
               aria-label={`Pāriet uz ${idx + 1}. kartiņu`}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer -m-1"
+            >
+              <span className={`h-2 rounded-full transition-all duration-300 block ${
                 idx === currentIndex ? "w-6 bg-amber-400" : "w-2 bg-zinc-700/70"
-              }`}
-            />
+              }`} />
+            </button>
           ))}
         </div>
 
@@ -339,7 +345,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
               setTimeout(() => setIsPaused(false), 3500);
             }}
             aria-label="Iepriekšējā kartiņa"
-            className="p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
+            className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -351,7 +357,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
               setTimeout(() => setIsPaused(false), 3500);
             }}
             aria-label="Nākamā kartiņa"
-            className="p-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
+            className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-300 hover:text-white hover:border-amber-500/50 active:scale-95 transition-all"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -434,16 +440,20 @@ export default function Home() {
     }
   };
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
+  const handleBlogTouchStart = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    touchStartX.current = x;
     touchEndX.current = null;
   };
 
-  const handleTouchMove = (e: TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
+  const handleBlogTouchMove = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    if (x !== null) {
+      touchEndX.current = x;
+    }
   };
 
-  const handleTouchEnd = () => {
+  const handleBlogTouchEnd = () => {
     if (touchStartX.current === null || touchEndX.current === null) return;
     const distance = touchStartX.current - touchEndX.current;
     const minSwipeDistance = 40;
@@ -717,7 +727,7 @@ export default function Home() {
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
-              <div className="inline-flex items-center justify-center px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
+              <h2 className="inline-flex items-center justify-center px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
                 <span className="text-center leading-tight">
                   {lang === 'en' ? (
                     <>
@@ -751,7 +761,7 @@ export default function Home() {
                     </>
                   )}
                 </span>
-              </div>
+              </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
                 Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
               </p>
@@ -934,8 +944,8 @@ export default function Home() {
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
-                      loading="eager"
-                      fetchPriority="high"
+                      loading="lazy"
+                      fetchPriority="low"
                       decoding="async"
                       width={600}
                       height={380}
@@ -953,8 +963,8 @@ export default function Home() {
                     <img 
                       src="/dizains-mobile-first.webp" 
                       alt="Dizains un Mobile first" 
-                      loading="eager"
-                      fetchPriority="high"
+                      loading="lazy"
+                      fetchPriority="low"
                       decoding="async"
                       width={600}
                       height={380}
@@ -988,8 +998,8 @@ export default function Home() {
                     <img 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
-                      loading="eager"
-                      fetchPriority="high"
+                      loading="lazy"
+                      fetchPriority="low"
                       decoding="async"
                       width={600}
                       height={400}
@@ -1177,14 +1187,14 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPricing('left')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Iepriekšējais pakalpojums"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 <button 
                   onClick={() => scrollPricing('right')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Nākamais pakalpojums"
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -1252,14 +1262,14 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPortfolio('left')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Iepriekšējais projekts"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 <button 
                   onClick={() => scrollPortfolio('right')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Nākamais projekts"
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -1639,9 +1649,9 @@ export default function Home() {
             {/* State-controlled Infinite Carousel Slider */}
             <div 
               className="overflow-hidden w-full relative touch-pan-y"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
+              onTouchStart={handleBlogTouchStart}
+              onTouchMove={handleBlogTouchMove}
+              onTouchEnd={handleBlogTouchEnd}
             >
               <div 
                 onTransitionEnd={handleTransitionEnd}
@@ -1696,14 +1706,14 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollBlog('left')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Iepriekšējais raksts"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 <button 
                   onClick={() => scrollBlog('right')}
-                  className="p-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
+                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
                   aria-label="Nākamais raksts"
                 >
                   <ChevronRight className="h-4 w-4" />

@@ -139,8 +139,8 @@ export default function PortfolioLaptopCard({
                 <img
                   src={image}
                   alt={title}
-                  loading="eager"
-                  fetchPriority="high"
+                  loading="lazy"
+                  fetchPriority="low"
                   decoding="async"
                   referrerPolicy="no-referrer"
                   className={`w-full h-full object-cover object-top ${
@@ -179,8 +179,8 @@ export default function PortfolioLaptopCard({
             aria-hidden="true"
             width={897}
             height={535}
-            loading="eager"
-            fetchPriority="high"
+            loading="lazy"
+            fetchPriority="low"
             decoding="async"
             className="w-full h-full object-contain pointer-events-none select-none relative z-20 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover:drop-shadow-[0_16px_36px_rgba(186,252,80,0.18)] transition-all duration-75"
           />
