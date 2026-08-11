@@ -67,19 +67,19 @@ export default function HeroSlider() {
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-4">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-2 sm:-mt-16 lg:-mt-10 pb-2 sm:pb-6 md:pb-8">
+        <div className="flex flex-nowrap justify-center items-center gap-1.5 sm:gap-4 mt-2 sm:-mt-16 lg:-mt-10 pb-2 sm:pb-6 md:pb-8 w-full max-w-full overflow-x-auto no-scrollbar">
           <a
             href="tel:+37126739899"
-            className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[11.7px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
+            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[10.5px] xs:text-[11.5px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
           >
-            <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
+            <Phone className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#BAFC50] shrink-0" />
             <span>+371 26739899</span>
           </a>
           <a
             href="mailto:info@sageonmedia.eu"
-            className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[12px] sm:text-[13px] font-medium rounded-full transition-all duration-300 shadow-md"
+            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[10.5px] xs:text-[11.5px] sm:text-[13px] font-medium rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
           >
-            <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
+            <Mail className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#BAFC50] shrink-0" />
             <span className="normal-case font-normal">info@sageonmedia.eu</span>
           </a>
         </div>
