@@ -127,17 +127,7 @@ const PORTFOLIO_ITEMS = [
 ];
 
 function LazyLoadSection({ children }: { children: ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 1, y: 0 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.01 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full"
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="w-full">{children}</div>;
 }
 
 function ProblemCardsMobileSlider({ lang }: { lang: string }) {
@@ -315,8 +305,8 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
 
       {/* Navigation controls - positioned tightly right below the card */}
       <div className="flex items-center justify-between pt-2 px-1 relative z-20">
-        {/* Left: Indicator dots */}
-        <div className="flex items-center gap-1">
+        {/* Left: Indicator dots positioned tightly next to each other */}
+        <div className="flex items-center gap-0.5">
           {cards.map((_, idx) => (
             <button
               key={idx}
@@ -327,10 +317,12 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
                 setTimeout(() => setIsPaused(false), 3500);
               }}
               aria-label={`Pāriet uz ${idx + 1}. kartiņu`}
-              className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer -m-1"
+              className="p-[2px] cursor-pointer flex items-center justify-center"
             >
               <span className={`h-2 rounded-full transition-all duration-300 block ${
-                idx === currentIndex ? "w-6 bg-amber-400" : "w-2 bg-zinc-700/70"
+                idx === currentIndex 
+                  ? "w-6 bg-gradient-to-r from-amber-500 to-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.65)] border border-amber-300/50" 
+                  : "w-2 bg-zinc-800 border border-zinc-700/80 hover:bg-zinc-700"
               }`} />
             </button>
           ))}
@@ -727,40 +719,12 @@ export default function Home() {
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
-              <h2 className="inline-flex items-center justify-center px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
-                <span className="text-center leading-tight">
-                  {lang === 'en' ? (
-                    <>
-                      <span className="inline-flex items-center gap-1.5 justify-center">
-                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
-                        <span>What stands in the way</span>
-                      </span>
-                      <br className="sm:hidden" />
-                      <span className="hidden sm:inline"> </span>
-                      <span>of your digital growth</span>
-                    </>
-                  ) : lang === 'ru' ? (
-                    <>
-                      <span className="inline-flex items-center gap-1.5 justify-center">
-                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
-                        <span>Что стоит на пути</span>
-                      </span>
-                      <br className="sm:hidden" />
-                      <span className="hidden sm:inline"> </span>
-                      <span>вашего цифрового роста</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="inline-flex items-center gap-1.5 justify-center">
-                        <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
-                        <span>Kas stāv ceļā</span>
-                      </span>
-                      <br className="sm:hidden" />
-                      <span className="hidden sm:inline"> </span>
-                      <span>Jūsu izaugsmei digitālajā vidē</span>
-                    </>
-                  )}
-                </span>
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
+                <ShieldAlert className="h-3.5 w-3.5" />
+                <span>{lang === 'en' ? 'Obstacles To Growth' : lang === 'ru' ? 'Препятствия к росту' : 'Izaicinājumi un problēmas'}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                {lang === 'en' ? 'What stands in the way of your digital growth' : lang === 'ru' ? 'Что стоит на пути вашего цифрового роста' : 'Kas stāv ceļā Jūsu izaugsmei digitālajā vidē'}
               </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
                 Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
@@ -949,7 +913,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-[88%] sm:w-full h-auto max-h-[335px] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 mx-auto"
+                      className="relative z-10 w-[81%] sm:w-[92%] h-auto max-h-[308px] scale-[0.92] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 mx-auto"
                     />
                   </div>
                 </div>
@@ -993,7 +957,7 @@ export default function Home() {
                       Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus.
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full translate-x-0 lg:translate-x-[75px]">
+                  <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
                     <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
                     <img 
                       src="/Web-izstrades-agentura.webp" 
@@ -1047,7 +1011,7 @@ export default function Home() {
           <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-gradient-to-tl from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2 px-2 sm:px-3">
               <div className="space-y-2 text-left">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                   {lang === 'en' ? (
@@ -1112,23 +1076,24 @@ export default function Home() {
                             </div>
 
                             {/* Highly visible high-contrast pricing tag container */}
-                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
+                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px]">
                               {plan.originalPrice ? (
-                                <>
-                                  <div className="relative flex items-center gap-1">
-                                    <span className="text-base sm:text-lg font-black text-zinc-400">€</span>
-                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
-                                      {plan.originalPrice}
+                                <div className="flex items-center gap-1.5 flex-wrap">
+                                  {plan.pricePrefix && (
+                                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                                      {plan.pricePrefix}
                                     </span>
-                                    <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[40px] sm:translate-x-[52px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                                      <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                      <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
-                                    </div>
+                                  )}
+                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                  <div className="flex items-baseline gap-0.5 text-zinc-400 line-through font-bold text-xs sm:text-sm decoration-red-500 decoration-2 ml-1">
+                                    <span>€</span>
+                                    <span>{plan.originalPrice}</span>
                                   </div>
-                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1.5 sm:ml-2 text-zinc-300">
+                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
                                     / {plan.period}
                                   </span>
-                                </>
+                                </div>
                               ) : plan.price ? (
                                 <div className="flex items-center gap-1">
                                   {plan.pricePrefix && (
@@ -1183,7 +1148,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Uzzināt vairāk button) below pricing cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
+            <div className="flex justify-end items-center gap-3 mt-6 px-2 sm:px-3">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPricing('left')}
@@ -1220,7 +1185,7 @@ export default function Home() {
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2 px-3">
               <div className="space-y-2 text-left">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   {lang === 'en' ? "Insight into Our Recent Projects" : lang === 'ru' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
@@ -1258,7 +1223,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Skatīt visus button) below portfolio cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
+            <div className="flex justify-end items-center gap-3 mt-6 px-3">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollPortfolio('left')}
@@ -1316,14 +1281,14 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "Clear Business Strategy" : lang === 'ru' ? "Четкая бизнес-стратегия" : "Skaidra biznesa stratēģija"}
+                      {lang === 'en' ? "Clear Strategy" : lang === 'ru' ? "Четкая стратегия" : "Skaidra stratēģija"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
                       {lang === 'en' 
-                        ? "Every project is built with a specific goal — helping your company generate more inquiries, reach new clients, and drive business growth." 
+                        ? "Every project is created with a specific goal — to help your company grow, strengthen customer trust, and increase demand for your products or services." 
                         : lang === 'ru' 
-                          ? "Каждый проект создается с конкретной целью — помочь компании получать больше заявок, привлекать новых клиентов и расти." 
-                          : "Katrs projekts tiek veidots ar konkrētu mērķi — palīdzēt uzņēmumam iegūt vairāk pieprasījumu, sasniegt jaunus klientus un veicināt biznesa izaugsmi."}
+                          ? "Каждый проект создается с конкретной целью — помочь вашей компании расти, укрепить доверие клиентов и увеличить спрос на ваши продукты или услуги." 
+                          : "Katrs projekts tiek veidots ar konkrētu mērķi — palīdzēt Jūsu uzņēmumam augt, stiprināt klientu uzticību un palielināt pieprasījumu pēc Jūsu produktiem vai pakalpojumiem."}
                     </p>
                   </div>
                 </div>
@@ -1638,7 +1603,7 @@ export default function Home() {
           <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-gradient-to-tr from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 px-3">
               <div className="space-y-2 text-left">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   Noderīga informācija
@@ -1702,7 +1667,7 @@ export default function Home() {
             </div>
 
             {/* Controls (< > and Lasīt visu blogu button) below Blog cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 pr-3 sm:pr-6 md:pr-10 lg:pr-14">
+            <div className="flex justify-end items-center gap-3 mt-6 px-3">
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => scrollBlog('left')}

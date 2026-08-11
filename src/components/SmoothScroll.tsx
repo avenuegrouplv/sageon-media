@@ -3,7 +3,7 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
-    // Only initialize Lenis on desktop non-touch devices
+    // Enable Lenis smooth scroll on desktop
     const isTouchOrMobile =
       typeof window !== "undefined" &&
       ((window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
@@ -15,14 +15,19 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       return;
     }
 
+    const rootEl = document.getElementById("root");
+
     const lenis = new Lenis({
-      duration: 1.2,
+      wrapper: window,
+      content: rootEl || document.documentElement,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,
+      autoResize: true,
     });
 
     (window as any).lenis = lenis;
@@ -41,7 +46,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       try {
         lenis.destroy();
       } catch (e) {
-        // Ignore destroy error if already disposed
+        // Ignore
       }
       (window as any).lenis = undefined;
     };

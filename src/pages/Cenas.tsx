@@ -138,23 +138,24 @@ export default function Cenas() {
                     </div>
 
                     {/* Highly visible high-contrast pricing tag container */}
-                    <div className="pt-3 pb-2 mt-2 border-l-4 border-[#BAFC50] pl-3.5 flex items-center gap-1.5 h-[56px] min-h-[56px]">
+                    <div className="pt-3 pb-2 mt-2 border-l-4 border-[#BAFC50] pl-3.5 flex items-center gap-1.5 min-h-[56px]">
                       {plan.originalPrice ? (
-                        <>
-                          <div className="relative flex items-center gap-1">
-                            <span className="text-base sm:text-lg font-black text-zinc-400">€</span>
-                            <span className="text-3xl sm:text-5xl font-black tracking-tight text-zinc-400 line-through decoration-red-500 decoration-[3px] sm:decoration-[4px] mr-1">
-                              {plan.originalPrice}
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {plan.pricePrefix && (
+                            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                              {plan.pricePrefix}
                             </span>
-                            <div className="absolute -top-[27px] sm:-top-[35px] right-0 translate-x-[40px] sm:translate-x-[52px] flex items-center gap-1 text-[#BAFC50] font-black whitespace-nowrap drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                              <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                              <span className="text-2xl sm:text-4xl font-black">{plan.price}</span>
-                            </div>
+                          )}
+                          <span className="text-lg font-black text-[#BAFC50]">€</span>
+                          <span className="text-4xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                          <div className="flex items-baseline gap-0.5 text-zinc-400 line-through font-bold text-xs sm:text-sm decoration-red-500 decoration-2 ml-1">
+                            <span>€</span>
+                            <span>{plan.originalPrice}</span>
                           </div>
-                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
+                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
                             / {plan.period}
                           </span>
-                        </>
+                        </div>
                       ) : plan.price ? (
                         <div className="flex items-center gap-1">
                           {plan.pricePrefix && (

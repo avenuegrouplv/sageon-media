@@ -8,14 +8,10 @@ export default function PageNavButtons() {
   const { lang, getLocalizedPath } = useLanguage();
 
   const handleScrollToTop = () => {
-    if ((window as any).lenis) {
-      (window as any).lenis.scrollTo(0, { duration: 1.2 });
-    } else {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
 
   const homePath = getLocalizedPath("home");
@@ -24,26 +20,14 @@ export default function PageNavButtons() {
     if (location.pathname === homePath) {
       const hero = document.getElementById("hero-section");
       if (hero) {
-        if ((window as any).lenis) {
-          (window as any).lenis.scrollTo(hero, { duration: 1.2 });
-        } else {
-          hero.scrollIntoView({ behavior: "smooth" });
-        }
+        hero.scrollIntoView({ behavior: "smooth" });
       } else {
-        if ((window as any).lenis) {
-          (window as any).lenis.scrollTo(0, { duration: 1.2 });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } else {
       navigate(homePath);
       setTimeout(() => {
-        if ((window as any).lenis) {
-          (window as any).lenis.scrollTo(0, { immediate: true });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
       }, 50);
     }
   };

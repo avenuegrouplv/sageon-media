@@ -38,10 +38,11 @@ function AppContent() {
       {/* Fixed top overlay header */}
       <Header />
 
-      {/* Core Multi-Page Views - Subpages have padding-top to avoid overlapping the fixed header */}
-      <main id="main-content" className={`flex-1 relative z-10 ${!isHome ? "pt-[80px]" : ""}`}>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
+      {/* Core Multi-Page Views & Footer - Shifted left by 4.2cm on desktop */}
+      <div className="flex-1 flex flex-col justify-between w-full lg:relative lg:-left-[4.2cm] lg:w-[calc(100%+4.2cm)]">
+        <main id="main-content" className={`flex-1 relative z-10 ${!isHome ? "pt-[80px]" : ""}`}>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
             {/* LV Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/projekti" element={<Projekti />} />
@@ -79,6 +80,7 @@ function AppContent() {
 
       {/* 4-Column Professional Footer */}
       <Footer />
+      </div>
 
       {/* Pop-up Cookie Consent Banner */}
       <CookieBanner />

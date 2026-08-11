@@ -12,7 +12,7 @@ export const lvTranslations: Translations = {
   },
   seo: {
     home: {
-      title: "Sageon Media | Biznesa mājaslapu izstrāde un digitālie risinājumi",
+      title: "Sageon Media I Mājaslapu izstrādes aģentūra",
       description: "Sageon Media piedāvā profesionālu biznesa mājaslapu izstrādi, adaptīvu dizainu, kā arī SEO optimizāciju jūsu biznesa izaugsmei.",
     },
     portfolio: {
