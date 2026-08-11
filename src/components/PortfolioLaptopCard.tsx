@@ -36,12 +36,15 @@ export default function PortfolioLaptopCard({
 
   const cleanDomain = displayLink.replace("https://", "").replace("http://", "");
 
-  const isDevelopment = 
-    isInDevelopment ||
+  const isDemontaza = 
     cleanDomain.toLowerCase().includes("demontaza") || 
     link.toLowerCase().includes("demontaza") || 
     title.toLowerCase().includes("demontāž") ||
-    title.toLowerCase().includes("demontaza") ||
+    title.toLowerCase().includes("demontaza");
+
+  const isDevelopment = 
+    isInDevelopment ||
+    isDemontaza || 
     cleanDomain.toLowerCase().includes("velobiedriba") ||
     link.toLowerCase().includes("velobiedriba") ||
     title.toLowerCase().includes("velobiedrīb") ||
@@ -64,6 +67,8 @@ export default function PortfolioLaptopCard({
 
   const statusText = isPlaceholderCard
     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
+    : isDemontaza
+    ? (lang === "EN" ? "Completed Project" : lang === "RU" ? "Завершенный проект" : "Pabeigts projekts")
     : isDevelopment
     ? (lang === "EN" ? "In Development" : lang === "RU" ? "В разработке" : "Izstrādes stadijā")
     : (lang === "EN" ? "Completed Project" : lang === "RU" ? "Завершенный проект" : "Pabeigts projekts");
@@ -190,7 +195,7 @@ export default function PortfolioLaptopCard({
         <div className="flex-1 flex flex-col justify-between space-y-3 pt-1">
           <div className="space-y-2.5">
             {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 flex-wrap min-h-[28px]">
+            <div className="flex items-center justify-between gap-2 h-[3.25rem] sm:h-[2.25rem] overflow-hidden">
               {/* Top-Left Corner: Domain Address Badge */}
               <button
                 type="button"
@@ -208,7 +213,7 @@ export default function PortfolioLaptopCard({
 
               {/* Top-Right Corner: Project Status */}
               <div className="flex items-center gap-1.5 text-xs font-mono">
-                {isDevelopment ? (
+                {isDevelopment && !isDemontaza ? (
                   <>
                     <Clock className="h-3.5 w-3.5 text-rose-400/80" />
                     <span className="text-rose-300/90 font-medium select-text cursor-text">{statusText}</span>
@@ -244,7 +249,7 @@ export default function PortfolioLaptopCard({
           </div>
 
           {/* Deliverables Badges / Tags - Fixed Height Block */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[4.5rem] sm:min-h-[5.25rem] overflow-visible">
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[5rem] sm:h-[5.25rem] overflow-hidden">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}

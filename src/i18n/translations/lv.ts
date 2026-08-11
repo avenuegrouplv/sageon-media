@@ -226,7 +226,7 @@ export const lvTranslations: Translations = {
       image: "/demontaza24-portfolio.webp",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["Multi-page", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+      tags: ["Multi-page", "CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
     },
     {
       id: 7,
@@ -272,7 +272,7 @@ export const lvTranslations: Translations = {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde un tā vadības sistēmas integrācija (papildus samaksa)",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Izstrādes laiks: 5-7 darba dienas"
+        "Izstrādes laiks: 1-3 darba dienas"
       ],
       cta: "Pieteikt Landing lapu",
       highlight: false
@@ -281,7 +281,6 @@ export const lvTranslations: Translations = {
       title: "Multi-page",
       subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
       originalPrice: "890",
-      pricePrefix: "no",
       price: "450",
       period: "vienreizējs maksājums",
       badge: "Labākā izvēle biznesam",
@@ -358,7 +357,7 @@ export const lvTranslations: Translations = {
     },
     {
       question: "Cik ilgu laiku aizņem mājaslapas izstrāde?",
-      answer: "Izstrādes laiks ir individuāls un atkarīgs no izvēlētā plāna, kā arī publicējamā satura gatavības. Vienkārša Landing lapa tiek izstrādāta 2-5 darba dienu laikā, biznesa mājaslapa aizņem vidēji 2-3 nedēļas, savukārt apjomīgi e-komercijas projekti aizņem 3-5 nedēļas."
+      answer: "Izstrādes laiks ir individuāls un atkarīgs no izvēlētā plāna, kā arī publicējamā satura gatavības. Vienkārša Landing lapa tiek izstrādāta 1-3 darba dienu laikā, biznesa mājaslapa aizņem vidēji 2-3 nedēļas, savukārt apjomīgi e-komercijas projekti aizņem 3-5 nedēļas."
     },
     {
       question: "Vai es varēšu pats patstāvīgi mainīt saturu mājaslapā?",

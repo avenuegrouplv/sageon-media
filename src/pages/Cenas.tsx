@@ -125,34 +125,28 @@ export default function Cenas() {
                     </div>
                     
                     <div className="space-y-1.5 h-[88px] min-h-[88px] flex flex-col justify-start items-start pt-1">
-                      {plan.title === "Multi-page" ? (
-                        <h3 className="text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] shadow-sm inline-block">
-                          {plan.title}
-                        </h3>
-                      ) : (
-                        <h3 className="text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                      )}
+                      <h3 className="text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
                       <p className="text-sm font-normal text-zinc-300">
                         {plan.subtitle}
                       </p>
                     </div>
 
                     {/* Highly visible high-contrast pricing tag container */}
-                    <div className="pt-3 pb-2 mt-2 border-l-4 border-[#BAFC50] pl-3.5 flex items-center gap-1.5 min-h-[56px]">
+                    <div className="pt-4 sm:pt-6 pb-2 mt-8 sm:mt-1 border-l-4 border-[#BAFC50] pl-3.5 flex items-center gap-1.5 min-h-[56px] relative">
                       {plan.originalPrice ? (
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          {plan.pricePrefix && (
-                            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                              {plan.pricePrefix}
-                            </span>
-                          )}
-                          <span className="text-lg font-black text-[#BAFC50]">€</span>
-                          <span className="text-4xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                          <div className="flex items-baseline gap-0.5 text-zinc-400 line-through font-bold text-xs sm:text-sm decoration-red-500 decoration-2 ml-1">
-                            <span>€</span>
-                            <span>{plan.originalPrice}</span>
+                        <div className="flex items-center gap-1 relative w-full">
+                          {/* New price (450) placed floating ABOVE the old price, increased by 50%, raised up by 2mm, shifted left by 1.3cm (now -6mm) */}
+                          <div className="absolute -top-8 sm:-top-6 left-8 sm:left-16 translate-x-[3mm] sm:-translate-x-[6mm] -translate-y-[1mm] sm:-translate-y-[2mm] flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
+                            <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                            <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                           </div>
-                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
+                          
+                          {/* Old price (890) in exact same size and visual style as other cards */}
+                          <span className="text-lg font-black text-[#BAFC50]">€</span>
+                          <span className="text-4xl sm:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
+                            {plan.originalPrice}
+                          </span>
+                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
                             / {plan.period}
                           </span>
                         </div>

@@ -100,7 +100,7 @@ const PORTFOLIO_ITEMS = [
     image: "/demontaza24-portfolio.webp",
     link: "https://demontaza24.eu",
     isPlaceholder: false,
-    tags: ["Multi-page", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+    tags: ["Multi-page", "CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
   },
   {
     id: 7,
@@ -172,7 +172,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     {
       num: "04 / Iemesls",
       Icon: Clock,
-      title: lang === 'en' ? "Website loads slowly" : lang === 'ru' ? "Сайт загружается медленно" : "Mājaslapa ielādējas lēni",
+      title: lang === 'en' ? "Website loads too slowly" : lang === 'ru' ? "Сайт загружается слишком медленно" : "Mājaslapa ielādējas pārāk lēni",
       desc: lang === 'en'
         ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
         : lang === 'ru'
@@ -182,7 +182,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     {
       num: "05 / Iemesls",
       Icon: HelpCircle,
-      title: lang === 'en' ? "Offer is not convincing enough" : lang === 'ru' ? "Предложение недостаточно убедительно" : "Piedāvājums nav pietiekami pārliecinošs",
+      title: lang === 'en' ? <>Offer is not<br />convincing enough</> : lang === 'ru' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>,
       desc: lang === 'en'
         ? "Without clearly showing company advantages and client benefits, it's harder for clients to decide."
         : lang === 'ru'
@@ -321,7 +321,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
             >
               <span className={`h-2 rounded-full transition-all duration-300 block ${
                 idx === currentIndex 
-                  ? "w-6 bg-gradient-to-r from-amber-500 to-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.65)] border border-amber-300/50" 
+                  ? "w-6 bg-gradient-to-r from-amber-500 to-amber-400 border border-amber-300/50" 
                   : "w-2 bg-zinc-800 border border-zinc-700/80 hover:bg-zinc-700"
               }`} />
             </button>
@@ -432,28 +432,46 @@ export default function Home() {
     }
   };
 
+  const blogTouchStartX = useRef<number | null>(null);
+  const blogTouchStartY = useRef<number | null>(null);
+  const blogTouchEndX = useRef<number | null>(null);
+  const blogTouchEndY = useRef<number | null>(null);
+
   const handleBlogTouchStart = (e: TouchEvent) => {
     const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    touchStartX.current = x;
-    touchEndX.current = null;
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    blogTouchStartX.current = x;
+    blogTouchStartY.current = y;
+    blogTouchEndX.current = null;
+    blogTouchEndY.current = null;
   };
 
   const handleBlogTouchMove = (e: TouchEvent) => {
     const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    if (x !== null) {
-      touchEndX.current = x;
-    }
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    if (x !== null) blogTouchEndX.current = x;
+    if (y !== null) blogTouchEndY.current = y;
   };
 
   const handleBlogTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
-    const distance = touchStartX.current - touchEndX.current;
-    const minSwipeDistance = 40;
-    if (distance > minSwipeDistance) {
-      scrollBlog('right');
-    } else if (distance < -minSwipeDistance) {
-      scrollBlog('left');
+    if (blogTouchStartX.current !== null && blogTouchEndX.current !== null) {
+      const diffX = blogTouchStartX.current - blogTouchEndX.current;
+      const diffY = (blogTouchStartY.current !== null && blogTouchEndY.current !== null)
+        ? blogTouchStartY.current - blogTouchEndY.current
+        : 0;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+        if (diffX > 0) {
+          scrollBlog('right');
+        } else {
+          scrollBlog('left');
+        }
+      }
     }
+    blogTouchStartX.current = null;
+    blogTouchStartY.current = null;
+    blogTouchEndX.current = null;
+    blogTouchEndY.current = null;
   };
 
   const toggleFaq = (index: number) => {
@@ -465,6 +483,48 @@ export default function Home() {
   const [portfolioIndex, setPortfolioIndex] = useState(totalPortfolioCount);
   const [disablePortfolioTransition, setDisablePortfolioTransition] = useState(false);
   const isAnimatingPortfolioRef = useRef(false);
+
+  const portfolioTouchStartX = useRef<number | null>(null);
+  const portfolioTouchStartY = useRef<number | null>(null);
+  const portfolioTouchEndX = useRef<number | null>(null);
+  const portfolioTouchEndY = useRef<number | null>(null);
+
+  const handlePortfolioTouchStart = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    portfolioTouchStartX.current = x;
+    portfolioTouchStartY.current = y;
+    portfolioTouchEndX.current = null;
+    portfolioTouchEndY.current = null;
+  };
+
+  const handlePortfolioTouchMove = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    if (x !== null) portfolioTouchEndX.current = x;
+    if (y !== null) portfolioTouchEndY.current = y;
+  };
+
+  const handlePortfolioTouchEnd = () => {
+    if (portfolioTouchStartX.current !== null && portfolioTouchEndX.current !== null) {
+      const diffX = portfolioTouchStartX.current - portfolioTouchEndX.current;
+      const diffY = (portfolioTouchStartY.current !== null && portfolioTouchEndY.current !== null)
+        ? portfolioTouchStartY.current - portfolioTouchEndY.current
+        : 0;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+        if (diffX > 0) {
+          scrollPortfolio('right');
+        } else {
+          scrollPortfolio('left');
+        }
+      }
+    }
+    portfolioTouchStartX.current = null;
+    portfolioTouchStartY.current = null;
+    portfolioTouchEndX.current = null;
+    portfolioTouchEndY.current = null;
+  };
 
   // Sync portfolioIndex if language or portfolio length changes
   useEffect(() => {
@@ -517,10 +577,59 @@ export default function Home() {
   const [disablePricingTransition, setDisablePricingTransition] = useState(false);
   const isAnimatingPricingRef = useRef(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      setPricingIndex(5);
+  const pricingTouchStartX = useRef<number | null>(null);
+  const pricingTouchStartY = useRef<number | null>(null);
+  const pricingTouchEndX = useRef<number | null>(null);
+  const pricingTouchEndY = useRef<number | null>(null);
+
+  const handlePricingTouchStart = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    pricingTouchStartX.current = x;
+    pricingTouchStartY.current = y;
+    pricingTouchEndX.current = null;
+    pricingTouchEndY.current = null;
+  };
+
+  const handlePricingTouchMove = (e: TouchEvent) => {
+    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
+    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
+    if (x !== null) pricingTouchEndX.current = x;
+    if (y !== null) pricingTouchEndY.current = y;
+  };
+
+  const handlePricingTouchEnd = () => {
+    if (pricingTouchStartX.current !== null && pricingTouchEndX.current !== null) {
+      const diffX = pricingTouchStartX.current - pricingTouchEndX.current;
+      const diffY = (pricingTouchStartY.current !== null && pricingTouchEndY.current !== null)
+        ? pricingTouchStartY.current - pricingTouchEndY.current
+        : 0;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+        if (diffX > 0) {
+          scrollPricing('right');
+        } else {
+          scrollPricing('left');
+        }
+      }
     }
+    pricingTouchStartX.current = null;
+    pricingTouchStartY.current = null;
+    pricingTouchEndX.current = null;
+    pricingTouchEndY.current = null;
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined" && window.innerWidth < 768) {
+        setPricingIndex((prev) => (prev === 4 ? 5 : prev));
+      } else {
+        setPricingIndex((prev) => (prev === 5 ? 4 : prev));
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -666,7 +775,7 @@ export default function Home() {
 
       {/* UZTICĪBAS JOSLA / TRUST BANNER */}
       <LazyLoadSection>
-        <div className="w-full bg-transparent sm:bg-[#111115]/90 border-y border-zinc-800/40 sm:border-zinc-800/80 sm:backdrop-blur-md py-3 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-6 sm:mt-12 md:mt-16 mb-6 sm:mb-12">
+        <div className="w-full bg-transparent sm:bg-[#111115]/90 border-y border-zinc-800/40 sm:border-zinc-800/80 sm:backdrop-blur-md py-3 sm:py-6 px-3.5 sm:px-6 md:px-12 relative z-20 mt-3 sm:mt-12 md:mt-16 mb-3 sm:mb-12">
           <div className="w-full max-w-[1380px] mx-auto">
             {/* Desktop Layout */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 xl:gap-6 items-center justify-between">
@@ -712,20 +821,25 @@ export default function Home() {
       {/* KAS STĀV CEĻĀ JŪSU IZAUGSMEI */}
       <LazyLoadSection>
         <section 
-          className="pt-16 sm:pt-28 md:pt-36 pb-10 sm:pb-20 mt-6 sm:mt-12 bg-transparent overflow-visible relative z-10"
+          className="pt-8 sm:pt-18 md:pt-24 pb-3 sm:pb-6 mt-2 sm:mt-8 bg-transparent overflow-visible relative z-10"
         >
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* Sub-block: Kas kavē Jūsu izaugsmi */}
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
-                <ShieldAlert className="h-3.5 w-3.5" />
-                <span>{lang === 'en' ? 'Obstacles To Growth' : lang === 'ru' ? 'Препятствия к росту' : 'Izaicinājumi un problēmas'}</span>
+              <div className="inline-flex items-start sm:items-center justify-center gap-2 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
+                <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#BAFC50] mt-[2px] sm:mt-0" />
+                <span className="text-center">
+                  {lang === 'en' ? (
+                    <>What stands in the way<br className="sm:hidden" /> of your digital growth</>
+                  ) : lang === 'ru' ? (
+                    <>Что стоит на пути<br className="sm:hidden" /> вашего цифрового роста</>
+                  ) : (
+                    <>Kas stāv ceļā Jūsu izaugsmei<br className="sm:hidden" /> digitālajā vidē</>
+                  )}
+                </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
-                {lang === 'en' ? 'What stands in the way of your digital growth' : lang === 'ru' ? 'Что стоит на пути вашего цифрового роста' : 'Kas stāv ceļā Jūsu izaugsmei digitālajā vidē'}
-              </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
                 Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
               </p>
@@ -739,7 +853,7 @@ export default function Home() {
               className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 max-w-[1380px] mx-auto pt-2"
             >
               {/* Point 1 */}
-              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl h-full">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
@@ -759,7 +873,7 @@ export default function Home() {
               </div>
 
               {/* Point 2 */}
-              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl h-full">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
@@ -779,7 +893,7 @@ export default function Home() {
               </div>
 
               {/* Point 3 */}
-              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl h-full">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
@@ -799,7 +913,7 @@ export default function Home() {
               </div>
 
               {/* Point 4 */}
-              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl">
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl h-full">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
@@ -810,7 +924,7 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Mājaslapa ielādējas lēni
+                    Mājaslapa ielādējas pārāk lēni
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā.
@@ -819,7 +933,7 @@ export default function Home() {
               </div>
 
               {/* Point 5 */}
-              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl sm:col-span-2 lg:col-span-1">
+              <div className="group relative bg-[#141417]/90 hover:bg-[#18181d] border border-zinc-800/80 hover:border-amber-500/40 rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col justify-between shadow-xl h-full">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
@@ -830,7 +944,7 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Piedāvājums nav pietiekami pārliecinošs
+                    Piedāvājums nav<br />pārliecinošs
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību.
@@ -844,7 +958,7 @@ export default function Home() {
 
       {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
       <LazyLoadSection>
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-16 sm:pt-28 md:pt-36 pb-8 relative z-10">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 relative z-10">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
             <div className="space-y-3 flex flex-col items-center justify-center text-center">
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
@@ -879,7 +993,7 @@ export default function Home() {
       {/* 2. INTRO BLOCK: Ko mēs piedāvājam */}
       <LazyLoadSection>
         <section 
-          className="pt-10 sm:pt-16 md:pt-28 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
+          className="pt-2 sm:pt-4 md:pt-6 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
@@ -1011,22 +1125,27 @@ export default function Home() {
           <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-gradient-to-tl from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2 px-2 sm:px-3">
-              <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-2 sm:px-3">
+              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight text-center md:text-left">
                   {lang === 'en' ? (
-                    <>Services &amp;<br />Pricing</>
+                    <>Services &amp;<br className="hidden sm:inline" /> Pricing</>
                   ) : lang === 'ru' ? (
-                    <>Услуги и<br />цены</>
+                    <>Услуги и<br className="hidden sm:inline" /> цены</>
                   ) : (
-                    <>Piedāvātie pakalpojumi<br />un cenas</>
+                    <>Piedāvātie pakalpojumi<br className="hidden sm:inline" /> un cenas</>
                   )}
                 </h2>
               </div>
             </div>
 
             {/* Infinite Pricing Carousel Slider */}
-            <div className="overflow-hidden w-full relative touch-pan-y">
+            <div 
+              className="overflow-hidden w-full relative touch-pan-y"
+              onTouchStart={handlePricingTouchStart}
+              onTouchMove={handlePricingTouchMove}
+              onTouchEnd={handlePricingTouchEnd}
+            >
               <div 
                 onTransitionEnd={handlePricingTransitionEnd}
                 className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
@@ -1051,7 +1170,7 @@ export default function Home() {
                       >
                         <div>
                           {/* Header Section */}
-                          <div className="p-4 sm:p-6 border-b-0 sm:border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
+                          <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
                             <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
                               <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
                                 isBestChoice 
@@ -1063,34 +1182,28 @@ export default function Home() {
                             </div>
                             
                             <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
-                              {plan.title === "Multi-page" ? (
-                                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight uppercase leading-tight px-3 py-1 rounded-lg bg-[#BAFC50]/20 border border-[#BAFC50] text-[#BAFC50] group-hover:bg-[#BAFC50] group-hover:text-black transition-all shadow-sm inline-block">
-                                  {plan.title}
-                                </h3>
-                              ) : (
-                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
-                              )}
+                              <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
                               <p className="text-xs sm:text-sm font-normal text-zinc-300">
                                 {plan.subtitle}
                               </p>
                             </div>
 
                             {/* Highly visible high-contrast pricing tag container */}
-                            <div className="pt-2 sm:pt-3 pb-1.5 sm:pb-2 mt-1 sm:mt-2 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px]">
+                            <div className="pt-4 sm:pt-6 pb-1.5 sm:pb-2 mt-8 sm:mt-1 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px] relative">
                               {plan.originalPrice ? (
-                                <div className="flex items-center gap-1.5 flex-wrap">
-                                  {plan.pricePrefix && (
-                                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                                      {plan.pricePrefix}
-                                    </span>
-                                  )}
-                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                                  <div className="flex items-baseline gap-0.5 text-zinc-400 line-through font-bold text-xs sm:text-sm decoration-red-500 decoration-2 ml-1">
-                                    <span>€</span>
-                                    <span>{plan.originalPrice}</span>
+                                <div className="flex items-center gap-1 relative w-full">
+                                  {/* New price (450) placed floating ABOVE the old price, increased by 50%, raised up by 2mm, shifted left by 1.3cm (now -6mm) */}
+                                  <div className="absolute -top-8 sm:-top-6 left-8 sm:left-14 translate-x-[3mm] sm:-translate-x-[6mm] -translate-y-[1mm] sm:-translate-y-[2mm] flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
+                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                    <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                                   </div>
-                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
+                                  
+                                  {/* Old price (890) in exact same size and visual style as other cards */}
+                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
+                                    {plan.originalPrice}
+                                  </span>
+                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
                                     / {plan.period}
                                   </span>
                                 </div>
@@ -1185,16 +1298,21 @@ export default function Home() {
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-2 px-3">
-              <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-3">
+              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
                   {lang === 'en' ? "Insight into Our Recent Projects" : lang === 'ru' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
                 </h2>
               </div>
             </div>
 
             {/* Infinite Portfolio Carousel Slider */}
-            <div className="overflow-hidden w-full relative touch-pan-y">
+            <div 
+              className="overflow-hidden w-full relative touch-pan-y"
+              onTouchStart={handlePortfolioTouchStart}
+              onTouchMove={handlePortfolioTouchMove}
+              onTouchEnd={handlePortfolioTouchEnd}
+            >
               <div 
                 onTransitionEnd={handlePortfolioTransitionEnd}
                 className={`flex portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
@@ -1603,9 +1721,9 @@ export default function Home() {
           <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-gradient-to-tr from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 px-3">
-              <div className="space-y-2 text-left">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-4 px-3">
+              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
                   Noderīga informācija
                 </h2>
               </div>
@@ -1628,7 +1746,7 @@ export default function Home() {
                 {[...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
                   <div 
                     key={`${post.id}-${index}`} 
-                    className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex"
+                    className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex"
                   >
                     <Link
                       to={`${getLocalizedPath('blog')}?id=${post.id}`}

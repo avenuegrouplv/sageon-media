@@ -21,9 +21,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-slate-300 relative z-10 font-sans border-0 border-transparent">
-      <div className="pt-8 pb-8 sm:pt-10 sm:pb-10">
+      <div className="pt-8 pb-8 md:pt-5 md:pb-5">
         {/* TOP SECTION: Follow Us on Left, Nav Links & Contacts on Right */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 pb-6">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 pb-6 md:pb-3">
           
           {/* Left Column: Follow Us with Icons */}
           <div className="flex flex-col items-center md:items-start space-y-2">
@@ -90,7 +90,7 @@ export default function Footer() {
         </div>
 
         {/* LOGO & BOTTOM COPYRIGHT SECTOR */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 flex flex-col items-center gap-6">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 md:pt-3 flex flex-col items-center gap-6 md:gap-3">
           {/* Centered Logo */}
           <Link to={getLocalizedPath("home")} className="flex items-center justify-center group shrink-0">
             <div className="flex items-center justify-center w-[190px] h-[70px] sm:w-[220px] sm:h-[75px] bg-transparent">
@@ -133,7 +133,7 @@ export default function Footer() {
           </div>
 
           {/* Absolute Bottom Row: Copyright on Left, Policies on Right */}
-          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 sm:pt-20 pb-2 text-xs sm:text-sm text-zinc-300">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 md:pt-12 pb-2 text-xs sm:text-sm text-zinc-300">
             <div className="text-center sm:text-left font-medium">
               <span>2026 © SageOn Media I {t.footer.rights}</span>
             </div>

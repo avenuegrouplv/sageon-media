@@ -226,7 +226,7 @@ export const enTranslations: Translations = {
       image: "/demontaza24-portfolio.webp",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["Multi-page", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First"]
+      tags: ["Multi-page", "CMS", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First"]
     },
     {
       id: 7,
@@ -272,7 +272,7 @@ export const enTranslations: Translations = {
         "Conversion CTA element development",
         "Website content creation and CMS integration (additional fee)",
         "Domain & email setup support",
-        "Timeline: 5-7 business days"
+        "Timeline: 1-3 business days"
       ],
       cta: "Order Landing Page",
       highlight: false
@@ -281,7 +281,6 @@ export const enTranslations: Translations = {
       title: "Multi-page",
       subtitle: "Full-scale corporate business website",
       originalPrice: "890",
-      pricePrefix: "from",
       price: "450",
       period: "one-time payment",
       badge: "Best Choice for Business",
@@ -358,7 +357,7 @@ export const enTranslations: Translations = {
     },
     {
       question: "How long does it take to complete a website?",
-      answer: "Turnaround time is individual and depends on the chosen plan as well as content readiness. A simple Landing Page is built in 2–5 business days, a corporate Multi-page site takes 2–3 weeks on average, while large E-Commerce projects take 3–5 weeks."
+      answer: "Turnaround time is individual and depends on the chosen plan as well as content readiness. A simple Landing Page is built in 1–3 business days, a corporate Multi-page site takes 2–3 weeks on average, while large E-Commerce projects take 3–5 weeks."
     },
     {
       question: "Will I be able to update website content independently?",

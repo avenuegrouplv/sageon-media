@@ -113,7 +113,17 @@ body {
   }
 }
 
-/* Lenis smooth scroll adjustments */
+/* Lenis smooth scroll adjustments & GPU performance optimization */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+[class*="blur-"],
+.bg-grid-pattern {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }

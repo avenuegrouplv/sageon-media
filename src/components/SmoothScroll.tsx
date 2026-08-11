@@ -15,12 +15,10 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       return;
     }
 
-    const rootEl = document.getElementById("root");
-
     const lenis = new Lenis({
       wrapper: window,
-      content: rootEl || document.documentElement,
-      duration: 1.1,
+      content: document.documentElement,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
