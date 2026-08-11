@@ -567,6 +567,23 @@ export default function Home() {
     }, 550);
   };
 
+  const planIcons = [
+    <Zap className="h-5 w-5 text-amber-500" />,
+    <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    <Sparkles className="h-5 w-5 text-purple-500" />,
+    <ShieldCheck className="h-5 w-5 text-blue-500" />,
+    <Globe className="h-5 w-5 text-emerald-500" />,
+    <Settings className="h-5 w-5 text-[#BAFC50]" />,
+    <Search className="h-5 w-5 text-amber-400" />
+  ];
+
+  const rawPlans = (t.pricingPlans || []).map((plan, idx) => ({
+    ...plan,
+    icon: planIcons[idx % planIcons.length]
+  }));
+
+  const pricingPlans = rawPlans;
+
   // Infinite Pricing Carousel State
   const [pricingIndex, setPricingIndex] = useState(() => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -619,18 +636,23 @@ export default function Home() {
     pricingTouchEndY.current = null;
   };
 
+  // Sync pricingIndex if language or pricingPlans length changes
+  useEffect(() => {
+    setPricingIndex(pricingPlans.length);
+  }, [pricingPlans.length]);
+
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined" && window.innerWidth < 768) {
-        setPricingIndex((prev) => (prev === 4 ? 5 : prev));
+        setPricingIndex((prev) => (prev === pricingPlans.length ? pricingPlans.length + 1 : prev));
       } else {
-        setPricingIndex((prev) => (prev === 5 ? 4 : prev));
+        setPricingIndex((prev) => (prev === pricingPlans.length + 1 ? pricingPlans.length : prev));
       }
     };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [pricingPlans.length]);
 
   useEffect(() => {
     if (disablePricingTransition) {
@@ -645,7 +667,7 @@ export default function Home() {
     if (e.target !== e.currentTarget) return;
     if (e.propertyName && e.propertyName !== 'transform') return;
     isAnimatingPricingRef.current = false;
-    const total = 4;
+    const total = pricingPlans.length;
     if (pricingIndex >= 2 * total) {
       setDisablePricingTransition(true);
       setPricingIndex((prev) => prev - total);
@@ -667,23 +689,6 @@ export default function Home() {
       isAnimatingPricingRef.current = false;
     }, 550);
   };
-
-  const planIcons = [
-    <Zap className="h-5 w-5 text-amber-500" />,
-    <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
-    <Sparkles className="h-5 w-5 text-purple-500" />,
-    <ShieldCheck className="h-5 w-5 text-blue-500" />,
-    <Globe className="h-5 w-5 text-emerald-500" />,
-    <Settings className="h-5 w-5 text-[#BAFC50]" />,
-    <Search className="h-5 w-5 text-amber-400" />
-  ];
-
-  const rawPlans = (t.pricingPlans || []).map((plan, idx) => ({
-    ...plan,
-    icon: planIcons[idx % planIcons.length]
-  }));
-
-  const pricingPlans = rawPlans;
 
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-[#BAFC50] selection:text-black overflow-x-hidden">
@@ -1153,7 +1158,7 @@ export default function Home() {
                   transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
                 }}
               >
-                {[...pricingPlans.slice(0, 4), ...pricingPlans.slice(0, 4), ...pricingPlans.slice(0, 4)].map((plan, index) => {
+                {[...pricingPlans, ...pricingPlans, ...pricingPlans].map((plan, index) => {
                   const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
                   return (
                     <div 

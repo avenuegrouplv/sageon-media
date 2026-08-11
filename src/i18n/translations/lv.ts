@@ -348,6 +348,66 @@ export const lvTranslations: Translations = {
       ],
       cta: "Pieteikt uzturēšanu",
       highlight: false
+    },
+    {
+      title: "Google rīki",
+      subtitle: "Pilns Google rīku komplekts biznesam",
+      price: "",
+      period: "Pēc vienošanās",
+      badge: "Google pakalpojumi",
+      features: [
+        "Google Business Profile izveide vai konfigurācija",
+        "Google Search Console konfigurēšana",
+        "Google Analytics 4 konfigurēšana",
+        "Google Tag Manager integrācija",
+        "Google Maps integrācija mājaslapā",
+        "Sitemap.xml konfigurēšana",
+        "Robots.txt konfigurēšana",
+        "Domēna verifikācija Google pakalpojumos",
+        "Mājaslapas iesniegšana Google indeksācijai"
+      ],
+      cta: "Pieteikt Google pakalpojumus",
+      highlight: false
+    },
+    {
+      title: "Pielāgota izstrāde",
+      subtitle: "Pielāgota funkcionalitāte pēc pieprasījuma",
+      price: "",
+      period: "Pēc vienošanās",
+      badge: "Individuāli risinājumi",
+      features: [
+        "Pielāgotu funkciju izstrāde pēc klienta vajadzībām",
+        "Cenu kalkulatoru integrācija",
+        "Rezervāciju un kalendāru sistēmu integrācija",
+        "Daudzsoļu pieteikumu formas",
+        "Dokumentu augšupielādes izstrāde",
+        "Klientu portālu izstrāde",
+        "API integrācijas ar ārējām sistēmām",
+        "AI čatbotu un virtuālo asistentu integrācija",
+        "Citu individuālu risinājumu izstrāde pēc vienošanās"
+      ],
+      cta: "Pieteikt funkciju izstrādi",
+      highlight: false
+    },
+    {
+      title: "SEO optimizācija",
+      subtitle: "Organiskās meklēšanas optimizācija",
+      price: "",
+      period: "Pēc vienošanās",
+      badge: "Mājaslapas SEO",
+      features: [
+        "Atslēgvārdu izpēte galvenajām lapām",
+        "Meta virsrakstu optimizācija",
+        "Meta aprakstu optimizācija",
+        "Attēlu ALT atribūtu optimizācija",
+        "Canonical URL pārbaude",
+        "Sociālo tīklu metadatu optimizācija",
+        "Iekšējo saišu pārbaude un optimizācija",
+        "Pamata tehniskā SEO analīze",
+        "Mājaslapas ātrdarbības analīze"
+      ],
+      cta: "Pieteikt SEO optimizāciju",
+      highlight: false
     }
   ],
   faqItems: [

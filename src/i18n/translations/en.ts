@@ -348,6 +348,66 @@ export const enTranslations: Translations = {
       ],
       cta: "Order Maintenance",
       highlight: false
+    },
+    {
+      title: "Google Tools",
+      subtitle: "Complete suite of Google business tools",
+      price: "",
+      period: "By agreement",
+      badge: "Google Services",
+      features: [
+        "Google Business Profile setup & configuration",
+        "Google Search Console configuration",
+        "Google Analytics 4 configuration",
+        "Google Tag Manager integration",
+        "Google Maps integration on website",
+        "Sitemap.xml configuration",
+        "Robots.txt configuration",
+        "Domain verification in Google services",
+        "Website submission for Google indexing"
+      ],
+      cta: "Request Google Services",
+      highlight: false
+    },
+    {
+      title: "Custom Development",
+      subtitle: "Custom functionality built on demand",
+      price: "",
+      period: "By agreement",
+      badge: "Tailored Solutions",
+      features: [
+        "Custom feature development for client needs",
+        "Price calculator integration",
+        "Booking & calendar system integration",
+        "Multi-step application forms",
+        "Document upload feature development",
+        "Client portal development",
+        "API integrations with external systems",
+        "AI chatbot & virtual assistant integration",
+        "Other custom solutions by agreement"
+      ],
+      cta: "Request Custom Features",
+      highlight: false
+    },
+    {
+      title: "SEO Optimization",
+      subtitle: "Organic search engine optimization",
+      price: "",
+      period: "By agreement",
+      badge: "Website SEO",
+      features: [
+        "Keyword research for main pages",
+        "Meta title optimization",
+        "Meta description optimization",
+        "Image ALT attribute optimization",
+        "Canonical URL checks",
+        "Social media metadata optimization",
+        "Internal linking audit & optimization",
+        "Basic technical SEO analysis",
+        "Website performance & speed audit"
+      ],
+      cta: "Request SEO Optimization",
+      highlight: false
     }
   ],
   faqItems: [
