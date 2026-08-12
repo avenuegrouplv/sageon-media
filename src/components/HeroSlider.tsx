@@ -57,17 +57,17 @@ export default function HeroSlider() {
 
   return (
     <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[105px] sm:pt-[120px] lg:pt-[130px] pb-6 sm:pb-10 md:pb-16">
-      {/* Background Grid & Ambient Glows */}
-      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
-      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none" />
-      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none" />
-      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.15),transparent_70%)] pointer-events-none" />
+      {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
+      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden transform-gpu" />
+      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none transform-gpu" />
+      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none transform-gpu" />
+      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.15),transparent_70%)] pointer-events-none transform-gpu" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-1 sm:pt-2">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-nowrap justify-center items-center gap-2 sm:gap-4 mt-0 mb-4 sm:mb-6 lg:mb-8 w-full max-w-full overflow-x-auto no-scrollbar">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-0 mb-4 sm:mb-6 lg:mb-8 w-full max-w-full">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-white text-[11px] sm:text-[13px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
@@ -88,16 +88,17 @@ export default function HeroSlider() {
           
           {/* Left Text Column */}
           <motion.div 
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
             className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-1 sm:mt-0 pt-1 lg:pt-[20px]"
           >
             {/* Agency Badge */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.92, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.05 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#18181b] border border-[#BAFC50]/30 text-[#BAFC50] font-sans text-xs font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(186,252,80,0.15)]"
             >
               <Sparkles className="h-4 w-4 text-[#BAFC50]" />
@@ -120,19 +121,13 @@ export default function HeroSlider() {
                     : "Мы разрабатываем современные сайты, которые..."}
               </h1>
               
-              <div className="min-h-[75px] sm:h-[90px] md:h-[100px] lg:h-[105px] xl:h-[110px] flex items-center justify-center lg:justify-start relative w-full my-1">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={`${lang}-${phraseIndex}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left"
-                  >
-                    {phrases[phraseIndex % phrases.length]}
-                  </motion.span>
-                </AnimatePresence>
+              <div className="min-h-[70px] sm:min-h-[85px] md:min-h-[95px] lg:min-h-[100px] flex items-center justify-center lg:justify-start relative w-full my-1 overflow-hidden">
+                <span
+                  key={`${lang}-${phraseIndex}`}
+                  className="animate-hero-phrase text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left transform-gpu"
+                >
+                  {phrases[phraseIndex % phrases.length]}
+                </span>
               </div>
             </div>
 

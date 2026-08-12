@@ -14,13 +14,14 @@ export default function SEOHead({
   title,
   description,
   keywords = "mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains",
-  ogImage = "/android-chrome-512x512.png",
+  ogImage = "/og-image.jpg",
   ogType = "website",
   schema,
 }: SEOProps) {
   const location = useLocation();
   const path = location.pathname === "/" ? "" : location.pathname;
-  const baseUrl = "https://sageonmedia.eu";
+  const origin = typeof window !== "undefined" && window.location.origin ? window.location.origin : "https://sageonmedia.eu";
+  const baseUrl = origin.includes("localhost") || origin.includes("run.app") || origin.includes("netlify.app") ? origin : "https://sageonmedia.eu";
   const canonicalUrl = `${baseUrl}${path}`;
   const fullOgImage = ogImage.startsWith("http") ? ogImage : `${baseUrl}${ogImage}`;
 
@@ -74,16 +75,16 @@ export default function SEOHead({
     updateMeta('meta[property="og:url"]', "property", "og:url", canonicalUrl);
     updateMeta('meta[property="og:image"]', "property", "og:image", fullOgImage);
     updateMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", fullOgImage);
-    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", "image/png");
-    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", "512");
-    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", "512");
+    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", "image/jpeg");
+    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", "1200");
+    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", "630");
     updateMeta('meta[property="og:type"]', "property", "og:type", ogType);
     updateMeta('meta[property="og:locale"]', "property", "og:locale", "lv_LV");
     updateMeta('meta[property="og:locale:alternate"][content="en_US"]', "property", "og:locale:alternate", "en_US");
     updateMeta('meta[property="og:locale:alternate"][content="ru_RU"]', "property", "og:locale:alternate", "ru_RU");
 
-    // Twitter Cards (summary card forces 1x1 square thumbnail image next to title & description)
-    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary");
+    // Twitter Cards
+    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
     updateMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
     updateMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
     updateMeta('meta[name="twitter:image"]', "name", "twitter:image", fullOgImage);

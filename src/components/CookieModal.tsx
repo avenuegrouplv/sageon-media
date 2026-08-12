@@ -38,15 +38,14 @@ export default function CookieModal({ isOpen, onClose, onSavePreferences }: Cook
 
   const handleSave = (customAnalytics: boolean, customFunctional: boolean, customMarketing: boolean) => {
     try {
-      localStorage.setItem(
-        "sageon_cookie_consent",
-        JSON.stringify({
-          necessary: true,
-          analytics: customAnalytics,
-          functional: customFunctional,
-          marketing: customMarketing,
-        })
-      );
+      const val = JSON.stringify({
+        necessary: true,
+        analytics: customAnalytics,
+        functional: customFunctional,
+        marketing: customMarketing,
+      });
+      localStorage.setItem("sageon_cookie_consent_v2", val);
+      sessionStorage.setItem("sageon_cookie_consent_v2", val);
     } catch (e) {
       console.warn("localStorage write error", e);
     }

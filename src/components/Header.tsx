@@ -20,7 +20,7 @@ export default function Header() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-          const next = scrollPos > 2;
+          const next = scrollPos > 25;
           setIsScrolled((prev) => (prev !== next ? next : prev));
           ticking = false;
         });

@@ -219,7 +219,6 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   }, [isPaused, cards.length]);
 
   const handleHeroTouchStart = (e: TouchEvent) => {
-    setIsPaused(true);
     const touch = e?.touches?.[0] || e?.targetTouches?.[0];
     if (touch) {
       touchStartX.current = touch.clientX;
@@ -734,18 +733,18 @@ export default function Home() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
       {/* Irregular Glowing Green Orbs Flowing Seamlessly From Top to Bottom */}
-      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.22)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,rgba(56,176,0,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.22)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,rgba(56,176,0,0.12)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
 
       {/* Lightweight Mobile-Optimized Ambient Glows */}
-      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
@@ -1107,20 +1106,20 @@ export default function Home() {
 
                 {/* Closing quote / CTA block */}
                 <div 
-                  className="pt-8 sm:pt-12 md:pt-14 pb-2 text-center max-w-4xl mx-auto space-y-3 flex flex-col items-center"
+                  className="pt-8 sm:pt-12 md:pt-14 pb-2 text-center max-w-4xl mx-auto flex flex-col items-center"
                 >
-                  <FreeConsultationAnimation className="mb-0" />
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-0">
+                  <FreeConsultationAnimation className="mb-4 sm:mb-5" />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-5 sm:mb-6">
                     <Sparkles className="h-3.5 w-3.5" />
                     <span>{lang === 'EN' ? "Free Consultation" : lang === 'RU' ? "Бесплатная консультация" : "Bezmaksas Konsultācija"}</span>
                   </div>
 
-                  <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed max-w-3xl mx-auto">
+                  <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-8">
                     {lang === 'EN'
-                      ? "Whether you need a new website, recommendations for your existing website, or improvements to it, we will help find the best solution for your business."
+                      ? "Whether you need a new website, recommendations for your existing website, or improvements to it, we will help find the best solution for your business"
                       : lang === 'RU'
-                      ? "Нужен ли вам новый сайт, рекомендации по существующему сайту или его улучшение, мы поможем найти лучшее решение для вашего бизнеса."
-                      : "Neatkarīgi no tā, vai Jums ir nepieciešama jauna mājaslapa vai rekomendācijas par esošo mājaslapu vai tās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam."}
+                      ? "Нужен ли вам новый сайт, рекомендации по существующему сайту или его улучшение, мы поможем найти лучшее решение для вашего бизнеса"
+                      : "Neatkarīgi no tā, vai Jums ir nepieciešama jauna mājaslapa vai rekomendācijas par esošo mājaslapu vai tās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam"}
                   </p>
                   
                   <div className="pt-1 flex justify-center">

@@ -17,25 +17,30 @@ export default function CookieBanner() {
   }, [isVisible]);
 
   useEffect(() => {
+    const handleOpenBanner = () => {
+      setIsVisible(true);
+    };
+    window.addEventListener("openCookieBanner", handleOpenBanner);
+
     try {
-      const sessionConsent = sessionStorage.getItem("sageon_cookie_consent");
-      if (sessionConsent) {
-        return;
+      const consent = localStorage.getItem("sageon_cookie_consent_v2");
+      if (!consent) {
+        setIsVisible(true);
       }
     } catch (e) {
-      console.warn("sessionStorage read error", e);
-    }
-    const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3000);
-    return () => clearTimeout(timer);
+    }
+
+    return () => {
+      window.removeEventListener("openCookieBanner", handleOpenBanner);
+    };
   }, []);
 
   const handleAcceptAll = () => {
     try {
       const val = JSON.stringify({ necessary: true, analytics: true, functional: true, marketing: true });
-      sessionStorage.setItem("sageon_cookie_consent", val);
-      localStorage.setItem("sageon_cookie_consent", val);
+      localStorage.setItem("sageon_cookie_consent_v2", val);
+      sessionStorage.setItem("sageon_cookie_consent_v2", val);
     } catch (e) {
       console.warn("storage write error", e);
     }
@@ -45,8 +50,8 @@ export default function CookieBanner() {
   const handleDeclineOptional = () => {
     try {
       const val = JSON.stringify({ necessary: true, analytics: false, functional: false, marketing: false });
-      sessionStorage.setItem("sageon_cookie_consent", val);
-      localStorage.setItem("sageon_cookie_consent", val);
+      localStorage.setItem("sageon_cookie_consent_v2", val);
+      sessionStorage.setItem("sageon_cookie_consent_v2", val);
     } catch (e) {
       console.warn("storage write error", e);
     }
