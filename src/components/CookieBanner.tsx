@@ -62,7 +62,7 @@ export default function CookieBanner() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#121215]/98 backdrop-blur-xl border-t border-zinc-800/90 shadow-[0_-15px_50px_rgba(0,0,0,0.9)] text-white py-[12.8px] sm:py-[15.36px] px-4 sm:px-6 md:px-10 lg:px-12"
+            className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#121215]/98 backdrop-blur-xl border-t border-zinc-800/90 shadow-[0_-15px_50px_rgba(0,0,0,0.9)] text-white py-[14.08px] sm:py-[16.9px] px-4 sm:px-6 md:px-10 lg:px-12"
           >
             <div className="w-full max-w-[1380px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3.5 sm:gap-4 md:gap-8">
               
@@ -95,7 +95,7 @@ export default function CookieBanner() {
                 <button
                   type="button"
                   onClick={handleAcceptAll}
-                  className="px-3.5 sm:px-5 py-[10.24px] sm:py-[12.8px] bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-bold text-[11.5px] sm:text-sm tracking-wide rounded-full shadow-md hover:shadow-[#BAFC50]/20 transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
+                  className="px-3.5 sm:px-5 py-[11.26px] sm:py-[14.08px] bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-bold text-[11.5px] sm:text-sm tracking-wide rounded-full shadow-md hover:shadow-[#BAFC50]/20 transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
                 >
                   {t.cookies.acceptBtn}
                 </button>
@@ -104,7 +104,7 @@ export default function CookieBanner() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="px-3.5 sm:px-5 py-[10.24px] sm:py-[12.8px] bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-[11.5px] sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
+                  className="px-3.5 sm:px-5 py-[11.26px] sm:py-[14.08px] bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-[11.5px] sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
                 >
                   {t.cookies.detailsBtn}
                 </button>
@@ -113,7 +113,7 @@ export default function CookieBanner() {
                 <button
                   type="button"
                   onClick={handleDeclineOptional}
-                  className="px-3.5 sm:px-5 py-[10.24px] sm:py-[12.8px] bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-[11.5px] sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
+                  className="px-3.5 sm:px-5 py-[11.26px] sm:py-[14.08px] bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 hover:text-white border border-zinc-700 font-sans font-semibold text-[11.5px] sm:text-sm tracking-wide rounded-full transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation flex-1 sm:flex-none text-center whitespace-nowrap"
                 >
                   {t.cookies.declineBtn}
                 </button>

@@ -142,52 +142,52 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
 
   const cards = [
     {
-      num: "01 / Iemesls",
+      num: lang === 'EN' ? "01 / Reason" : lang === 'RU' ? "01 / Причина" : "01 / Iemesls",
       Icon: ShieldAlert,
-      title: lang === 'en' ? "Website doesn't build trust" : lang === 'ru' ? "Сайт не вызывает доверия" : "Mājaslapa nerada uzticību",
-      desc: lang === 'en' 
+      title: lang === 'EN' ? "Website doesn't build trust" : lang === 'RU' ? "Сайт не вызывает доверия" : "Mājaslapa nerada uzticību",
+      desc: lang === 'EN' 
         ? "Outdated design, unclear information, or complex navigation can create a negative first impression and deter potential clients."
-        : lang === 'ru'
+        : lang === 'RU'
         ? "Устаревший дизайн, непонятная информация или сложная навигация создают негативное первое впечатление."
         : "Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas."
     },
     {
-      num: "02 / Iemesls",
+      num: lang === 'EN' ? "02 / Reason" : lang === 'RU' ? "02 / Причина" : "02 / Iemesls",
       Icon: TrendingDown,
-      title: lang === 'en' ? "Visitors don't convert to clients" : lang === 'ru' ? "Посетители не становятся клиентами" : "Apmeklētāji nekļūst par klientiem",
-      desc: lang === 'en'
+      title: lang === 'EN' ? "Visitors don't convert to clients" : lang === 'RU' ? "Посетители не становятся клиентами" : "Apmeklētāji nekļūst par klientiem",
+      desc: lang === 'EN'
         ? "Without a clear structure and compelling call to action, visitors leave without buying or reaching out."
-        : lang === 'ru'
+        : lang === 'RU'
         ? "Без четкой структуры и убедительного призыва к действию посетители уходят без покупки или обращения."
         : "Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu."
     },
     {
-      num: "03 / Iemesls",
+      num: lang === 'EN' ? "03 / Reason" : lang === 'RU' ? "03 / Причина" : "03 / Iemesls",
       Icon: Search,
-      title: lang === 'en' ? "Hard to find on Google" : lang === 'ru' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google",
-      desc: lang === 'en'
+      title: lang === 'EN' ? "Hard to find on Google" : lang === 'RU' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google",
+      desc: lang === 'EN'
         ? "Without quality SEO optimization, potential clients find your competitors first."
-        : lang === 'ru'
+        : lang === 'RU'
         ? "Без качественной SEO-оптимизации потенциальные клиенты сначала находят ваших конкурентов."
         : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu."
     },
     {
-      num: "04 / Iemesls",
+      num: lang === 'EN' ? "04 / Reason" : lang === 'RU' ? "04 / Причина" : "04 / Iemesls",
       Icon: Clock,
-      title: lang === 'en' ? "Website loads too slowly" : lang === 'ru' ? "Сайт загружается слишком медленно" : "Mājaslapa ielādējas pārāk lēni",
-      desc: lang === 'en'
+      title: lang === 'EN' ? "Website loads too slowly" : lang === 'RU' ? "Сайт загружается слишком медленно" : "Mājaslapa ielādējas pārāk lēni",
+      desc: lang === 'EN'
         ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
-        : lang === 'ru'
+        : lang === 'RU'
         ? "Медленная загрузка ухудшает пользовательский опыт, снижает эффективность рекламы и позиции в Google."
         : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā."
     },
     {
-      num: "05 / Iemesls",
+      num: lang === 'EN' ? "05 / Reason" : lang === 'RU' ? "05 / Причина" : "05 / Iemesls",
       Icon: HelpCircle,
-      title: lang === 'en' ? <>Offer is not<br />convincing enough</> : lang === 'ru' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>,
-      desc: lang === 'en'
+      title: lang === 'EN' ? <>Offer is not<br />convincing enough</> : lang === 'RU' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>,
+      desc: lang === 'EN'
         ? "Without clearly showing company advantages and client benefits, it's harder for clients to decide."
-        : lang === 'ru'
+        : lang === 'RU'
         ? "Если на сайте не показаны преимущества компании, клиенту сложнее принять решение."
         : "Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību."
     }
@@ -371,12 +371,12 @@ export default function Home() {
   const blogPostsList = t.blogPosts || [];
   const portfolioItemsList = t.portfolioItems || PORTFOLIO_ITEMS;
 
-  const trustItems = lang === 'en' ? [
+  const trustItems = lang === 'EN' ? [
     "Custom UI/UX Design",
     "Fast & SEO-Optimized Website",
     "Mobile-First Development",
     "Oriented toward results & client acquisition"
-  ] : lang === 'ru' ? [
+  ] : lang === 'RU' ? [
     "Индивидуальный UI/UX дизайн",
     "Быстрый и SEO-оптимизированный сайт",
     "Mobile-first разработка",
@@ -802,9 +802,9 @@ export default function Home() {
               <div className="inline-flex items-start sm:items-center justify-center gap-2 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
                 <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#BAFC50] mt-[2px] sm:mt-0" />
                 <span className="text-center">
-                  {lang === 'en' ? (
+                  {lang === 'EN' ? (
                     <>What stands in the way<br className="sm:hidden" /> of your digital growth</>
-                  ) : lang === 'ru' ? (
+                  ) : lang === 'RU' ? (
                     <>Что стоит на пути<br className="sm:hidden" /> вашего цифрового роста</>
                   ) : (
                     <>Kas stāv ceļā Jūsu izaugsmei<br className="sm:hidden" /> digitālajā vidē</>
@@ -812,7 +812,11 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
-                Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām.
+                {lang === 'EN'
+                  ? "Your business website is live, but it isn't attracting new clients or growing inquiries? Today, a simple online business card is no longer enough — a website must become an effective digital tool for business growth. If you recognize any of the situations below, it might be time for a change."
+                  : lang === 'RU'
+                  ? "Сайт вашей компании создан, но он не привлекает новых клиентов и не увеличивает количество заявок? Сегодня обычной визитки недостаточно — сайт должен стать эффективным инструментом цифрового роста. Если узнаете одну из ситуаций ниже, возможно, пришло время для изменений."
+                  : "Jūsu uzņēmuma mājaslapa ir izveidota, taču tā nepiesaista jaunus klientus un neveicina pieprasījuma pieaugumu? Mūsdienās ar vienkāršu interneta vizītkarti vairs nepietiek — mājaslapai ir jākļūst par efektīvu uzņēmuma izaugsmes digitālās vides instrumentu. Ja atpazīstat kādu no zemāk minētajām situācijām, iespējams, ir pienācis laiks pārmaiņām."}
               </p>
             </div>
 
@@ -828,17 +832,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                      01 / Iemesls
+                      {lang === 'EN' ? "01 / Reason" : lang === 'RU' ? "01 / Причина" : "01 / Iemesls"}
                     </span>
                     <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
                       <ShieldAlert className="h-5 w-5" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Mājaslapa nerada uzticību
+                    {lang === 'EN' ? "Website doesn't build trust" : lang === 'RU' ? "Сайт не вызывает доверия" : "Mājaslapa nerada uzticību"}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                    Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas.
+                    {lang === 'EN' 
+                      ? "Outdated design, unclear information, or complex navigation can create a negative first impression and deter potential clients."
+                      : lang === 'RU'
+                      ? "Устаревший дизайн, непонятная информация или сложная навигация создают негативное первое впечатление."
+                      : "Novecojis dizains, neskaidra informācija vai sarežģīta lietošana var radīt negatīvu pirmo iespaidu un atturēt potenciālos klientus no saziņas."}
                   </p>
                 </div>
               </div>
@@ -848,17 +856,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                      02 / Iemesls
+                      {lang === 'EN' ? "02 / Reason" : lang === 'RU' ? "02 / Причина" : "02 / Iemesls"}
                     </span>
                     <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
                       <TrendingDown className="h-5 w-5" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Apmeklētāji nekļūst par klientiem
+                    {lang === 'EN' ? "Visitors don't convert to clients" : lang === 'RU' ? "Посетители не становятся клиентами" : "Apmeklētāji nekļūst par klientiem"}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                    Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu.
+                    {lang === 'EN'
+                      ? "Without a clear structure and compelling call to action, visitors leave without buying or reaching out."
+                      : lang === 'RU'
+                      ? "Без четкой структуры и убедительного призыва к действию посетители уходят без покупки или обращения."
+                      : "Ja mājaslapā nav skaidras struktūras un pārliecinoša aicinājuma rīkoties, apmeklētāji aiziet, neveicot pirkumu vai nesazinoties ar uzņēmumu."}
                   </p>
                 </div>
               </div>
@@ -868,17 +880,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                      03 / Iemesls
+                      {lang === 'EN' ? "03 / Reason" : lang === 'RU' ? "03 / Причина" : "03 / Iemesls"}
                     </span>
                     <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
                       <Search className="h-5 w-5" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Uzņēmumu grūti atrast Google
+                    {lang === 'EN' ? "Hard to find on Google" : lang === 'RU' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google"}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                    Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu.
+                    {lang === 'EN'
+                      ? "Without quality SEO optimization, potential clients find your competitors first."
+                      : lang === 'RU'
+                      ? "Без качественной SEO-оптимизации потенциальные клиенты сначала находят ваших конкурентов."
+                      : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu."}
                   </p>
                 </div>
               </div>
@@ -888,17 +904,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                      04 / Iemesls
+                      {lang === 'EN' ? "04 / Reason" : lang === 'RU' ? "04 / Причина" : "04 / Iemesls"}
                     </span>
                     <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
                       <Clock className="h-5 w-5" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Mājaslapa ielādējas pārāk lēni
+                    {lang === 'EN' ? "Website loads too slowly" : lang === 'RU' ? "Сайт загружается слишком медленно" : "Mājaslapa ielādējas pārāk lēni"}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                    Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā.
+                    {lang === 'EN'
+                      ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
+                      : lang === 'RU'
+                      ? "Медленная загрузка ухудшает пользовательский опыт, снижает эффективность рекламы и позиции в Google."
+                      : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā."}
                   </p>
                 </div>
               </div>
@@ -908,17 +928,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-amber-500/70 group-hover:text-amber-400 font-semibold uppercase tracking-wider">
-                      05 / Iemesls
+                      {lang === 'EN' ? "05 / Reason" : lang === 'RU' ? "05 / Причина" : "05 / Iemesls"}
                     </span>
                     <div className="p-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl group-hover:bg-amber-500/20 transition-all duration-300">
                       <HelpCircle className="h-5 w-5" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    Piedāvājums nav<br />pārliecinošs
+                    {lang === 'EN' ? <>Offer is not<br />convincing enough</> : lang === 'RU' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
-                    Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību.
+                    {lang === 'EN'
+                      ? "Without clearly showing company advantages and client benefits, it's harder for clients to decide."
+                      : lang === 'RU'
+                      ? "Если на сайте не показаны преимущества компании, клиенту сложнее принять решение."
+                      : "Ja mājaslapā nav skaidri parādītas uzņēmuma priekšrocības un ieguvumi klientam, tad klientam ir grūtāk pieņemt lēmumu par sadarbību."}
                   </p>
                 </div>
               </div>
@@ -933,14 +957,14 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
             <div className="space-y-3 flex flex-col items-center justify-center text-center">
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
-                {lang === 'en' ? (
+                {lang === 'EN' ? (
                   <>
                     Do you need a modern website for your business without overpaying and waiting for weeks?{" "}
                     <span className="text-[#BAFC50] font-bold">
                       We can solve this in a relatively short time by developing a website that will not only save you time, but also attract more clients
                     </span>
                   </>
-                ) : lang === 'ru' ? (
+                ) : lang === 'RU' ? (
                   <>
                     Вам нужен современный сайт для бизнеса, но вы не хотите переплачивать и ждать неделями?{" "}
                     <span className="text-[#BAFC50] font-bold">
@@ -982,10 +1006,14 @@ export default function Home() {
                 >
                   <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                      Mājaslapas izstrāde
+                      {lang === 'EN' ? "Website Development" : lang === 'RU' ? "Разработка сайтов" : "Mājaslapas izstrāde"}
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu.
+                      {lang === 'EN'
+                        ? "We develop fast and modern websites that highlight your brand and help you achieve your business goals faster. Every project is built considering your company's needs and future growth perspectives. As a result, you get a professional digital showcase that serves long-term and grows with your business."
+                        : lang === 'RU'
+                        ? "Мы разрабатываем быстрые и современные сайты, которые подчеркивают ваш бренд и помогают быстрее достигать бизнес-целей. Каждый проект создается с учетом потребностей вашей компании и перспектив роста. В результате вы получаете профессиональную цифровую визитку, которая служит долгосрочно и растет вместе с вашим бизнесом."
+                        : "Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu."}
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
@@ -1022,10 +1050,14 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                      Dizains & Mobile first
+                      {lang === 'EN' ? "Design & Mobile First" : lang === 'RU' ? "Дизайн и Mobile First" : "Dizains & Mobile first"}
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Katram projektam mēs veidojam individuālu dizainu, kas atspoguļo Jūsu uzņēmuma identitāti un rada profesionālu pirmo iespaidu. Ikviens vizuālais elements vai sadaļa tiek pielāgots datoriem, planšetēm un viedtālruņiem. Tas Jūsu mājaslapas apmeklētājiem nodrošina vienotu, vizuāli pievilcīgu un patīkamu lietošanas pieredzi neatkarīgi no izmantotās ierīces.
+                      {lang === 'EN'
+                        ? "For every project, we craft an individual design that reflects your company identity and creates a professional first impression. Every visual element and section is tailored for desktops, tablets, and smartphones, ensuring a unified, attractive user experience on any device."
+                        : lang === 'RU'
+                        ? "Для каждого проекта мы создаем индивидуальный дизайн, отражающий айдентику компании и создающий профессиональное первое впечатление. Все визуальные элементы и разделы адаптированы для компьютеров, планшетов и смартфонов, обеспечивая единый удобный опыт на любом устройстве."
+                        : "Katram projektam mēs veidojam individuālu dizainu, kas atspoguļo Jūsu uzņēmuma identitāti un rada profesionālu pirmo iespaidu. Ikviens vizuālais elements vai sadaļa tiek pielāgots datoriem, planšetēm un viedtālruņiem. Tas Jūsu mājaslapas apmeklētājiem nodrošina vienotu, vizuāli pievilcīgu un patīkamu lietošanas pieredzi neatkarīgi no izmantotās ierīces."}
                     </p>
                   </div>
                 </div>
@@ -1036,10 +1068,14 @@ export default function Home() {
                 >
                   <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                      Struktūra & rezultāts
+                      {lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"}
                     </h3>
                     <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
-                      Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus.
+                      {lang === 'EN'
+                        ? "We plan website structures so visitors quickly find all necessary information and naturally reach the desired action. Clear navigation, thoughtful layout, and effective calls to action build trust among your clients and increase demand, inquiries, or sales results."
+                        : lang === 'RU'
+                        ? "Мы планируем структуру сайта так, чтобы посетители быстро находили нужную информацию и естественно приходили к целевому действию. Понятная навигация, продуманное размещение контента и эффективные призывы к действию помогают завоевать доверие клиентов и увеличить продажи."
+                        : "Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus."}
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
@@ -1063,20 +1099,24 @@ export default function Home() {
                 >
                   <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-1">
                     <Sparkles className="h-3.5 w-3.5" />
-                    <span>Bezmaksas Konsultācija</span>
+                    <span>{lang === 'EN' ? "Free Consultation" : lang === 'RU' ? "Бесплатная консультация" : "Bezmaksas Konsultācija"}</span>
                   </div>
 
                   <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed max-w-3xl mx-auto">
-                    Neatkarīgi no tā, vai Jums nepieciešama jauna mājaslapa vai esošās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam.
+                    {lang === 'EN'
+                      ? "Whether you need a new website or improvements to an existing one, we will help find the best solution for your business."
+                      : lang === 'RU'
+                      ? "Нужен ли вам новый сайт или улучшение существующего, мы поможем найти лучшее решение для вашего бизнеса."
+                      : "Neatkarīgi no tā, vai Jums nepieciešama jauna mājaslapa vai esošās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam."}
                   </p>
                   
                   <div className="pt-2">
                     <Link
                       to={getLocalizedPath("contact")}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold text-xs uppercase tracking-wider transition-colors duration-300 shadow-md shadow-[#BAFC50]/20"
+                      className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
                     >
-                      <span>Pieteikties konsultācijai</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
+                      <span>{lang === 'EN' ? "Apply for consultation" : lang === 'RU' ? "Записаться на консультацию" : "Pieteikties konsultācijai"}</span>
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </div>
@@ -1099,9 +1139,9 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-2 sm:px-3">
               <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight text-center md:text-left">
-                  {lang === 'en' ? (
+                  {lang === 'EN' ? (
                     <>Services &amp;<br className="hidden sm:inline" /> Pricing</>
-                  ) : lang === 'ru' ? (
+                  ) : lang === 'RU' ? (
                     <>Услуги и<br className="hidden sm:inline" /> цены</>
                   ) : (
                     <>Piedāvātie pakalpojumi<br className="hidden sm:inline" /> un cenas</>
@@ -1133,11 +1173,7 @@ export default function Home() {
                     >
                       <Link
                         to={getLocalizedPath('services')}
-                        className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full ${
-                          isBestChoice 
-                            ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
-                            : "border-zinc-800 hover:border-[#BAFC50]"
-                        }`}
+                        className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full"
                       >
                         <div>
                           {/* Header Section */}
@@ -1250,7 +1286,7 @@ export default function Home() {
                 </button>
               </div>
               <CtaButton
-                text={lang === 'en' ? "Learn More" : lang === 'ru' ? "Узнать больше" : "Uzzināt vairāk"}
+                text={lang === 'EN' ? "Learn More" : lang === 'RU' ? "Узнать больше" : "Uzzināt vairāk"}
                 to={getLocalizedPath('services')}
               />
             </div>
@@ -1272,7 +1308,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-3">
               <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
-                  {lang === 'en' ? "Insight into Our Recent Projects" : lang === 'ru' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
+                  {lang === 'EN' ? "Insight into Our Recent Projects" : lang === 'RU' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
                 </h2>
               </div>
             </div>
@@ -1330,7 +1366,7 @@ export default function Home() {
                 </button>
               </div>
               <CtaButton
-                text={lang === 'en' ? "View All" : lang === 'ru' ? "Смотреть все" : "Skatīt visus"}
+                text={lang === 'EN' ? "View All" : lang === 'RU' ? "Смотреть все" : "Skatīt visus"}
                 to={getLocalizedPath('portfolio')}
               />
             </div>
@@ -1350,12 +1386,12 @@ export default function Home() {
               <div className="text-center space-y-3 max-w-3xl mx-auto">
                 <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                   <Sparkles className="h-3.5 w-3.5" />
-                  <span>{lang === 'en' ? "Clear Strategy" : lang === 'ru' ? "Четкая стратегия" : "Skaidra stratēģija"}</span>
+                  <span>{lang === 'EN' ? "What You Will Get" : lang === 'RU' ? "Что вы получите" : "Ko Jūs iegūsiet"}</span>
                 </div>
                 <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed pt-1">
-                  {lang === 'en' 
+                  {lang === 'EN' 
                     ? "Our goal is not just to build a website. We create a digital solution that strengthens company image, attracts new clients and grows with your business."
-                    : lang === 'ru' 
+                    : lang === 'RU' 
                       ? "Наша цель — не просто создать сайт. Мы создаем цифровое решение, которое укрепляет имидж, привлекает новых клиентов и растет вместе с бизнесом."
                       : "Mūsu mērķis nav vienkārši izveidot mājaslapu. Mēs radām digitālu risinājumu, kas stiprina uzņēmuma tēlu, palīdz piesaistīt jaunus klientus un aug kopā ar biznesu."}
                 </p>
@@ -1370,12 +1406,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "Clear Strategy" : lang === 'ru' ? "Четкая стратегия" : "Skaidra stratēģija"}
+                      {lang === 'EN' ? "Clear Strategy" : lang === 'RU' ? "Четкая стратегия" : "Skaidra stratēģija"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "Every project is created with a specific goal — to help your company grow, strengthen customer trust, and increase demand for your products or services." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Каждый проект создается с конкретной целью — помочь вашей компании расти, укрепить доверие клиентов и увеличить спрос на ваши продукты или услуги." 
                           : "Katrs projekts tiek veidots ar konkrētu mērķi — palīdzēt Jūsu uzņēmumam augt, stiprināt klientu uzticību un palielināt pieprasījumu pēc Jūsu produktiem vai pakalpojumiem."}
                     </p>
@@ -1389,12 +1425,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "Individual Approach" : lang === 'ru' ? "Индивидуальный подход" : "Individuāla pieeja"}
+                      {lang === 'EN' ? "Individual Approach" : lang === 'RU' ? "Индивидуальный подход" : "Individuāla pieeja"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "Every client is unique, so we tailor website content and digital solutions individually to each business, aligned with industry, goals, and needs." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Каждый клиент уникален, поэтому мы адаптируем контент и цифровые решения индивидуально, в соответствии с отраслью, целями и потребностями." 
                           : "Katrs klients ir unikāls, tāpēc mājaslapas saturu un digitālos risinājumus mēs pielāgojam katram individuāli, atbilstoši darbības nozarei, mērķiem un vajadzībām."}
                     </p>
@@ -1408,12 +1444,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "Modern Solutions" : lang === 'ru' ? "Современные решения" : "Mūsdienīgi risinājumi"}
+                      {lang === 'EN' ? "Modern Solutions" : lang === 'RU' ? "Современные решения" : "Mūsdienīgi risinājumi"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "We work with modern technologies and AI tools to ensure the website is fast, responsive, intuitive, and easy to use on any device." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Мы работаем с современными технологиями и ИИ-инструментами, чтобы сайт был быстрым, адаптивным, интуитивным и удобным на любом устройстве." 
                           : "Mēs strādājam ar mūsdienīgām tehnoloģijām un MI rīkiem, lai mājaslapa būtu ātra, responsīva, intuitīva, viegli pārskatāma un ērti lietojama jebkurā ierīcē."}
                     </p>
@@ -1427,12 +1463,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "Long-term Partnership" : lang === 'ru' ? "Долгосрочное сотрудничество" : "Ilgtermiņa sadarbība"}
+                      {lang === 'EN' ? "Long-term Partnership" : lang === 'RU' ? "Долгосрочное сотрудничество" : "Ilgtermiņa sadarbība"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "We don't just build websites that attract new clients — we can also maintain them long-term and adapt them to company growth and market changes." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Мы не только разрабатываем сайт, привлекающий новых клиентов, но и поддерживаем его в долгосрочной перспективе." 
                           : "Mēs ne tikai izstrādājam mājaslapu, kas piesaista jaunus klientus, bet varam arī uzturēt to ilgtermiņā, un pielāgot uzņēmuma izaugsmei un mainīgajai tirgus situācijai."}
                     </p>
@@ -1446,12 +1482,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide">
-                      {lang === 'en' ? "SEO & GEO Optimization" : lang === 'ru' ? "SEO и GEO оптимизация" : "SEO un GEO optimizācija"}
+                      {lang === 'EN' ? "SEO & GEO Optimization" : lang === 'RU' ? "SEO и GEO оптимизация" : "SEO un GEO optimizācija"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "Includes performance, technical SEO, and GEO (AI search agent) optimization during development to enhance visibility and achieve top rankings." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Включает оптимизацию скорости, техническое SEO и GEO (ИИ-поиск) уже в процессе разработки для повышения видимости." 
                           : "Ietver ātrdarbības, tehniskā SEO un GEO optimizāciju jau mājaslapas izstrādes procesā, lai uzlabotu tās redzamību un sasniegtu labākas pozīcijas meklētājos."}
                     </p>
@@ -1465,12 +1501,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-extrabold text-white text-lg sm:text-xl uppercase tracking-wide whitespace-nowrap">
-                      {lang === 'en' ? "Focus on Results" : lang === 'ru' ? "Фокус на результат" : "Fokuss uz rezultātu"}
+                      {lang === 'EN' ? "Focus on Results" : lang === 'RU' ? "Фокус на результат" : "Fokuss uz rezultātu"}
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
-                      {lang === 'en' 
+                      {lang === 'EN' 
                         ? "We don't create websites just for visual effect — every element is designed to capture attention, build trust, and drive potential client interest." 
-                        : lang === 'ru' 
+                        : lang === 'RU' 
                           ? "Мы создаем сайты не только ради красивой картинки — каждый элемент продуман для привлечения внимания, доверия и интереса клиентов." 
                           : "Mēs neveidojam mājaslapas tikai vizuālam efektam — katrs elements tiek pārdomāts, lai piesaistītu uzmanību, radītu uzticību un veicinātu potenciālo klientu interesi."}
                     </p>
@@ -1482,9 +1518,9 @@ export default function Home() {
               <div className="flex justify-center pt-2">
                 <Link
                   to={getLocalizedPath("contact")}
-                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-bold text-sm sm:text-base tracking-wide rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
                 >
-                  <span>Pieteikties konsultācijai</span>
+                  <span>{lang === 'EN' ? "Apply for consultation" : lang === 'RU' ? "Записаться на консультацию" : "Pieteikties konsultācijai"}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -1507,13 +1543,17 @@ export default function Home() {
             <div className="text-center space-y-4 max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                 <Sparkles className="h-3.5 w-3.5" />
-                <span>Sadarbības posmi</span>
+                <span>{lang === 'EN' ? "Stages of Collaboration" : lang === 'RU' ? "Этапы сотрудничества" : "Sadarbības posmi"}</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-                Kā notiek sadarbība
+                {lang === 'EN' ? "How We Work Together" : lang === 'RU' ? "Как проходит сотрудничество" : "Kā notiek sadarbība"}
               </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
-                Pārskatāms, strukturēts un lietotājam ērts izstrādes process no pirmās idejas līdz gatavam rezultātam un ilgtermiņa atbalstam.
+                {lang === 'EN'
+                  ? "A clear, structured, and user-friendly development process from initial idea to final result and long-term support."
+                  : lang === 'RU'
+                  ? "Понятный, структурированный и удобный процесс разработки от первой идеи до готового результата и поддержки."
+                  : "Pārskatāms, strukturēts un lietotājam ērts izstrādes process no pirmās idejas līdz gatavam rezultātam un ilgtermiņa atbalstam."}
               </p>
             </div>
 
@@ -1531,15 +1571,21 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">01</span>
                     </div>
-                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">Posms 1</span>
+                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
+                      {lang === 'EN' ? "Stage 1" : lang === 'RU' ? "Этап 1" : "Posms 1"}
+                    </span>
                   </div>
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      1. Pirmā saruna
+                      {lang === 'EN' ? "1. Initial Discussion" : lang === 'RU' ? "1. Первичная беседа" : "1. Pirmā saruna"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Viss sākas ar sarunu par Jūsu topošās mājaslapas mērķiem, biznesa darbības virzienu un Jūsu vēlmēm. Ja Jums jau ir savas idejas par mājaslapas struktūru, sadaļām vai piedāvātajiem pakalpojumiem - lieliski, tās tad arī kopīgi pārrunāsim, lai labāk izprastu Jūsu vajadzības un izvēlētos piemērotāko risinājumu.
+                      {lang === 'EN'
+                        ? "Everything starts with a conversation about your website goals, business direction, and preferences. If you have ideas regarding website structure or services, we will discuss them together to choose the best solution."
+                        : lang === 'RU'
+                        ? "Всё начинается с обсуждения целей вашего будущего сайта, направления бизнеса и ваших пожеланий. Если у вас уже есть идеи по структуре или разделам — отлично, мы их вместе обсудим!"
+                        : "Viss sākas ar sarunu par Jūsu topošās mājaslapas mērķiem, biznesa darbības virzienu un Jūsu vēlmēm. Ja Jums jau ir savas idejas par mājaslapas struktūru, sadaļām vai piedāvātajiem pakalpojumiem - lieliski, tās tad arī kopīgi pārrunāsim, lai labāk izprastu Jūsu vajadzības un izvēlētos piemērotāko risinājumu."}
                     </p>
                   </div>
                 </div>
@@ -1551,15 +1597,21 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">02</span>
                     </div>
-                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">Posms 2</span>
+                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
+                      {lang === 'EN' ? "Stage 2" : lang === 'RU' ? "Этап 2" : "Posms 2"}
+                    </span>
                   </div>
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      2. Projekta izstrādes process
+                      {lang === 'EN' ? "2. Project Development" : lang === 'RU' ? "2. Процесс разработки" : "2. Projekta izstrādes process"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Kad iecerētās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai radītu mūsdienīgu, pārdomātu un modernu Jūsu biznesa digitālo vizītkarti.
+                      {lang === 'EN'
+                        ? "Once the concept is aligned, we begin development. In this stage, we conduct market research, competitor analysis, build the website structure and functionality, and prepare content to create a modern digital presence."
+                        : lang === 'RU'
+                        ? "Когда концепция сайта согласована, мы приступаем к разработке. Включает анализ рынка, конкурентов, работу над структурой, функционалом и подготовку контента."
+                        : "Kad iecerētās mājaslapas koncepts ir saskaņots, mēs uzsākam tās izstrādi. Šajā posmā tiek veikta attiecīgās nozares tirgus izpēte, konkurentu analīze, mājaslapas struktūras un funkcionalitātes izstrāde, kā arī satura sagatavošana, lai radītu mūsdienīgu, pārdomātu un modernu Jūsu biznesa digitālo vizītkarti."}
                     </p>
                   </div>
                 </div>
@@ -1571,15 +1623,21 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">03</span>
                     </div>
-                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">Posms 3</span>
+                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
+                      {lang === 'EN' ? "Stage 3" : lang === 'RU' ? "Этап 3" : "Posms 3"}
+                    </span>
                   </div>
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      3. Projekta saskaņošana un nodošana
+                      {lang === 'EN' ? "3. Approval & Handover" : lang === 'RU' ? "3. Согласование и сдача" : "3. Projekta saskaņošana un nodošana"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Šajā posmā Jūs saņemsiet pabeigtu mājaslapas projektu, kuru varēsiet pārskatīt un iesniegt savus komentārus vai ierosinājumus par nepieciešamajiem uzlabojumiem. Pēc visu saskaņoto izmaiņu veikšanas mājaslapa tiek publicēta uz Jūsu domēna un nodota Jūsu rīcībā.
+                      {lang === 'EN'
+                        ? "You receive a finished website draft to review and provide feedback for necessary adjustments. After applying agreed edits, the site is published on your domain and handed over to you."
+                        : lang === 'RU'
+                        ? "Вы получаете готовый проект сайта для проверки и комментариев. После внесения всех согласованных правок сайт публикуется на вашем домене."
+                        : "Šajā posmā Jūs saņemsiet pabeigtu mājaslapas projektu, kuru varēsiet pārskatīt un iesniegt savus komentārus vai ierosinājumus par nepieciešamajiem uzlabojumiem. Pēc visu saskaņoto izmaiņu veikšanas mājaslapa tiek publicēta uz Jūsu domēna un nodota Jūsu rīcībā."}
                     </p>
                   </div>
                 </div>
@@ -1591,15 +1649,21 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">04</span>
                     </div>
-                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">Posms 4</span>
+                    <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
+                      {lang === 'EN' ? "Stage 4" : lang === 'RU' ? "Этап 4" : "Posms 4"}
+                    </span>
                   </div>
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      4. Tehniskais atbalsts un uzturēšana
+                      {lang === 'EN' ? "4. Support & Maintenance" : lang === 'RU' ? "4. Поддержка и обслуживание" : "4. Tehniskais atbalsts un uzturēšana"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                      Pēc mājaslapas nodošanas nepieciešamības gadījumā mēs varam turpināt nodrošināt mājaslapas tehnisko atbalstu un uzturēšanu, kā arī veikt nepieciešamos satura atjauninājumus, funkcionalitātes izmaiņas un citus papildinājumus, atbilstoši Jūsu uzņēmuma vajadzībām.
+                      {lang === 'EN'
+                        ? "After launch, we can continue providing technical support, maintenance, content updates, and feature additions tailored to your company's growing needs."
+                        : lang === 'RU'
+                        ? "После сдачи сайта мы можем продолжить техническую поддержку, обновление контента и добавление новых функций по мере роста вашей компании."
+                        : "Pēc mājaslapas nodošanas nepieciešamības gadījumā mēs varam turpināt nodrošināt mājaslapas tehnisko atbalstu un uzturēšanu, kā arī veikt nepieciešamos satura atjauninājumus, funkcionalitātes izmaiņas un citus papildinājumus, atbilstoši Jūsu uzņēmuma vajadzībām."}
                     </p>
                   </div>
                 </div>
@@ -1624,7 +1688,7 @@ export default function Home() {
             
             <div className="text-center space-y-3">
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                Biežāk uzdotie jautājumi
+                {lang === 'EN' ? "Frequently Asked Questions" : lang === 'RU' ? "Часто задаваемые вопросы" : "Biežāk uzdotie jautājumi"}
               </h2>
             </div>
 
@@ -1670,11 +1734,15 @@ export default function Home() {
             {/* FAQ bottom text & buttons (no frame) */}
             <div className="text-center space-y-5 pt-8 max-w-2xl mx-auto">
               <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
-                Neatradi atbildi uz savu jautājumu? Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem.
+                {lang === 'EN' 
+                  ? "Didn't find the answer to your question? Feel free to contact us, call or write, and we will answer all your questions." 
+                  : lang === 'RU' 
+                  ? "Не нашли ответ на свой вопрос? Свяжитесь с нами, позвоните или напишите, и мы ответим на все вопросы." 
+                  : "Neatradi atbildi uz savu jautājumu? Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."}
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <CtaButton text="Lasīt citus BUJ" to={getLocalizedPath('faq')} />
-                <CtaButton text="Uzdod savu jautājumu" to={getLocalizedPath('contact')} />
+                <CtaButton text={lang === 'EN' ? "Read Other FAQs" : lang === 'RU' ? "Все вопросы" : "Lasīt citus BUJ"} to={getLocalizedPath('faq')} />
+                <CtaButton text={lang === 'EN' ? "Ask Your Question" : lang === 'RU' ? "Задать вопрос" : "Uzdod savu jautājumu"} to={getLocalizedPath('contact')} />
               </div>
             </div>
 
@@ -1695,7 +1763,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-4 px-3">
               <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
                 <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
-                  Noderīga informācija
+                  {lang === 'EN' ? "Useful Articles & Insights" : lang === 'RU' ? "Полезная информация" : "Noderīga informācija"}
                 </h2>
               </div>
             </div>
@@ -1747,7 +1815,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="px-5 pb-5 pt-1 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center gap-1">
-                        Lasīt rakstu <ArrowRight className="h-3 w-3" />
+                        {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
                       </div>
                     </Link>
                   </div>
@@ -1774,7 +1842,7 @@ export default function Home() {
                 </button>
               </div>
               <CtaButton
-                text="Lasīt blogu"
+                text={lang === 'EN' ? "Read Blog" : lang === 'RU' ? "Читать блог" : "Lasīt blogu"}
                 to={getLocalizedPath('blog')}
               />
             </div>
@@ -1785,8 +1853,8 @@ export default function Home() {
       {/* 7. KONTAKTI & SAZIŅAS FORMA */}
       <LazyLoadSection>
         <ContactForm 
-          title="Pieteikt mājaslapas izstrādi vai konsultāciju" 
-          subtitle="Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."
+          title={lang === 'EN' ? "Apply for website development or consultation" : lang === 'RU' ? "Заказать разработку сайта или консультацию" : "Pieteikt mājaslapas izstrādi vai konsultāciju"} 
+          subtitle={lang === 'EN' ? "Feel free to get in touch, call or write, and we will answer all your questions." : lang === 'RU' ? "Свяжитесь с нами, позвоните или напишите, и мы ответим на все ваши вопросы." : "Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."}
         />
       </LazyLoadSection>
 

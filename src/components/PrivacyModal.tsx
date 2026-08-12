@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ShieldCheck, Mail, Phone } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 interface PrivacyModalProps {
   isOpen: boolean;
@@ -8,6 +9,10 @@ interface PrivacyModalProps {
 }
 
 export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
+  const { lang } = useLanguage();
+  const isEn = lang === "EN";
+  const isRu = lang === "RU";
+
   useEffect(() => {
     if (isOpen) {
       const lenis = (window as any).lenis;
@@ -57,17 +62,17 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                    Privātuma politika
+                    {isEn ? "Privacy Policy" : isRu ? "Политика конфиденциальности" : "Privātuma politika"}
                   </h3>
                   <p className="text-xs text-zinc-400 font-medium">
-                    Pēdējo reizi atjaunots: 2026. gada janvārī
+                    {isEn ? "Last updated: January 2026" : isRu ? "Последнее обновление: январь 2026" : "Pēdējo reizi atjaunots: 2026. gada janvārī"}
                   </p>
                 </div>
               </div>
 
               <button
                 onClick={onClose}
-                aria-label="Aizvērt"
+                aria-label={isEn ? "Close" : isRu ? "Закрыть" : "Aizvērt"}
                 className="p-2 text-zinc-400 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
               >
                 <X className="h-5 w-5" />
@@ -84,27 +89,28 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
               {/* Section 1 */}
               <div className="space-y-2.5">
                 <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">1.</span> Ievads
+                  <span className="text-[#BAFC50]">1.</span> {isEn ? "Introduction" : isRu ? "Введение" : "Ievads"}
                 </h4>
                 <p>
-                  Datu pārzinis un vietnes administrators SIA &quot;Avenue Group&quot;, Reģ.Nr. 40203647938, juridiskā adrese: Rīga, Brīvības gatve 386/2-5A (turpmāk – &quot;mēs&quot;, &quot;mūsu&quot; vai &quot;Uzņēmums&quot;), apņemas aizsargāt un ievērot Jūsu tiesības uz privātumu. Šajā Privātuma politikā ir skaidrots, kā mēs apkopojam, izmantojam, glabājam un aizsargājam Jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (Vispārīgā datu aizsardzības regula jeb GDPR) un Latvijas Republikas piemērojamajiem normatīvajiem aktiem.
-                </p>
-                <p>
-                  Lūdzam iepazīties ar šo Privātuma politiku pirms mūsu mājaslapas un pakalpojumu izmantošanas. Izmantojot mūsu mājaslapu un pakalpojumus, Jūs apliecināt, ka esat iepazinies ar šo Privātuma politiku.
+                  {isEn 
+                    ? "Data controller and site administrator SIA \"Avenue Group\", Reg. No. 40203647938, legal address: Riga, Brīvības gatve 386/2-5A (hereinafter – \"we\", \"our\" or \"Company\"), is committed to protecting and respecting your right to privacy. This Privacy Policy explains how we collect, use, store, and protect your personal data in accordance with Regulation (EU) 2016/679 (GDPR) and applicable regulations."
+                    : isRu
+                      ? "Контроллер данных и администратор сайта SIA \"Avenue Group\", Рег. № 40203647938, юридический адрес: Рига, Brīvības gatve 386/2-5A (далее — \"мы\", \"наш\" или \"Компания\"), обязуется защищать и уважать ваше право на конфиденциальность. Данная политика объясняет порядок сбора, использования и защиты персональных данных согласно GDPR."
+                      : "Datu pārzinis un vietnes administrators SIA \"Avenue Group\", Reģ.Nr. 40203647938, juridiskā adrese: Rīga, Brīvības gatve 386/2-5A (turpmāk – \"mēs\", \"mūsu\" vai \"Uzņēmums\"), apņemas aizsargāt un ievērot Jūsu tiesības uz privātumu. Šajā Privātuma politikā ir skaidrots, kā mēs apkopojam, izmantojam, glabājam un aizsargājam Jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (Vispārīgā datu aizsardzības regula jeb GDPR) un Latvijas Republikas piemērojamajiem normatīvajiem aktiem."}
                 </p>
 
                 <div className="p-4 bg-zinc-900/80 border border-zinc-800 rounded-xl space-y-2 mt-3">
                   <h5 className="font-semibold text-white text-xs sm:text-sm text-[#BAFC50]">
-                    Kontaktinformācija:
+                    {isEn ? "Contact Details:" : isRu ? "Контактная информация:" : "Kontaktinformācija:"}
                   </h5>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-xs text-zinc-300">
                     <a href="mailto:info@sageonmedia.eu" className="flex items-center gap-2 hover:text-[#BAFC50] transition-colors">
                       <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
-                      <span>E-pasts: info@sageonmedia.eu</span>
+                      <span>{isEn ? "Email:" : isRu ? "Эл. почта:" : "E-pasts:"} info@sageonmedia.eu</span>
                     </a>
                     <a href="tel:26739899" className="flex items-center gap-2 hover:text-[#BAFC50] transition-colors">
                       <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
-                      <span>Tālr. 26739899</span>
+                      <span>{isEn ? "Phone:" : isRu ? "Тел.:" : "Tālr."} +371 26739899</span>
                     </a>
                   </div>
                 </div>
@@ -113,31 +119,31 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
               {/* Section 2 */}
               <div className="space-y-2">
                 <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">2.</span> Juridiskais pamats
+                  <span className="text-[#BAFC50]">2.</span> {isEn ? "Legal Framework" : isRu ? "Правовая основа" : "Juridiskais pamats"}
                 </h4>
                 <p>
-                  Personas datu apstrādātājs – Latvijas Republikas Uzņēmumu reģistra Komercreģistrā reģistrētas juridiskas personas, kas Sabiedrības uzdevumā iegūst un apstrādā Klienta datus, lai nodrošinātu Pakalpojumu sniegšanu Sabiedrības vārdā. Personas datu apstrādātājs veic datu apstrādi ievērojot Sabiedrības norādījumus un izmantojot tehniskus un organizatoriskus pasākumus apstrādā Klientu datus tādā apmērā un kārtībā, kā to prasa un atļauj Latvijas Republikas un Eiropas Savienības normatīvie akti. Piemērojamie normatīvie akti – Eiropas Parlamenta un padomes Regula Nr.2016/679 par fizisku personu aizsardzību attiecībā uz personas datu apstrādi un šādu datu brīvu apriti (2016. gada 27.aprīlis); Fizisko personu datu apstrādes likums.
+                  {isEn 
+                    ? "Personal data processor – legal entities registered in the Commercial Register of the Republic of Latvia that process Client data on behalf of the Company to provide services. Applicable laws include Regulation (EU) 2016/679 (GDPR) and national data protection laws."
+                    : isRu
+                      ? "Обработчик персональных данных — юридические лица, зарегистрированные в коммерческом реестре Латвийской Республики, обрабатывающие данные клиентов по поручению Компании для предоставления услуг в соответствии с GDPR."
+                      : "Personas datu apstrādātājs – Latvijas Republikas Uzņēmumu reģistra Komercreģistrā reģistrētas juridiskas personas, kas Sabiedrības uzdevumā iegūst un apstrādā Klienta datus, lai nodrošinātu Pakalpojumu sniegšanu Sabiedrības vārdā."}
                 </p>
               </div>
 
               {/* Section 3 */}
               <div className="space-y-2">
                 <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">3.</span> Kādus personas datus mēs vācam
+                  <span className="text-[#BAFC50]">3.</span> {isEn ? "Data We Collect" : isRu ? "Какие данные мы собираем" : "Kādus personas datus mēs vācam"}
                 </h4>
-                <p>Mēs varam apkopot un apstrādāt šādu informāciju par Jums:</p>
                 <ul className="list-disc list-inside space-y-1.5 pl-1 text-zinc-300">
                   <li>
-                    <strong className="text-zinc-100 font-semibold">Kontaktinformācija:</strong> vārds, uzņēmuma nosaukums, e-pasta adrese, tālruņa numurs
+                    <strong className="text-zinc-100 font-semibold">{isEn ? "Contact Info:" : isRu ? "Контактные данные:" : "Kontaktinformācija:"}</strong> {isEn ? "Name, company name, email address, phone number" : isRu ? "Имя, название компании, e-mail, телефон" : "vārds, uzņēmuma nosaukums, e-pasta adrese, tālruņa numurs"}
                   </li>
                   <li>
-                    <strong className="text-zinc-100 font-semibold">Tehniskā informācija:</strong> IP adrese, pārlūkprogrammas veids, ierīces informācija, apmeklējuma laiks un datums
+                    <strong className="text-zinc-100 font-semibold">{isEn ? "Technical Data:" : isRu ? "Технические данные:" : "Tehniskā informācija:"}</strong> {isEn ? "IP address, browser type, device details, visit time" : isRu ? "IP-адрес, тип браузера, сведения об устройстве" : "IP adrese, pārlūkprogrammas veids, ierīces informācija"}
                   </li>
                   <li>
-                    <strong className="text-zinc-100 font-semibold">Lietošanas dati:</strong> informācija par to, kā Jūs izmantojat mūsu mājas lapu un pakalpojumus
-                  </li>
-                  <li>
-                    <strong className="text-zinc-100 font-semibold">Saziņas dati:</strong> Jūsu ziņojumu un komunikācijas saturs ar mūsu uzņēmumu
+                    <strong className="text-zinc-100 font-semibold">{isEn ? "Usage Data:" : isRu ? "Данные об использовании:" : "Lietošanas dati:"}</strong> {isEn ? "Information on how you navigate our website and services" : isRu ? "Информация об использовании сайта и услуг" : "informācija par to, kā Jūs izmantojat mūsu mājas lapu"}
                   </li>
                 </ul>
               </div>
@@ -145,109 +151,21 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
               {/* Section 4 */}
               <div className="space-y-2">
                 <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">4.</span> Kā mēs izmantojam Jūsu datus
+                  <span className="text-[#BAFC50]">4.</span> {isEn ? "How We Use Your Data" : isRu ? "Как мы используем ваши данные" : "Kā mēs izmantojam Jūsu datus"}
                 </h4>
-                <p>Mēs izmantojam Jūsu personas datus šādiem mērķiem:</p>
                 <ul className="list-disc list-inside space-y-1.5 pl-1 text-zinc-300">
-                  <li>Lai sniegtu Jums pieprasītos pakalpojumus un atbildētu uz Jūsu pieprasījumiem</li>
-                  <li>Lai sazinātos ar Jums par mūsu pakalpojumiem un piedāvājumiem</li>
-                  <li>Lai uzlabotu mūsu mājas lapu un pakalpojumu kvalitāti</li>
-                  <li>Lai izpildītu juridiskās saistības un aizsargātu savas likumīgās intereses</li>
+                  <li>{isEn ? "To provide requested services and answer inquiries" : isRu ? "Для предоставления запрашиваемых услуг и ответов на запросы" : "Lai sniegtu Jums pieprasītos pakalpojumus un atbildētu uz Jūsu pieprasījumiem"}</li>
+                  <li>{isEn ? "To communicate regarding service offers and updates" : isRu ? "Для связи по поводу услуг и предложений" : "Lai sazinātos ar Jums par mūsu pakalpojumiem un piedāvājumiem"}</li>
+                  <li>{isEn ? "To improve website quality and service user experience" : isRu ? "Для улучшения качества нашего сайта и услуг" : "Lai uzlabotu mūsu mājas lapu un pakalpojumu kvalitāti"}</li>
                 </ul>
               </div>
 
               {/* Section 5 */}
               <div className="space-y-2">
                 <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">5.</span> Juridiskais pamats datu apstrādei
+                  <span className="text-[#BAFC50]">5.</span> {isEn ? "Your Rights" : isRu ? "Ваши права" : "Jūsu tiesības"}
                 </h4>
-                <p>Mēs apstrādājam Jūsu personas datus, pamatojoties uz:</p>
-                <ul className="list-disc list-inside space-y-1.5 pl-1 text-zinc-300">
-                  <li><strong className="text-zinc-100 font-semibold">Jūsu piekrišanu</strong> – kad Jūs aizpildāt mūsu kontaktformu un piekrītat datu apstrādes noteikumiem</li>
-                  <li><strong className="text-zinc-100 font-semibold">Līguma izpildi</strong> – lai sniegtu Jums pieprasītos pakalpojumus</li>
-                  <li><strong className="text-zinc-100 font-semibold">Likumīgas intereses</strong> – lai uzlabotu mūsu pakalpojumus un aizsargātu uzņēmumu</li>
-                </ul>
-              </div>
-
-              {/* Section 6 */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">6.</span> Datu uzglabāšana un drošība
-                </h4>
-                <p>
-                  Mēs uzglabājam Jūsu personas datus tikai tik ilgi, cik tas ir nepieciešams šajā politikā norādīto mērķu sasniegšanai vai saskaņā ar likumu.
-                </p>
-                <p>
-                  Mēs izmantojam atbilstošus tehniskos un organizatoriskos drošības pasākumus, lai aizsargātu Jūsu datus pret nesankcionētu piekļuvi, izmantošanu vai izpaušanu:
-                </p>
-                <ul className="list-disc list-inside space-y-1 pl-1 text-zinc-300">
-                  <li>SSL šifrēšana datu pārsūtīšanai</li>
-                  <li>Ierobežota piekļuve personas datiem</li>
-                  <li>Regulāras drošības pārbaudes un atjauninājumi</li>
-                </ul>
-              </div>
-
-              {/* Section 7 */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">7.</span> Jūsu tiesības
-                </h4>
-                <p>Saskaņā ar GDPR Jums ir šādas tiesības attiecībā uz Saviem personas datiem:</p>
-                <ul className="list-disc list-inside space-y-1.5 pl-1 text-zinc-300">
-                  <li><strong className="text-zinc-100 font-semibold">Piekļuves tiesības</strong> – pieprasīt piekļuvi Saviem personas datiem</li>
-                  <li><strong className="text-zinc-100 font-semibold">Labošanas tiesības</strong> – labot neprecīzus vai nepilnīgus datus</li>
-                  <li><strong className="text-zinc-100 font-semibold">Dzēšanas tiesības</strong> – pieprasīt Savu datu dzēšanu (&quot;tiesības tikt aizmirstam&quot;)</li>
-                  <li><strong className="text-zinc-100 font-semibold">Ierobežošanas tiesības</strong> – ierobežot Savu datu apstrādi</li>
-                  <li><strong className="text-zinc-100 font-semibold">Pārnesamības tiesības</strong> – saņemt Savus datus strukturētā formātā</li>
-                  <li><strong className="text-zinc-100 font-semibold">Iebildumu tiesības</strong> – iebilst pret Savu datu apstrādi</li>
-                  <li><strong className="text-zinc-100 font-semibold">Atsaukt piekrišanu</strong> – jebkurā laikā atsaukt Savu piekrišanu datu apstrādei</li>
-                </ul>
-                <p className="pt-1 text-zinc-400">
-                  Lai izmantotu Savas tiesības, lūdzu, sazinieties ar mums, izmantojot kontaktinformāciju, kas norādīta šīs politikas sākumā.
-                </p>
-              </div>
-
-              {/* Section 8 */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">8.</span> Sīkdatnes (Cookies)
-                </h4>
-                <p>
-                  Mūsu mājas lapa izmanto sīkdatnes, lai uzlabotu Jūsu lietošanas pieredzi un analizētu mājas lapas apmeklējumu. Sīkdatnes ir mazi teksta faili, kas tiek saglabāti Jūsu ierīcē.
-                </p>
-                <p>
-                  Mēs izmantojam nepieciešamās sīkdatnes (nodrošina pamata funkcionalitāti) un analītikas sīkdatnes (palīdz saprast, kā apmeklētāji izmanto lapu). Jūs varat pārvaldīt sīkdatnes Savā pārlūkprogrammā.
-                </p>
-              </div>
-
-              {/* Section 9 */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">9.</span> Trešo pušu pakalpojumi
-                </h4>
-                <p>
-                  Mēs varam izmantot uzticamus trešo pušu pakalpojumu sniedzējus, piemēram, mājas lapas mitināšanas pakalpojumus, e-pasta sūtīšanas pakalpojumus un analītikas rīkus (Google Analytics). Šie sniedzēji piekļūst datiem tikai tiktāl, cik tas nepieciešams to uzdevumu veikšanai.
-                </p>
-              </div>
-
-              {/* Section 10 */}
-              <div className="space-y-2">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">10.</span> Izmaiņas privātuma politikā
-                </h4>
-                <p>
-                  Mēs paturam tiesības jebkurā laikā atjaunināt šo privātuma politiku. Izmaiņas stāsies spēkā, tiklīdz atjauninātā politika tiks publicēta mūsu mājas lapā.
-                </p>
-              </div>
-
-              {/* Section 11 */}
-              <div className="space-y-3 pt-2 border-t border-zinc-800">
-                <h4 className="font-bold text-white text-sm sm:text-base flex items-center gap-2">
-                  <span className="text-[#BAFC50]">11.</span> Sūdzības
-                </h4>
-                <p>
-                  Ja Jums ir kādi iebildumi pret mums, lūdzu, vispirms sazinieties ar mums, lai noskaidrotu situāciju. Jums ir arī tiesības iesniegt sūdzību arī Datu valsts inspekcijā.
-                </p>
+                <p>{isEn ? "Under GDPR, you have the right to access, rectify, erase, or restrict processing of your personal data." : isRu ? "В соответствии с GDPR вы имеете право на доступ, исправление, удаление и ограничение обработки ваших данных." : "Saskaņā ar GDPR Jums ir tiesības pieprasīt piekļuvi, labot, dzēst vai ierobežot Savu personas datu apstrādi."}</p>
               </div>
 
             </div>
@@ -258,7 +176,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                 onClick={onClose}
                 className="px-6 py-2 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-bold text-xs uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer shadow-md active:scale-95"
               >
-                Sapratu un aizvērt
+                {isEn ? "Understand & Close" : isRu ? "Понятно, закрыть" : "Sapratu un aizvērt"}
               </button>
             </div>
           </motion.div>
@@ -267,3 +185,4 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
     </AnimatePresence>
   );
 }
+

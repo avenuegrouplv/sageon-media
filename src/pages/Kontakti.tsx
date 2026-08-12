@@ -78,13 +78,17 @@ export default function Kontakti() {
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-16 md:pt-20 pb-2 space-y-3 text-center">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
           <MessageSquare className="h-3.5 w-3.5" />
-          <span>Sazināties ar mums</span>
+          <span>{lang === "LV" ? "Sazināties ar mums" : lang === "EN" ? "Get in Touch" : "Связаться с нами"}</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none text-center">
-          Mēs esam viena <span className="text-[#BAFC50]">klikšķa attālumā</span>
+          {lang === "LV" ? <>Mēs esam viena <span className="text-[#BAFC50]">klikšķa attālumā</span></> : lang === "EN" ? <>We are one <span className="text-[#BAFC50]">click away</span></> : <>Мы на расстоянии <span className="text-[#BAFC50]">одного клика</span></>}
         </h1>
         <p className="text-sm md:text-base text-zinc-300 max-w-xl mx-auto font-light text-center">
-          Aizpildiet zemāk esošo formu vai izmantojiet tiešo kontaktinformāciju. Esam gatavi apspriest Jūsu nākamā projekta ideju un izveidot tam piemērotāko risinājumu!
+          {lang === "LV" 
+            ? "Aizpildiet zemāk esošo formu vai izmantojiet tiešo kontaktinformāciju. Esam gatavi apspriest Jūsu nākamā projekta ideju un izveidot tam piemērotāko risinājumu!" 
+            : lang === "EN" 
+              ? "Fill out the form below or use direct contact details. We are ready to discuss your next project idea and create the right solution!" 
+              : "Заполните форму ниже или используйте прямые контакты. Мы готовы обсудить идею вашего проекта и создать лучшее решение!"}
         </p>
       </div>
 
@@ -97,19 +101,27 @@ export default function Kontakti() {
           <div className="space-y-3">
             <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
               <Clock className="h-4 w-4 text-blue-500" />
-              Darba laiks
+              {lang === "LV" ? "Darba laiks" : lang === "EN" ? "Working Hours" : "Рабочее время"}
             </h3>
             <p className="leading-relaxed">
-              Esam pieejami un atbildam uz e-pastiem katru darba dienu no <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 līdz 18:00</strong>. Nedēļas nogalēs saņemtās ziņas apstrādājam pirmdienas rītā.
+              {lang === "LV" 
+                ? <>Esam pieejami un atbildam uz e-pastiem katru darba dienu no <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 līdz 18:00</strong>. Nedēļas nogalēs saņemtās ziņas apstrādājam pirmdienas rītā.</>
+                : lang === "EN"
+                  ? <>We are available and respond to emails every business day from <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 to 18:00</strong>. Messages received on weekends are processed on Monday morning.</>
+                  : <>Мы доступны и отвечаем на письма каждый рабочий день с <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 до 18:00</strong>. Сообщения, полученные в выходные, обрабатываются в понедельник утром.</>}
             </p>
           </div>
           <div className="space-y-3">
             <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
               <MapPin className="h-4 w-4 text-blue-500" />
-              Lokācija & Sadarbība
+              {lang === "LV" ? "Lokācija & Sadarbība" : lang === "EN" ? "Location & Collaboration" : "Локация и сотрудничество"}
             </h3>
             <p className="leading-relaxed">
-              Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>.
+              {lang === "LV"
+                ? <>Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>.</>
+                : lang === "EN"
+                  ? <>We work remotely with clients throughout <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvia and Europe</strong>.</>
+                  : <>Мы работаем удаленно с клиентами по всей <strong className="text-slate-800 dark:text-slate-200 font-semibold">Латвии и Европе</strong>.</>}
             </p>
           </div>
         </div>

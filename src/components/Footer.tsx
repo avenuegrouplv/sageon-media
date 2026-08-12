@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Phone, Mail } from "lucide-react";
+import { Facebook, Phone, Mail, X } from "lucide-react";
 import CookieModal from "./CookieModal";
 import PrivacyModal from "./PrivacyModal";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -8,6 +8,7 @@ import { PageKey } from "../i18n/types";
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState<"cookies" | "privacy" | null>(null);
+  const [showSocialNotice, setShowSocialNotice] = useState(false);
   const { lang, t, getLocalizedPath } = useLanguage();
 
   const navLinks: { key: PageKey; name: string; path: string }[] = [
@@ -31,24 +32,14 @@ export default function Footer() {
               {lang === "LV" ? "Seko mums" : lang === "EN" ? "Follow us" : "Подписывайтесь"}
             </span>
             <div className="flex items-center gap-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                referrerPolicy="no-referrer"
-                className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm"
+              <button
+                type="button"
+                onClick={() => setShowSocialNotice(true)}
+                className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm cursor-pointer"
                 aria-label="Facebook"
               >
                 <Facebook className="h-4 w-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                referrerPolicy="no-referrer"
-                className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           </div>
 
@@ -203,6 +194,38 @@ export default function Footer() {
         isOpen={activeModal === "privacy"}
         onClose={() => setActiveModal(null)}
       />
+
+      {/* POPUP NOTIFICATION FOR FACEBOOK */}
+      {showSocialNotice && (
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity">
+          <div className="bg-[#18181b] border border-[#BAFC50]/40 rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative">
+            <button
+              onClick={() => setShowSocialNotice(false)}
+              className="absolute top-3 right-3 text-zinc-400 hover:text-white p-1 rounded-full transition-colors cursor-pointer"
+              aria-label="Aizvērt"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="w-12 h-12 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 flex items-center justify-center mx-auto text-[#BAFC50]">
+              <Facebook className="w-6 h-6" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white tracking-tight">
+                Facebook
+              </h3>
+              <p className="text-sm text-zinc-200 font-medium leading-relaxed">
+                {lang === "EN" ? "Currently under development" : lang === "RU" ? "В настоящее время в разработке" : "Šobrīd izstrādes procesā"}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowSocialNotice(false)}
+              className="w-full py-2.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-extrabold text-xs uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer shadow-md shadow-[#BAFC50]/20"
+            >
+              {lang === "EN" ? "Close" : lang === "RU" ? "Закрыть" : "Aizvērt"}
+            </button>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

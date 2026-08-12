@@ -105,11 +105,7 @@ export default function Cenas() {
             return (
               <div
                 key={index}
-                className={`bg-[#18181b] border-2 transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden ${mobileOrderClass} ${
-                  isBestChoice 
-                    ? "border-[#BAFC50]/70 ring-1 ring-[#BAFC50]/30 shadow-[#BAFC50]/10 hover:border-[#BAFC50]" 
-                    : "border-zinc-800 hover:border-[#BAFC50]"
-                }`}
+                className={`bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden ${mobileOrderClass}`}
               >
                 <div>
                   {/* Header Section */}
