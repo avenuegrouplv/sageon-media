@@ -30,6 +30,12 @@ import {
 import HeroSlider from "../components/HeroSlider";
 import ContactForm from "../components/ContactForm";
 import CtaButton from "../components/CtaButton";
+import ValueGrowthIconAnimation from "../components/ValueGrowthIconAnimation";
+import DigitalGrowthObstacleAnimation from "../components/DigitalGrowthObstacleAnimation";
+import FastWebsiteSolutionAnimation from "../components/FastWebsiteSolutionAnimation";
+import WorkflowStepsAnimation from "../components/WorkflowStepsAnimation";
+import FreeConsultationAnimation from "../components/FreeConsultationAnimation";
+import ButtonArrowAnimation from "../components/ButtonArrowAnimation";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
 import SEOHead from "../components/SEOHead";
@@ -799,6 +805,7 @@ export default function Home() {
             <div 
               className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
+              <DigitalGrowthObstacleAnimation className="mb-2" />
               <div className="inline-flex items-start sm:items-center justify-center gap-2 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
                 <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#BAFC50] mt-[2px] sm:mt-0" />
                 <span className="text-center">
@@ -953,9 +960,10 @@ export default function Home() {
 
       {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
       <LazyLoadSection>
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 relative z-10">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto py-8 sm:py-12 md:py-16 relative z-10">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
-            <div className="space-y-3 flex flex-col items-center justify-center text-center">
+            <div className="space-y-4 flex flex-col items-center justify-center text-center">
+              <FastWebsiteSolutionAnimation className="mb-2" />
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
                 {lang === 'EN' ? (
                   <>
@@ -1095,28 +1103,29 @@ export default function Home() {
 
                 {/* Closing quote / CTA block */}
                 <div 
-                  className="pt-6 text-center max-w-4xl mx-auto space-y-4"
+                  className="!mt-0 pt-0 text-center max-w-4xl mx-auto space-y-2 flex flex-col items-center"
                 >
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-1">
+                  <FreeConsultationAnimation className="mb-0" />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-0">
                     <Sparkles className="h-3.5 w-3.5" />
                     <span>{lang === 'EN' ? "Free Consultation" : lang === 'RU' ? "Бесплатная консультация" : "Bezmaksas Konsultācija"}</span>
                   </div>
 
                   <p className="text-base sm:text-lg md:text-xl font-medium text-zinc-100 leading-relaxed max-w-3xl mx-auto">
                     {lang === 'EN'
-                      ? "Whether you need a new website or improvements to an existing one, we will help find the best solution for your business."
+                      ? "Whether you need a new website, recommendations for your existing website, or improvements to it, we will help find the best solution for your business."
                       : lang === 'RU'
-                      ? "Нужен ли вам новый сайт или улучшение существующего, мы поможем найти лучшее решение для вашего бизнеса."
-                      : "Neatkarīgi no tā, vai Jums nepieciešama jauna mājaslapa vai esošās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam."}
+                      ? "Нужен ли вам новый сайт, рекомендации по существующему сайту или его улучшение, мы поможем найти лучшее решение для вашего бизнеса."
+                      : "Neatkarīgi no tā, vai Jums ir nepieciešama jauna mājaslapa vai rekomendācijas par esošo mājaslapu vai tās uzlabošana, mēs palīdzēsim atrast piemērotāko risinājumu tieši Jūsu biznesam."}
                   </p>
                   
-                  <div className="pt-2">
+                  <div className="pt-1 flex justify-center">
                     <Link
                       to={getLocalizedPath("contact")}
-                      className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
+                      className="inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
                     >
                       <span>{lang === 'EN' ? "Apply for consultation" : lang === 'RU' ? "Записаться на консультацию" : "Pieteikties konsultācijai"}</span>
-                      <ArrowRight className="h-4 w-4" />
+                      <ButtonArrowAnimation />
                     </Link>
                   </div>
                 </div>
@@ -1383,7 +1392,8 @@ export default function Home() {
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
             <div className="space-y-10">
-              <div className="text-center space-y-3 max-w-3xl mx-auto">
+              <div className="text-center space-y-3 max-w-3xl mx-auto flex flex-col items-center">
+                <ValueGrowthIconAnimation className="mb-2" />
                 <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                   <Sparkles className="h-3.5 w-3.5" />
                   <span>{lang === 'EN' ? "What You Will Get" : lang === 'RU' ? "Что вы получите" : "Ko Jūs iegūsiet"}</span>
@@ -1518,10 +1528,10 @@ export default function Home() {
               <div className="flex justify-center pt-2">
                 <Link
                   to={getLocalizedPath("contact")}
-                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-[#BAFC50] hover:bg-[#a6ed38] text-black font-sans font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#BAFC50]/20 hover:shadow-[#BAFC50]/40 transition-all duration-300"
                 >
                   <span>{lang === 'EN' ? "Apply for consultation" : lang === 'RU' ? "Записаться на консультацию" : "Pieteikties konsultācijai"}</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <ButtonArrowAnimation />
                 </Link>
               </div>
             </div>
@@ -1540,7 +1550,8 @@ export default function Home() {
           <div className="w-full max-w-[1380px] mx-auto space-y-16 relative z-10">
             
             {/* Header */}
-            <div className="text-center space-y-4 max-w-4xl mx-auto">
+            <div className="text-center space-y-4 max-w-4xl mx-auto flex flex-col items-center">
+              <WorkflowStepsAnimation className="mb-2" />
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>{lang === 'EN' ? "Stages of Collaboration" : lang === 'RU' ? "Этапы сотрудничества" : "Sadarbības posmi"}</span>
@@ -1686,7 +1697,7 @@ export default function Home() {
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-3 flex flex-col items-center">
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 {lang === 'EN' ? "Frequently Asked Questions" : lang === 'RU' ? "Часто задаваемые вопросы" : "Biežāk uzdotie jautājumi"}
               </h2>

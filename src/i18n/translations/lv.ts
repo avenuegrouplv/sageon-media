@@ -150,7 +150,7 @@ export const lvTranslations: Translations = {
     navTitle: "Navigācija",
     servicesTitle: "Pakalpojumi",
     contactsTitle: "Kontakti",
-    rights: "Visas tiesības aizsargātas.",
+    rights: "Visas tiesības aizsargātas",
     privacy: "Privātuma politika",
     cookies: "Sīkdatņu politika",
   },

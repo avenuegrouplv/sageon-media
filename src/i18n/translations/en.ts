@@ -150,7 +150,7 @@ export const enTranslations: Translations = {
     navTitle: "Navigation",
     servicesTitle: "Services",
     contactsTitle: "Contacts",
-    rights: "All rights reserved.",
+    rights: "All rights reserved",
     privacy: "Privacy Policy",
     cookies: "Cookie Policy",
   },

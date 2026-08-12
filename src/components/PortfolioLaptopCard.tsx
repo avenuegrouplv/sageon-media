@@ -195,40 +195,40 @@ export default function PortfolioLaptopCard({
         <div className="flex-1 flex flex-col justify-between space-y-3 pt-1">
           <div className="space-y-2.5">
             {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 h-[3.25rem] sm:h-[2.25rem] overflow-hidden">
+            <div className="flex items-center justify-between gap-2 h-[2.5rem] sm:h-[2.25rem] overflow-hidden">
               {/* Top-Left Corner: Domain Address Badge */}
               <button
                 type="button"
                 onClick={(e) => openTarget(e)}
-                className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30"
+                className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30 shrink-0"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#BAFC50] group-hover/btn:bg-black transition-colors duration-150 animate-pulse shrink-0" />
-                <span className="tracking-wide select-none">
+                <span className="tracking-wide select-none truncate max-w-[130px] sm:max-w-none">
                   {isPlaceholderCard 
                     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
                     : cleanDomain}
                 </span>
-                <ExternalLink className="h-3 w-3 opacity-80 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all duration-150 text-[#BAFC50] group-hover/btn:text-black" />
+                <ExternalLink className="h-3 w-3 opacity-80 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all duration-150 text-[#BAFC50] group-hover/btn:text-black shrink-0" />
               </button>
 
               {/* Top-Right Corner: Project Status */}
-              <div className="flex items-center gap-1.5 text-xs font-mono">
+              <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
                 {isDevelopment && !isDemontaza ? (
                   <>
-                    <Clock className="h-3.5 w-3.5 text-rose-400/80" />
-                    <span className="text-rose-300/90 font-medium select-text cursor-text">{statusText}</span>
+                    <Clock className="h-3.5 w-3.5 text-rose-400/80 shrink-0" />
+                    <span className="text-rose-300/90 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
                   </>
                 ) : (
                   <>
-                    <ShieldCheck className="h-3.5 w-3.5 text-[#BAFC50]" />
-                    <span className="text-zinc-300 font-medium select-text cursor-text">{statusText}</span>
+                    <ShieldCheck className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
+                    <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
                   </>
                 )}
               </div>
             </div>
 
             {/* Title - Fixed Height Block for 1 or 2 lines */}
-            <div className="h-[3.25rem] sm:h-[3.5rem] flex items-center">
+            <div className="h-[3.25rem] sm:h-[3.5rem] flex items-center overflow-hidden">
               <h3 className="text-base sm:text-lg font-extrabold text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
                 {title}
               </h3>
@@ -248,12 +248,12 @@ export default function PortfolioLaptopCard({
             </div>
           </div>
 
-          {/* Deliverables Badges / Tags - Complete 3 rows without clipping */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[5.25rem] pb-0.5">
+          {/* Deliverables Badges / Tags - Complete rows with fixed height */}
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[5.5rem] sm:h-[5.25rem] overflow-hidden pb-0.5">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}
-                className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text"
+                className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text whitespace-nowrap"
               >
                 {idx === 0 ? (
                   <Sparkles className="h-3 w-3 text-[#BAFC50] shrink-0" />
