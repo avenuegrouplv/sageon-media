@@ -17,6 +17,7 @@ interface PortfolioLaptopCardProps {
   description?: string;
   tags?: string[];
   isInDevelopment?: boolean;
+  hideStatusText?: boolean;
 }
 
 export default function PortfolioLaptopCard({
@@ -29,6 +30,7 @@ export default function PortfolioLaptopCard({
   description,
   tags,
   isInDevelopment = false,
+  hideStatusText = false,
 }: PortfolioLaptopCardProps) {
   const { lang } = useLanguage();
   const navigate = useNavigate();
@@ -212,19 +214,21 @@ export default function PortfolioLaptopCard({
               </button>
 
               {/* Top-Right Corner: Project Status */}
-              <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
-                {isDevelopment && !isDemontaza ? (
-                  <>
-                    <Clock className="h-3.5 w-3.5 text-rose-400/80 shrink-0" />
-                    <span className="text-rose-300/90 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
-                  </>
-                ) : (
-                  <>
-                    <ShieldCheck className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
-                    <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
-                  </>
-                )}
-              </div>
+              {!hideStatusText && (
+                <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
+                  {isDevelopment && !isDemontaza ? (
+                    <>
+                      <Clock className="h-3.5 w-3.5 text-rose-400/80 shrink-0" />
+                      <span className="text-rose-300/90 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShieldCheck className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
+                      <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Title - Fixed Height Block for 1 or 2 lines */}
@@ -248,8 +252,8 @@ export default function PortfolioLaptopCard({
             </div>
           </div>
 
-          {/* Deliverables Badges / Tags - Complete rows with fixed height */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[5.5rem] sm:h-[5.25rem] overflow-hidden pb-0.5">
+          {/* Deliverables Badges / Tags - Complete rows with flexible container height on mobile */}
+          <div className="pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[6.25rem] sm:min-h-[5.25rem] pb-1">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}

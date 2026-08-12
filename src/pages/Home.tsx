@@ -1025,12 +1025,11 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
-                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/25 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,transparent_70%)] pointer-events-none z-0" />
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
-                      loading="lazy"
-                      fetchPriority="low"
+                      loading="eager"
                       decoding="async"
                       width={600}
                       height={380}
@@ -1044,12 +1043,11 @@ export default function Home() {
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
                   <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/40 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
                     <img 
                       src="/dizains-mobile-first.webp" 
                       alt="Dizains un Mobile first" 
-                      loading="lazy"
-                      fetchPriority="low"
+                      loading="eager"
                       decoding="async"
                       width={600}
                       height={380}
@@ -1087,23 +1085,29 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute w-[100%] h-[100%] bg-[#BAFC50]/45 rounded-full blur-[80px] pointer-events-none z-0" />
+                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
                     <img 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
-                      loading="lazy"
-                      fetchPriority="low"
+                      loading="eager"
                       decoding="async"
                       width={600}
-                      height={400}
-                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[350px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
+                      height={380}
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.fallbackTried) {
+                          target.dataset.fallbackTried = "true";
+                          target.src = "/web-izstrades-agentura.webp";
+                        }
+                      }}
+                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
                     />
                   </div>
                 </div>
 
                 {/* Closing quote / CTA block */}
                 <div 
-                  className="!mt-0 pt-0 text-center max-w-4xl mx-auto space-y-2 flex flex-col items-center"
+                  className="pt-8 sm:pt-12 md:pt-14 pb-2 text-center max-w-4xl mx-auto space-y-3 flex flex-col items-center"
                 >
                   <FreeConsultationAnimation className="mb-0" />
                   <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase mb-0">
@@ -1350,6 +1354,7 @@ export default function Home() {
                       isPlaceholder={item.isPlaceholder}
                       description={item.description}
                       tags={item.tags}
+                      hideStatusText={true}
                     />
                   </div>
                 ))}
