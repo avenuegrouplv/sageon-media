@@ -19,13 +19,15 @@ export default function Header() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const next = window.scrollY > 20;
+          const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          const next = scrollPos > 2;
           setIsScrolled((prev) => (prev !== next ? next : prev));
           ticking = false;
         });
         ticking = true;
       }
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -52,16 +54,16 @@ export default function Header() {
   };
 
   const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/ru";
-  const isTransparent = isHome && !isScrolled;
+  const isTransparent = isHome && !isScrolled && !isOpen;
 
   const langDisplayCode = lang === "LV" ? "LV" : lang === "EN" ? "EN" : "RU";
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200 border-b ${
         isTransparent
-          ? "bg-transparent border-transparent py-4"
-          : "bg-[#0a0a0a]/95 backdrop-blur-md py-2 shadow-md border-zinc-800/80"
+          ? "bg-transparent border-transparent py-3 sm:py-4 shadow-none"
+          : "bg-[#0a0a0a] py-2.5 sm:py-3 shadow-2xl border-zinc-800"
       }`}
     >
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
@@ -165,7 +167,7 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-[#121212]/98 backdrop-blur-xl border-b border-zinc-800 shadow-2xl transition-all duration-300 py-4 px-5 space-y-4 z-[60] max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-zinc-800 shadow-2xl transition-all duration-200 py-4 px-5 space-y-4 z-[60] max-h-[80vh] overflow-y-auto">
           <ul className="space-y-2">
             {navLinks.map((link) => (
               <li key={link.key}>

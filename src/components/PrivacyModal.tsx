@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ShieldCheck, Mail, Phone, ExternalLink } from "lucide-react";
+import { X, ShieldCheck, Mail, Phone } from "lucide-react";
 
 interface PrivacyModalProps {
   isOpen: boolean;
@@ -87,7 +87,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                   <span className="text-[#BAFC50]">1.</span> Ievads
                 </h4>
                 <p>
-                  Datu pārzinis un vietnes administrators SIA &quot;XXXXXX&quot;, reģ. Nr. XXXXXXX, juridiskā adrese: Rīga, XXXXXXX (turpmāk – &quot;mēs&quot;, &quot;mūsu&quot; vai &quot;Uzņēmums&quot;), apņemas aizsargāt un ievērot Jūsu tiesības uz privātumu. Šajā Privātuma politikā ir skaidrots, kā mēs apkopojam, izmantojam, glabājam un aizsargājam Jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (Vispārīgā datu aizsardzības regula jeb GDPR) un Latvijas Republikas piemērojamajiem normatīvajiem aktiem.
+                  Datu pārzinis un vietnes administrators SIA &quot;Avenue Group&quot;, Reģ.Nr. 40203647938, juridiskā adrese: Rīga, Brīvības gatve 386/2-5A (turpmāk – &quot;mēs&quot;, &quot;mūsu&quot; vai &quot;Uzņēmums&quot;), apņemas aizsargāt un ievērot Jūsu tiesības uz privātumu. Šajā Privātuma politikā ir skaidrots, kā mēs apkopojam, izmantojam, glabājam un aizsargājam Jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (Vispārīgā datu aizsardzības regula jeb GDPR) un Latvijas Republikas piemērojamajiem normatīvajiem aktiem.
                 </p>
                 <p>
                   Lūdzam iepazīties ar šo Privātuma politiku pirms mūsu mājaslapas un pakalpojumu izmantošanas. Izmantojot mūsu mājaslapu un pakalpojumus, Jūs apliecināt, ka esat iepazinies ar šo Privātuma politiku.
@@ -246,38 +246,8 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
                   <span className="text-[#BAFC50]">11.</span> Sūdzības
                 </h4>
                 <p>
-                  Ja Jums ir sūdzības, lūdzu, vispirms sazinieties ar mums. Jums ir arī tiesības iesniegt sūdzību Datu valsts inspekcijā:
+                  Ja Jums ir kādi iebildumi pret mums, lūdzu, vispirms sazinieties ar mums, lai noskaidrotu situāciju. Jums ir arī tiesības iesniegt sūdzību arī Datu valsts inspekcijā.
                 </p>
-
-                <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-xl space-y-2 text-xs">
-                  <h5 className="font-bold text-white text-sm text-[#BAFC50]">
-                    Datu valsts inspekcija
-                  </h5>
-                  <p className="text-zinc-300">
-                    <strong className="text-white">Adrese:</strong> Blaumaņa iela 11/13-15, Rīga, LV-1011
-                  </p>
-                  <p className="text-zinc-300">
-                    <strong className="text-white">E-pasts:</strong>{" "}
-                    <a href="mailto:info@dvi.gov.lv" className="text-[#BAFC50] hover:underline">
-                      info@dvi.gov.lv
-                    </a>
-                  </p>
-                  <p className="text-zinc-300">
-                    <strong className="text-white">Tālrunis:</strong> +371 67 22 31 31
-                  </p>
-                  <p className="text-zinc-300 flex items-center gap-1.5 pt-1">
-                    <strong className="text-white">Mājas lapa:</strong>{" "}
-                    <a
-                      href="https://www.dvi.gov.lv"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#BAFC50] hover:underline inline-flex items-center gap-1"
-                    >
-                      www.dvi.gov.lv
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </p>
-                </div>
               </div>
 
             </div>

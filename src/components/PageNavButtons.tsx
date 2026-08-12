@@ -8,26 +8,32 @@ export default function PageNavButtons() {
   const { lang, getLocalizedPath } = useLanguage();
 
   const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    try {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+    } catch (e) {
+      window.scrollTo(0, 0);
+    }
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 400);
   };
 
   const homePath = getLocalizedPath("home");
 
   const handleGoHome = () => {
     if (location.pathname === homePath) {
-      const hero = document.getElementById("hero-section");
-      if (hero) {
-        hero.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      handleScrollToTop();
     } else {
       navigate(homePath);
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+        window.scrollTo(0, 0);
       }, 50);
     }
   };

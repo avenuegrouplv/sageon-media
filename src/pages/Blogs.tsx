@@ -140,9 +140,9 @@ export default function Blogs() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
       {/* Irregular Green Ambient Background Glows */}
-      <div className="absolute -top-32 -left-20 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 -right-24 w-[800px] h-[800px] bg-gradient-to-bl from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] bg-gradient-to-tr from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+      <div className="absolute -top-32 -left-20 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-1/2 -right-24 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
 
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 md:py-20 space-y-12 relative z-10">
         

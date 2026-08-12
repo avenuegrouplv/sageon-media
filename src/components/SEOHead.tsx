@@ -14,7 +14,7 @@ export default function SEOHead({
   title,
   description,
   keywords = "mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains",
-  ogImage = "/Logo-new.webp",
+  ogImage = "/android-chrome-512x512.png",
   ogType = "website",
   schema,
 }: SEOProps) {
@@ -68,17 +68,22 @@ export default function SEOHead({
     updateLink("alternate", canonicalUrl, "x-default");
 
     // Open Graph
+    updateMeta('meta[property="og:site_name"]', "property", "og:site_name", "Sageon Media");
     updateMeta('meta[property="og:title"]', "property", "og:title", title);
     updateMeta('meta[property="og:description"]', "property", "og:description", description);
     updateMeta('meta[property="og:url"]', "property", "og:url", canonicalUrl);
     updateMeta('meta[property="og:image"]', "property", "og:image", fullOgImage);
+    updateMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", fullOgImage);
+    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", "image/png");
+    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", "512");
+    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", "512");
     updateMeta('meta[property="og:type"]', "property", "og:type", ogType);
     updateMeta('meta[property="og:locale"]', "property", "og:locale", "lv_LV");
     updateMeta('meta[property="og:locale:alternate"][content="en_US"]', "property", "og:locale:alternate", "en_US");
     updateMeta('meta[property="og:locale:alternate"][content="ru_RU"]', "property", "og:locale:alternate", "ru_RU");
 
-    // Twitter Cards
-    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
+    // Twitter Cards (summary card forces 1x1 square thumbnail image next to title & description)
+    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary");
     updateMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
     updateMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
     updateMeta('meta[name="twitter:image"]', "name", "twitter:image", fullOgImage);

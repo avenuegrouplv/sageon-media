@@ -122,7 +122,7 @@ export default function PortfolioLaptopCard({
     <>
       <div
         onClick={handleCardClick}
-        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 sm:p-6 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-3.5 sm:p-6 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
@@ -248,8 +248,8 @@ export default function PortfolioLaptopCard({
             </div>
           </div>
 
-          {/* Deliverables Badges / Tags - Fixed Height Block */}
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[5rem] sm:h-[5.25rem] overflow-hidden">
+          {/* Deliverables Badges / Tags - Complete 3 rows without clipping */}
+          <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[5.25rem] pb-0.5">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}

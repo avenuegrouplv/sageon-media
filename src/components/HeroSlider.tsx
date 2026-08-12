@@ -56,42 +56,42 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-16 sm:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-16">
+    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[105px] sm:pt-[120px] lg:pt-[130px] pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
-      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[#BAFC50]/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[#BAFC50]/12 rounded-full blur-2xl pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none" />
+      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.15),transparent_70%)] pointer-events-none" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 sm:pt-4">
+      <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-1 sm:pt-2">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-nowrap justify-center items-center gap-1.5 sm:gap-4 mt-2 sm:-mt-16 lg:-mt-10 pb-2 sm:pb-6 md:pb-8 w-full max-w-full overflow-x-auto no-scrollbar">
+        <div className="flex flex-nowrap justify-center items-center gap-2 sm:gap-4 mt-0 mb-4 sm:mb-6 lg:mb-8 w-full max-w-full overflow-x-auto no-scrollbar">
           <a
             href="tel:+37126739899"
-            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[10.5px] xs:text-[11.5px] sm:text-[12.7px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-white text-[11px] sm:text-[13px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
           >
-            <Phone className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#BAFC50] shrink-0" />
+            <Phone className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
             <span>+371 26739899</span>
           </a>
           <a
             href="mailto:info@sageonmedia.eu"
-            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/40 hover:border-[#BAFC50] text-white text-[10.5px] xs:text-[11.5px] sm:text-[13px] font-medium rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-white text-[11px] sm:text-[13px] font-medium rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"
           >
-            <Mail className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#BAFC50] shrink-0" />
+            <Mail className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
             <span className="normal-case font-normal">info@sageonmedia.eu</span>
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-2 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center pt-1 sm:pt-2">
           
           {/* Left Text Column */}
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-2 sm:mt-0 pt-1 lg:pt-[40px]"
+            className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-1 sm:mt-0 pt-1 lg:pt-[20px]"
           >
             {/* Agency Badge */}
             <motion.div 
@@ -128,7 +128,7 @@ export default function HeroSlider() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block drop-shadow-[0_0_20px_rgba(186,252,80,0.35)] text-center lg:text-left"
+                    className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left"
                   >
                     {phrases[phraseIndex % phrases.length]}
                   </motion.span>
@@ -156,9 +156,8 @@ export default function HeroSlider() {
 
           {/* Right Image Column */}
           <div className="lg:col-span-6 xl:col-span-6 relative flex flex-col items-center justify-center translate-x-0 lg:translate-x-0 mt-1 mb-0 lg:my-0">
-            <div className="hidden sm:block absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-gradient-to-tr from-[#38b000]/55 via-[#BAFC50]/50 to-emerald-900/20 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none z-0" />
-            <div className="hidden sm:block absolute w-[90%] sm:w-[100%] h-[70%] sm:h-[80%] -bottom-8 sm:-bottom-10 bg-[#BAFC50]/40 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0" />
-            <div className="sm:hidden absolute w-[95%] h-[80%] -bottom-4 bg-[#BAFC50]/20 rounded-full blur-2xl pointer-events-none z-0" />
+            <div className="hidden sm:block absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0" />
+            <div className="sm:hidden absolute w-[95%] h-[80%] -bottom-4 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.2),transparent_75%)] pointer-events-none z-0" />
 
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
               <img
@@ -169,7 +168,7 @@ export default function HeroSlider() {
                 decoding="async"
                 width={1180}
                 height={720}
-                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[800px] xl:max-w-[950px] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] translate-x-0 lg:translate-x-[50px] translate-y-0 lg:translate-y-[40px] scale-[0.88] sm:scale-100 lg:scale-[1.18] origin-center mx-auto py-1 sm:py-0"
+                className="w-full h-auto object-contain max-w-[540px] lg:max-w-[800px] xl:max-w-[950px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] translate-x-0 lg:translate-x-[50px] translate-y-0 lg:translate-y-[40px] scale-[0.88] sm:scale-100 lg:scale-[1.18] origin-center mx-auto py-1 sm:py-0"
               />
             </div>
           </div>

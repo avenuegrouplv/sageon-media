@@ -136,7 +136,9 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   const [isPaused, setIsPaused] = useState(false);
 
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const touchEndY = useRef<number | null>(null);
 
   const cards = [
     {
@@ -212,32 +214,29 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
 
   const handleHeroTouchStart = (e: TouchEvent) => {
     setIsPaused(true);
-    if (e?.touches?.[0]) {
-      touchStartX.current = e.touches[0].clientX;
-    } else if (e?.targetTouches?.[0]) {
-      touchStartX.current = e.targetTouches[0].clientX;
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      touchStartX.current = touch.clientX;
+      touchStartY.current = touch.clientY;
     }
   };
 
-  const handleHeroTouchMove = (e: TouchEvent) => {
-    if (e?.touches?.[0]) {
-      touchEndX.current = e.touches[0].clientX;
-    } else if (e?.targetTouches?.[0]) {
-      touchEndX.current = e.targetTouches[0].clientX;
-    }
-  };
-
-  const handleHeroTouchEnd = () => {
-    if (touchStartX.current !== null && touchEndX.current !== null) {
-      const diff = touchStartX.current - touchEndX.current;
-      if (diff > 35) {
-        nextSlide();
-      } else if (diff < -35) {
-        prevSlide();
+  const handleHeroTouchEnd = (e: TouchEvent) => {
+    const touch = e?.changedTouches?.[0];
+    if (touchStartX.current !== null && touch) {
+      const diffX = touchStartX.current - touch.clientX;
+      const diffY = touchStartY.current !== null ? touchStartY.current - touch.clientY : 0;
+      
+      if (Math.abs(diffX) > Math.abs(diffY) * 1.5 && Math.abs(diffX) > 35) {
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
       }
     }
     touchStartX.current = null;
-    touchEndX.current = null;
+    touchStartY.current = null;
     setTimeout(() => setIsPaused(false), 3500);
   };
 
@@ -265,9 +264,9 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full"
+        className="relative overflow-hidden w-full touch-pan-y"
+        style={{ touchAction: "pan-y" }}
         onTouchStart={handleHeroTouchStart}
-        onTouchMove={handleHeroTouchMove}
         onTouchEnd={handleHeroTouchEnd}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -438,29 +437,20 @@ export default function Home() {
   const blogTouchEndY = useRef<number | null>(null);
 
   const handleBlogTouchStart = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    blogTouchStartX.current = x;
-    blogTouchStartY.current = y;
-    blogTouchEndX.current = null;
-    blogTouchEndY.current = null;
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      blogTouchStartX.current = touch.clientX;
+      blogTouchStartY.current = touch.clientY;
+    }
   };
 
-  const handleBlogTouchMove = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    if (x !== null) blogTouchEndX.current = x;
-    if (y !== null) blogTouchEndY.current = y;
-  };
+  const handleBlogTouchEnd = (e: TouchEvent) => {
+    const touch = e?.changedTouches?.[0];
+    if (blogTouchStartX.current !== null && touch) {
+      const diffX = blogTouchStartX.current - touch.clientX;
+      const diffY = blogTouchStartY.current !== null ? blogTouchStartY.current - touch.clientY : 0;
 
-  const handleBlogTouchEnd = () => {
-    if (blogTouchStartX.current !== null && blogTouchEndX.current !== null) {
-      const diffX = blogTouchStartX.current - blogTouchEndX.current;
-      const diffY = (blogTouchStartY.current !== null && blogTouchEndY.current !== null)
-        ? blogTouchStartY.current - blogTouchEndY.current
-        : 0;
-
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
         if (diffX > 0) {
           scrollBlog('right');
         } else {
@@ -470,8 +460,6 @@ export default function Home() {
     }
     blogTouchStartX.current = null;
     blogTouchStartY.current = null;
-    blogTouchEndX.current = null;
-    blogTouchEndY.current = null;
   };
 
   const toggleFaq = (index: number) => {
@@ -490,29 +478,20 @@ export default function Home() {
   const portfolioTouchEndY = useRef<number | null>(null);
 
   const handlePortfolioTouchStart = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    portfolioTouchStartX.current = x;
-    portfolioTouchStartY.current = y;
-    portfolioTouchEndX.current = null;
-    portfolioTouchEndY.current = null;
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      portfolioTouchStartX.current = touch.clientX;
+      portfolioTouchStartY.current = touch.clientY;
+    }
   };
 
-  const handlePortfolioTouchMove = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    if (x !== null) portfolioTouchEndX.current = x;
-    if (y !== null) portfolioTouchEndY.current = y;
-  };
+  const handlePortfolioTouchEnd = (e: TouchEvent) => {
+    const touch = e?.changedTouches?.[0];
+    if (portfolioTouchStartX.current !== null && touch) {
+      const diffX = portfolioTouchStartX.current - touch.clientX;
+      const diffY = portfolioTouchStartY.current !== null ? portfolioTouchStartY.current - touch.clientY : 0;
 
-  const handlePortfolioTouchEnd = () => {
-    if (portfolioTouchStartX.current !== null && portfolioTouchEndX.current !== null) {
-      const diffX = portfolioTouchStartX.current - portfolioTouchEndX.current;
-      const diffY = (portfolioTouchStartY.current !== null && portfolioTouchEndY.current !== null)
-        ? portfolioTouchStartY.current - portfolioTouchEndY.current
-        : 0;
-
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
         if (diffX > 0) {
           scrollPortfolio('right');
         } else {
@@ -522,8 +501,6 @@ export default function Home() {
     }
     portfolioTouchStartX.current = null;
     portfolioTouchStartY.current = null;
-    portfolioTouchEndX.current = null;
-    portfolioTouchEndY.current = null;
   };
 
   // Sync portfolioIndex if language or portfolio length changes
@@ -600,29 +577,20 @@ export default function Home() {
   const pricingTouchEndY = useRef<number | null>(null);
 
   const handlePricingTouchStart = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    pricingTouchStartX.current = x;
-    pricingTouchStartY.current = y;
-    pricingTouchEndX.current = null;
-    pricingTouchEndY.current = null;
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      pricingTouchStartX.current = touch.clientX;
+      pricingTouchStartY.current = touch.clientY;
+    }
   };
 
-  const handlePricingTouchMove = (e: TouchEvent) => {
-    const x = e?.targetTouches?.[0]?.clientX ?? e?.touches?.[0]?.clientX ?? null;
-    const y = e?.targetTouches?.[0]?.clientY ?? e?.touches?.[0]?.clientY ?? null;
-    if (x !== null) pricingTouchEndX.current = x;
-    if (y !== null) pricingTouchEndY.current = y;
-  };
+  const handlePricingTouchEnd = (e: TouchEvent) => {
+    const touch = e?.changedTouches?.[0];
+    if (pricingTouchStartX.current !== null && touch) {
+      const diffX = pricingTouchStartX.current - touch.clientX;
+      const diffY = pricingTouchStartY.current !== null ? pricingTouchStartY.current - touch.clientY : 0;
 
-  const handlePricingTouchEnd = () => {
-    if (pricingTouchStartX.current !== null && pricingTouchEndX.current !== null) {
-      const diffX = pricingTouchStartX.current - pricingTouchEndX.current;
-      const diffY = (pricingTouchStartY.current !== null && pricingTouchEndY.current !== null)
-        ? pricingTouchStartY.current - pricingTouchEndY.current
-        : 0;
-
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 25) {
+      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
         if (diffX > 0) {
           scrollPricing('right');
         } else {
@@ -632,8 +600,6 @@ export default function Home() {
     }
     pricingTouchStartX.current = null;
     pricingTouchStartY.current = null;
-    pricingTouchEndX.current = null;
-    pricingTouchEndY.current = null;
   };
 
   // Sync pricingIndex if language or pricingPlans length changes
@@ -762,18 +728,18 @@ export default function Home() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
       {/* Irregular Glowing Green Orbs Flowing Seamlessly From Top to Bottom */}
-      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/16 to-transparent rounded-full blur-[170px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-gradient-to-bl from-[#38b000]/26 via-[#BAFC50]/18 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-gradient-to-tr from-[#BAFC50]/24 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-gradient-to-tl from-[#38b000]/28 via-[#BAFC50]/20 to-transparent rounded-full blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-gradient-to-br from-[#BAFC50]/22 via-[#38b000]/18 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-gradient-to-bl from-[#38b000]/25 via-[#BAFC50]/22 to-transparent rounded-full blur-[185px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-gradient-to-tr from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.22)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,rgba(56,176,0,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
 
       {/* Lightweight Mobile-Optimized Ambient Glows */}
-      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[#BAFC50]/15 rounded-full blur-2xl pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[#38b000]/15 rounded-full blur-2xl pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[#BAFC50]/15 rounded-full blur-2xl pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
@@ -1001,8 +967,8 @@ export default function Home() {
           className="pt-2 sm:pt-4 md:pt-6 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -left-20 w-[700px] h-[650px] bg-gradient-to-tr from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+          <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 -left-20 w-[700px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-12 relative z-10">
             
@@ -1126,8 +1092,8 @@ export default function Home() {
           className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -left-36 w-[750px] h-[750px] bg-gradient-to-r from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-gradient-to-tl from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+          <div className="absolute -top-48 -left-36 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-2 sm:px-3">
@@ -1147,8 +1113,8 @@ export default function Home() {
             {/* Infinite Pricing Carousel Slider */}
             <div 
               className="overflow-hidden w-full relative touch-pan-y"
+              style={{ touchAction: "pan-y" }}
               onTouchStart={handlePricingTouchStart}
-              onTouchMove={handlePricingTouchMove}
               onTouchEnd={handlePricingTouchEnd}
             >
               <div 
@@ -1298,8 +1264,8 @@ export default function Home() {
           className="pt-4 pb-6 md:pt-6 md:pb-8 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/28 via-[#38b000]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -right-24 w-[800px] h-[700px] bg-gradient-to-tl from-[#38b000]/32 via-[#BAFC50]/25 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+          <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 -right-24 w-[800px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             
@@ -1314,8 +1280,8 @@ export default function Home() {
             {/* Infinite Portfolio Carousel Slider */}
             <div 
               className="overflow-hidden w-full relative touch-pan-y"
+              style={{ touchAction: "pan-y" }}
               onTouchStart={handlePortfolioTouchStart}
-              onTouchMove={handlePortfolioTouchMove}
               onTouchEnd={handlePortfolioTouchEnd}
             >
               <div 
@@ -1651,8 +1617,8 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -bottom-52 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-t from-[#38b000]/32 via-[#BAFC50]/25 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
-          <div className="absolute -top-48 -left-24 w-[650px] h-[650px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[170px] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -top-48 -left-24 w-[650px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
@@ -1722,8 +1688,8 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -right-36 w-[800px] h-[800px] bg-gradient-to-bl from-[#BAFC50]/30 via-[#38b000]/24 to-transparent rounded-full blur-[190px] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-gradient-to-tr from-[#38b000]/30 via-[#BAFC50]/24 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+          <div className="absolute -top-48 -right-36 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-4 px-3">
@@ -1737,8 +1703,8 @@ export default function Home() {
             {/* State-controlled Infinite Carousel Slider */}
             <div 
               className="overflow-hidden w-full relative touch-pan-y"
+              style={{ touchAction: "pan-y" }}
               onTouchStart={handleBlogTouchStart}
-              onTouchMove={handleBlogTouchMove}
               onTouchEnd={handleBlogTouchEnd}
             >
               <div 

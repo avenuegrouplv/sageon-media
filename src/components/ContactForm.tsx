@@ -45,24 +45,12 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0" />
 
       {/* Dominant Flowing Rich Green Background Ambient Lighting */}
-      <motion.div
-        animate={{
-          x: [0, 80, -50, 0],
-          y: [0, -60, 50, 0],
-          scale: [1, 1.2, 0.95, 1],
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-36 -right-20 w-[800px] h-[800px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0"
+      <div
+        className="absolute -top-36 -right-20 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0"
       />
 
-      <motion.div
-        animate={{
-          x: [0, -70, 60, 0],
-          y: [0, 70, -50, 0],
-          scale: [1, 0.95, 1.15, 1],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-36 -left-20 w-[850px] h-[850px] bg-gradient-to-tr from-[#38b000]/25 via-[#BAFC50]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0"
+      <div
+        className="absolute -bottom-36 -left-20 w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0"
       />
 
       <div className="w-full max-w-[1380px] mx-auto space-y-10 relative z-10 px-4 sm:px-6 md:px-10 lg:px-12">

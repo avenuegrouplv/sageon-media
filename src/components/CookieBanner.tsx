@@ -12,6 +12,11 @@ export default function CookieBanner() {
   const { lang, t } = useLanguage();
 
   useEffect(() => {
+    document.documentElement.dataset.cookieBanner = isVisible ? "true" : "false";
+    window.dispatchEvent(new CustomEvent("cookieBannerToggle", { detail: { isVisible } }));
+  }, [isVisible]);
+
+  useEffect(() => {
     try {
       const sessionConsent = sessionStorage.getItem("sageon_cookie_consent");
       if (sessionConsent) {

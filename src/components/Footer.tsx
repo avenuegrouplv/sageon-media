@@ -55,17 +55,52 @@ export default function Footer() {
           {/* Right Column: Navigation Links in Row 1 & Contacts in Row 2 */}
           <div className="flex flex-col items-center md:items-end space-y-3 text-center md:text-right w-full md:w-auto">
             
-            {/* Row 1: Nav links */}
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-2.5 sm:gap-x-4 gap-y-2 text-xs sm:text-sm font-semibold text-slate-300 max-w-full px-2 sm:px-0">
+            {/* Nav links - Desktop: Single row | Mobile: 2 rows (1st: Sākums, Projekti, Pakalpojumi, BUJ; 2nd: Blogs, Kontakti) */}
+            
+            {/* Mobile Nav Links */}
+            <div className="flex flex-col items-center justify-center gap-2 text-xs font-semibold text-slate-300 w-full md:hidden">
+              {/* Row 1: Sākums | Projekti | Pakalpojumi | BUJ */}
+              <div className="flex items-center justify-center gap-2 sm:gap-3 flex-nowrap">
+                {navLinks.slice(0, 4).map((link, idx) => (
+                  <div key={link.key} className="flex items-center gap-2 sm:gap-3">
+                    <Link
+                      to={link.path}
+                      className="hover:text-[#BAFC50] transition-colors duration-200 whitespace-nowrap"
+                    >
+                      {link.name}
+                    </Link>
+                    {idx < 3 && <span className="text-slate-600 font-light select-none">|</span>}
+                  </div>
+                ))}
+              </div>
+
+              {/* Row 2: Blogs | Kontakti */}
+              <div className="flex items-center justify-center gap-2.5 sm:gap-3">
+                {navLinks.slice(4, 6).map((link, idx) => (
+                  <div key={link.key} className="flex items-center gap-2.5 sm:gap-3">
+                    <Link
+                      to={link.path}
+                      className="hover:text-[#BAFC50] transition-colors duration-200 whitespace-nowrap"
+                    >
+                      {link.name}
+                    </Link>
+                    {idx < 1 && <span className="text-slate-600 font-light select-none">|</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Nav Links */}
+            <div className="hidden md:flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm font-semibold text-slate-300">
               {navLinks.map((link, idx, arr) => (
-                <div key={link.key} className="flex items-center gap-2.5 sm:gap-4">
+                <div key={link.key} className="flex items-center gap-4">
                   <Link
                     to={link.path}
                     className="hover:text-[#BAFC50] transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
-                  {idx < arr.length - 1 && <span className="text-slate-600 font-light">|</span>}
+                  {idx < arr.length - 1 && <span className="text-slate-600 font-light select-none">|</span>}
                 </div>
               ))}
             </div>
@@ -138,13 +173,14 @@ export default function Footer() {
               <span>2026 © SageOn Media I {t.footer.rights}</span>
             </div>
 
-            <div className="flex items-center gap-6 font-medium text-center sm:text-right">
+            <div className="flex items-center gap-3 sm:gap-4 font-medium text-center sm:text-right">
               <button
                 onClick={() => setActiveModal("cookies")}
                 className="hover:text-white transition-colors cursor-pointer"
               >
                 {t.footer.cookies}
               </button>
+              <span className="text-zinc-600 font-normal select-none">|</span>
               <button
                 onClick={() => setActiveModal("privacy")}
                 className="hover:text-white transition-colors cursor-pointer"
