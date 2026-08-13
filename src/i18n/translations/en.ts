@@ -241,7 +241,7 @@ export const enTranslations: Translations = {
     },
     {
       id: 8,
-      title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
+      title: "Beauty Studio | Beauty & Aesthetic Services",
       brand: "Beauty studio",
       displayLink: "beautystudio",
       description: "Beauty service provider website with a custom design and descriptions. Features an integrated shopping cart, calendar, and application form.",
@@ -498,7 +498,7 @@ Sageon Media utilizes modern frameworks (React and Vite), lightweight WebP image
       category: "Design",
       date: "08.07.2026",
       readTime: "5 min read",
-      image: "/blog/5-butiskakie-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "A beautiful design is only half the battle. Strategic user experience (UX) design converts casual browsers into active paying clients.",
       content: `Website design must be both aesthetically pleasing and functional. Outstanding UI/UX design seamlessly guides visitors toward desired action — making a purchase, booking a call, or submitting an inquiry.
 
@@ -534,7 +534,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Sales",
       date: "25.06.2026",
       readTime: "5 min read",
-      image: "/blog/majaslapa-ka-24-7-pardosanas-specialists-ka- parverst-apmekletajus-realos-pieteikumos.webp",
+      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "A well-crafted website operates non-stop without holidays or breaks. Learn how structured content and call-to-actions transform visitors into long-term clients.",
       content: `A website is far more than a static digital business card. Designed properly, it functions as your top sales executive working 24 hours a day, 7 days a week.
 
@@ -550,7 +550,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Usability",
       date: "21.06.2026",
       readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "The majority of your potential clients form their first impression on a mobile phone. Learn why mobile-first design determines business success.",
       content: `Over 70% of all web traffic originates from mobile devices today. If your website is hard to navigate or read on a smartphone screen, you lose the majority of potential leads.
 
@@ -566,7 +566,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Strategy",
       date: "15.06.2026",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Is a focused Landing Page or an expansive Multi-Page website better suited for your goals? We break down the advantages of both models.",
       content: `Selecting the right web architecture is the foundational step of project planning. Choosing the wrong format can complicate navigation or inflate costs.
 
@@ -584,7 +584,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Search engine optimization is a long-term strategic investment. Discover the key pillars of technical SEO, keyword research, and content optimization.",
       content: `Millions of queries are performed on Google every day. Ranking on page one brings a steady stream of highly targeted organic clients without ongoing ad spend.
 
@@ -600,7 +600,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Development",
       date: "04.06.2026",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Template builders seem like a cheap start, but hidden costs, slow speeds, and limited customization often obstruct business growth.",
       content: `DIY template builders appear affordable initially, but companies quickly run into severe limitations in performance, branding, and scalability.
 

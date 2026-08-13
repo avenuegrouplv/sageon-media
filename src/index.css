@@ -1,11 +1,10 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
-/* Inter font weights fallback */
+/* Optimized Local Font Declarations (WOFF2) */
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 300 500;
   font-style: normal;
   font-display: swap;
 }
@@ -21,16 +20,16 @@
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-weight: 700 900;
   font-style: normal;
   font-display: swap;
 }
 
-/* Montserrat font weights fallback */
+/* Montserrat font weights */
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 300 500;
   font-style: normal;
   font-display: swap;
 }
@@ -38,7 +37,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/Montserrat-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
+  font-weight: 600 900;
   font-style: normal;
   font-display: swap;
 }
@@ -75,7 +74,7 @@
   --light-border: #e4e4e7;
 }
 
-/* Base html & body resets */
+/* Base html & body resets with font synthesis prevention */
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -89,6 +88,7 @@ body {
   color: #f4f4f5 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -316,6 +316,8 @@ a.dark\:bg-sageon-dark:hover,
 /* Infinite Portfolio Carousel CSS variables - 3 items on desktop */
 .portfolio-carousel-track {
   --visible-count: 1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 @media (min-width: 640px) {
   .portfolio-carousel-track {
@@ -331,6 +333,8 @@ a.dark\:bg-sageon-dark:hover,
 /* Infinite Blog Carousel CSS variables */
 .blog-carousel-track {
   --visible-count: 1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 @media (min-width: 640px) {
   .blog-carousel-track {
@@ -346,6 +350,8 @@ a.dark\:bg-sageon-dark:hover,
 /* Infinite Pricing Carousel CSS variables */
 .pricing-carousel-track {
   --visible-count: 1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 @media (min-width: 640px) {
   .pricing-carousel-track {
@@ -487,6 +493,8 @@ a.dark\:bg-sageon-dark:hover,
   display: flex;
   width: max-content;
   animation: marquee 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-marquee:hover {

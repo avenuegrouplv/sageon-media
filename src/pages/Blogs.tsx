@@ -4,6 +4,7 @@ import { BookOpen, ArrowRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
 import SEOHead from "../components/SEOHead";
+import ResponsiveImage from "../components/ResponsiveImage";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Blogs() {
@@ -173,14 +174,16 @@ export default function Blogs() {
               className="bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl"
             >
               <div>
-                {/* Image Area - Fixed compact height */}
-                <div className="relative h-48 w-full overflow-hidden bg-zinc-900">
+                {/* Image Area - 3:2 Aspect Ratio matching 1536x1024 images */}
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-zinc-900">
                   {/* Dark Image Bottom Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 z-10" />
                   
-                  <img
+                  <ResponsiveImage
                     src={post.image}
                     alt={post.title}
+                    widths={[400, 800, 1200]}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
@@ -231,9 +234,11 @@ export default function Blogs() {
                 {/* Header with image */}
                 <div>
                   <div className="relative aspect-video w-full overflow-hidden bg-zinc-950">
-                    <img
+                    <ResponsiveImage
                       src={activeArticle.image}
                       alt={activeArticle.title}
+                      widths={[400, 800, 1200]}
+                      sizes="(max-width: 768px) 100vw, 800px"
                       loading="lazy"
                       decoding="async"
                       className="absolute inset-0 w-full h-full object-cover"

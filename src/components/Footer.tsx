@@ -5,6 +5,7 @@ import CookieModal from "./CookieModal";
 import PrivacyModal from "./PrivacyModal";
 import { useLanguage } from "../i18n/LanguageContext";
 import { PageKey } from "../i18n/types";
+import ResponsiveImage from "./ResponsiveImage";
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState<"cookies" | "privacy" | null>(null);
@@ -120,9 +121,11 @@ export default function Footer() {
           {/* Centered Logo */}
           <Link to={getLocalizedPath("home")} className="flex items-center justify-center group shrink-0">
             <div className="flex items-center justify-center w-[190px] h-[70px] sm:w-[220px] sm:h-[75px] bg-transparent">
-              <img 
+              <ResponsiveImage 
                 src="/Logo-new.webp" 
                 alt="Sageon Media Logo" 
+                widths={[240, 480, 800]}
+                sizes="220px"
                 loading="lazy"
                 decoding="async"
                 width={220}

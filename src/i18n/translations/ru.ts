@@ -241,7 +241,7 @@ export const ruTranslations: Translations = {
     },
     {
       id: 8,
-      title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
+      title: "Beauty Studio | Skaistumkopšanas pakalpojumi",
       brand: "Beauty studio",
       displayLink: "beautystudio",
       description: "Сайт поставщика услуг красоты с уникальным дизайном и описаниями. В проект интегрированы корзина покупок, календарь и форма заявки.",
@@ -498,7 +498,7 @@ Sageon Media использует современные фреймворки (R
       category: "Дизайн",
       date: "08.07.2026",
       readTime: "5 мин чтения",
-      image: "/blog/5-butiskakie-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "Красивый дизайн — это только половина дела. Продуманный UX превращает случайных посетителей в реальных клиентов.",
       content: `Дизайн сайта должен быть не только эстетичным, но и функциональным. Грамотный UI/UX ведет пользователя по понятному пути прямо к заказу.
 
@@ -534,7 +534,7 @@ Sageon Media использует современные фреймворки (R
       category: "Продажи",
       date: "25.06.2026",
       readTime: "5 min чтения",
-      image: "/blog/majaslapa-ka-24-7-pardosanas-specialists-ka- parverst-apmekletajus-realos-pieteikumos.webp",
+      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "Качественный сайт работает без выходных и перерывов. Узнайте, как структура и понятные призывы к действию приносят постоянные заявки.",
       content: `Правильно разработанный сайт — это ваш лучший сотрудник по продажам, который работает круглые сутки без усталости и выходных.
 
@@ -550,7 +550,7 @@ Sageon Media использует современные фреймворки (R
       category: "Удобство",
       date: "21.06.2026",
       readTime: "4 мин чтения",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "Большинство ваших клиентов впервые видят ваш сайт с экрана телефона. Узнайте, почему Mobile-First дизайн определяет успех.",
       content: `Более 70% интернет-трафика сегодня приходится на смартфоны. Если мобильная версия неудобна, вы теряете львиную долю клиентов.
 
@@ -566,7 +566,7 @@ Sageon Media использует современные фреймворки (R
       category: "Стратегия",
       date: "15.06.2026",
       readTime: "5 мин чтения",
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Что лучше подойдет вашему бизнесу: фокусный Landing Page или полноценный многостраничный сайт? Разбираем плюсы обоих вариантов.",
       content: `Выбор архитектуры сайта — важнейший первый шаг. Одностраничный Landing подходит для рекламы одной услуги с высокой конверсией, а многостраничный сайт идеально раскрывает каталог услуг и дает отличные возможности для SEO.`
     },
@@ -576,7 +576,7 @@ Sageon Media использует современные фреймворки (R
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 мин чтения",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Поисковая оптимизация — это долгосрочный инструмент роста. Узнайте главные основы технического SEO и работы с контентом.",
       content: `Попадание на первую страницу Google обеспечивает непрерывный поток целевых клиентов. Главные факторы успеха: техническая чистота сайта, экспертный контент и локальное присутствие в Google Maps.`
     },
@@ -586,7 +586,7 @@ Sageon Media использует современные фреймворки (R
       category: "Разработка",
       date: "04.06.2026",
       readTime: "5 мин чтения",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Готовые шаблоны кажутся дешевым стартом, но ограничение скорости, шаблонный вид и сложности со скейлингом тормозят развитие бизнеса.",
       content: `Конструкторы хороши для пробы, но для развивающегося бизнеса они не дают уникальности, страдают медленной скоростью и не позволяют гибко масштабировать сайт под новые задачи.`
     }

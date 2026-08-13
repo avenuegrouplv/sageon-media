@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import { Plus, ExternalLink, Sparkles, CheckCircle2, ShieldCheck, Clock, X } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
+import ResponsiveImage from "./ResponsiveImage";
 
 interface PortfolioLaptopCardProps {
   key?: string | number;
@@ -111,7 +112,35 @@ export default function PortfolioLaptopCard({
     }
   };
 
+  const touchStartXRef = React.useRef<number | null>(null);
+  const touchStartYRef = React.useRef<number | null>(null);
+  const isSwipingRef = React.useRef<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    if (touch) {
+      touchStartXRef.current = touch.clientX;
+      touchStartYRef.current = touch.clientY;
+      isSwipingRef.current = false;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    if (touchStartXRef.current !== null && touch) {
+      const diffX = Math.abs(touch.clientX - touchStartXRef.current);
+      const diffY = Math.abs(touch.clientY - (touchStartYRef.current || touch.clientY));
+      if (diffX > 8 || diffY > 8) {
+        isSwipingRef.current = true;
+      }
+    }
+  };
+
   const handleCardClick = (e: React.MouseEvent) => {
+    if (isSwipingRef.current) {
+      isSwipingRef.current = false;
+      return;
+    }
     // If the user was highlighting/selecting text, do NOT open the link or modal
     const selection = window.getSelection();
     if (selection && selection.toString().trim().length > 0) {
@@ -124,6 +153,8 @@ export default function PortfolioLaptopCard({
     <>
       <div
         onClick={handleCardClick}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-3.5 sm:p-6 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
@@ -143,9 +174,11 @@ export default function PortfolioLaptopCard({
           >
             {!isPlaceholder && image ? (
               <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-zinc-950">
-                <img
+                <ResponsiveImage
                   src={image}
                   alt={title}
+                  widths={[400, 800, 1200, 1600]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                   loading="lazy"
                   fetchPriority="low"
                   decoding="async"
@@ -180,10 +213,12 @@ export default function PortfolioLaptopCard({
           </div>
 
           {/* Laptop/Tablet Frame */}
-          <img
+          <ResponsiveImage
             src="/portfolio.webp"
             alt=""
             aria-hidden="true"
+            widths={[400, 800]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
             width={897}
             height={535}
             loading="lazy"
@@ -205,7 +240,7 @@ export default function PortfolioLaptopCard({
                 className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30 shrink-0"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#BAFC50] group-hover/btn:bg-black transition-colors duration-150 animate-pulse shrink-0" />
-                <span className="tracking-wide select-none truncate max-w-[130px] sm:max-w-none">
+                <span className="tracking-wide select-none truncate max-w-none">
                   {isPlaceholderCard 
                     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
                     : cleanDomain}
@@ -233,7 +268,7 @@ export default function PortfolioLaptopCard({
 
             {/* Title - Fixed Height Block for 1 or 2 lines */}
             <div className="h-[3.25rem] sm:h-[3.5rem] flex items-center overflow-hidden">
-              <h3 className="text-base sm:text-lg font-extrabold text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
+              <h3 className="text-base sm:text-lg font-normal text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
                 {title}
               </h3>
             </div>

@@ -28,6 +28,7 @@ import {
   TrendingDown
 } from "lucide-react";
 import HeroSlider from "../components/HeroSlider";
+import ResponsiveImage from "../components/ResponsiveImage";
 import ContactForm from "../components/ContactForm";
 import CtaButton from "../components/CtaButton";
 import ValueGrowthIconAnimation from "../components/ValueGrowthIconAnimation";
@@ -66,7 +67,7 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 3,
-    title: "Ekskluzīvas koka kāpnes I Premium klases mēbeles",
+    title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
     brand: "Avangart",
     displayLink: "https://avangart.lv",
     description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
@@ -613,16 +614,23 @@ export default function Home() {
   }, [pricingPlans.length]);
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
     const handleResize = () => {
-      if (typeof window !== "undefined" && window.innerWidth < 768) {
-        setPricingIndex((prev) => (prev === pricingPlans.length ? pricingPlans.length + 1 : prev));
-      } else {
-        setPricingIndex((prev) => (prev === pricingPlans.length + 1 ? pricingPlans.length : prev));
-      }
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        if (typeof window !== "undefined" && window.innerWidth < 768) {
+          setPricingIndex((prev) => (prev === pricingPlans.length ? pricingPlans.length + 1 : prev));
+        } else {
+          setPricingIndex((prev) => (prev === pricingPlans.length + 1 ? pricingPlans.length : prev));
+        }
+      }, 150);
     };
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [pricingPlans.length]);
 
   useEffect(() => {
@@ -1085,20 +1093,16 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
                     <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
-                    <img 
+                    <ResponsiveImage 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
+                      widths={[360, 400, 480, 625]}
+                      sizes="(max-width: 640px) 88vw, 600px"
                       loading="eager"
-                      decoding="async"
-                      width={600}
-                      height={380}
-                      onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        if (!target.dataset.fallbackTried) {
-                          target.dataset.fallbackTried = "true";
-                          target.src = "/web-izstrades-agentura.webp";
-                        }
-                      }}
+                      fetchPriority="high"
+                      decoding="sync"
+                      width={625}
+                      height={420}
                       className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
                     />
                   </div>
@@ -1575,15 +1579,15 @@ export default function Home() {
             {/* 4 Process Steps (Borderless with sleek visual details) */}
             <div className="relative">
               {/* Desktop Horizontal Connecting Accent Line */}
-              <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-[#BAFC50]/5 via-[#BAFC50]/30 to-[#BAFC50]/5 z-0" />
+              <div className="hidden lg:block absolute top-8 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-[#BAFC50]/5 via-[#BAFC50]/30 to-[#BAFC50]/5 z-0" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 relative z-10">
                 
                 {/* Step 1 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
-                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-lg shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">01</span>
                     </div>
                     <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
@@ -1593,7 +1597,7 @@ export default function Home() {
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      {lang === 'EN' ? "1. Initial Discussion" : lang === 'RU' ? "1. Первичная беседа" : "1. Pirmā saruna"}
+                      {lang === 'EN' ? "Initial Discussion" : lang === 'RU' ? "Первичная беседа" : "Pirmā saruna"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
                       {lang === 'EN'
@@ -1608,8 +1612,8 @@ export default function Home() {
                 {/* Step 2 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
-                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-lg shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">02</span>
                     </div>
                     <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
@@ -1619,7 +1623,7 @@ export default function Home() {
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      {lang === 'EN' ? "2. Project Development" : lang === 'RU' ? "2. Процесс разработки" : "2. Projekta izstrādes process"}
+                      {lang === 'EN' ? "Project Development" : lang === 'RU' ? "Процесс разработки" : "Projekta izstrādes process"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
                       {lang === 'EN'
@@ -1634,8 +1638,8 @@ export default function Home() {
                 {/* Step 3 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
-                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-lg shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">03</span>
                     </div>
                     <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
@@ -1645,7 +1649,7 @@ export default function Home() {
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      {lang === 'EN' ? "3. Approval & Handover" : lang === 'RU' ? "3. Согласование и сдача" : "3. Projekta saskaņošana un nodošana"}
+                      {lang === 'EN' ? "Approval & Handover" : lang === 'RU' ? "Согласование и сдача" : "Projekta saskaņošana un nodošana"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
                       {lang === 'EN'
@@ -1660,8 +1664,8 @@ export default function Home() {
                 {/* Step 4 */}
                 <div className="group relative flex flex-col items-start space-y-4 p-2 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-2xl shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
-                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-[#18181b]/80 border border-zinc-800 text-[#BAFC50] font-mono font-extrabold text-lg shadow-lg group-hover:border-[#BAFC50]/60 group-hover:bg-[#BAFC50] group-hover:text-black transition-all duration-300">
+                      <div className="absolute inset-0 bg-[#BAFC50]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <span className="relative z-10">04</span>
                     </div>
                     <span className="hidden lg:block text-xs font-mono text-zinc-500 group-hover:text-[#BAFC50] transition-colors uppercase tracking-widest font-semibold">
@@ -1671,7 +1675,7 @@ export default function Home() {
 
                   <div className="space-y-2 pt-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#BAFC50] transition-colors tracking-tight">
-                      {lang === 'EN' ? "4. Support & Maintenance" : lang === 'RU' ? "4. Поддержка и обслуживание" : "4. Tehniskais atbalsts un uzturēšana"}
+                      {lang === 'EN' ? "Support & Maintenance" : lang === 'RU' ? "Поддержка и обслуживание" : "Tehniskais atbalsts un uzturēšana"}
                     </h3>
                     <p className="text-sm md:text-base text-zinc-300 font-light leading-relaxed">
                       {lang === 'EN'
@@ -1807,10 +1811,12 @@ export default function Home() {
                       className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
                     >
                       <div>
-                        <div className="relative aspect-video overflow-hidden bg-zinc-900">
-                          <img
+                        <div className="relative aspect-[3/2] overflow-hidden bg-zinc-900">
+                          <ResponsiveImage
                             src={post.image}
                             alt={post.title}
+                            widths={[400, 800, 1200]}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                             loading="lazy"
                             decoding="async"
                             referrerPolicy="no-referrer"

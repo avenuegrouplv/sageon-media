@@ -14,7 +14,7 @@ export default function SEOHead({
   title,
   description,
   keywords = "mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains",
-  ogImage = "/og-image.jpg",
+  ogImage = "/images/logo_share.png",
   ogType = "website",
   schema,
 }: SEOProps) {
@@ -75,9 +75,10 @@ export default function SEOHead({
     updateMeta('meta[property="og:url"]', "property", "og:url", canonicalUrl);
     updateMeta('meta[property="og:image"]', "property", "og:image", fullOgImage);
     updateMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", fullOgImage);
-    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", "image/jpeg");
-    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", "1200");
-    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", "630");
+    const isPng = fullOgImage.endsWith(".png");
+    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", isPng ? "image/png" : "image/jpeg");
+    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", isPng && fullOgImage.includes("logo_share") ? "120" : "1200");
+    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", isPng && fullOgImage.includes("logo_share") ? "120" : "630");
     updateMeta('meta[property="og:type"]', "property", "og:type", ogType);
     updateMeta('meta[property="og:locale"]', "property", "og:locale", "lv_LV");
     updateMeta('meta[property="og:locale:alternate"][content="en_US"]', "property", "og:locale:alternate", "en_US");

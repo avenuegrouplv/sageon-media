@@ -17,44 +17,32 @@
     
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png" />
-    <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" href="/favicon_trimmed.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Preconnect & Google Fonts for Inter & Montserrat (Non-render-blocking) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    </noscript>
-
-    <!-- Preload critical local fonts fallback -->
+    <!-- Preload critical local fonts for instant above-the-fold render -->
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <!-- Preload critical Hero LCP Image & Logo -->
-    <link rel="preload" as="image" href="/Hero.webp" fetchpriority="high" type="image/webp" />
-    <link rel="preload" as="image" href="/Logo-new.webp" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/Hero-800w.avif" imagesrcset="/Hero-480w.avif 480w, /Hero-800w.avif 800w, /Hero-1200w.avif 1200w, /Hero-1536w.avif 1536w" imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 800px, 1200px" fetchpriority="high" type="image/avif" />
+    <link rel="preload" as="image" href="/Logo-new-480w.avif" imagesrcset="/Logo-new-240w.avif 240w, /Logo-new-480w.avif 480w, /Logo-new-800w.avif 800w" imagesizes="240px" fetchpriority="high" type="image/avif" />
 
     <!-- Open Graph / Facebook / WhatsApp / Telegram / iMessage -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sageon Media" />
     <meta property="og:title" content="Sageon Media I Mājaslapu izstrādes aģentūra" />
     <meta property="og:description" content="Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei." />
-    <meta property="og:image" content="/og-image.jpg" />
-    <meta property="og:image:secure_url" content="/og-image.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sageon Media - Mājaslapu Izstrādes Aģentūra" />
+    <meta property="og:image" content="/images/logo_share.png" />
+    <meta property="og:image:secure_url" content="/images/logo_share.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="120" />
+    <meta property="og:image:height" content="120" />
+    <meta property="og:image:alt" content="Sageon Media Logo" />
     <meta property="og:url" content="https://sageonmedia.eu" />
     <meta property="og:locale" content="lv_LV" />
 

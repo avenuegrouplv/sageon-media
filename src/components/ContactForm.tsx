@@ -58,10 +58,10 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
         {/* Section Heading */}
         {!hideHeader && (
           <div className="text-center space-y-3">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight text-center drop-shadow-lg">
+            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center drop-shadow-lg">
               {title || t.contactForm.defaultTitle}
             </h2>
-            <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-normal text-center drop-shadow">
+            <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-light text-center drop-shadow">
               {subtitle || t.contactForm.defaultSubtitle}
             </p>
           </div>

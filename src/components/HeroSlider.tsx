@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sparkles, Phone, Mail } from "lucide-react";
 import CtaButton from "./CtaButton";
+import ResponsiveImage from "./ResponsiveImage";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const DYNAMIC_PHRASES = {
@@ -91,7 +92,6 @@ export default function HeroSlider() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            style={{ willChange: "transform, opacity" }}
             className="lg:col-span-6 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start mt-1 sm:mt-0 pt-1 lg:pt-[20px]"
           >
             {/* Agency Badge */}
@@ -155,14 +155,16 @@ export default function HeroSlider() {
             <div className="sm:hidden absolute w-[95%] h-[80%] -bottom-4 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.2),transparent_75%)] pointer-events-none z-0" />
 
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
-              <img
+              <ResponsiveImage
                 src="/Hero.webp"
                 alt="Sageon Media Web Agency"
+                widths={[480, 800, 1200, 1536]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 800px, 950px"
                 loading="eager"
                 fetchPriority="high"
-                decoding="async"
-                width={1180}
-                height={720}
+                decoding="sync"
+                width={1536}
+                height={947}
                 className="w-full h-auto object-contain max-w-[540px] lg:max-w-[800px] xl:max-w-[950px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] translate-x-0 lg:translate-x-[50px] translate-y-0 lg:translate-y-[40px] scale-[0.88] sm:scale-100 lg:scale-[1.18] origin-center mx-auto py-1 sm:py-0"
               />
             </div>

@@ -186,7 +186,7 @@ export const lvTranslations: Translations = {
     },
     {
       id: 3,
-      title: "Ekskluzīvas koka kāpnes I Premium klases mēbeles",
+      title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
       description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
@@ -498,7 +498,7 @@ Sageon Media izmanto modernākās izstrādes tehnoloģijas (piemēram, React un 
       category: "Dizains",
       date: "08.07.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/5-butiskakie-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "Skaists dizains ir tikai puse no uzvaras. Pārdomāta lietotāju pieredze (UX) ir tas, kas palīdz pārvērst parastus apmeklētājus par reāliem maksājošiem klientiem.",
       content: `Mājaslapas dizainam ir jābūt ne tikai estētiskam, bet arī funkcionālam. Izcils UI/UX dizains vada lietotāju pa skaidru ceļu līdz vēlamajam rezultātam – pirkumam, pieteikumam vai saziņai.
 
@@ -536,7 +536,7 @@ Mūsu uzturēšanas plāns parūpējas par visu tehnisko pusi, lai Jūs varētu 
       category: "Pārdošana",
       date: "25.06.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/majaslapa-ka-24-7-pardosanas-specialists-ka- parverst-apmekletajus-realos-pieteikumos.webp",
+      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "Labi izstrādāta mājaslapa strādā bez brīvdienām un pusdienlaika pārtraukumiem. Uzziniet, kā pareizi strukturēts saturs un skaidri aicinājumi uz darbību pārvērš nejaušus apmeklētājus par ilgtermiņa klientiem.",
       content: `Daudzi uzņēmumu īpašnieki uzskata mājaslapu par statisku vizītkarti. Patiesībā pareizi veidota mājaslapa ir Jūsu labākais pārdošanas speciālists, kas strādā 24 stundas diennaktī, 7 dienas nedēļā.
 
@@ -557,7 +557,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Lietojamība",
       date: "21.06.2026",
       readTime: "4 min lasīšana",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "Vairums Jūsu klientu pirmo iespaidu par uzņēmumu gūst savā telefonā. Uzziniet, kāpēc Mobile-First dizains un skārienekrānam draudzīga navigācija nosaka biznesa veiksmi.",
       content: `Vairāk nekā 70% no visas tīmekļa satiksmes šodien nāk no mobilajām ierīcēm. Ja Jūsu mājaslapa telefonā izskatās neērta, teksts ir par mazu vai pogas ir grūti nospiežamas, Jūs zaudējat lielāko daļu no saviem klientiem.
 
@@ -573,7 +573,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Stratēģija",
       date: "15.06.2026",
       readTime: "5 min lasīšana",
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Vai Jūsu biznesam piemērotāka ir mērķtiecīga Landing lapa vai apjomīga Multiple Page mājaslapa? Apskatām katra modeļa priekšrocības un piemērotību konkrētiem mērķiem.",
       content: `Pareizas mājaslapas arhitektūras izvēle ir pirmais un svarīgākais solis projekta plānošanā. Nepareizs formāts var apgrūtināt lietotājus vai sadārdzināt izstrādi.
 
@@ -591,7 +591,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 min lasīšana",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Meklētājprogrammu optimizācija nav vienreizējs darbs, bet gan stratēģisks ieguldījums. Atklājiet svarīgākos atslēgvārdu, tehnisko uzlabojumu un satura optimizācijas stūrakmeņus.",
       content: `Katru dienu miljoniem cilvēku meklē pakalpojumus Google meklētājā. Nonākšana pirmajā lapā nodrošina nepārtrauktu, kvalitatīvu un bezmaksas potenciālo klientu plūsmu.
 
@@ -607,7 +607,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Izstrāde",
       date: "04.06.2026",
       readTime: "5 min lasīšana",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Gatavās veidnes var šķist lēts sākums, taču slēptās izmaksas, lēns ātrums un ierobežota pielāgojamība bieži kļūst par šķērsli uzņēmuma tālākajai izaugsmei.",
       content: `Gatavie mājaslapu konstruktori no pirmā acu uzmetiena šķiet pievilcīgs un lēts veids, kā izveidot lapu pašu spēkiem. Tomēr praksē uzņēmumi ātri saskaras ar nemanāmiem šķēršļiem.
 

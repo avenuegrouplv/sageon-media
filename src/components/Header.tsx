@@ -4,33 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Language, PageKey } from "../i18n/types";
+import ResponsiveImage from "./ResponsiveImage";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   
   const location = useLocation();
   const { lang, t, switchLanguage, getLocalizedPath } = useLanguage();
-
-  // Detect scroll to style header with requestAnimationFrame throttling and state checks
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-          const next = scrollPos > 25;
-          setIsScrolled((prev) => (prev !== next ? next : prev));
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close menus on path changes
   useEffect(() => {
@@ -53,18 +34,11 @@ export default function Header() {
     setIsOpen(false);
   };
 
-  const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/ru";
-  const isTransparent = isHome && !isScrolled && !isOpen;
-
   const langDisplayCode = lang === "LV" ? "LV" : lang === "EN" ? "EN" : "RU";
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200 border-b ${
-        isTransparent
-          ? "bg-transparent border-transparent py-3 sm:py-4 shadow-none"
-          : "bg-[#0a0a0a] py-2.5 sm:py-3 shadow-2xl border-zinc-800"
-      }`}
+      className="fixed top-0 left-0 w-full z-50 bg-[#0a0a0a]/95 backdrop-blur-md py-2.5 sm:py-3 shadow-2xl border-b border-zinc-800 transition-colors"
     >
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
         
@@ -72,12 +46,14 @@ export default function Header() {
         <Link to={getLocalizedPath("home")} className="flex items-center gap-3 group shrink-0">
           <div className="relative flex items-center justify-center w-[200px] h-[70px] md:w-[230px] md:h-[84px] bg-transparent">
             {/* Colored Original Logo */}
-            <img 
+            <ResponsiveImage 
               src="/Logo-new.webp" 
               alt="Sageon Media Logo" 
+              widths={[240, 480, 800]}
+              sizes="230px"
               loading="eager"
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
               width={230}
               height={84}
               className="w-full h-full object-contain rounded-none" 
@@ -97,9 +73,7 @@ export default function Header() {
                     className={`font-business text-[13.8px] font-normal tracking-widest uppercase transition-colors relative py-1 ${
                       isActive
                         ? "text-[#BAFC50] font-medium"
-                        : isTransparent
-                          ? "text-white/80 hover:text-[#BAFC50]"
-                          : "text-slate-200/80 hover:text-[#BAFC50]"
+                        : "text-slate-200/80 hover:text-[#BAFC50]"
                     }`}
                   >
                     {link.name}
@@ -152,11 +126,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className={`p-2 transition-colors border rounded-xl cursor-pointer touch-manipulation ${
-              isTransparent 
-                ? "text-white hover:text-white border-white/20" 
-                : "text-slate-200 hover:text-white border-zinc-800"
-            }`}
+            className="p-2 transition-colors border rounded-xl cursor-pointer touch-manipulation text-slate-200 hover:text-white border-zinc-800"
             aria-label="Izvēlne"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

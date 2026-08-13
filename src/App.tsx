@@ -32,8 +32,9 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#000000] text-white transition-colors duration-300 relative overflow-x-hidden">
-      {/* Subtle grid pattern background across all subpages */}
-      <div className="fixed inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />
+      {/* Subtle grid pattern background & ambient green glow across all pages */}
+      <div className="fixed inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0 transform-gpu" />
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(186,252,80,0.12)_0%,rgba(56,176,0,0.06)_40%,transparent_80%)] pointer-events-none z-0 transform-gpu" />
       
       {/* Fixed top overlay header */}
       <Header />
