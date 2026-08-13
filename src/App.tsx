@@ -32,6 +32,8 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#000000] text-white transition-colors duration-300 relative overflow-x-hidden">
+      {/* Absolute top anchor for instant & smooth scroll to top navigation */}
+      <div id="top-anchor" className="absolute top-0 left-0 w-full h-0 pointer-events-none -z-50" />
       {/* Subtle grid pattern background & rich, formless ambient green aura across all pages */}
       <div className="fixed inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0 transform-gpu" />
       <div className="fixed top-[-10%] left-[15%] w-[85vw] max-w-[1200px] h-[550px] -rotate-6 rounded-[60%_40%_70%_30%/40%_60%_30%_70%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.09] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />

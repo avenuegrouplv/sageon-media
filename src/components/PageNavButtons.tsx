@@ -9,20 +9,31 @@ export default function PageNavButtons() {
 
   const handleScrollToTop = () => {
     try {
+      const topEl = document.getElementById("top-anchor");
+      if (topEl) {
+        topEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"
       });
+      if (document.documentElement) {
+        document.documentElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+      if (document.body) {
+        document.body.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+      if (document.scrollingElement) {
+        document.scrollingElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+      const rootEl = document.getElementById("root");
+      if (rootEl) {
+        rootEl.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
     } catch (e) {
       window.scrollTo(0, 0);
     }
-
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 400);
   };
 
   const homePath = getLocalizedPath("home");

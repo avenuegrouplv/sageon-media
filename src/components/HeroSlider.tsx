@@ -57,7 +57,7 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[105px] sm:pt-[120px] lg:pt-[130px] pb-6 sm:pb-10 md:pb-16">
+    <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[130px] sm:pt-[145px] lg:pt-[155px] pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden transform-gpu" />
       <div className="hidden sm:block absolute top-1/4 -left-16 w-[700px] h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[180px] pointer-events-none transform-gpu" />

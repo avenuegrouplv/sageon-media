@@ -9,9 +9,48 @@ import ResponsiveImage from "./ResponsiveImage";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const location = useLocation();
   const { lang, t, switchLanguage, getLocalizedPath } = useLanguage();
+
+  // Track scroll position to toggle header style immediately as soon as page scrolls by 1mm (> 0px)
+  useEffect(() => {
+    let animFrameId: number;
+
+    const checkScroll = () => {
+      const scrollPos =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        (document.scrollingElement ? document.scrollingElement.scrollTop : 0) ||
+        0;
+      setIsScrolled(scrollPos > 0);
+    };
+
+    const loop = () => {
+      checkScroll();
+      animFrameId = requestAnimationFrame(loop);
+    };
+
+    // Initial check and start continuous check for zero latency
+    checkScroll();
+    loop();
+
+    window.addEventListener("scroll", checkScroll, { passive: true, capture: true });
+    document.addEventListener("scroll", checkScroll, { passive: true, capture: true });
+    window.addEventListener("wheel", checkScroll, { passive: true });
+    window.addEventListener("touchmove", checkScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(animFrameId);
+      window.removeEventListener("scroll", checkScroll, { capture: true });
+      document.removeEventListener("scroll", checkScroll, { capture: true });
+      window.removeEventListener("wheel", checkScroll);
+      window.removeEventListener("touchmove", checkScroll);
+    };
+  }, []);
 
   // Close menus on path changes
   useEffect(() => {
@@ -38,7 +77,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-[#0a0a0a]/95 backdrop-blur-md py-2.5 sm:py-3 shadow-2xl border-b border-zinc-800 transition-colors"
+      className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a] shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
     >
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
         
@@ -137,7 +176,7 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-zinc-800 shadow-2xl transition-all duration-200 py-4 px-5 space-y-4 z-[60] max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a] shadow-2xl transition-all duration-200 py-4 px-5 space-y-4 z-[60] max-h-[80vh] overflow-y-auto">
           <ul className="space-y-2">
             {navLinks.map((link) => (
               <li key={link.key}>
