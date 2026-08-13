@@ -19,7 +19,7 @@ export default function CtaButton({
 }: CtaButtonProps) {
   const content = (
     <div
-      className={`group relative inline-flex items-center justify-between overflow-hidden rounded-full bg-[#BAFC50] hover:bg-[#a8f235] px-6 py-2.5 sm:py-3 font-sans font-extrabold text-black text-xs md:text-sm uppercase tracking-wider transition-all duration-300 ease-out cursor-pointer shadow-md hover:shadow-[0_0_25px_rgba(186,252,80,0.5)] ${
+      className={`group relative inline-flex items-center justify-between overflow-hidden rounded-full bg-[#BAFC50] hover:bg-[#a8f235] px-6 py-2.5 sm:py-3 font-sans font-extrabold text-black text-xs md:text-sm uppercase tracking-wider transition-colors duration-300 ease-out cursor-pointer shadow-[0_4px_14px_rgba(0,0,0,0.35)] hover:shadow-[0_6px_22px_rgba(186,252,80,0.35)] ${
         fullWidth ? "w-full" : ""
       } ${className}`}
     >

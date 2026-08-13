@@ -60,9 +60,10 @@ export default function HeroSlider() {
     <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[105px] sm:pt-[120px] lg:pt-[130px] pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden transform-gpu" />
-      <div className="hidden sm:block absolute top-1/4 left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none transform-gpu" />
-      <div className="hidden sm:block absolute bottom-1/4 right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none transform-gpu" />
-      <div className="sm:hidden absolute top-10 left-[-20%] w-48 h-48 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.15),transparent_70%)] pointer-events-none transform-gpu" />
+      <div className="hidden sm:block absolute top-1/4 -left-16 w-[700px] h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[180px] pointer-events-none transform-gpu" />
+      <div className="hidden sm:block absolute bottom-1/4 -right-16 w-[700px] h-[400px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tl from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[180px] pointer-events-none transform-gpu" />
+      <div className="sm:hidden absolute top-8 -left-12 w-64 h-48 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[100px] pointer-events-none transform-gpu" />
+      <div className="sm:hidden absolute bottom-8 -right-12 w-64 h-48 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[100px] pointer-events-none transform-gpu" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-1 sm:pt-2">
@@ -122,12 +123,21 @@ export default function HeroSlider() {
               </h1>
               
               <div className="min-h-[70px] sm:min-h-[85px] md:min-h-[95px] lg:min-h-[100px] flex items-center justify-center lg:justify-start relative w-full my-1 overflow-hidden">
-                <span
-                  key={`${lang}-${phraseIndex}`}
-                  className="animate-hero-phrase text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left transform-gpu"
-                >
-                  {phrases[phraseIndex % phrases.length]}
-                </span>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={`${lang}-${phraseIndex}`}
+                    initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
+                    transition={{
+                      duration: 0.55,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    }}
+                    className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left transform-gpu"
+                  >
+                    {phrases[phraseIndex % phrases.length]}
+                  </motion.span>
+                </AnimatePresence>
               </div>
             </div>
 
@@ -151,8 +161,8 @@ export default function HeroSlider() {
 
           {/* Right Image Column */}
           <div className="lg:col-span-6 xl:col-span-6 relative flex flex-col items-center justify-center translate-x-0 lg:translate-x-0 mt-1 mb-0 lg:my-0">
-            <div className="hidden sm:block absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0" />
-            <div className="sm:hidden absolute w-[95%] h-[80%] -bottom-4 bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.2),transparent_75%)] pointer-events-none z-0" />
+            <div className="hidden sm:block absolute w-[140%] sm:w-[150%] h-[130%] sm:h-[140%] -bottom-12 sm:-bottom-16 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] blur-[32px] pointer-events-none z-0 transform-gpu" />
+            <div className="sm:hidden absolute -inset-4 sm:-inset-8 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] blur-[24px] pointer-events-none z-0 transform-gpu" />
 
             <div className="relative z-10 w-full flex flex-col items-center justify-center">
               <ResponsiveImage

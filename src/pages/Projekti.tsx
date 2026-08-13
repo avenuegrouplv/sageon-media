@@ -72,9 +72,24 @@ export default function Projekti() {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
       {/* Irregular Green Ambient Background Glows */}
-      <div className="absolute -top-32 -right-20 w-[750px] h-[750px] bg-gradient-to-br from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 -left-24 w-[800px] h-[800px] bg-gradient-to-tr from-[#38b000]/28 via-[#BAFC50]/22 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
-      <div className="absolute -bottom-40 right-1/4 w-[750px] h-[750px] bg-gradient-to-tl from-[#BAFC50]/25 via-[#38b000]/20 to-transparent rounded-full blur-[180px] pointer-events-none z-0" />
+      <div className="absolute -top-32 -right-20 w-[850px] h-[500px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[10%] -left-16 w-[750px] h-[450px] rotate-6 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.07] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[22%] right-10 w-[780px] h-[460px] -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[35%] -left-20 w-[820px] h-[480px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[48%] -right-16 w-[750px] h-[450px] rotate-6 rounded-[40%_60%_30%_70%] bg-gradient-to-bl from-[#BAFC50]/[0.07] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="absolute top-[60%] -left-24 w-[900px] h-[550px] rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-tr from-[#38b000]/[0.09] via-[#BAFC50]/[0.05] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[72%] right-10 w-[800px] h-[480px] -rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-bl from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[85%] left-10 w-[800px] h-[480px] rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-tr from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      <div className="absolute -bottom-40 right-1/4 w-[850px] h-[500px] -rotate-6 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
+      
+      {/* Mobile Glows */}
+      <div className="sm:hidden absolute top-[5%] -left-12 w-72 h-56 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[18%] -right-12 w-72 h-56 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[32%] -left-12 w-72 h-56 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[46%] -right-12 w-72 h-56 -rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[60%] -left-12 w-72 h-56 -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[74%] -right-12 w-72 h-56 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[88%] -left-12 w-72 h-56 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.07] via-[#38b000]/[0.03] to-transparent blur-[110px] pointer-events-none z-0" />
 
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 md:py-20 space-y-12 relative z-10">
         

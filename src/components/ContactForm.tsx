@@ -44,14 +44,23 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
       {/* Background Mesh Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0" />
 
-      {/* Dominant Flowing Rich Green Background Ambient Lighting */}
+      {/* Fluid Organic Green Background Ambient Lighting */}
       <div
-        className="absolute -top-36 -right-20 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0"
+        className="absolute -top-36 -right-20 w-[900px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu"
       />
-
       <div
-        className="absolute -bottom-36 -left-20 w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0"
+        className="hidden sm:block absolute top-[20%] -left-20 w-[850px] h-[480px] rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.14] via-[#38b000]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu"
       />
+      <div
+        className="hidden sm:block absolute top-[55%] right-[-10%] w-[900px] h-[500px] -rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu"
+      />
+      <div
+        className="absolute -bottom-36 -left-20 w-[950px] h-[550px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tr from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu"
+      />
+      <div className="sm:hidden absolute top-[10%] -left-12 w-80 h-64 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[38%] -right-12 w-80 h-64 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[68%] -left-12 w-80 h-64 -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.14] via-[#38b000]/[0.07] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[92%] -right-12 w-80 h-64 rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
 
       <div className="w-full max-w-[1380px] mx-auto space-y-10 relative z-10 px-4 sm:px-6 md:px-10 lg:px-12">
         

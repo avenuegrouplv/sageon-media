@@ -737,22 +737,57 @@ export default function Home() {
           }
         ]}
       />
-      {/* Seamless Continuous Full-Page Grid Pattern & Fluid Green Lighting */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
+      {/* Seamless Continuous Full-Page Grid Pattern & Fluid Organic Green Ambiance */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />
 
-      {/* Irregular Glowing Green Orbs Flowing Seamlessly From Top to Bottom */}
-      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[14%] -right-[5%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[28%] left-[5%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[42%] -right-[10%] w-[900px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.22)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[56%] -left-[8%] w-[850px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[70%] right-[2%] w-[800px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.14)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[84%] -left-[5%] w-[850px] h-[850px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,rgba(56,176,0,0.12)_40%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      {/* Fluid, Formless Organic Green Glows Flowing Seamlessly Across the Page (Desktop) */}
+      <div className="hidden sm:block absolute top-[1%] -left-[12%] w-[950px] h-[550px] -rotate-12 rounded-[55%_45%_65%_35%/35%_60%_40%_65%] bg-gradient-to-br from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[5%] left-[30%] w-[850px] h-[480px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.14] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[9%] -right-[10%] w-[1000px] h-[600px] rotate-12 rounded-[40%_60%_35%_65%/60%_40%_65%_35%] bg-gradient-to-bl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[13%] left-[-8%] w-[900px] h-[520px] -rotate-6 rounded-[60%_40%_55%_45%/45%_55%_40%_60%] bg-gradient-to-tr from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[17%] right-[10%] w-[880px] h-[500px] rotate-12 rounded-[50%_50%_45%_55%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[21%] left-[20%] w-[920px] h-[500px] -rotate-12 rounded-[55%_45%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[25%] right-[2%] w-[950px] h-[520px] -rotate-6 rounded-[65%_35%_50%_50%/45%_55%_45%_55%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[29%] -left-[10%] w-[960px] h-[540px] rotate-6 rounded-[40%_60%_60%_40%] bg-gradient-to-br from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[33%] left-[10%] w-[950px] h-[530px] rotate-12 rounded-[45%_55%_60%_40%/55%_45%_40%_60%] bg-gradient-to-br from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[37%] right-[15%] w-[920px] h-[510px] -rotate-6 rounded-[55%_45%_50%_50%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[41%] -right-[12%] w-[1050px] h-[650px] rotate-6 rounded-[50%_50%_65%_35%/35%_65%_35%_65%] bg-gradient-to-tl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[45%] -left-[8%] w-[950px] h-[540px] -rotate-12 rounded-[55%_45%_45%_55%/45%_55%_55%_45%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[49%] left-[30%] w-[900px] h-[500px] rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-tr from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[53%] right-[2%] w-[980px] h-[580px] rotate-6 rounded-[40%_60%_45%_55%/55%_45%_60%_40%] bg-gradient-to-bl from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[57%] -left-[10%] w-[960px] h-[540px] -rotate-6 rounded-[60%_40%_55%_45%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[61%] left-[15%] w-[920px] h-[520px] -rotate-6 rounded-[60%_40%_50%_50%/50%_50%_40%_60%] bg-gradient-to-tr from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[65%] right-[10%] w-[900px] h-[500px] rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[69%] right-[0%] w-[950px] h-[550px] rotate-12 rounded-[60%_40%_55%_45%/40%_60%_45%_55%] bg-gradient-to-bl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[73%] -left-[8%] w-[980px] h-[540px] -rotate-12 rounded-[45%_55%_65%_35%/55%_45%_35%_65%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[77%] left-[25%] w-[880px] h-[500px] rotate-6 rounded-[50%_50%_55%_45%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[81%] right-[8%] w-[1000px] h-[600px] -rotate-6 rounded-[55%_45%_60%_40%/45%_55%_40%_60%] bg-gradient-to-tl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[85%] -left-[10%] w-[940px] h-[520px] rotate-12 rounded-[60%_40%_45%_55%] bg-gradient-to-tr from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[89%] left-[10%] w-[900px] h-[520px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[93%] -right-[6%] w-[920px] h-[530px] -rotate-6 rounded-[45%_55%_60%_40%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block absolute top-[97%] left-[20%] w-[850px] h-[500px] rotate-6 rounded-[45%_55%_40%_60%/60%_40%_55%_45%] bg-gradient-to-tl from-[#BAFC50]/[0.14] via-[#38b000]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
-      {/* Lightweight Mobile-Optimized Ambient Glows */}
-      <div className="sm:hidden absolute top-[5%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[35%] -right-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[65%] -left-10 w-60 h-60 bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      {/* Fluid, Formless Organic Glows for Mobile Scroll (Doubled for seamless soft distribution) */}
+      <div className="sm:hidden absolute top-[2%] -left-16 w-80 h-64 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[7%] -right-16 w-80 h-64 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[12%] -left-16 w-80 h-64 rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[17%] -right-16 w-80 h-64 -rotate-6 rounded-[60%_40%_50%_50%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[22%] -left-16 w-80 h-64 -rotate-6 rounded-[60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[27%] -right-16 w-80 h-64 rotate-12 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[32%] -left-16 w-80 h-64 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[37%] -right-16 w-80 h-64 -rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[42%] -left-16 w-80 h-64 -rotate-12 rounded-[45%_55%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[47%] -right-16 w-80 h-64 rotate-6 rounded-[55%_45%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[52%] -left-16 w-80 h-64 rotate-12 rounded-[55%_45%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[57%] -right-16 w-80 h-64 -rotate-6 rounded-[45%_55%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[62%] -left-16 w-80 h-64 -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[67%] -right-16 w-80 h-64 rotate-12 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[72%] -left-16 w-80 h-64 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[77%] -right-16 w-80 h-64 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[82%] -left-16 w-80 h-64 -rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[87%] -right-16 w-80 h-64 rotate-6 rounded-[45%_55%_50%_50%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[92%] -left-16 w-80 h-64 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      <div className="sm:hidden absolute top-[97%] -right-16 w-80 h-64 -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
@@ -807,6 +842,9 @@ export default function Home() {
         <section 
           className="pt-8 sm:pt-18 md:pt-24 pb-3 sm:pb-6 mt-2 sm:mt-8 bg-transparent overflow-visible relative z-10"
         >
+          {/* Ambient Organic Green Glow at section start */}
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[700px] sm:w-[950px] h-[360px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[160px] pointer-events-none z-0 transform-gpu" />
+
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* Sub-block: Kas kavē Jūsu izaugsmi */}
             <div 
@@ -967,8 +1005,11 @@ export default function Home() {
 
       {/* CALLOUT BANNER 1: Pirms "Ko mēs piedāvājam" */}
       <LazyLoadSection>
-        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto py-8 sm:py-12 md:py-16 relative z-10">
-          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto py-8 sm:py-12 md:py-16 relative overflow-visible z-10">
+          {/* Ambient Organic Green Glow at banner */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[300px] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.10] to-transparent rounded-full blur-[150px] pointer-events-none z-0 transform-gpu" />
+
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-2 relative z-10">
             <div className="space-y-4 flex flex-col items-center justify-center text-center">
               <FastWebsiteSolutionAnimation className="mb-2" />
               <p className="text-base sm:text-lg md:text-xl font-medium text-white leading-relaxed">
@@ -1005,9 +1046,9 @@ export default function Home() {
         <section 
           className="pt-2 sm:pt-4 md:pt-6 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 right-1/4 w-[750px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -left-20 w-[700px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-36 right-1/4 w-[850px] h-[450px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-20 w-[800px] h-[450px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-12 relative z-10">
             
@@ -1032,7 +1073,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
-                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.20)_0%,transparent_70%)] pointer-events-none z-0" />
+                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
@@ -1050,7 +1091,7 @@ export default function Home() {
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
                   <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
+                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
                     <img 
                       src="/dizains-mobile-first.webp" 
                       alt="Dizains un Mobile first" 
@@ -1092,7 +1133,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
+                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
                     <ResponsiveImage 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
@@ -1147,9 +1188,9 @@ export default function Home() {
         <section 
           className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -left-36 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -right-28 w-[700px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-36 -left-36 w-[850px] h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -right-28 w-[800px] h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-2 sm:px-3">
@@ -1315,9 +1356,9 @@ export default function Home() {
         <section 
           className="pt-4 pb-6 md:pt-6 md:pb-8 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -left-24 w-[750px] h-[750px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -right-24 w-[800px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-36 -left-24 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -right-24 w-[850px] h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             
@@ -1397,6 +1438,9 @@ export default function Home() {
         <section 
           className="py-10 md:py-14 bg-transparent overflow-visible relative z-10"
         >
+          {/* Ambient Organic Green Glow at section start */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[400px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[170px] pointer-events-none z-0 transform-gpu" />
+
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
             <div className="space-y-10">
@@ -1553,7 +1597,7 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-hidden z-10"
         >
           {/* Ambient Glow background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#BAFC50]/12 via-[#38b000]/12 to-transparent rounded-full blur-[160px] pointer-events-none z-0" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#BAFC50]/[0.16] via-[#38b000]/[0.10] to-transparent rounded-full blur-[160px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-16 relative z-10">
             
@@ -1699,9 +1743,9 @@ export default function Home() {
         <section 
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -bottom-52 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
-          <div className="absolute -top-48 -left-24 w-[650px] h-[650px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
+          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[950px] h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-24 w-[750px] h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
@@ -1774,9 +1818,9 @@ export default function Home() {
         <section 
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
-          {/* Ambient Irregular Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-48 -right-36 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(186,252,80,0.18)_0%,rgba(56,176,0,0.10)_40%,transparent_70%)] pointer-events-none z-0" />
-          <div className="absolute -bottom-52 -left-24 w-[700px] h-[700px] bg-[radial-gradient(circle_at_center,rgba(56,176,0,0.20)_0%,rgba(186,252,80,0.12)_40%,transparent_70%)] pointer-events-none z-0" />
+          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
+          <div className="absolute -top-32 -right-36 w-[850px] h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-24 w-[800px] h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-4 px-3">
@@ -1812,6 +1856,8 @@ export default function Home() {
                     >
                       <div>
                         <div className="relative aspect-[3/2] overflow-hidden bg-zinc-900">
+                          {/* Green glow under blog image */}
+                          <div className="absolute -inset-3.5 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[18px] opacity-85 group-hover:opacity-100 transition-opacity transform-gpu" />
                           <ResponsiveImage
                             src={post.image}
                             alt={post.title}

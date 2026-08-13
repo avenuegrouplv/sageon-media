@@ -32,9 +32,15 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#000000] text-white transition-colors duration-300 relative overflow-x-hidden">
-      {/* Subtle grid pattern background & ambient green glow across all pages */}
-      <div className="fixed inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0 transform-gpu" />
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(186,252,80,0.12)_0%,rgba(56,176,0,0.06)_40%,transparent_80%)] pointer-events-none z-0 transform-gpu" />
+      {/* Subtle grid pattern background & rich, formless ambient green aura across all pages */}
+      <div className="fixed inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[-10%] left-[15%] w-[85vw] max-w-[1200px] h-[550px] -rotate-6 rounded-[60%_40%_70%_30%/40%_60%_30%_70%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.09] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[18%] -left-[10%] w-[75vw] max-w-[950px] h-[480px] rotate-12 rounded-[50%_50%_60%_40%/40%_60%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.14] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[35%] right-[-5%] w-[75vw] max-w-[1000px] h-[500px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-bl from-[#38b000]/[0.14] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[52%] left-[10%] w-[80vw] max-w-[1000px] h-[500px] -rotate-6 rounded-[45%_55%_50%_50%/50%_50%_45%_55%] bg-gradient-to-tr from-[#BAFC50]/[0.15] via-[#38b000]/[0.09] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[65%] left-[-8%] w-[80vw] max-w-[1050px] h-[520px] -rotate-12 rounded-[55%_45%_65%_35%/45%_55%_35%_65%] bg-gradient-to-tr from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed top-[82%] right-[-5%] w-[78vw] max-w-[1000px] h-[500px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-bl from-[#38b000]/[0.14] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      <div className="fixed bottom-[-15%] right-[5%] w-[90vw] max-w-[1100px] h-[600px] rotate-12 rounded-[40%_70%_50%_60%/60%_30%_70%_40%] bg-gradient-to-tl from-[#38b000]/[0.15] via-[#BAFC50]/[0.09] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
       
       {/* Fixed top overlay header */}
       <Header />

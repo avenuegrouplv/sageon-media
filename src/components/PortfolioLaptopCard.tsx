@@ -162,6 +162,9 @@ export default function PortfolioLaptopCard({
 
         {/* 1. Device Mockup Section */}
         <div className="relative w-full aspect-[897/535] mb-2 sm:mb-3">
+          {/* Green glow under/behind laptop mockup */}
+          <div className="absolute -inset-4 sm:-inset-7 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[24px] sm:blur-[32px] opacity-90 group-hover:opacity-100 transition-opacity duration-300 transform-gpu" />
+
           {/* Screen inside tablet cutout */}
           <div 
             className="absolute z-10 overflow-hidden bg-black flex flex-col justify-between rounded-t-[8px] sm:rounded-t-[12px] md:rounded-t-[14px] rounded-b-none"
