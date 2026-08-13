@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export interface ResponsiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -24,8 +24,10 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   onError,
   ...rest
 }) => {
-  // If not a local webp image, fallback to normal img tag
-  if (!src || !src.startsWith('/') || !src.endsWith('.webp')) {
+  const [hasError, setHasError] = useState(false);
+
+  // If not a local image or has error, fallback to normal img tag
+  if (!src || hasError || !src.startsWith('/') || (!src.endsWith('.webp') && !src.endsWith('.avif') && !src.endsWith('.png') && !src.endsWith('.jpg'))) {
     return (
       <img
         src={src}
@@ -43,7 +45,8 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
     );
   }
 
-  const basePath = src.substring(0, src.lastIndexOf('.'));
+  const dotIdx = src.lastIndexOf('.');
+  const basePath = dotIdx > 0 ? src.substring(0, dotIdx) : src;
 
   const avifSrcSet = widths.map((w) => `${basePath}-${w}w.avif ${w}w`).join(', ');
   const webpSrcSet = widths.map((w) => `${basePath}-${w}w.webp ${w}w`).join(', ');
@@ -62,7 +65,10 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         fetchPriority={fetchPriority}
         className={className}
         style={style}
-        onError={onError}
+        onError={(e) => {
+          setHasError(true);
+          if (onError) onError(e);
+        }}
         {...rest}
       />
     </picture>
@@ -70,3 +76,4 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 };
 
 export default ResponsiveImage;
+
