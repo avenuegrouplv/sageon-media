@@ -105,31 +105,33 @@ export default function Projekti() {
         </div>
 
         {/* Portfolio Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4 items-stretch">
           {portfolioCards.map((card) => (
-            <PortfolioLaptopCard
-              key={card.id}
-              title={card.title}
-              brand={card.brand}
-              displayLink={card.displayLink}
-              image={card.image}
-              link={card.link}
-              description={card.description}
-              isPlaceholder={card.isPlaceholder}
-              tags={card.tags}
-            />
+            <div key={card.id} className="h-full flex flex-col">
+              <PortfolioLaptopCard
+                title={card.title}
+                brand={card.brand}
+                displayLink={card.displayLink}
+                image={card.image}
+                link={card.link}
+                description={card.description}
+                isPlaceholder={card.isPlaceholder}
+                tags={card.tags}
+              />
+            </div>
           ))}
 
           {/* Empty/Placeholder laptop */}
-          <PortfolioLaptopCard
-            key={emptyPortfolioCard.id}
-            title={emptyPortfolioCard.title}
-            displayLink={emptyPortfolioCard.displayLink}
-            link={emptyPortfolioCard.link}
-            isPlaceholder={true}
-            subtitle={emptyPortfolioCard.subtitle}
-            description={emptyPortfolioCard.description}
-          />
+          <div key={emptyPortfolioCard.id} className="h-full flex flex-col">
+            <PortfolioLaptopCard
+              title={emptyPortfolioCard.title}
+              displayLink={emptyPortfolioCard.displayLink}
+              link={emptyPortfolioCard.link}
+              isPlaceholder={true}
+              subtitle={emptyPortfolioCard.subtitle}
+              description={emptyPortfolioCard.description}
+            />
+          </div>
         </div>
 
         {/* Dynamic Contact Form for Pricing Proposal Request */}

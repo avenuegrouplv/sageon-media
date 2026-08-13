@@ -14,42 +14,16 @@ export default function Header() {
   const location = useLocation();
   const { lang, t, switchLanguage, getLocalizedPath } = useLanguage();
 
-  // Track scroll position to toggle header style immediately as soon as page scrolls by 1mm (> 0px)
+  // Track scroll position to toggle header style
   useEffect(() => {
-    let animFrameId: number;
-
-    const checkScroll = () => {
-      const scrollPos =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop ||
-        (document.scrollingElement ? document.scrollingElement.scrollTop : 0) ||
-        0;
-      setIsScrolled(scrollPos > 0);
+    const handleScroll = () => {
+      const scrollPos = window.scrollY || document.documentElement.scrollTop || 0;
+      setIsScrolled(scrollPos > 10);
     };
 
-    const loop = () => {
-      checkScroll();
-      animFrameId = requestAnimationFrame(loop);
-    };
-
-    // Initial check and start continuous check for zero latency
-    checkScroll();
-    loop();
-
-    window.addEventListener("scroll", checkScroll, { passive: true, capture: true });
-    document.addEventListener("scroll", checkScroll, { passive: true, capture: true });
-    window.addEventListener("wheel", checkScroll, { passive: true });
-    window.addEventListener("touchmove", checkScroll, { passive: true });
-
-    return () => {
-      cancelAnimationFrame(animFrameId);
-      window.removeEventListener("scroll", checkScroll, { capture: true });
-      document.removeEventListener("scroll", checkScroll, { capture: true });
-      window.removeEventListener("wheel", checkScroll);
-      window.removeEventListener("touchmove", checkScroll);
-    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close menus on path changes

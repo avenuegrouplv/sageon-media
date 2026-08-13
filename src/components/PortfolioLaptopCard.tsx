@@ -161,7 +161,7 @@ export default function PortfolioLaptopCard({
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
 
         {/* 1. Device Mockup Section */}
-        <div className="relative w-full aspect-[897/535] mb-2 sm:mb-3">
+        <div className="relative w-full aspect-[897/535] mb-2 sm:mb-3 shrink-0">
           {/* Green glow under/behind laptop mockup */}
           <div className="absolute -inset-4 sm:-inset-7 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[24px] sm:blur-[32px] opacity-90 group-hover:opacity-100 transition-opacity duration-300 transform-gpu" />
 
@@ -235,7 +235,7 @@ export default function PortfolioLaptopCard({
         <div className="flex-1 flex flex-col justify-between space-y-3 pt-1">
           <div className="space-y-2.5">
             {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 h-[2.5rem] sm:h-[2.25rem] overflow-hidden">
+            <div className="flex items-center justify-between gap-2 h-9 sm:h-9 overflow-hidden shrink-0">
               {/* Top-Left Corner: Domain Address Badge */}
               <button
                 type="button"
@@ -270,14 +270,14 @@ export default function PortfolioLaptopCard({
             </div>
 
             {/* Title - Fixed Height Block for 1 or 2 lines */}
-            <div className="h-[3.25rem] sm:h-[3.5rem] flex items-center overflow-hidden">
+            <div className="h-14 sm:h-14 flex items-center overflow-hidden shrink-0">
               <h3 className="text-base sm:text-lg font-normal text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
                 {title}
               </h3>
             </div>
 
             {/* Detailed Description - Fixed Height Block for 4 lines */}
-            <div className="h-[5.5rem] sm:h-[6rem] overflow-hidden">
+            <div className="h-24 sm:h-24 overflow-hidden shrink-0">
               {description ? (
                 <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-4">
                   {description}
@@ -290,8 +290,8 @@ export default function PortfolioLaptopCard({
             </div>
           </div>
 
-          {/* Deliverables Badges / Tags - Complete rows with flexible container height on mobile */}
-          <div className="pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[6.25rem] sm:min-h-[5.25rem] pb-1">
+          {/* Deliverables Badges / Tags - Fixed uniform height for all cards */}
+          <div className="pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-20 sm:h-[4.5rem] overflow-hidden shrink-0">
             {activeTags.slice(0, 6).map((tag, idx) => (
               <span 
                 key={idx}

@@ -17,6 +17,7 @@ export default function CookieBanner() {
   }, [isVisible]);
 
   useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
     const handleOpenBanner = () => {
       setIsVisible(true);
     };
@@ -25,14 +26,19 @@ export default function CookieBanner() {
     try {
       const consent = localStorage.getItem("sageon_cookie_consent_v2");
       if (!consent) {
-        setIsVisible(true);
+        timer = setTimeout(() => {
+          setIsVisible(true);
+        }, 3000);
       }
     } catch (e) {
-      setIsVisible(true);
+      timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 3000);
     }
 
     return () => {
       window.removeEventListener("openCookieBanner", handleOpenBanner);
+      if (timer) clearTimeout(timer);
     };
   }, []);
 
@@ -63,10 +69,14 @@ export default function CookieBanner() {
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ y: "100%", opacity: 0 }}
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ 
+              duration: 0.85, 
+              ease: [0.16, 1, 0.3, 1],
+              opacity: { duration: 0.65, ease: "easeOut" }
+            }}
             className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#121215]/98 backdrop-blur-xl border-t border-zinc-800/90 shadow-[0_-15px_50px_rgba(0,0,0,0.9)] text-white py-[14.08px] sm:py-[16.9px] px-4 sm:px-6 md:px-10 lg:px-12"
           >
             <div className="w-full max-w-[1380px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3.5 sm:gap-4 md:gap-8">

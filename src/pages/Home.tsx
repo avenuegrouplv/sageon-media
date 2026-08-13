@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactNode, TouchEvent, TransitionEvent } from "react";
+import React, { useState, useRef, useEffect, ReactNode, TouchEvent, TransitionEvent } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -39,6 +39,7 @@ import FreeConsultationAnimation from "../components/FreeConsultationAnimation";
 import ButtonArrowAnimation from "../components/ButtonArrowAnimation";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
+import SwipeHintAnimation from "../components/SwipeHintAnimation";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -144,8 +145,8 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
 
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
-  const touchEndY = useRef<number | null>(null);
+  const touchCurrentX = useRef<number | null>(null);
+  const touchCurrentY = useRef<number | null>(null);
 
   const cards = [
     {
@@ -219,21 +220,33 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     return () => clearInterval(timer);
   }, [isPaused, cards.length]);
 
-  const handleHeroTouchStart = (e: TouchEvent) => {
+  const handleHeroTouchStart = (e: React.TouchEvent) => {
     const touch = e?.touches?.[0] || e?.targetTouches?.[0];
     if (touch) {
       touchStartX.current = touch.clientX;
       touchStartY.current = touch.clientY;
+      touchCurrentX.current = touch.clientX;
+      touchCurrentY.current = touch.clientY;
+      setIsPaused(true);
     }
   };
 
-  const handleHeroTouchEnd = (e: TouchEvent) => {
-    const touch = e?.changedTouches?.[0];
-    if (touchStartX.current !== null && touch) {
-      const diffX = touchStartX.current - touch.clientX;
-      const diffY = touchStartY.current !== null ? touchStartY.current - touch.clientY : 0;
+  const handleHeroTouchMove = (e: React.TouchEvent) => {
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      touchCurrentX.current = touch.clientX;
+      touchCurrentY.current = touch.clientY;
+    }
+  };
+
+  const handleHeroTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current !== null && touchCurrentX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? touchCurrentX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? touchCurrentY.current ?? 0;
+      const diffX = touchStartX.current - endX;
+      const diffY = touchStartY.current !== null ? touchStartY.current - endY : 0;
       
-      if (Math.abs(diffX) > Math.abs(diffY) * 1.5 && Math.abs(diffX) > 35) {
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
           nextSlide();
         } else {
@@ -243,6 +256,8 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     }
     touchStartX.current = null;
     touchStartY.current = null;
+    touchCurrentX.current = null;
+    touchCurrentY.current = null;
     setTimeout(() => setIsPaused(false), 3500);
   };
 
@@ -270,10 +285,12 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full touch-pan-y"
+        className="relative overflow-hidden w-full touch-pan-y select-none"
         style={{ touchAction: "pan-y" }}
         onTouchStart={handleHeroTouchStart}
+        onTouchMove={handleHeroTouchMove}
         onTouchEnd={handleHeroTouchEnd}
+        onTouchCancel={handleHeroTouchEnd}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -397,8 +414,6 @@ export default function Home() {
   // Infinite Carousel State
   const [activeIndex, setActiveIndex] = useState(blogPostsList.length || 3);
   const [disableTransition, setDisableTransition] = useState(false);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
   const isBlogAnimatingRef = useRef(false);
 
   // Reset transition state after seamless jump
@@ -414,6 +429,7 @@ export default function Home() {
 
   const handleTransitionEnd = (e: TransitionEvent) => {
     if (e.target !== e.currentTarget) return;
+    isBlogAnimatingRef.current = false;
     const total = blogPostsList.length;
     if (activeIndex >= 2 * total) {
       setDisableTransition(true);
@@ -421,8 +437,6 @@ export default function Home() {
     } else if (activeIndex < total) {
       setDisableTransition(true);
       setActiveIndex((prev) => prev + total);
-    } else {
-      isBlogAnimatingRef.current = false;
     }
   };
 
@@ -435,28 +449,42 @@ export default function Home() {
     } else {
       setActiveIndex((prev) => prev - 1);
     }
+    setTimeout(() => {
+      isBlogAnimatingRef.current = false;
+    }, 550);
   };
 
   const blogTouchStartX = useRef<number | null>(null);
   const blogTouchStartY = useRef<number | null>(null);
-  const blogTouchEndX = useRef<number | null>(null);
-  const blogTouchEndY = useRef<number | null>(null);
+  const blogTouchCurrentX = useRef<number | null>(null);
+  const blogTouchCurrentY = useRef<number | null>(null);
 
-  const handleBlogTouchStart = (e: TouchEvent) => {
+  const handleBlogTouchStart = (e: React.TouchEvent) => {
     const touch = e?.touches?.[0] || e?.targetTouches?.[0];
     if (touch) {
       blogTouchStartX.current = touch.clientX;
       blogTouchStartY.current = touch.clientY;
+      blogTouchCurrentX.current = touch.clientX;
+      blogTouchCurrentY.current = touch.clientY;
     }
   };
 
-  const handleBlogTouchEnd = (e: TouchEvent) => {
-    const touch = e?.changedTouches?.[0];
-    if (blogTouchStartX.current !== null && touch) {
-      const diffX = blogTouchStartX.current - touch.clientX;
-      const diffY = blogTouchStartY.current !== null ? blogTouchStartY.current - touch.clientY : 0;
+  const handleBlogTouchMove = (e: React.TouchEvent) => {
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      blogTouchCurrentX.current = touch.clientX;
+      blogTouchCurrentY.current = touch.clientY;
+    }
+  };
 
-      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
+  const handleBlogTouchEnd = (e: React.TouchEvent) => {
+    if (blogTouchStartX.current !== null && blogTouchCurrentX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? blogTouchCurrentX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? blogTouchCurrentY.current ?? 0;
+      const diffX = blogTouchStartX.current - endX;
+      const diffY = blogTouchStartY.current !== null ? blogTouchStartY.current - endY : 0;
+
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
           scrollBlog('right');
         } else {
@@ -466,6 +494,8 @@ export default function Home() {
     }
     blogTouchStartX.current = null;
     blogTouchStartY.current = null;
+    blogTouchCurrentX.current = null;
+    blogTouchCurrentY.current = null;
   };
 
   const toggleFaq = (index: number) => {
@@ -480,24 +510,35 @@ export default function Home() {
 
   const portfolioTouchStartX = useRef<number | null>(null);
   const portfolioTouchStartY = useRef<number | null>(null);
-  const portfolioTouchEndX = useRef<number | null>(null);
-  const portfolioTouchEndY = useRef<number | null>(null);
+  const portfolioTouchCurrentX = useRef<number | null>(null);
+  const portfolioTouchCurrentY = useRef<number | null>(null);
 
-  const handlePortfolioTouchStart = (e: TouchEvent) => {
+  const handlePortfolioTouchStart = (e: React.TouchEvent) => {
     const touch = e?.touches?.[0] || e?.targetTouches?.[0];
     if (touch) {
       portfolioTouchStartX.current = touch.clientX;
       portfolioTouchStartY.current = touch.clientY;
+      portfolioTouchCurrentX.current = touch.clientX;
+      portfolioTouchCurrentY.current = touch.clientY;
     }
   };
 
-  const handlePortfolioTouchEnd = (e: TouchEvent) => {
-    const touch = e?.changedTouches?.[0];
-    if (portfolioTouchStartX.current !== null && touch) {
-      const diffX = portfolioTouchStartX.current - touch.clientX;
-      const diffY = portfolioTouchStartY.current !== null ? portfolioTouchStartY.current - touch.clientY : 0;
+  const handlePortfolioTouchMove = (e: React.TouchEvent) => {
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      portfolioTouchCurrentX.current = touch.clientX;
+      portfolioTouchCurrentY.current = touch.clientY;
+    }
+  };
 
-      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
+  const handlePortfolioTouchEnd = (e: React.TouchEvent) => {
+    if (portfolioTouchStartX.current !== null && portfolioTouchCurrentX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? portfolioTouchCurrentX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? portfolioTouchCurrentY.current ?? 0;
+      const diffX = portfolioTouchStartX.current - endX;
+      const diffY = portfolioTouchStartY.current !== null ? portfolioTouchStartY.current - endY : 0;
+
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
           scrollPortfolio('right');
         } else {
@@ -507,6 +548,8 @@ export default function Home() {
     }
     portfolioTouchStartX.current = null;
     portfolioTouchStartY.current = null;
+    portfolioTouchCurrentX.current = null;
+    portfolioTouchCurrentY.current = null;
   };
 
   // Sync portfolioIndex if language or portfolio length changes
@@ -579,24 +622,35 @@ export default function Home() {
 
   const pricingTouchStartX = useRef<number | null>(null);
   const pricingTouchStartY = useRef<number | null>(null);
-  const pricingTouchEndX = useRef<number | null>(null);
-  const pricingTouchEndY = useRef<number | null>(null);
+  const pricingTouchCurrentX = useRef<number | null>(null);
+  const pricingTouchCurrentY = useRef<number | null>(null);
 
-  const handlePricingTouchStart = (e: TouchEvent) => {
+  const handlePricingTouchStart = (e: React.TouchEvent) => {
     const touch = e?.touches?.[0] || e?.targetTouches?.[0];
     if (touch) {
       pricingTouchStartX.current = touch.clientX;
       pricingTouchStartY.current = touch.clientY;
+      pricingTouchCurrentX.current = touch.clientX;
+      pricingTouchCurrentY.current = touch.clientY;
     }
   };
 
-  const handlePricingTouchEnd = (e: TouchEvent) => {
-    const touch = e?.changedTouches?.[0];
-    if (pricingTouchStartX.current !== null && touch) {
-      const diffX = pricingTouchStartX.current - touch.clientX;
-      const diffY = pricingTouchStartY.current !== null ? pricingTouchStartY.current - touch.clientY : 0;
+  const handlePricingTouchMove = (e: React.TouchEvent) => {
+    const touch = e?.touches?.[0] || e?.targetTouches?.[0];
+    if (touch) {
+      pricingTouchCurrentX.current = touch.clientX;
+      pricingTouchCurrentY.current = touch.clientY;
+    }
+  };
 
-      if (Math.abs(diffX) > Math.abs(diffY) * 1.3 && Math.abs(diffX) > 25) {
+  const handlePricingTouchEnd = (e: React.TouchEvent) => {
+    if (pricingTouchStartX.current !== null && pricingTouchCurrentX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? pricingTouchCurrentX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? pricingTouchCurrentY.current ?? 0;
+      const diffX = pricingTouchStartX.current - endX;
+      const diffY = pricingTouchStartY.current !== null ? pricingTouchStartY.current - endY : 0;
+
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
           scrollPricing('right');
         } else {
@@ -606,6 +660,8 @@ export default function Home() {
     }
     pricingTouchStartX.current = null;
     pricingTouchStartY.current = null;
+    pricingTouchCurrentX.current = null;
+    pricingTouchCurrentY.current = null;
   };
 
   // Sync pricingIndex if language or pricingPlans length changes
@@ -1073,7 +1129,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
-                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
+                    <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
                     <img 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
@@ -1090,8 +1146,8 @@ export default function Home() {
                 <div 
                   className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
                 >
-                  <div className="lg:col-span-5 order-last lg:order-first relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
+                  <div className="lg:col-span-5 order-last lg:order-first relative flex items-center justify-center mx-auto w-full">
+                    <div className="absolute -inset-6 sm:-inset-10 bg-[#BAFC50]/10 rounded-full blur-2xl pointer-events-none z-0" />
                     <img 
                       src="/dizains-mobile-first.webp" 
                       alt="Dizains un Mobile first" 
@@ -1099,7 +1155,7 @@ export default function Home() {
                       decoding="async"
                       width={600}
                       height={380}
-                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
+                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain mx-auto"
                     />
                   </div>
                   <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
@@ -1132,19 +1188,16 @@ export default function Home() {
                         : "Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus."}
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative group flex items-center justify-center mx-auto w-full">
-                    <div className="absolute -inset-8 sm:-inset-14 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[32px] sm:blur-[48px] transform-gpu" />
-                    <ResponsiveImage 
+                  <div className="lg:col-span-5 relative flex items-center justify-center mx-auto w-full">
+                    <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
+                    <img 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
-                      widths={[360, 400, 480, 625]}
-                      sizes="(max-width: 640px) 88vw, 600px"
                       loading="eager"
-                      fetchPriority="high"
-                      decoding="sync"
+                      decoding="async"
                       width={625}
                       height={420}
-                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] mx-auto"
+                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain mx-auto"
                     />
                   </div>
                 </div>
@@ -1193,9 +1246,9 @@ export default function Home() {
           <div className="absolute -bottom-52 -right-28 w-[800px] h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-2 sm:px-3">
-              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight text-center md:text-left">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-2 sm:px-3">
+              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                   {lang === 'EN' ? (
                     <>Services &amp;<br className="hidden sm:inline" /> Pricing</>
                   ) : lang === 'RU' ? (
@@ -1205,147 +1258,155 @@ export default function Home() {
                   )}
                 </h2>
               </div>
+
+              {/* Action buttons on top right: Mobile swipe indicator + Uzzināt vairāk button */}
+              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+                <SwipeHintAnimation lang={lang} />
+                <CtaButton
+                  text={lang === 'EN' ? "Learn More" : lang === 'RU' ? "Узнать больше" : "Uzzināt vairāk"}
+                  to={getLocalizedPath('services')}
+                />
+              </div>
             </div>
 
-            {/* Infinite Pricing Carousel Slider */}
-            <div 
-              className="overflow-hidden w-full relative touch-pan-y"
-              style={{ touchAction: "pan-y" }}
-              onTouchStart={handlePricingTouchStart}
-              onTouchEnd={handlePricingTouchEnd}
-            >
-              <div 
-                onTransitionEnd={handlePricingTransitionEnd}
-                className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
-                }}
+            {/* Infinite Pricing Carousel Slider Container */}
+            <div className="relative w-full md:px-14 lg:px-16">
+              {/* Desktop Left Button */}
+              <button 
+                onClick={() => scrollPricing('left')}
+                className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Iepriekšējais pakalpojums"
               >
-                {[...pricingPlans, ...pricingPlans, ...pricingPlans].map((plan, index) => {
-                  const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
-                  return (
-                    <div 
-                      key={`${plan.title}-${index}`} 
-                      className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col justify-between"
-                    >
-                      <Link
-                        to={getLocalizedPath('services')}
-                        className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full"
+                <ChevronLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+              </button>
+
+              {/* Desktop Right Button */}
+              <button 
+                onClick={() => scrollPricing('right')}
+                className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Nākamais pakalpojums"
+              >
+                <ChevronRight className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
+              {/* Slider Track */}
+              <div 
+                className="overflow-hidden w-full relative touch-pan-y select-none"
+                style={{ touchAction: "pan-y" }}
+                onTouchStart={handlePricingTouchStart}
+                onTouchMove={handlePricingTouchMove}
+                onTouchEnd={handlePricingTouchEnd}
+                onTouchCancel={handlePricingTouchEnd}
+              >
+                <div 
+                  onTransitionEnd={handlePricingTransitionEnd}
+                  className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  style={{ 
+                    transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
+                  }}
+                >
+                  {[...pricingPlans, ...pricingPlans, ...pricingPlans].map((plan, index) => {
+                    const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
+                    return (
+                      <div 
+                        key={`${plan.title}-${index}`} 
+                        className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col justify-between"
                       >
-                        <div>
-                          {/* Header Section */}
-                          <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
-                            <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
-                              <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
-                                isBestChoice 
-                                  ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
-                                  : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
-                              }`}>
-                                {isBestChoice ? "★ " : ""}{plan.badge}
-                              </span>
-                            </div>
-                            
-                            <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
-                              <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
-                              <p className="text-xs sm:text-sm font-normal text-zinc-300">
-                                {plan.subtitle}
-                              </p>
+                        <Link
+                          to={getLocalizedPath('services')}
+                          className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full"
+                        >
+                          <div>
+                            {/* Header Section */}
+                            <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
+                              <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
+                                <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
+                                  isBestChoice 
+                                    ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
+                                    : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
+                                }`}>
+                                  {isBestChoice ? "★ " : ""}{plan.badge}
+                                </span>
+                              </div>
+                              
+                              <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
+                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                                <p className="text-xs sm:text-sm font-normal text-zinc-300">
+                                  {plan.subtitle}
+                                </p>
+                              </div>
+
+                              {/* Highly visible high-contrast pricing tag container */}
+                              <div className="pt-4 sm:pt-6 pb-1.5 sm:pb-2 mt-8 sm:mt-1 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px] relative">
+                                {plan.originalPrice ? (
+                                  <div className="flex items-center gap-1 relative w-full">
+                                    {/* New price (450) placed floating ABOVE the old price, increased by 50%, raised up by 2mm, shifted left by 1.3cm (now -6mm) */}
+                                    <div className="absolute -top-8 sm:-top-6 left-8 sm:left-14 translate-x-[3mm] sm:-translate-x-[6mm] -translate-y-[1mm] sm:-translate-y-[2mm] flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
+                                      <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                      <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                                    </div>
+                                    
+                                    {/* Old price (890) in exact same size and visual style as other cards */}
+                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
+                                      {plan.originalPrice}
+                                    </span>
+                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                      / {plan.period}
+                                    </span>
+                                  </div>
+                                ) : plan.price ? (
+                                  <div className="flex items-center gap-1">
+                                    {plan.pricePrefix && (
+                                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                                        {plan.pricePrefix}
+                                      </span>
+                                    )}
+                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
+                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                      / {plan.period}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
+                                    {plan.period}
+                                  </span>
+                                )}
+                              </div>
                             </div>
 
-                            {/* Highly visible high-contrast pricing tag container */}
-                            <div className="pt-4 sm:pt-6 pb-1.5 sm:pb-2 mt-8 sm:mt-1 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px] relative">
-                              {plan.originalPrice ? (
-                                <div className="flex items-center gap-1 relative w-full">
-                                  {/* New price (450) placed floating ABOVE the old price, increased by 50%, raised up by 2mm, shifted left by 1.3cm (now -6mm) */}
-                                  <div className="absolute -top-8 sm:-top-6 left-8 sm:left-14 translate-x-[3mm] sm:-translate-x-[6mm] -translate-y-[1mm] sm:-translate-y-[2mm] flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                    <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                            {/* Features List */}
+                            <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                              {plan.features.map((feature, fIndex) => (
+                                <li key={fIndex} className="flex items-start gap-2.5">
+                                  <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
+                                    <Check className="h-4 w-4 stroke-[2.5]" />
                                   </div>
-                                  
-                                  {/* Old price (890) in exact same size and visual style as other cards */}
-                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
-                                    {plan.originalPrice}
-                                  </span>
-                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
-                                    / {plan.period}
-                                  </span>
-                                </div>
-                              ) : plan.price ? (
-                                <div className="flex items-center gap-1">
-                                  {plan.pricePrefix && (
-                                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                                      {plan.pricePrefix}
-                                    </span>
-                                  )}
-                                  <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                  <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
-                                  <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
-                                    / {plan.period}
-                                  </span>
-                                </div>
-                              ) : (
-                                <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
-                                  {plan.period}
-                                </span>
-                              )}
-                            </div>
+                                  <span>{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
 
-                          {/* Features List */}
-                          <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
-                            {plan.features.map((feature, fIndex) => (
-                              <li key={fIndex} className="flex items-start gap-2.5">
-                                <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
-                                  <Check className="h-4 w-4 stroke-[2.5]" />
-                                </div>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* CTA Action Button */}
-                        <div className="p-4 sm:p-6 sm:pt-0 pt-2">
-                          <span
-                            className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
-                              plan.highlight
-                                ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
-                                : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
-                            }`}
-                          >
-                            {plan.cta}
-                          </span>
-                        </div>
-                      </Link>
-                    </div>
-                  );
-                })}
+                          {/* CTA Action Button */}
+                          <div className="p-4 sm:p-6 sm:pt-0 pt-2">
+                            <span
+                              className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
+                                plan.highlight
+                                  ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
+                                  : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
+                              }`}
+                            >
+                              {plan.cta}
+                            </span>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-
-            {/* Controls (< > and Uzzināt vairāk button) below pricing cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 px-2 sm:px-3">
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => scrollPricing('left')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Iepriekšējais pakalpojums"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button 
-                  onClick={() => scrollPricing('right')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Nākamais pakalpojums"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-              <CtaButton
-                text={lang === 'EN' ? "Learn More" : lang === 'RU' ? "Узнать больше" : "Uzzināt vairāk"}
-                to={getLocalizedPath('services')}
-              />
             </div>
           </div>
         </section>
@@ -1361,72 +1422,79 @@ export default function Home() {
           <div className="absolute -bottom-52 -right-24 w-[850px] h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-2 px-3">
-              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-3">
+              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   {lang === 'EN' ? "Insight into Our Recent Projects" : lang === 'RU' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
                 </h2>
               </div>
+
+              {/* Action buttons on top right: Mobile swipe indicator + Skatīt visus button */}
+              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+                <SwipeHintAnimation lang={lang} />
+                <CtaButton
+                  text={lang === 'EN' ? "View All" : lang === 'RU' ? "Смотреть все" : "Skatīt visus"}
+                  to={getLocalizedPath('portfolio')}
+                />
+              </div>
             </div>
 
-            {/* Infinite Portfolio Carousel Slider */}
-            <div 
-              className="overflow-hidden w-full relative touch-pan-y"
-              style={{ touchAction: "pan-y" }}
-              onTouchStart={handlePortfolioTouchStart}
-              onTouchEnd={handlePortfolioTouchEnd}
-            >
-              <div 
-                onTransitionEnd={handlePortfolioTransitionEnd}
-                className={`flex portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
-                }}
+            {/* Infinite Portfolio Carousel Slider Container */}
+            <div className="relative w-full md:px-14 lg:px-16">
+              {/* Desktop Left Button */}
+              <button 
+                onClick={() => scrollPortfolio('left')}
+                className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Iepriekšējais projekts"
               >
-                {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
-                  <div 
-                    key={`${item.id}-${index}`} 
-                    className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col justify-between h-full"
-                  >
-                    <PortfolioLaptopCard
-                      title={item.title}
-                      brand={item.brand}
-                      displayLink={item.displayLink}
-                      image={item.image}
-                      link={item.link}
-                      isPlaceholder={item.isPlaceholder}
-                      description={item.description}
-                      tags={item.tags}
-                      hideStatusText={true}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+                <ChevronLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+              </button>
 
-            {/* Controls (< > and Skatīt visus button) below portfolio cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 px-3">
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => scrollPortfolio('left')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Iepriekšējais projekts"
+              {/* Desktop Right Button */}
+              <button 
+                onClick={() => scrollPortfolio('right')}
+                className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Nākamais projekts"
+              >
+                <ChevronRight className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
+              {/* Slider Track */}
+              <div 
+                className="overflow-hidden w-full relative touch-pan-y select-none"
+                style={{ touchAction: "pan-y" }}
+                onTouchStart={handlePortfolioTouchStart}
+                onTouchMove={handlePortfolioTouchMove}
+                onTouchEnd={handlePortfolioTouchEnd}
+                onTouchCancel={handlePortfolioTouchEnd}
+              >
+                <div 
+                  onTransitionEnd={handlePortfolioTransitionEnd}
+                  className={`flex items-stretch portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  style={{ 
+                    transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
+                  }}
                 >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button 
-                  onClick={() => scrollPortfolio('right')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Nākamais projekts"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
+                  {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
+                    <div 
+                      key={`${item.id}-${index}`} 
+                      className="w-full sm:w-1/2 lg:w-1/3 p-3 flex-shrink-0 flex flex-col h-full"
+                    >
+                      <PortfolioLaptopCard
+                        title={item.title}
+                        brand={item.brand}
+                        displayLink={item.displayLink}
+                        image={item.image}
+                        link={item.link}
+                        isPlaceholder={item.isPlaceholder}
+                        description={item.description}
+                        tags={item.tags}
+                        hideStatusText={true}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <CtaButton
-                text={lang === 'EN' ? "View All" : lang === 'RU' ? "Смотреть все" : "Skatīt visus"}
-                to={getLocalizedPath('portfolio')}
-              />
             </div>
 
           </div>
@@ -1823,95 +1891,102 @@ export default function Home() {
           <div className="absolute -bottom-52 -left-24 w-[800px] h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 pb-4 px-3">
-              <div className="space-y-2 text-center md:text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center md:text-left">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-4 px-3">
+              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                   {lang === 'EN' ? "Useful Articles & Insights" : lang === 'RU' ? "Полезная информация" : "Noderīga informācija"}
                 </h2>
               </div>
+
+              {/* Action buttons on top right: Mobile swipe indicator + Lasīt blogu button */}
+              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+                <SwipeHintAnimation lang={lang} />
+                <CtaButton
+                  text={lang === 'EN' ? "Read Blog" : lang === 'RU' ? "Читать блог" : "Lasīt blogu"}
+                  to={getLocalizedPath('blog')}
+                />
+              </div>
             </div>
 
-            {/* State-controlled Infinite Carousel Slider */}
-            <div 
-              className="overflow-hidden w-full relative touch-pan-y"
-              style={{ touchAction: "pan-y" }}
-              onTouchStart={handleBlogTouchStart}
-              onTouchEnd={handleBlogTouchEnd}
-            >
-              <div 
-                onTransitionEnd={handleTransitionEnd}
-                className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-500 ease-out"}`}
-                style={{ 
-                  transform: `translateX(calc(-${activeIndex} * (100% / var(--visible-count))))`,
-                }}
+            {/* State-controlled Infinite Carousel Slider Container */}
+            <div className="relative w-full md:px-14 lg:px-16">
+              {/* Desktop Left Button */}
+              <button 
+                onClick={() => scrollBlog('left')}
+                className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Iepriekšējais raksts"
               >
-                {[...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
-                  <div 
-                    key={`${post.id}-${index}`} 
-                    className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex"
-                  >
-                    <Link
-                      to={`${getLocalizedPath('blog')}?id=${post.id}`}
-                      className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
-                    >
-                      <div>
-                        <div className="relative aspect-[3/2] overflow-hidden bg-zinc-900">
-                          {/* Green glow under blog image */}
-                          <div className="absolute -inset-3.5 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[18px] opacity-85 group-hover:opacity-100 transition-opacity transform-gpu" />
-                          <ResponsiveImage
-                            src={post.image}
-                            alt={post.title}
-                            widths={[400, 800, 1200]}
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
-                            loading="lazy"
-                            decoding="async"
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
-                            }}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="p-5 space-y-3">
-                          <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
-                            {post.title}
-                          </h3>
-                          <p className="text-xs text-zinc-400 font-light line-clamp-2">
-                            {post.excerpt}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="px-5 pb-5 pt-1 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center gap-1">
-                        {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
+                <ChevronLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+              </button>
 
-            {/* Controls (< > and Lasīt visu blogu button) below Blog cards on the right */}
-            <div className="flex justify-end items-center gap-3 mt-6 px-3">
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => scrollBlog('left')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Iepriekšējais raksts"
+              {/* Desktop Right Button */}
+              <button 
+                onClick={() => scrollBlog('right')}
+                className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-30 p-2.5 lg:p-3 min-w-[44px] min-h-[44px] bg-[#18181b]/95 hover:bg-black border border-zinc-700/80 hover:border-[#BAFC50] text-zinc-300 hover:text-[#BAFC50] transition-all rounded-full cursor-pointer items-center justify-center shadow-xl backdrop-blur-md group"
+                aria-label="Nākamais raksts"
+              >
+                <ChevronRight className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
+              <div 
+                className="overflow-hidden w-full relative touch-pan-y select-none"
+                style={{ touchAction: "pan-y" }}
+                onTouchStart={handleBlogTouchStart}
+                onTouchMove={handleBlogTouchMove}
+                onTouchEnd={handleBlogTouchEnd}
+                onTouchCancel={handleBlogTouchEnd}
+              >
+                <div 
+                  onTransitionEnd={handleTransitionEnd}
+                  className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  style={{ 
+                    transform: `translateX(calc(-${activeIndex} * (100% / var(--visible-count))))`,
+                  }}
                 >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button 
-                  onClick={() => scrollBlog('right')}
-                  className="p-2.5 min-w-[44px] min-h-[44px] bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#BAFC50] transition-colors rounded-full cursor-pointer flex items-center justify-center shadow-sm"
-                  aria-label="Nākamais raksts"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
+                  {[...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
+                    <div 
+                      key={`${post.id}-${index}`} 
+                      className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex"
+                    >
+                      <Link
+                        to={`${getLocalizedPath('blog')}?id=${post.id}`}
+                        className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
+                      >
+                        <div>
+                          <div className="relative aspect-[3/2] overflow-hidden bg-zinc-900">
+                            {/* Green glow under blog image */}
+                            <div className="absolute -inset-3.5 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[18px] opacity-85 group-hover:opacity-100 transition-opacity transform-gpu" />
+                            <ResponsiveImage
+                              src={post.image}
+                              alt={post.title}
+                              widths={[400, 800, 1200]}
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                              loading="lazy"
+                              decoding="async"
+                              referrerPolicy="no-referrer"
+                              onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
+                              }}
+                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
+                            />
+                          </div>
+                          <div className="p-5 space-y-3">
+                            <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
+                              {post.title}
+                            </h3>
+                            <p className="text-xs text-zinc-400 font-light line-clamp-2">
+                              {post.excerpt}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="px-5 pb-5 pt-1 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center gap-1">
+                          {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <CtaButton
-                text={lang === 'EN' ? "Read Blog" : lang === 'RU' ? "Читать блог" : "Lasīt blogu"}
-                to={getLocalizedPath('blog')}
-              />
             </div>
           </div>
         </section>
