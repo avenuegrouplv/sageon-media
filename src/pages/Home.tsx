@@ -1130,7 +1130,7 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
                     <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <img 
+                    <ResponsiveImage 
                       src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
                       alt="Mājaslapas izstrāde un izaugsme" 
                       loading="eager"
@@ -1148,7 +1148,7 @@ export default function Home() {
                 >
                   <div className="lg:col-span-5 order-last lg:order-first relative flex items-center justify-center mx-auto w-full">
                     <div className="absolute -inset-6 sm:-inset-10 bg-[#BAFC50]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <img 
+                    <ResponsiveImage 
                       src="/dizains-mobile-first.webp" 
                       alt="Dizains un Mobile first" 
                       loading="eager"
@@ -1190,7 +1190,7 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-5 relative flex items-center justify-center mx-auto w-full">
                     <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <img 
+                    <ResponsiveImage 
                       src="/Web-izstrades-agentura.webp" 
                       alt="Web izstrādes aģentūra — struktūra un rezultāts" 
                       loading="eager"
@@ -1995,8 +1995,25 @@ export default function Home() {
       {/* 7. KONTAKTI & SAZIŅAS FORMA */}
       <LazyLoadSection>
         <ContactForm 
-          title={lang === 'EN' ? "Apply for website development or consultation" : lang === 'RU' ? "Заказать разработку сайта или консультацию" : "Pieteikt mājaslapas izstrādi vai konsultāciju"} 
-          subtitle={lang === 'EN' ? "Feel free to get in touch, call or write, and we will answer all your questions." : lang === 'RU' ? "Свяжитесь с нами, позвоните или напишите, и мы ответим на все ваши вопросы." : "Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem."}
+          title={
+            lang === 'EN' ? (
+              <>
+                Request Website Development, <br className="hidden sm:inline" />
+                Free Existing Website Audit, or Consultation
+              </>
+            ) : lang === 'RU' ? (
+              <>
+                Заказать разработку сайта, <br className="hidden sm:inline" />
+                бесплатный аудит существующего сайта или консультацию
+              </>
+            ) : (
+              <>
+                Pieteikt mājaslapas izstrādi, bezmaksas esošās <br />
+                mājaslapas auditu vai konsultāciju
+              </>
+            )
+          } 
+          subtitle=""
         />
       </LazyLoadSection>
 

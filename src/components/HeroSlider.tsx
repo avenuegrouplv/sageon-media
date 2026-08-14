@@ -59,11 +59,11 @@ export default function HeroSlider() {
   return (
     <section id="hero-section" className="relative w-full min-h-[80vh] lg:min-h-[88vh] bg-transparent text-white overflow-visible flex items-center pt-[92px] sm:pt-[104px] lg:pt-[112px] pb-6 sm:pb-10 md:pb-16">
       {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
-      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden transform-gpu" />
-      <div className="hidden sm:block absolute top-1/4 -left-16 w-[700px] h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[180px] pointer-events-none transform-gpu" />
-      <div className="hidden sm:block absolute bottom-1/4 -right-16 w-[700px] h-[400px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tl from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[180px] pointer-events-none transform-gpu" />
-      <div className="sm:hidden absolute top-8 -left-12 w-64 h-48 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[100px] pointer-events-none transform-gpu" />
-      <div className="sm:hidden absolute bottom-8 -right-12 w-64 h-48 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[100px] pointer-events-none transform-gpu" />
+      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden transform-gpu will-change-transform" />
+      <div className="hidden sm:block absolute top-1/4 -left-16 w-[700px] h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[160px] pointer-events-none transform-gpu will-change-transform" />
+      <div className="hidden sm:block absolute bottom-1/4 -right-16 w-[700px] h-[400px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tl from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[160px] pointer-events-none transform-gpu will-change-transform" />
+      <div className="sm:hidden absolute top-8 -left-12 w-64 h-48 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[90px] pointer-events-none transform-gpu will-change-transform" />
+      <div className="sm:hidden absolute bottom-8 -right-12 w-64 h-48 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[90px] pointer-events-none transform-gpu will-change-transform" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-0">
@@ -172,7 +172,7 @@ export default function HeroSlider() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 800px, 950px"
                 loading="eager"
                 fetchPriority="high"
-                decoding="sync"
+                decoding="async"
                 width={1536}
                 height={947}
                 className="w-full h-auto object-contain max-w-[540px] lg:max-w-[800px] xl:max-w-[950px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] translate-x-0 lg:translate-x-[50px] translate-y-0 lg:translate-y-[40px] scale-[0.88] sm:scale-100 lg:scale-[1.18] origin-center mx-auto py-1 sm:py-0"

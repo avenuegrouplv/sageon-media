@@ -126,8 +126,8 @@ export const enTranslations: Translations = {
     locationValue: "Riga, Latvia / Remote Worldwide",
   },
   contactForm: {
-    defaultTitle: "Request Website Development or Consultation",
-    defaultSubtitle: "Feel free to contact us by phone or email, and we will gladly answer all of your questions.",
+    defaultTitle: "Request Website Development, Free Existing Website Audit, or Consultation",
+    defaultSubtitle: "",
     nameLabel: "Your Name / Company",
     emailLabel: "Email Address",
     phoneLabel: "Phone Number",
@@ -307,7 +307,7 @@ export const enTranslations: Translations = {
     {
       title: "E-Commerce",
       subtitle: "Professional high-converting online store",
-      price: "1950",
+      price: "2450",
       period: "one-time payment",
       badge: "Complete Selling System",
       features: [
@@ -413,7 +413,7 @@ export const enTranslations: Translations = {
   faqItems: [
     {
       question: "How much does website development cost and what factors influence the price?",
-      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page costs €300, a Multi-page corporate website starts at €450, and an E-Commerce online store starts at €1950. All estimates are agreed upon prior to launch with zero hidden charges."
+      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page costs €300, a Multi-page corporate website starts at €450, and an E-Commerce online store starts at €2450. All estimates are agreed upon prior to launch with zero hidden charges."
     },
     {
       question: "How long does it take to complete a website?",

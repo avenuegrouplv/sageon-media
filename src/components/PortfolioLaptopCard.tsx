@@ -182,8 +182,8 @@ export default function PortfolioLaptopCard({
                   alt={title}
                   widths={[400, 800, 1200, 1600]}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-                  loading="lazy"
-                  fetchPriority="low"
+                  loading="eager"
+                  fetchPriority="auto"
                   decoding="async"
                   referrerPolicy="no-referrer"
                   className={`w-full h-full object-cover object-top ${
@@ -224,8 +224,8 @@ export default function PortfolioLaptopCard({
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
             width={897}
             height={535}
-            loading="lazy"
-            fetchPriority="low"
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             className="w-full h-full object-contain pointer-events-none select-none relative z-20 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover:drop-shadow-[0_16px_36px_rgba(186,252,80,0.18)] transition-all duration-75"
           />

@@ -217,7 +217,7 @@ export default function Footer() {
                 Facebook
               </h3>
               <p className="text-sm text-zinc-200 font-medium leading-relaxed">
-                {lang === "EN" ? "Currently under development" : lang === "RU" ? "В настоящее время в разработке" : "Šobrīd izstrādes procesā"}
+                {lang === "EN" ? "Currently unavailable" : lang === "RU" ? "В настоящее время недоступно" : "Šobrīd nav pieejama"}
               </p>
             </div>
             <button

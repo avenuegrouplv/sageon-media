@@ -126,8 +126,8 @@ export const lvTranslations: Translations = {
     locationValue: "Rīga, Latvija / Attālināti visā pasaulē",
   },
   contactForm: {
-    defaultTitle: "Pieteikt mājaslapas izstrādi vai konsultāciju",
-    defaultSubtitle: "Droši sazinieties ar mums, zvaniet vai rakstiet, un mēs atbildēsim uz visiem Jūsu jautājumiem.",
+    defaultTitle: "Pieteikt mājaslapas izstrādi, bezmaksas esošās\nmājaslapas auditu vai konsultāciju",
+    defaultSubtitle: "",
     nameLabel: "Jūsu vārds / Uzņēmums",
     emailLabel: "E-pasta adrese",
     phoneLabel: "Tālruņa numurs",
@@ -307,7 +307,7 @@ export const lvTranslations: Translations = {
     {
       title: "E-Komercija",
       subtitle: "Profesionāls un pelnošs interneta veikals",
-      price: "1950",
+      price: "2450",
       period: "vienreizējs maksājums",
       badge: "Pilna tirdzniecības sistēma",
       features: [
@@ -413,7 +413,7 @@ export const lvTranslations: Translations = {
   faqItems: [
     {
       question: "Cik maksā mājaslapas izstrāde un no kā atkarīga cena?",
-      answer: "Mājaslapas izstrādes cena ir atkarīga no projekta apjoma un nepieciešamās funkcionalitātes. Vienas lapas (Landing Page) risinājums izmaksā 300 €, pilnvērtīga biznesa mājaslapa (Multi-page) – sākot no 450 €, bet interneta veikals (E-komercija) – sākot no 1950 €. Precīza tāme tiek saskaņota pirms darbu uzsākšanas un paliek fiksēta bez slēptām izmaksām."
+      answer: "Mājaslapas izstrādes cena ir atkarīga no projekta apjoma un nepieciešamās funkcionalitātes. Vienas lapas (Landing Page) risinājums izmaksā 300 €, pilnvērtīga biznesa mājaslapa (Multi-page) – sākot no 450 €, bet interneta veikals (E-komercija) – sākot no 2450 €. Precīza tāme tiek saskaņota pirms darbu uzsākšanas un paliek fiksēta bez slēptām izmaksām."
     },
     {
       question: "Cik ilgu laiku aizņem mājaslapas izstrāde?",

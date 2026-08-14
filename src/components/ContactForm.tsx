@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 interface ContactFormProps {
-  title?: string;
-  subtitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
   hideHeader?: boolean;
 }
 
@@ -67,12 +67,14 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
         {/* Section Heading */}
         {!hideHeader && (
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center drop-shadow-lg">
+            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center drop-shadow-lg leading-tight md:leading-snug whitespace-pre-line">
               {title || t.contactForm.defaultTitle}
             </h2>
-            <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-light text-center drop-shadow">
-              {subtitle || t.contactForm.defaultSubtitle}
-            </p>
+            {(subtitle !== undefined ? subtitle : t.contactForm.defaultSubtitle) ? (
+              <p className="text-sm md:text-base text-zinc-300 max-w-2xl mx-auto font-light text-center drop-shadow">
+                {subtitle !== undefined ? subtitle : t.contactForm.defaultSubtitle}
+              </p>
+            ) : null}
           </div>
         )}
 

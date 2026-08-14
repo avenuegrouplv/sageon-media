@@ -7,46 +7,54 @@
   to = "/index.html"
   status = 200
 
-# HTML Files - No long-term caching for immediate updates
+# HTML Files - Never cache index.html so updates are immediately visible
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
-    X-Frame-Options = "DENY"
 
-# Security Headers for all routes
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer-when-downgrade"
-
-# Static Assets with Hash
+# Static Assets with Hash (JS/CSS)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Images, Favicons, Fonts, and SVG
+# Static Media Assets
 [[headers]]
-  for = "*.webp"
+  for = "/*.webp"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
 
 [[headers]]
-  for = "*.png"
+  for = "/*.avif"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
 
 [[headers]]
-  for = "*.ico"
+  for = "/*.png"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
 
 [[headers]]
-  for = "*.svg"
+  for = "/*.jpg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Access-Control-Allow-Origin = "*"
+
