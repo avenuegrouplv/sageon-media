@@ -1,25 +1,33 @@
-# Sageon Media
+# Sageon Media — Web Development & Digital Solutions Agency
 
-> Sageon Media is a web development agency specializing in fast, modern, SEO-optimized responsive websites, landing pages, multi-page business applications, e-commerce stores, and digital maintenance.
+> Sageon Media is a modern web development agency based in Riga, Latvia, providing premium website development, e-commerce solutions, UI/UX design, custom web applications, technical SEO, and GEO (Generative Engine Optimization) for clients locally and remotely worldwide.
 
-## Navigation & Core Pages
+## Core Capabilities & Services
 
-- [Sākums](https://sageonmedia.eu/): Agency overview, workflow stages, interactive pricing calculator, and core service offerings.
-- [Mūsu Darbi / Portfolio](https://sageonmedia.eu/portfolio): Real client work showcase (including Avenue Group, Travel with Martins, Avangart) and project inquiry forms.
-- [Pakalpojumi un Cenas](https://sageonmedia.eu/pakalpojumi): Pricing plans (Landing page from €490, Multi-page from €1290, E-commerce from €1890, Maintenance from €50/mo).
-- [Biežāk Uzdotie Jautājumi (BUJ)](https://sageonmedia.eu/buj): Development timelines (5-7 days for landing pages, 2-3 weeks for multi-page), payment terms, security, and mobile optimization FAQs.
-- [Blogs](https://sageonmedia.eu/blogs): Articles and expert insights on web development, SEO optimization, and Generative Engine Optimization (GEO).
-- [Kontakti](https://sageonmedia.eu/kontakti): Contact information, direct inquiry form, email, and phone contact details.
+- **Custom Website Development**: Fast, high-converting, mobile-first websites engineered with React, TypeScript, Vite, and Tailwind CSS.
+- **E-Commerce Solutions**: Scalable, high-performance online stores with multi-currency, Stripe/payment gateway integration, and modern shopping cart flows (starting from €2,450).
+- **Technical SEO & GEO (Generative Engine Optimization)**: Optimizing websites for Google Search, PageSpeed (95+ score), Core Web Vitals, and AI search engines (ChatGPT Search, Perplexity, Claude, Google AI Overviews).
+- **UI/UX Design & Branding**: Modern user interfaces, logo design, conversion optimization, responsive micro-interactions, and visual storytelling.
+- **Website Audit & Speed Optimization**: Free audits of existing websites, identifying performance bottlenecks, security flaws, and UX friction.
+- **Website Maintenance & Hosting**: Continuous security updates, SSL management, automated backups, and 24/7 uptime monitoring.
 
-## Allowed Crawling & AI Agent Guidance
+## Key Links & Routes
 
-- **Allowed Crawlers:** All search engine indexers and AI agents (Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot) are permitted to crawl and index all public URLs listed above.
-- **Sitemap Location:** https://sageonmedia.eu/sitemap.xml
-- **Robots Location:** https://sageonmedia.eu/robots.txt
+- [Home Page](https://sageonmedia.eu/) — Agency overview, interactive portfolio preview, value propositions, and direct inquiry.
+- [Services & Pricing](https://sageonmedia.eu/pakalpojumi) — Detailed service packages, pricing tiers (Landing page, Business multi-page, E-commerce), and included features.
+- [Projects & Portfolio](https://sageonmedia.eu/projekti) — Real client case studies, live previews, and design showcases.
+- [Frequently Asked Questions (FAQ)](https://sageonmedia.eu/buj) — Answers about pricing, turnaround times (usually 1-3 weeks), tech stack, and hosting.
+- [Blog & Articles](https://sageonmedia.eu/blogs) — Expert insights on web development, UI/UX principles, SEO fundamentals, and AI search optimization.
+- [Contact & Consultation](https://sageonmedia.eu/kontakti) — Request a project quote, free website audit, or consultation.
 
-## Contact & Operational Info
+## Contact Information
 
-- **Email:** sageon.media@gmail.com
-- **Phone:** +371 26739899
-- **Working Hours:** Monday - Friday 09:00 - 18:00 EET
-- **Service Region:** Latvia and European Union
+- **Website**: https://sageonmedia.eu
+- **Email**: info@sageonmedia.eu / sageon.media@gmail.com
+- **Phone / WhatsApp**: +371 26739899
+- **Location**: Riga, Latvia / Remote worldwide
+- **Languages**: Latvian (LV), English (EN), Russian (RU)
+
+## Optional & Extended Information
+
+- For full detailed project documentation, full FAQ database, and technical specifications, see [Full LLMs documentation](https://sageonmedia.eu/llms-full.txt).

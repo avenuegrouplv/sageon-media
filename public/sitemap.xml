@@ -1,62 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Sākumlapa / Home Page -->
   <url>
     <loc>https://sageonmedia.eu/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/" />
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Pakalpojumi & Cenas / Services & Pricing -->
+  <url>
+    <loc>https://sageonmedia.eu/pakalpojumi</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/pakalpojumi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/services" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/uslugi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/pakalpojumi" />
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projekti & Portfolio / Projects -->
   <url>
     <loc>https://sageonmedia.eu/projekti</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/projekti" />
     <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/projects" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/proekty" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/projekti" />
-    <lastmod>2026-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sageonmedia.eu/pakalpojumi</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/pakalpojumi" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/pakalpojumi" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/pakalpojumi" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/pakalpojumi" />
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Biežāk uzdotie jautājumi / FAQ -->
   <url>
     <loc>https://sageonmedia.eu/buj</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/buj" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/buj" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/buj" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/faq" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/voprosy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/buj" />
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Blogs & Raksti / Blog -->
   <url>
     <loc>https://sageonmedia.eu/blogs</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/blogs" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/blogs" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/blogs" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/blog" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/blogs" />
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Kontakti & Saziņa / Contacts -->
   <url>
     <loc>https://sageonmedia.eu/kontakti</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://sageonmedia.eu/kontakti" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/kontakti" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/kontakti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sageonmedia.eu/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sageonmedia.eu/ru/kontakty" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sageonmedia.eu/kontakti" />
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

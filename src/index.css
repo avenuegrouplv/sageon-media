@@ -76,12 +76,31 @@
 
 /* Base html & body resets with font synthesis prevention */
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
@@ -94,8 +113,9 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 #root {
@@ -104,6 +124,7 @@ body {
   width: 100%;
   max-width: 100%;
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 /* Elegant, proportional desktop scale reduction (0.9 scale on desktop) */

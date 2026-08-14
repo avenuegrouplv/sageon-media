@@ -769,81 +769,25 @@ export default function Home() {
             "url": "https://sageonmedia.eu",
             "name": "Sageon Media",
             "description": "Profesionāla mājaslapu izstrāde un digitālie risinājumi jūsu biznesam."
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "@id": "https://sageonmedia.eu#webpage",
-            "url": "https://sageonmedia.eu",
-            "name": "Sageon Media | Mājaslapu izstrāde un digitālie risinājumi",
-            "description": "Sageon Media piedāvā profesionālu mājaslapu izstrādi, adaptīvu dizainu, e-veikalus un SEO optimizāciju jūsu biznesa izaugsmei.",
-            "isPartOf": { "@id": "https://sageonmedia.eu#website" }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": homeFaqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
           }
         ]}
       />
-      {/* Seamless Continuous Full-Page Grid Pattern & Fluid Organic Green Ambiance */}
+
+      {/* Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />
 
-      {/* Fluid, Formless Organic Green Glows Flowing Seamlessly Across the Page (Desktop) */}
-      <div className="hidden sm:block absolute top-[1%] -left-[12%] w-[950px] h-[550px] -rotate-12 rounded-[55%_45%_65%_35%/35%_60%_40%_65%] bg-gradient-to-br from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[5%] left-[30%] w-[850px] h-[480px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.14] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[9%] -right-[10%] w-[1000px] h-[600px] rotate-12 rounded-[40%_60%_35%_65%/60%_40%_65%_35%] bg-gradient-to-bl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[13%] left-[-8%] w-[900px] h-[520px] -rotate-6 rounded-[60%_40%_55%_45%/45%_55%_40%_60%] bg-gradient-to-tr from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[17%] right-[10%] w-[880px] h-[500px] rotate-12 rounded-[50%_50%_45%_55%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[21%] left-[20%] w-[920px] h-[500px] -rotate-12 rounded-[55%_45%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[25%] right-[2%] w-[950px] h-[520px] -rotate-6 rounded-[65%_35%_50%_50%/45%_55%_45%_55%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[29%] -left-[10%] w-[960px] h-[540px] rotate-6 rounded-[40%_60%_60%_40%] bg-gradient-to-br from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[33%] left-[10%] w-[950px] h-[530px] rotate-12 rounded-[45%_55%_60%_40%/55%_45%_40%_60%] bg-gradient-to-br from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[37%] right-[15%] w-[920px] h-[510px] -rotate-6 rounded-[55%_45%_50%_50%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[41%] -right-[12%] w-[1050px] h-[650px] rotate-6 rounded-[50%_50%_65%_35%/35%_65%_35%_65%] bg-gradient-to-tl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[45%] -left-[8%] w-[950px] h-[540px] -rotate-12 rounded-[55%_45%_45%_55%/45%_55%_55%_45%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[49%] left-[30%] w-[900px] h-[500px] rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-tr from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[53%] right-[2%] w-[980px] h-[580px] rotate-6 rounded-[40%_60%_45%_55%/55%_45%_60%_40%] bg-gradient-to-bl from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[57%] -left-[10%] w-[960px] h-[540px] -rotate-6 rounded-[60%_40%_55%_45%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[61%] left-[15%] w-[920px] h-[520px] -rotate-6 rounded-[60%_40%_50%_50%/50%_50%_40%_60%] bg-gradient-to-tr from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[65%] right-[10%] w-[900px] h-[500px] rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[69%] right-[0%] w-[950px] h-[550px] rotate-12 rounded-[60%_40%_55%_45%/40%_60%_45%_55%] bg-gradient-to-bl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[73%] -left-[8%] w-[980px] h-[540px] -rotate-12 rounded-[45%_55%_65%_35%/55%_45%_35%_65%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[77%] left-[25%] w-[880px] h-[500px] rotate-6 rounded-[50%_50%_55%_45%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[81%] right-[8%] w-[1000px] h-[600px] -rotate-6 rounded-[55%_45%_60%_40%/45%_55%_40%_60%] bg-gradient-to-tl from-[#38b000]/[0.16] via-[#BAFC50]/[0.09] to-transparent blur-[200px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[85%] -left-[10%] w-[940px] h-[520px] rotate-12 rounded-[60%_40%_45%_55%] bg-gradient-to-tr from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[89%] left-[10%] w-[900px] h-[520px] rotate-6 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[93%] -right-[6%] w-[920px] h-[530px] -rotate-6 rounded-[45%_55%_60%_40%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[190px] pointer-events-none z-0 transform-gpu" />
-      <div className="hidden sm:block absolute top-[97%] left-[20%] w-[850px] h-[500px] rotate-6 rounded-[45%_55%_40%_60%/60%_40%_55%_45%] bg-gradient-to-tl from-[#BAFC50]/[0.14] via-[#38b000]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+      {/* Ambient Lighting - Smooth Desktop Glows */}
+      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[800px] h-[500px] -rotate-12 rounded-full bg-gradient-to-br from-[#BAFC50]/[0.12] via-[#38b000]/[0.06] to-transparent blur-[140px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[20%] -right-[10%] w-[850px] h-[550px] rotate-12 rounded-full bg-gradient-to-bl from-[#38b000]/[0.12] via-[#BAFC50]/[0.06] to-transparent blur-[140px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[40%] -left-[8%] w-[800px] h-[500px] rotate-6 rounded-full bg-gradient-to-tr from-[#BAFC50]/[0.10] via-[#38b000]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[60%] -right-[8%] w-[850px] h-[520px] -rotate-6 rounded-full bg-gradient-to-tl from-[#38b000]/[0.10] via-[#BAFC50]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[80%] -left-[10%] w-[800px] h-[500px] -rotate-12 rounded-full bg-gradient-to-br from-[#BAFC50]/[0.10] via-[#38b000]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
 
-      {/* Fluid, Formless Organic Glows for Mobile Scroll (Doubled for seamless soft distribution) */}
-      <div className="sm:hidden absolute top-[2%] -left-16 w-80 h-64 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.16] via-[#38b000]/[0.09] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[7%] -right-16 w-80 h-64 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[12%] -left-16 w-80 h-64 rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[17%] -right-16 w-80 h-64 -rotate-6 rounded-[60%_40%_50%_50%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[22%] -left-16 w-80 h-64 -rotate-6 rounded-[60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[27%] -right-16 w-80 h-64 rotate-12 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[32%] -left-16 w-80 h-64 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[37%] -right-16 w-80 h-64 -rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[42%] -left-16 w-80 h-64 -rotate-12 rounded-[45%_55%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[47%] -right-16 w-80 h-64 rotate-6 rounded-[55%_45%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[52%] -left-16 w-80 h-64 rotate-12 rounded-[55%_45%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[57%] -right-16 w-80 h-64 -rotate-6 rounded-[45%_55%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[62%] -left-16 w-80 h-64 -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[67%] -right-16 w-80 h-64 rotate-12 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[72%] -left-16 w-80 h-64 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[77%] -right-16 w-80 h-64 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-l from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[82%] -left-16 w-80 h-64 -rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[87%] -right-16 w-80 h-64 rotate-6 rounded-[45%_55%_50%_50%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[92%] -left-16 w-80 h-64 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
-      <div className="sm:hidden absolute top-[97%] -right-16 w-80 h-64 -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-l from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[110px] pointer-events-none z-0 transform-gpu" />
+      {/* Lightweight Mobile Ambient Glows (Zero lag, smooth 60fps) */}
+      <div className="sm:hidden absolute top-[1%] -left-12 w-64 h-52 rounded-full bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.05] to-transparent blur-[50px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[30%] -right-12 w-64 h-52 rounded-full bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[65%] -left-12 w-64 h-52 rounded-full bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
+      <div className="sm:hidden absolute top-[90%] -right-12 w-64 h-52 rounded-full bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
