@@ -45,7 +45,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    title: "Ceļošana var kļūt par Tavu dzīvesveidu",
+    title: "Lielāka brīvība | Ceļošana var kļūt par Tavu dzīvesveidu",
     brand: "Travel with Martins",
     displayLink: "https://travelwithmartins.com",
     image: "/Travel-with-martins-portfolio.webp",
@@ -89,7 +89,7 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 5,
-    title: "Enzīmi | Fermentēti dzērieni",
+    title: "Enzīmi | Dabiski fermentēti dzērieni Tavai veselībai",
     brand: "enzimi.lv",
     displayLink: "https://enzimi.lv",
     image: "/enzimi-portfolio.webp",
@@ -239,13 +239,13 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   };
 
   const handleHeroTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current !== null && touchCurrentX.current !== null) {
-      const endX = e?.changedTouches?.[0]?.clientX ?? touchCurrentX.current;
-      const endY = e?.changedTouches?.[0]?.clientY ?? touchCurrentY.current ?? 0;
+    if (touchStartX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? touchCurrentX.current ?? touchStartX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? touchCurrentY.current ?? (touchStartY.current ?? 0);
       const diffX = touchStartX.current - endX;
-      const diffY = touchStartY.current !== null ? touchStartY.current - endY : 0;
+      const diffY = (touchStartY.current ?? endY) - endY;
       
-      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
         if (diffX > 0) {
           nextSlide();
         } else {
@@ -477,13 +477,13 @@ export default function Home() {
   };
 
   const handleBlogTouchEnd = (e: React.TouchEvent) => {
-    if (blogTouchStartX.current !== null && blogTouchCurrentX.current !== null) {
-      const endX = e?.changedTouches?.[0]?.clientX ?? blogTouchCurrentX.current;
-      const endY = e?.changedTouches?.[0]?.clientY ?? blogTouchCurrentY.current ?? 0;
+    if (blogTouchStartX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? blogTouchCurrentX.current ?? blogTouchStartX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? blogTouchCurrentY.current ?? (blogTouchStartY.current ?? 0);
       const diffX = blogTouchStartX.current - endX;
-      const diffY = blogTouchStartY.current !== null ? blogTouchStartY.current - endY : 0;
+      const diffY = (blogTouchStartY.current ?? endY) - endY;
 
-      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
         if (diffX > 0) {
           scrollBlog('right');
         } else {
@@ -531,13 +531,13 @@ export default function Home() {
   };
 
   const handlePortfolioTouchEnd = (e: React.TouchEvent) => {
-    if (portfolioTouchStartX.current !== null && portfolioTouchCurrentX.current !== null) {
-      const endX = e?.changedTouches?.[0]?.clientX ?? portfolioTouchCurrentX.current;
-      const endY = e?.changedTouches?.[0]?.clientY ?? portfolioTouchCurrentY.current ?? 0;
+    if (portfolioTouchStartX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? portfolioTouchCurrentX.current ?? portfolioTouchStartX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? portfolioTouchCurrentY.current ?? (portfolioTouchStartY.current ?? 0);
       const diffX = portfolioTouchStartX.current - endX;
-      const diffY = portfolioTouchStartY.current !== null ? portfolioTouchStartY.current - endY : 0;
+      const diffY = (portfolioTouchStartY.current ?? endY) - endY;
 
-      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
         if (diffX > 0) {
           scrollPortfolio('right');
         } else {
@@ -643,13 +643,13 @@ export default function Home() {
   };
 
   const handlePricingTouchEnd = (e: React.TouchEvent) => {
-    if (pricingTouchStartX.current !== null && pricingTouchCurrentX.current !== null) {
-      const endX = e?.changedTouches?.[0]?.clientX ?? pricingTouchCurrentX.current;
-      const endY = e?.changedTouches?.[0]?.clientY ?? pricingTouchCurrentY.current ?? 0;
+    if (pricingTouchStartX.current !== null) {
+      const endX = e?.changedTouches?.[0]?.clientX ?? pricingTouchCurrentX.current ?? pricingTouchStartX.current;
+      const endY = e?.changedTouches?.[0]?.clientY ?? pricingTouchCurrentY.current ?? (pricingTouchStartY.current ?? 0);
       const diffX = pricingTouchStartX.current - endX;
-      const diffY = pricingTouchStartY.current !== null ? pricingTouchStartY.current - endY : 0;
+      const diffY = (pricingTouchStartY.current ?? endY) - endY;
 
-      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
         if (diffX > 0) {
           scrollPricing('right');
         } else {
@@ -1893,11 +1893,6 @@ export default function Home() {
                               />
                             </div>
                           )}
-                          <div className="flex items-center justify-end">
-                            <span className="text-[10px] font-mono text-zinc-400">
-                              {post.readTime || "3 min"}
-                            </span>
-                          </div>
                           <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
                             {post.title}
                           </h3>

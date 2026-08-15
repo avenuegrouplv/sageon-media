@@ -164,7 +164,7 @@ export const ruTranslations: Translations = {
   portfolioItems: [
     {
       id: 1,
-      title: "Путешествия могут стать твоим образом жизни",
+      title: "Больше свободы | Путешествия могут стать твоим образом жизни",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
       image: "/Travel-with-martins-portfolio.webp",
@@ -208,7 +208,7 @@ export const ruTranslations: Translations = {
     },
     {
       id: 5,
-      title: "Enzīmi | Ферментированные напитки",
+      title: "Enzīmi | Натуральные ферментированные напитки для твоего здоровья",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       image: "/enzimi-portfolio.webp",

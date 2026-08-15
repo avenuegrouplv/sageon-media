@@ -105,10 +105,25 @@ export default function Kontakti() {
                 {lang === "LV" ? "Uzņēmuma rekvizīti" : lang === "EN" ? "Company Information" : "Реквизиты компании"}
               </h3>
               <div className="space-y-1 text-zinc-200 leading-relaxed font-normal">
-                <div>SIA &ldquo;Avenue Group&rdquo;</div>
-                <div>{lang === "LV" ? "Reģ.Nr. 40203647938" : lang === "EN" ? "Reg. No. 40203647938" : "Рег. № 40203647938"}</div>
-                <div>{lang === "LV" ? "Juridiskā adrese:" : lang === "EN" ? "Legal address:" : "Юридический адрес:"}</div>
-                <div>Rīga, Brīvības gatve 386/2-5A, LV-1024</div>
+                {lang === "LV" ? (
+                  <>
+                    <div>SIA “Avenue Group”, Reģ.Nr. 40203647938</div>
+                    <div>Juridiskā adrese: Brīvības gatve 386/2-5A</div>
+                    <div>Rīga, LV-1024</div>
+                  </>
+                ) : lang === "EN" ? (
+                  <>
+                    <div>SIA “Avenue Group”, Reg. No. 40203647938</div>
+                    <div>Legal address: Brīvības gatve 386/2-5A</div>
+                    <div>Riga, LV-1024</div>
+                  </>
+                ) : (
+                  <>
+                    <div>SIA “Avenue Group”, Рег. № 40203647938</div>
+                    <div>Юридический адрес: Brīvības gatve 386/2-5A</div>
+                    <div>Рига, LV-1024</div>
+                  </>
+                )}
               </div>
             </div>
 
@@ -135,10 +150,10 @@ export default function Kontakti() {
               </h3>
               <p className="leading-relaxed">
                 {lang === "LV"
-                  ? <>Mēs strādājam attālināti ar klientiem visā <strong className="text-white font-semibold">Latvijā un Eiropā</strong>.</>
+                  ? <>Mēs strādājam attālināti ar klientiem<br />visā <strong className="text-white font-semibold">Latvijā un Eiropā</strong>.</>
                   : lang === "EN"
-                    ? <>We work remotely with clients throughout <strong className="text-white font-semibold">Latvia and Europe</strong>.</>
-                    : <>Мы работаем удаленно с клиентами по всей <strong className="text-white font-semibold">Латвии и Европе</strong>.</>}
+                    ? <>We work remotely with clients<br />throughout <strong className="text-white font-semibold">Latvia and Europe</strong>.</>
+                    : <>Мы работаем удаленно с клиентами<br />по всей <strong className="text-white font-semibold">Латвии и Европе</strong>.</>}
               </p>
             </div>
           </div>

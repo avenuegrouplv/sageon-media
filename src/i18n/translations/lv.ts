@@ -164,7 +164,7 @@ export const lvTranslations: Translations = {
   portfolioItems: [
     {
       id: 1,
-      title: "Ceļošana var kļūt par Tavu dzīvesveidu",
+      title: "Lielāka brīvība | Ceļošana var kļūt par Tavu dzīvesveidu",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
       image: "/Travel-with-martins-portfolio.webp",
@@ -208,7 +208,7 @@ export const lvTranslations: Translations = {
     },
     {
       id: 5,
-      title: "Enzīmi | Fermentēti dzērieni",
+      title: "Enzīmi | Dabiski fermentēti dzērieni Tavai veselībai",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       image: "/enzimi-portfolio.webp",

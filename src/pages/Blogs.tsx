@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { BookOpen, ArrowRight, X, Clock, FileText, Sparkles } from "lucide-react";
+import { BookOpen, ArrowRight, X, FileText, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
 import SEOHead from "../components/SEOHead";
@@ -192,13 +192,6 @@ export default function Blogs() {
                     />
                   </div>
                 )}
-                
-                <div className="flex items-center justify-end">
-                  <div className="flex items-center gap-1 text-[11px] font-mono text-zinc-400">
-                    <Clock className="w-3 h-3 text-[#BAFC50]" />
-                    <span>{post.readTime || "3 min"}</span>
-                  </div>
-                </div>
 
                 <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
                   {post.title}

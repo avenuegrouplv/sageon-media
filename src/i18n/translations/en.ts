@@ -164,7 +164,7 @@ export const enTranslations: Translations = {
   portfolioItems: [
     {
       id: 1,
-      title: "Traveling Can Become Your Lifestyle",
+      title: "Greater Freedom | Traveling Can Become Your Lifestyle",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
       image: "/Travel-with-martins-portfolio.webp",
@@ -208,7 +208,7 @@ export const enTranslations: Translations = {
     },
     {
       id: 5,
-      title: "Enzīmi | Fermented Beverages",
+      title: "Enzīmi | Naturally Fermented Drinks for Your Health",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       image: "/enzimi-portfolio.webp",

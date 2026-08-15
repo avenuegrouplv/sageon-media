@@ -36,6 +36,7 @@ export default function PortfolioLaptopCard({
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const cleanDomain = displayLink.replace("https://", "").replace("http://", "");
 
@@ -65,6 +66,76 @@ export default function PortfolioLaptopCard({
     (image ? image.toLowerCase().includes("velobiedriba") : false);
 
   const isPlaceholderCard = isPlaceholder || cleanDomain.includes("tavaprojekts") || cleanDomain.includes("biznesam") || cleanDomain.includes("jaunslapa");
+
+  const getImageStyle = (): React.CSSProperties => {
+    const target = `${image || ""} ${displayLink || ""} ${link || ""} ${title || ""}`.toLowerCase();
+
+    // travel with martins pavirzi 0.25 cm pa kreisi un noversts downscale melnas joslas no labas un apaksas (-0.75cm top)
+    if (target.includes("travel") || target.includes("martins")) {
+      return {
+        objectPosition: "-0.75cm top",
+      };
+    }
+
+    // avenuegroup veic zoom in par 3%, novers melno vertikalo joslu attela labaja mala
+    if (target.includes("avenue")) {
+      return {
+        objectPosition: "-0.25cm top",
+        transform: "scale(1.03)",
+        transformOrigin: "left top",
+      };
+    }
+
+    // avangart nemainits (-0.6cm top)
+    if (target.includes("avangart")) {
+      return {
+        objectPosition: "-0.6cm top",
+      };
+    }
+
+    // latvijas restarts 2% zoom out no 1.05 -> 1.03 (saglabajot nemainigu kreiso malu un -1.5cm top)
+    if (target.includes("restarts")) {
+      return {
+        objectPosition: "-1.5cm top",
+        transform: "scale(1.03)",
+        transformOrigin: "left top",
+      };
+    }
+
+    // enzimi 5% zoom in, lai noverstu melno vertikalo joslu labaja mala (-0.3cm top, scale 1.05, transformOrigin: left top)
+    if (target.includes("enzim")) {
+      return {
+        objectPosition: "-0.3cm top",
+        transform: "scale(1.05)",
+        transformOrigin: "left top",
+      };
+    }
+
+    // demontaza24 pavirzi par 0.4cm pa kreisi (-0.4cm - 0.4cm = -0.8cm top)
+    if (target.includes("demontaza") || target.includes("demontāž")) {
+      return {
+        objectPosition: "-0.8cm top",
+      };
+    }
+
+    // velobiedriba pavirzi par 0.5cm pa labi un noverstas melnas joslas (-1cm + 0.5cm = -0.5cm top)
+    if (target.includes("velo")) {
+      return {
+        objectPosition: "-0.5cm top",
+      };
+    }
+
+    // beautystudio pavirzi par 0.5 cm pa kreisi (0cm - 0.5cm = -0.5cm top)
+    if (target.includes("beauty")) {
+      return {
+        objectPosition: "-0.5cm top",
+      };
+    }
+
+    return {
+      objectPosition: "-1cm top",
+    };
+  };
 
   const statusText = isPlaceholderCard
     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
@@ -176,12 +247,14 @@ export default function PortfolioLaptopCard({
           {/* Screen Content inside CSS window */}
           <div className="relative z-10 w-full h-full flex-1 overflow-hidden bg-gradient-to-br from-zinc-900/90 via-[#0a0a0c] to-black">
             {!isPlaceholder ? (
-              image ? (
-                <div className="w-full h-full relative overflow-hidden bg-zinc-950 flex items-start justify-center">
+              image && !imgError ? (
+                <div className="w-full h-full relative overflow-hidden bg-zinc-950 flex items-start justify-start">
                   <img
                     src={image}
                     alt={title}
-                    className="w-full h-full object-cover object-top"
+                    onError={() => setImgError(true)}
+                    className="w-full h-full object-cover select-none"
+                    style={getImageStyle()}
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
@@ -243,7 +316,7 @@ export default function PortfolioLaptopCard({
                 onClick={(e) => openTarget(e)}
                 className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30 shrink-0"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#BAFC50] group-hover/btn:bg-black transition-colors duration-150 animate-pulse shrink-0" />
+                <Globe className="w-3.5 h-3.5 text-[#BAFC50] group-hover/btn:text-black transition-colors duration-150 shrink-0" />
                 <span className="tracking-wide select-none truncate max-w-none">
                   {isPlaceholderCard 
                     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
@@ -272,7 +345,7 @@ export default function PortfolioLaptopCard({
 
             {/* Title - Fixed uniform height for all cards */}
             <div className="h-11 sm:h-12 flex items-start overflow-hidden shrink-0 mb-1 sm:mb-1.5">
-              <h3 className="text-base sm:text-lg font-normal text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
+              <h3 className="font-sans text-base sm:text-lg font-medium text-white group-hover:text-[#BAFC50] transition-colors duration-75 leading-snug select-text cursor-text line-clamp-2 tracking-normal">
                 {title}
               </h3>
             </div>
