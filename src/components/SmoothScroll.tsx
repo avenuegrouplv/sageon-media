@@ -18,6 +18,16 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
+    // On mobile and touch devices, let native 120Hz/60Hz touch scrolling handle everything without touch hijacking
+    const isMobileOrTouch = 
+      window.innerWidth < 1024 || 
+      "ontouchstart" in window || 
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+
+    if (isMobileOrTouch) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -25,7 +35,6 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.0,
       autoRaf: false,
     });
 
