@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { BookOpen, ArrowRight, X } from "lucide-react";
+import { BookOpen, ArrowRight, X, Clock, FileText, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import PageNavButtons from "../components/PageNavButtons";
 import SEOHead from "../components/SEOHead";
-import ResponsiveImage from "../components/ResponsiveImage";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Blogs() {
@@ -50,7 +49,6 @@ export default function Blogs() {
       <SEOHead
         title={activeArticle ? `${activeArticle.title} | Sageon Media` : t.seo.blog.title}
         description={activeArticle ? activeArticle.excerpt : t.seo.blog.description}
-        ogImage={activeArticle ? activeArticle.image : "/Logo-new.webp"}
         ogType={activeArticle ? "article" : "website"}
         schema={
           activeArticle ? [
@@ -60,7 +58,6 @@ export default function Blogs() {
               "@id": `https://sageonmedia.eu/blogs#${activeArticle.id}`,
               "headline": activeArticle.title,
               "description": activeArticle.excerpt,
-              "image": activeArticle.image,
               "datePublished": "2026-07-17",
               "author": {
                 "@type": "Organization",
@@ -69,11 +66,7 @@ export default function Blogs() {
               },
               "publisher": {
                 "@type": "Organization",
-                "name": "Sageon Media",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://sageonmedia.eu/Logo-new.webp"
-                }
+                "name": "Sageon Media"
               },
               "mainEntityOfPage": `https://sageonmedia.eu/blogs`
             },
@@ -186,46 +179,42 @@ export default function Blogs() {
             <article
               key={post.id}
               onClick={() => setActiveArticle(post)}
-              className="bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl"
+              className="bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 p-6 shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl transition-colors duration-200 overflow-hidden"
             >
-              <div>
-                {/* Image Area - 3:2 Aspect Ratio matching 1536x1024 images */}
-                <div className="relative aspect-[3/2] w-full overflow-hidden bg-zinc-900">
-                  {/* Dark Image Bottom Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 z-10" />
-                  
-                  <ResponsiveImage
-                    src={post.image}
-                    alt={post.title}
-                    widths={[400, 800, 1200]}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
-                    }}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+              <div className="space-y-3.5">
+                {post.image && (
+                  <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover select-none"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                
+                <div className="flex items-center justify-end">
+                  <div className="flex items-center gap-1 text-[11px] font-mono text-zinc-400">
+                    <Clock className="w-3 h-3 text-[#BAFC50]" />
+                    <span>{post.readTime || "3 min"}</span>
+                  </div>
                 </div>
 
-                {/* Content Area */}
-                <div className="p-5 space-y-3.5">
-                  <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </div>
+                <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
+                  {post.title}
+                </h3>
+                
+                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3">
+                  {post.excerpt}
+                </p>
               </div>
 
               {/* Read Action Row */}
-              <div className="px-5 pb-5 pt-3 border-t border-zinc-800 mt-2 flex items-center justify-between">
+              <div className="pt-4 border-t border-zinc-800/80 mt-4 flex items-center justify-between">
                 <span className="text-[10px] font-sans font-bold text-[#BAFC50] uppercase tracking-widest flex items-center gap-1">
                   {lang === "LV" ? "Lasīt rakstu" : lang === "EN" ? "Read article" : "Читать статью"} <ArrowRight className="h-3 w-3" />
                 </span>
+                <span className="text-[10px] font-mono text-zinc-500">{post.date}</span>
               </div>
             </article>
           ))}
@@ -244,31 +233,30 @@ export default function Blogs() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
                 data-lenis-prevent
-                className="bg-zinc-900 border border-zinc-800 max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl relative shadow-2xl flex flex-col justify-between"
+                className="bg-zinc-900 border border-zinc-800 max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-2xl relative shadow-2xl flex flex-col justify-between overflow-hidden"
               >
-                {/* Header with image */}
+                {/* Modal Header */}
                 <div>
-                  <div className="relative aspect-video w-full overflow-hidden bg-zinc-950">
-                    <ResponsiveImage
-                      src={activeArticle.image}
-                      alt={activeArticle.title}
-                      widths={[400, 800, 1200]}
-                      sizes="(max-width: 768px) 100vw, 800px"
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent" />
-                    
+                  {activeArticle.image && (
+                    <div className="w-full h-48 sm:h-56 overflow-hidden bg-zinc-900 border-b border-zinc-800">
+                      <img
+                        src={activeArticle.image}
+                        alt={activeArticle.title}
+                        className="w-full h-full object-cover select-none"
+                      />
+                    </div>
+                  )}
+
+                  <div className="relative p-6 sm:p-8 bg-zinc-900 border-b border-zinc-800">
                     <button
                       onClick={() => setActiveArticle(null)}
-                      className="absolute top-4 right-4 bg-black/80 hover:bg-zinc-800 text-white p-2 border border-white/10 rounded-full transition-colors cursor-pointer"
+                      className="absolute top-4 right-4 bg-zinc-800 hover:bg-zinc-700 text-white p-2 border border-white/10 rounded-full transition-colors cursor-pointer"
                       aria-label={lang === "LV" ? "Aizvērt" : lang === "EN" ? "Close" : "Закрыть"}
                     >
                       <X className="h-4 w-4" />
                     </button>
 
-                    <div className="absolute bottom-4 left-6 right-6">
+                    <div className="space-y-2 pr-8">
                       <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                         {activeArticle.title}
                       </h2>

@@ -5,7 +5,6 @@ import { Menu, X, ChevronDown, Globe, Phone, Mail, ArrowRight } from "lucide-rea
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Language, PageKey } from "../i18n/types";
-import ResponsiveImage from "./ResponsiveImage";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +64,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-zinc-800/60 shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
+        className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
       >
         <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
           
@@ -73,23 +72,13 @@ export default function Header() {
           <Link 
             to={getLocalizedPath("home")} 
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 group shrink-0"
+            className="flex items-center gap-3 shrink-0 py-0.5"
           >
-            <div className="relative flex items-center justify-center w-[180px] h-[58px] sm:w-[200px] sm:h-[70px] md:w-[230px] md:h-[84px] bg-transparent">
-              {/* Colored Original Logo */}
-              <ResponsiveImage 
-                src="/Logo-new.webp" 
-                alt="Sageon Media Logo" 
-                widths={[240, 480, 800]}
-                sizes="230px"
-                loading="eager"
-                fetchPriority="high"
-                decoding="sync"
-                width={230}
-                height={84}
-                className="w-full h-full object-contain rounded-none" 
-              />
-            </div>
+            <img 
+              src="/logo.webp" 
+              alt="Sageon Media" 
+              className="h-[37px] sm:h-[45px] md:h-[52px] w-auto object-contain"
+            />
           </Link>
 
           {/* CENTERED DESKTOP NAVIGATION */}
@@ -173,87 +162,92 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MOBILE FULL-SCREEN / SLIDE OVERLAY (ALWAYS ABOVE EVERYTHING) */}
+      {/* MOBILE MENU DROPDOWN (COMPACT & CLEAN, NOT FULLSCREEN BLOATED) */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden fixed top-[64px] sm:top-[74px] left-0 w-full h-[calc(100dvh-64px)] sm:h-[calc(100dvh-74px)] bg-[#0a0a0a]/98 backdrop-blur-2xl z-[9999] flex flex-col justify-between p-5 sm:p-6 overflow-y-auto border-t border-zinc-800"
-          >
-            <div className="space-y-4">
-              {/* Navigation Links */}
-              <ul className="space-y-1.5 pt-1">
-                {navLinks.map((link) => {
-                  const isActive = location.pathname === link.path;
-                  return (
-                    <li key={link.key}>
-                      <Link
-                        to={link.path}
-                        onClick={() => setIsOpen(false)}
-                        className={`flex items-center justify-between font-business text-base font-bold uppercase tracking-wider py-3 px-4 rounded-xl transition-all min-h-[48px] touch-manipulation ${
-                          isActive
-                            ? "text-black bg-[#BAFC50] shadow-[0_0_20px_rgba(186,252,80,0.3)]"
-                            : "text-zinc-200 bg-zinc-900/60 hover:bg-zinc-800 hover:text-white border border-zinc-800/80"
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
+              className="lg:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-black/60 backdrop-blur-sm z-[9998]"
+            />
+
+            {/* Compact Menu Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="lg:hidden fixed top-[56px] sm:top-[68px] left-0 right-0 w-full bg-[#111114]/98 backdrop-blur-2xl z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
+            >
+              <div className="w-full max-w-md mx-auto space-y-3">
+                {/* Navigation Links - Clean typographic list without card styling */}
+                <ul className="divide-y divide-zinc-800/60">
+                  {navLinks.map((link) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <li key={link.key}>
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center justify-between font-business text-[13.5px] sm:text-sm font-normal uppercase tracking-wider py-2.5 px-1.5 transition-colors touch-manipulation ${
+                            isActive
+                              ? "text-[#BAFC50] font-medium"
+                              : "text-zinc-300 hover:text-white"
+                          }`}
+                        >
+                          <span>{link.name}</span>
+                          {isActive ? (
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#BAFC50]" />
+                          ) : (
+                            <ArrowRight className="h-3.5 w-3.5 text-zinc-600" />
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* Bottom Bar: Language Switcher (small without glow) + Contact */}
+                <div className="pt-2.5 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+                  {/* Small Language Buttons without glow */}
+                  <div className="flex items-center gap-1.5">
+                    {([
+                      { code: "LV" as Language, short: "LV" },
+                      { code: "EN" as Language, short: "EN" },
+                      { code: "RU" as Language, short: "RU" },
+                    ]).map((item) => (
+                      <button
+                        key={item.code}
+                        type="button"
+                        onClick={() => handleSelectLanguage(item.code)}
+                        className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold tracking-wider transition-colors cursor-pointer touch-manipulation ${
+                          lang === item.code
+                            ? "bg-zinc-800 text-[#BAFC50] border border-[#BAFC50]/50"
+                            : "bg-zinc-900/80 text-zinc-400 border border-zinc-800 hover:text-white"
                         }`}
                       >
-                        <span>{link.name}</span>
-                        <ArrowRight className={`h-4 w-4 ${isActive ? "text-black" : "text-zinc-500"}`} />
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+                        {item.short}
+                      </button>
+                    ))}
+                  </div>
 
-              {/* Language Switcher */}
-              <div className="pt-3 border-t border-zinc-800/80">
-                <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2.5 font-semibold">
-                  {lang === "LV" ? "Valoda / Language:" : lang === "EN" ? "Language:" : "Язык:"}
-                </p>
-                <div className="grid grid-cols-3 gap-2.5">
-                  {([
-                    { code: "LV" as Language, name: "Latviešu", short: "LV" },
-                    { code: "EN" as Language, name: "English", short: "EN" },
-                    { code: "RU" as Language, name: "Русский", short: "RU" },
-                  ]).map((item) => (
-                    <button
-                      key={item.code}
-                      type="button"
-                      onClick={() => handleSelectLanguage(item.code)}
-                      className={`py-2.5 px-3 border font-business text-xs font-bold tracking-widest transition-all rounded-xl cursor-pointer touch-manipulation flex flex-col items-center justify-center gap-0.5 min-h-[46px] ${
-                        lang === item.code
-                          ? "border-[#BAFC50] text-[#BAFC50] bg-[#BAFC50]/15 shadow-[0_0_12px_rgba(186,252,80,0.2)]"
-                          : "border-zinc-800 text-zinc-300 bg-zinc-900/80 hover:bg-zinc-800 hover:text-white"
-                      }`}
-                    >
-                      <span className="text-sm font-black">{item.short}</span>
-                      <span className="text-[10px] text-zinc-400 font-normal">{item.name}</span>
-                    </button>
-                  ))}
+                  {/* Compact Direct Contact */}
+                  <a
+                    href="tel:+37126739899"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#BAFC50] hover:text-[#BAFC50]/80 transition-colors"
+                  >
+                    <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
+                    <span>+371 26739899</span>
+                  </a>
                 </div>
               </div>
-            </div>
-
-            {/* Quick Contact Buttons on Mobile */}
-            <div className="pt-4 pb-6 border-t border-zinc-800/80 space-y-2 mt-4">
-              <a
-                href="tel:+37126739899"
-                className="flex items-center justify-center gap-2.5 w-full py-3 px-4 bg-zinc-900 border border-[#BAFC50]/40 text-[#BAFC50] text-sm font-bold uppercase tracking-wider rounded-xl transition-all active:scale-[0.98] min-h-[46px]"
-              >
-                <Phone className="h-4 w-4 text-[#BAFC50]" />
-                <span>+371 26739899</span>
-              </a>
-              <a
-                href="mailto:info@sageonmedia.eu"
-                className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-zinc-950 border border-zinc-800 text-zinc-300 text-xs font-normal rounded-xl transition-all"
-              >
-                <Mail className="h-3.5 w-3.5 text-zinc-400" />
-                <span>info@sageonmedia.eu</span>
-              </a>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

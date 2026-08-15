@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { MapPin, MessageSquare, Clock } from "lucide-react";
+import { MapPin, MessageSquare, Clock, Building2 } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 import PageNavButtons from "../components/PageNavButtons";
 import SEOHead from "../components/SEOHead";
@@ -33,7 +33,6 @@ export default function Kontakti() {
             "@id": "https://sageonmedia.eu#organization",
             "name": "Sageon Media",
             "url": "https://sageonmedia.eu",
-            "logo": "https://sageonmedia.eu/Logo-new.webp",
             "email": "info@sageonmedia.eu",
             "telephone": "+371 26739899",
             "priceRange": "$$",
@@ -96,33 +95,52 @@ export default function Kontakti() {
       <ContactForm hideHeader={true} />
 
       {/* Extra business information card for contact page */}
-      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 dark:text-slate-400 text-xs md:text-sm font-light border border-slate-200/60 dark:border-sageon-accent/60 bg-white dark:bg-sageon-deep/40 p-6 md:p-8 rounded-2xl shadow-md">
-          <div className="space-y-3">
-            <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
-              <Clock className="h-4 w-4 text-blue-500" />
-              {lang === "LV" ? "Darba laiks" : lang === "EN" ? "Working Hours" : "Рабочее время"}
-            </h3>
-            <p className="leading-relaxed">
-              {lang === "LV" 
-                ? <>Esam pieejami un atbildam uz e-pastiem katru darba dienu no <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 līdz 18:00</strong>. Nedēļas nogalēs saņemtās ziņas apstrādājam pirmdienas rītā.</>
-                : lang === "EN"
-                  ? <>We are available and respond to emails every business day from <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 to 18:00</strong>. Messages received on weekends are processed on Monday morning.</>
-                  : <>Мы доступны и отвечаем на письма каждый рабочий день с <strong className="text-slate-800 dark:text-slate-200 font-semibold">9:00 до 18:00</strong>. Сообщения, полученные в выходные, обрабатываются в понедельник утром.</>}
-            </p>
-          </div>
-          <div className="space-y-3">
-            <h3 className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-blue-500" />
-              {lang === "LV" ? "Lokācija & Sadarbība" : lang === "EN" ? "Location & Collaboration" : "Локация и сотрудничество"}
-            </h3>
-            <p className="leading-relaxed">
-              {lang === "LV"
-                ? <>Mēs strādājam attālināti ar klientiem visā <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvijā un Eiropā</strong>.</>
-                : lang === "EN"
-                  ? <>We work remotely with clients throughout <strong className="text-slate-800 dark:text-slate-200 font-semibold">Latvia and Europe</strong>.</>
-                  : <>Мы работаем удаленно с клиентами по всей <strong className="text-slate-800 dark:text-slate-200 font-semibold">Латвии и Европе</strong>.</>}
-            </p>
+      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-10 md:py-12">
+        <div className="border border-zinc-800/80 bg-[#111114]/90 p-6 md:p-8 rounded-2xl shadow-xl text-zinc-300 text-xs md:text-sm font-light">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {/* Column 1: Company Information */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-[#BAFC50]" />
+                {lang === "LV" ? "Uzņēmuma rekvizīti" : lang === "EN" ? "Company Information" : "Реквизиты компании"}
+              </h3>
+              <div className="space-y-1 text-zinc-200 leading-relaxed font-normal">
+                <div>SIA &ldquo;Avenue Group&rdquo;</div>
+                <div>{lang === "LV" ? "Reģ.Nr. 40203647938" : lang === "EN" ? "Reg. No. 40203647938" : "Рег. № 40203647938"}</div>
+                <div>{lang === "LV" ? "Juridiskā adrese:" : lang === "EN" ? "Legal address:" : "Юридический адрес:"}</div>
+                <div>Rīga, Brīvības gatve 386/2-5A, LV-1024</div>
+              </div>
+            </div>
+
+            {/* Column 2: Working Hours */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
+                <Clock className="h-4 w-4 text-[#BAFC50]" />
+                {lang === "LV" ? "Darba laiks" : lang === "EN" ? "Working Hours" : "Рабочее время"}
+              </h3>
+              <p className="leading-relaxed">
+                {lang === "LV" 
+                  ? <>Esam pieejami un atbildam uz e-pastiem katru darba dienu no <strong className="text-white font-semibold">9:00 līdz 18:00</strong>. Nedēļas nogalēs saņemtās ziņas apstrādājam pirmdienas rītā.</>
+                  : lang === "EN"
+                    ? <>We are available and respond to emails every business day from <strong className="text-white font-semibold">9:00 to 18:00</strong>. Messages received on weekends are processed on Monday morning.</>
+                    : <>Мы доступны и отвечаем на письма каждый рабочий день с <strong className="text-white font-semibold">9:00 до 18:00</strong>. Сообщения, полученные в выходные, обрабатываются в понедельник утром.</>}
+              </p>
+            </div>
+
+            {/* Column 3: Location & Collaboration */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white uppercase tracking-wider text-[11px] font-sans flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-[#BAFC50]" />
+                {lang === "LV" ? "Lokācija & Sadarbība" : lang === "EN" ? "Location & Collaboration" : "Локация и сотрудничество"}
+              </h3>
+              <p className="leading-relaxed">
+                {lang === "LV"
+                  ? <>Mēs strādājam attālināti ar klientiem visā <strong className="text-white font-semibold">Latvijā un Eiropā</strong>.</>
+                  : lang === "EN"
+                    ? <>We work remotely with clients throughout <strong className="text-white font-semibold">Latvia and Europe</strong>.</>
+                    : <>Мы работаем удаленно с клиентами по всей <strong className="text-white font-semibold">Латвии и Европе</strong>.</>}
+              </p>
+            </div>
           </div>
         </div>
 

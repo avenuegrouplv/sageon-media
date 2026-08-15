@@ -150,7 +150,7 @@ export const enTranslations: Translations = {
     navTitle: "Navigation",
     servicesTitle: "Services",
     contactsTitle: "Contacts",
-    rights: "All rights reserved",
+    rights: "All rights reserved.",
     privacy: "Privacy Policy",
     cookies: "Cookie Policy",
   },
@@ -167,88 +167,88 @@ export const enTranslations: Translations = {
       title: "Traveling Can Become Your Lifestyle",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
+      image: "/Travel-with-martins-portfolio.webp",
       description: "This is a travel and consultation website created to offer people the opportunity to travel more and change their perspective on traveling. As part of the project, a unique design, brand logo, website content, and well-thought-out information architecture were developed.",
-      image: "/Travel-with-martins.webp",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Destination Guides"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Destination Guides"]
     },
     {
       id: 2,
       title: "Commercial Property Management | Legal Governance",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
-      description: "The website represents real estate management and legal services provided all in one place. In this project, the website structure, service descriptions, brand identity, and premium design were developed.",
       image: "/Avenuegroup-portfolio.webp",
+      description: "The website represents real estate management and legal services provided all in one place. In this project, the website structure, service descriptions, brand identity, and premium design were developed.",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "CMS", "Stripe", "Brand Logo", "Service Descriptions", "Mobile First", "Blog Articles"]
+      tags: ["SEO Optimization", "Custom UI/UX", "CMS", "Stripe", "Brand Logo", "Service Descriptions", "Mobile First", "Blog Articles"]
     },
     {
       id: 3,
       title: "Exclusive Wooden Stairs | Premium Class Furniture",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
+      image: "/avangart-portfolio.webp",
       description: "Exclusive wooden stairs and high-class furniture manufacturer website. In this project, a unique design with wood imitation elements, brand logo, website content, and a portfolio gallery of completed projects were developed.",
-      image: "/Avangart-portfolio.webp",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Image Galleries"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content", "Image Galleries"]
     },
     {
       id: 4,
       title: "Latvijas Restarts | For the Future of Latvia",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
-      description: "An association website bringing together professionals across fields to successfully overcome crises and drive dynamic development in Latvia. During the project, a unique design with national flag color accents, member profiles, and news sections were developed.",
       image: "/latvijas-restarts-portfolio.webp",
+      description: "An association website bringing together professionals across fields to successfully overcome crises and drive dynamic development in Latvia. During the project, a unique design with national flag color accents, member profiles, and news sections were developed.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO Optimization", "Custom UI/UX", "Member Profiles", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Member Profiles", "Mobile First"]
     },
     {
       id: 5,
       title: "Enzīmi | Fermented Beverages",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
-      description: "This is a fermented beverage producer's website featuring product descriptions, a product catalog, and additional service sections. Unique design, brand logo, and custom content were developed according to the client's vision.",
       image: "/enzimi-portfolio.webp",
+      description: "This is a fermented beverage producer's website featuring product descriptions, a product catalog, and additional service sections. Unique design, brand logo, and custom content were developed according to the client's vision.",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Custom UI/UX", "Brand Logo", "Product Catalog", "Shopping Cart", "Mobile First"]
+      tags: ["Custom UI/UX", "Brand Logo", "Product Catalog", "Shopping Cart", "Mobile First"]
     },
     {
       id: 6,
       title: "Demontāža 24 | Demolition & Dismantling Services",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
-      description: "Building and structure demolition service provider website. During development, website content, service descriptions, brand logo, and a rental equipment/completed project gallery were created. Work on the project is still ongoing.",
       image: "/demontaza24-portfolio.webp",
+      description: "Building and structure demolition service provider website. During development, website content, service descriptions, brand logo, and a rental equipment/completed project gallery were created. Work on the project is still ongoing.",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["Multi-page", "CMS", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First"]
+      tags: ["CMS", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First"]
     },
     {
       id: 7,
       title: "Velobiedrība | Safe Cycling Enthusiasts",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
-      description: "An association bringing together cycling professionals and enthusiasts aimed at sharing experience, organizing trainings and events to promote safe cycling on Latvian roads. Website content is currently under development.",
       image: "/velobiedriba-portfolio.webp",
+      description: "An association bringing together cycling professionals and enthusiasts aimed at sharing experience, organizing trainings and events to promote safe cycling on Latvian roads. Website content is currently under development.",
       link: "https://velobiedriba.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Custom UI/UX", "Gallery", "Mobile First", "Content"]
+      tags: ["Custom UI/UX", "Gallery", "Mobile First", "Content"]
     },
     {
       id: 8,
       title: "Beauty Studio | Beauty & Aesthetic Services",
       brand: "Beauty studio",
       displayLink: "beautystudio",
-      description: "Beauty service provider website with a custom design and descriptions. Features an integrated shopping cart, calendar, and application form.",
       image: "/beauty-portfolio.webp",
+      description: "Beauty service provider website with a custom design and descriptions. Features an integrated shopping cart, calendar, and application form.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "Custom UI/UX", "Mobile First", "Shopping Cart", "Calendar", "Application Form"]
+      tags: ["Custom UI/UX", "Mobile First", "Shopping Cart", "Calendar", "Application Form"]
     }
   ],
   pricingPlans: [
@@ -451,7 +451,7 @@ export const enTranslations: Translations = {
       category: "Optimization",
       date: "17.07.2026",
       readTime: "5 min read",
-      image: "/blog/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
+      image: "/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
       excerpt: "Web search is undergoing a fundamental transformation. Learn how to optimize your website for GEO (Generative Engine Optimization) so ChatGPT, Gemini, and AI assistants recommend your business.",
       content: `Web search is experiencing its biggest shift since the inception of Google. Instead of browsing traditional search links, millions of users now rely on AI assistants such as ChatGPT, Google Gemini, and Perplexity for instant, personalized recommendations. This evolving discipline is known as GEO (Generative Engine Optimization).
 
@@ -478,7 +478,7 @@ At Sageon Media, every project incorporates these advanced parameters so your br
       category: "Optimization",
       date: "14.07.2026",
       readTime: "4 min read",
-      image: "/blog/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
+      image: "/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
       excerpt: "Website speed shapes your brand's crucial first impression online. Discover how milliseconds affect user engagement, bounce rates, and conversion metrics.",
       content: `In today's fast-paced world, online user patience is measured in fractions of a second. If your website takes longer than 3 seconds to load, over 50% of visitors abandon the page before seeing any content.
 
@@ -498,7 +498,7 @@ Sageon Media utilizes modern frameworks (React and Vite), lightweight WebP image
       category: "Design",
       date: "08.07.2026",
       readTime: "5 min read",
-      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/butiskakie-ui-ux-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "A beautiful design is only half the battle. Strategic user experience (UX) design converts casual browsers into active paying clients.",
       content: `Website design must be both aesthetically pleasing and functional. Outstanding UI/UX design seamlessly guides visitors toward desired action — making a purchase, booking a call, or submitting an inquiry.
 
@@ -518,7 +518,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Security",
       date: "29.06.2026",
       readTime: "4 min read",
-      image: "/blog/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
+      image: "/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
       excerpt: "Launching a website is just the beginning. Regular security updates and automated backups safeguard your business against unexpected cyber threats.",
       content: `Many business owners assume a website can be forgotten once deployed. However, the web environment evolves rapidly with new security vulnerabilities and server updates.
 
@@ -534,7 +534,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Sales",
       date: "25.06.2026",
       readTime: "5 min read",
-      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
+      image: "/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "A well-crafted website operates non-stop without holidays or breaks. Learn how structured content and call-to-actions transform visitors into long-term clients.",
       content: `A website is far more than a static digital business card. Designed properly, it functions as your top sales executive working 24 hours a day, 7 days a week.
 
@@ -550,7 +550,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Usability",
       date: "21.06.2026",
       readTime: "4 min read",
-      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
+      image: "/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "The majority of your potential clients form their first impression on a mobile phone. Learn why mobile-first design determines business success.",
       content: `Over 70% of all web traffic originates from mobile devices today. If your website is hard to navigate or read on a smartphone screen, you lose the majority of potential leads.
 
@@ -566,7 +566,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Strategy",
       date: "15.06.2026",
       readTime: "5 min read",
-      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
+      image: "/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Is a focused Landing Page or an expansive Multi-Page website better suited for your goals? We break down the advantages of both models.",
       content: `Selecting the right web architecture is the foundational step of project planning. Choosing the wrong format can complicate navigation or inflate costs.
 
@@ -584,7 +584,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 min read",
-      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
+      image: "/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Search engine optimization is a long-term strategic investment. Discover the key pillars of technical SEO, keyword research, and content optimization.",
       content: `Millions of queries are performed on Google every day. Ranking on page one brings a steady stream of highly targeted organic clients without ongoing ad spend.
 
@@ -600,7 +600,7 @@ We build every custom interface from scratch at Sageon Media, analyzing user beh
       category: "Development",
       date: "04.06.2026",
       readTime: "5 min read",
-      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
+      image: "/kapec-bezmaksas- majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Template builders seem like a cheap start, but hidden costs, slow speeds, and limited customization often obstruct business growth.",
       content: `DIY template builders appear affordable initially, but companies quickly run into severe limitations in performance, branding, and scalability.
 

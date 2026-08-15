@@ -8,7 +8,7 @@ export interface BlogPost {
   category: string;
   date: string;
   readTime: string;
-  image: string;
+  image?: string;
   excerpt: string;
   content: string;
 }
@@ -19,7 +19,7 @@ export interface PortfolioItem {
   brand: string;
   displayLink: string;
   description: string;
-  image: string;
+  image?: string;
   link: string;
   isPlaceholder: boolean;
   tags?: string[];

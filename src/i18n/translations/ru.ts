@@ -150,7 +150,7 @@ export const ruTranslations: Translations = {
     navTitle: "Навигация",
     servicesTitle: "Услуги",
     contactsTitle: "Контакты",
-    rights: "Все права защищены",
+    rights: "Все права защищены.",
     privacy: "Политика конфиденциальности",
     cookies: "Политика использования куки",
   },
@@ -167,88 +167,88 @@ export const ruTranslations: Translations = {
       title: "Путешествия могут стать твоим образом жизни",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
+      image: "/Travel-with-martins-portfolio.webp",
       description: "Это сайт путешествий и консультаций, созданный с целью предложить людям возможность больше путешествовать и изменить свой взгляд на поездки. В рамках проекта был разработан уникальный дизайн, логотип бренда, контент сайта и продуманная информационная архитектура.",
-      image: "/Travel-with-martins.webp",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность", "Контент", "Описания направлений"]
+      tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность", "Контент", "Описания направлений"]
     },
     {
       id: 2,
       title: "Управление коммерческой недвижимостью | Юридическое управление",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
-      description: "Сайт представляет сферу управления недвижимостью и юридических услуг, предоставляемых в одном месте. В этом проекте были разработаны структура сайта, описания услуг, бренд и премиум-дизайн.",
       image: "/Avenuegroup-portfolio.webp",
+      description: "Сайт представляет сферу управления недвижимостью и юридических услуг, предоставляемых в одном месте. В этом проекте были разработаны структура сайта, описания услуг, бренд и премиум-дизайн.",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO-оптимизация", "Уникальный UI/UX", "CMS", "Stripe", "Логотип бренда", "Описания услуг", "Адаптивность", "Статьи блога"]
+      tags: ["SEO-оптимизация", "Уникальный UI/UX", "CMS", "Stripe", "Логотип бренда", "Описания услуг", "Адаптивность", "Статьи блога"]
     },
     {
       id: 3,
       title: "Эксклюзивные деревянные лестницы | Мебель Premium класса",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
+      image: "/avangart-portfolio.webp",
       description: "Сайт производителя эксклюзивных деревянных лестниц и мебели высокого класса. В этом проекте был разработан уникальный дизайн с элементами имитации дерева, логотип бренда, подготовлен контент сайта и портфолио-галерея с реализованными проектами.",
-      image: "/Avangart-portfolio.webp",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность", "Контент", "Галереи изображений"]
+      tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность", "Контент", "Галереи изображений"]
     },
     {
       id: 4,
       title: "Latvijas Restarts | За будущее Латвии",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
-      description: "Сайт общества, объединяющего профессионалов из различных сфер для успешного преодоления кризисов и динамичного развития Латвии. В ходе проекта был разработан уникальный дизайн с элементами цветов национального флага, созданы профили участников и разделы с новостями.",
       image: "/latvijas-restarts-portfolio.webp",
+      description: "Сайт общества, объединяющего профессионалов из различных сфер для успешного преодоления кризисов и динамичного развития Латвии. В ходе проекта был разработан уникальный дизайн с элементами цветов национального флага, созданы профили участников и разделы с новостями.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO-оптимизация", "Уникальный UI/UX", "Профили участников", "Адаптивность"]
+      tags: ["SEO-оптимизация", "Уникальный UI/UX", "Профили участников", "Адаптивность"]
     },
     {
       id: 5,
       title: "Enzīmi | Ферментированные напитки",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
-      description: "Это сайт домашнего производителя ферментированных напитков с описанием продуктов, каталогом товаров и разделом других услуг. Разработан контент сайта, уникальный дизайн и логотип бренда в соответствии с видением клиента.",
       image: "/enzimi-portfolio.webp",
+      description: "Это сайт домашнего производителя ферментированных напитков с описанием продуктов, каталогом товаров и разделом других услуг. Разработан контент сайта, уникальный дизайн и логотип бренда в соответствии с видением клиента.",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Уникальный UI/UX", "Логотип бренда", "Каталог продукции", "Корзина товаров", "Адаптивность"]
+      tags: ["Уникальный UI/UX", "Логотип бренда", "Каталог продукции", "Корзина товаров", "Адаптивность"]
     },
     {
       id: 6,
       title: "Demontāža 24 | Услуги по демонтажу зданий и сооружений",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
-      description: "Сайт поставщика услуг по демонтажу зданий и сооружений. В ходе разработки создан контент сайта, описания услуг, логотип бренда, а также галерея арендуемой техники и выполненных проектов. Работа над проектом продолжается.",
       image: "/demontaza24-portfolio.webp",
+      description: "Сайт поставщика услуг по демонтажу зданий и сооружений. В ходе разработки создан контент сайта, описания услуг, логотип бренда, а также галерея арендуемой техники и выполненных проектов. Работа над проектом продолжается.",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["Multi-page", "CMS", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность"]
+      tags: ["CMS", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность"]
     },
     {
       id: 7,
       title: "Velobiedrība | Энтузиасты безопасной езды на велосипеде",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
-      description: "Объединение профессионалов и любителей велоспорта для обмена опытом, проведения обучений и мероприятий по популяризации безопасной езды на велосипеде по дорогам Латвии. Контент сайта находится в стадии разработки.",
       image: "/velobiedriba-portfolio.webp",
+      description: "Объединение профессионалов и любителей велоспорта для обмена опытом, проведения обучений и мероприятий по популяризации безопасной езды на велосипеде по дорогам Латвии. Контент сайта находится в стадии разработки.",
       link: "https://velobiedriba.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Уникальный UI/UX", "Галерея", "Mobile First", "Контент"]
+      tags: ["Уникальный UI/UX", "Галерея", "Mobile First", "Контент"]
     },
     {
       id: 8,
       title: "Beauty Studio | Skaistumkopšanas pakalpojumi",
       brand: "Beauty studio",
       displayLink: "beautystudio",
-      description: "Сайт поставщика услуг красоты с уникальным дизайном и описаниями. В проект интегрированы корзина покупок, календарь и форма заявки.",
       image: "/beauty-portfolio.webp",
+      description: "Сайт поставщика услуг красоты с уникальным дизайном и описаниями. В проект интегрированы корзина покупок, календарь и форма заявки.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "Уникальный UI/UX", "Адаптивность", "Корзина покупок", "Календарь", "Форма заявки"]
+      tags: ["Уникальный UI/UX", "Адаптивность", "Корзина покупок", "Календарь", "Форма заявки"]
     }
   ],
   pricingPlans: [
@@ -451,7 +451,7 @@ export const ruTranslations: Translations = {
       category: "Оптимизация",
       date: "17.07.2026",
       readTime: "5 мин чтения",
-      image: "/blog/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
+      image: "/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
       excerpt: "Поиск в интернете переживает революцию. Узнайте, как оптимизировать сайт под стандарты GEO (Generative Engine Optimization), чтобы ChatGPT, Gemini и другие ИИ-помощники рекомендовали вашу компанию.",
       content: `Интернет-поиск переживает самые глобальные изменения со времен появления Google. Вместо обычных поисковиков миллионы пользователей выбирают ChatGPT, Google Gemini и Perplexity для получения мгновенных рекомендаций. Эта дисциплина называется GEO (Generative Engine Optimization).
 
@@ -478,7 +478,7 @@ export const ruTranslations: Translations = {
       category: "Оптимизация",
       date: "14.07.2026",
       readTime: "4 мин чтения",
-      image: "/blog/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
+      image: "/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
       excerpt: "Скорость работы — это первое впечатление о вашей компании. Узнайте, как каждая миллисекунда влияет на конверсию и терпение пользователей.",
       content: `В современном мире терпение пользователей измеряется долями секунд. Если ваш сайт грузится дольше 3 секунд, более 50% посетителей закроют его, не дождавшись контента.
 
@@ -498,7 +498,7 @@ Sageon Media использует современные фреймворки (R
       category: "Дизайн",
       date: "08.07.2026",
       readTime: "5 мин чтения",
-      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/butiskakie-ui-ux-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "Красивый дизайн — это только половина дела. Продуманный UX превращает случайных посетителей в реальных клиентов.",
       content: `Дизайн сайта должен быть не только эстетичным, но и функциональным. Грамотный UI/UX ведет пользователя по понятному пути прямо к заказу.
 
@@ -518,7 +518,7 @@ Sageon Media использует современные фреймворки (R
       category: "Безопасность",
       date: "29.06.2026",
       readTime: "4 мин чтения",
-      image: "/blog/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
+      image: "/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
       excerpt: "Запуск сайта — это только начало. Регулярные обновления и бэкапы защищают ваш бизнес от потери данных и хакерских атак.",
       content: `Многие думают, что после запуска о сайте можно забыть. Однако интернет постоянно меняется — появляются уязвимости, обновляются браузеры и серверное ПО.
 
@@ -534,7 +534,7 @@ Sageon Media использует современные фреймворки (R
       category: "Продажи",
       date: "25.06.2026",
       readTime: "5 min чтения",
-      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
+      image: "/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "Качественный сайт работает без выходных и перерывов. Узнайте, как структура и понятные призывы к действию приносят постоянные заявки.",
       content: `Правильно разработанный сайт — это ваш лучший сотрудник по продажам, который работает круглые сутки без усталости и выходных.
 
@@ -550,7 +550,7 @@ Sageon Media использует современные фреймворки (R
       category: "Удобство",
       date: "21.06.2026",
       readTime: "4 мин чтения",
-      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
+      image: "/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "Большинство ваших клиентов впервые видят ваш сайт с экрана телефона. Узнайте, почему Mobile-First дизайн определяет успех.",
       content: `Более 70% интернет-трафика сегодня приходится на смартфоны. Если мобильная версия неудобна, вы теряете львиную долю клиентов.
 
@@ -566,7 +566,7 @@ Sageon Media использует современные фреймворки (R
       category: "Стратегия",
       date: "15.06.2026",
       readTime: "5 мин чтения",
-      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
+      image: "/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Что лучше подойдет вашему бизнесу: фокусный Landing Page или полноценный многостраничный сайт? Разбираем плюсы обоих вариантов.",
       content: `Выбор архитектуры сайта — важнейший первый шаг. Одностраничный Landing подходит для рекламы одной услуги с высокой конверсией, а многостраничный сайт идеально раскрывает каталог услуг и дает отличные возможности для SEO.`
     },
@@ -576,7 +576,7 @@ Sageon Media использует современные фреймворки (R
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 мин чтения",
-      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
+      image: "/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Поисковая оптимизация — это долгосрочный инструмент роста. Узнайте главные основы технического SEO и работы с контентом.",
       content: `Попадание на первую страницу Google обеспечивает непрерывный поток целевых клиентов. Главные факторы успеха: техническая чистота сайта, экспертный контент и локальное присутствие в Google Maps.`
     },
@@ -586,7 +586,7 @@ Sageon Media использует современные фреймворки (R
       category: "Разработка",
       date: "04.06.2026",
       readTime: "5 мин чтения",
-      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
+      image: "/kapec-bezmaksas- majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Готовые шаблоны кажутся дешевым стартом, но ограничение скорости, шаблонный вид и сложности со скейлингом тормозят развитие бизнеса.",
       content: `Конструкторы хороши для пробы, но для развивающегося бизнеса они не дают уникальности, страдают медленной скоростью и не позволяют гибко масштабировать сайт под новые задачи.`
     }

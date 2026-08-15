@@ -7,7 +7,6 @@ import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Projekti() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { lang, t, getLocalizedPath } = useLanguage();
 
   useEffect(() => {
@@ -141,27 +140,6 @@ export default function Projekti() {
             subtitle={t.contactForm.defaultSubtitle} 
           />
         </div>
-
-        {/* Lightbox Modal */}
-        {selectedImage && (
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 z-[100]">
-            <div className="relative max-w-4xl w-full flex flex-col items-center">
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-[#BAFC50] transition-colors flex items-center gap-2 text-[11px] font-sans font-semibold uppercase tracking-widest cursor-pointer"
-              >
-                {lang === "LV" ? "Aizvērt" : lang === "EN" ? "Close" : "Закрыть"} <X className="h-5 w-5" />
-              </button>
-              <img
-                src={selectedImage}
-                alt="Preview"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto max-h-[80vh] object-contain border border-zinc-800"
-              />
-            </div>
-          </div>
-        )}
 
         {/* Page Nav Buttons */}
         <PageNavButtons />

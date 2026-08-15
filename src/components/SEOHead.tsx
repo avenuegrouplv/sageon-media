@@ -5,7 +5,6 @@ interface SEOProps {
   title: string;
   description: string;
   keywords?: string;
-  ogImage?: string;
   ogType?: "website" | "article";
   schema?: object | object[];
 }
@@ -14,7 +13,6 @@ export default function SEOHead({
   title,
   description,
   keywords = "mājaslapu izstrāde, tīmekļa vietnes, web izstrāde, SEO optimizācija, e-veikali, dizains",
-  ogImage = "/images/logo_share.png",
   ogType = "website",
   schema,
 }: SEOProps) {
@@ -23,7 +21,6 @@ export default function SEOHead({
   const origin = typeof window !== "undefined" && window.location.origin ? window.location.origin : "https://sageonmedia.eu";
   const baseUrl = origin.includes("localhost") || origin.includes("run.app") || origin.includes("netlify.app") ? origin : "https://sageonmedia.eu";
   const canonicalUrl = `${baseUrl}${path}`;
-  const fullOgImage = ogImage.startsWith("http") ? ogImage : `${baseUrl}${ogImage}`;
 
   useEffect(() => {
     // Update Title
@@ -46,7 +43,7 @@ export default function SEOHead({
       let element = document.querySelector(selector) as HTMLLinkElement | null;
       if (!element) {
         element = document.createElement("link");
-        element.setAttribute("rel", rel);
+        element.setAttribute(rel, rel);
         if (hreflang) element.setAttribute("hreflang", hreflang);
         document.head.appendChild(element);
       }
@@ -73,22 +70,23 @@ export default function SEOHead({
     updateMeta('meta[property="og:title"]', "property", "og:title", title);
     updateMeta('meta[property="og:description"]', "property", "og:description", description);
     updateMeta('meta[property="og:url"]', "property", "og:url", canonicalUrl);
-    updateMeta('meta[property="og:image"]', "property", "og:image", fullOgImage);
-    updateMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", fullOgImage);
-    const isPng = fullOgImage.endsWith(".png");
-    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", isPng ? "image/png" : "image/jpeg");
-    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", isPng && fullOgImage.includes("logo_share") ? "122" : "1200");
-    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", isPng && fullOgImage.includes("logo_share") ? "122" : "630");
     updateMeta('meta[property="og:type"]', "property", "og:type", ogType);
     updateMeta('meta[property="og:locale"]', "property", "og:locale", "lv_LV");
     updateMeta('meta[property="og:locale:alternate"][content="en_US"]', "property", "og:locale:alternate", "en_US");
     updateMeta('meta[property="og:locale:alternate"][content="ru_RU"]', "property", "og:locale:alternate", "ru_RU");
+    updateMeta('meta[property="og:image"]', "property", "og:image", `${baseUrl}/images/logo_share.png`);
+    updateMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", `${baseUrl}/images/logo_share.png`);
+    updateMeta('meta[property="og:image:type"]', "property", "og:image:type", "image/png");
+    updateMeta('meta[property="og:image:width"]', "property", "og:image:width", "122");
+    updateMeta('meta[property="og:image:height"]', "property", "og:image:height", "122");
+    updateMeta('meta[property="og:image:alt"]', "property", "og:image:alt", "Sageon Media");
 
     // Twitter Cards
-    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
+    updateMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary");
     updateMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
     updateMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
-    updateMeta('meta[name="twitter:image"]', "name", "twitter:image", fullOgImage);
+    updateMeta('meta[name="twitter:image"]', "name", "twitter:image", `${baseUrl}/images/logo_share.png`);
+    updateMeta('meta[name="twitter:image:alt"]', "name", "twitter:image:alt", "Sageon Media");
 
     // Dynamic JSON-LD Schema
     const scriptId = "dynamic-seo-schema";
@@ -109,7 +107,7 @@ export default function SEOHead({
       const el = document.getElementById(scriptId);
       if (el) el.remove();
     };
-  }, [title, description, keywords, canonicalUrl, fullOgImage, ogType, schema]);
+  }, [title, description, keywords, canonicalUrl, ogType, schema]);
 
   return null;
 }

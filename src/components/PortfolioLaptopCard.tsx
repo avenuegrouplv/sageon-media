@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
-import { Plus, ExternalLink, Sparkles, CheckCircle2, ShieldCheck, Clock, X } from "lucide-react";
+import { Plus, ExternalLink, Sparkles, CheckCircle2, ShieldCheck, Clock, X, Globe, Layout, Smartphone } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import ResponsiveImage from "./ResponsiveImage";
 
 interface PortfolioLaptopCardProps {
   key?: string | number;
@@ -28,6 +27,7 @@ export default function PortfolioLaptopCard({
   link,
   isPlaceholder = false,
   subtitle,
+  category,
   description,
   tags,
   isInDevelopment = false,
@@ -43,7 +43,8 @@ export default function PortfolioLaptopCard({
     cleanDomain.toLowerCase().includes("demontaza") || 
     link.toLowerCase().includes("demontaza") || 
     title.toLowerCase().includes("demontāž") ||
-    title.toLowerCase().includes("demontaza");
+    title.toLowerCase().includes("demontaza") ||
+    (image ? image.toLowerCase().includes("demontaza") : false);
 
   const isDevelopment = 
     isInDevelopment ||
@@ -52,9 +53,6 @@ export default function PortfolioLaptopCard({
     link.toLowerCase().includes("velobiedriba") ||
     title.toLowerCase().includes("velobiedrīb") ||
     title.toLowerCase().includes("velobiedriba") ||
-    cleanDomain.toLowerCase().includes("enzimi") ||
-    link.toLowerCase().includes("enzimi") ||
-    title.toLowerCase().includes("enzimi") ||
     cleanDomain.toLowerCase().includes("beauty") ||
     link.toLowerCase().includes("beauty") ||
     title.toLowerCase().includes("beauty");
@@ -94,7 +92,17 @@ export default function PortfolioLaptopCard({
     "Mobile First"
   ];
 
-  const activeTags = tags && tags.length > 0 ? tags : defaultTagLabels;
+  const rawTags = tags && tags.length > 0 ? tags : defaultTagLabels;
+  const filteredTags = rawTags.filter((t) => {
+    const lower = t.toLowerCase().trim();
+    return (
+      lower !== "landing page" &&
+      lower !== "multi-page" &&
+      lower !== "multi page" &&
+      lower !== "multipage"
+    );
+  });
+  const activeTags = filteredTags.length > 0 ? filteredTags : defaultTagLabels;
 
   const openTarget = (e?: React.MouseEvent) => {
     if (e) {
@@ -155,87 +163,80 @@ export default function PortfolioLaptopCard({
         onClick={handleCardClick}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-3.5 sm:p-6 transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-[1.2mm] sm:p-6 sm:pb-[1.2mm] transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
 
-        {/* 1. Device Mockup Section */}
-        <div className="relative w-full aspect-[897/535] mb-2 sm:mb-3 shrink-0">
-          {/* Green glow under/behind laptop mockup */}
-          <div className="absolute -inset-4 sm:-inset-7 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[24px] sm:blur-[32px] opacity-90 group-hover:opacity-100 transition-opacity duration-300 transform-gpu" />
+        {/* 1. Device Mockup Section (Pure CSS Device Window) */}
+        <div className="relative w-full aspect-[16/10] mb-2 sm:mb-3 shrink-0 rounded-xl sm:rounded-2xl bg-[#0e0e11] border border-zinc-700/80 shadow-[0_12px_30px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col justify-between group-hover:border-[#BAFC50]/50 transition-colors duration-200">
+          {/* Ambient Glow */}
+          <div className="absolute -inset-4 sm:-inset-7 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.2),rgba(186,252,80,0.15),transparent_75%)] pointer-events-none z-0 blur-[20px] opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
 
-          {/* Screen inside tablet cutout */}
-          <div 
-            className="absolute z-10 overflow-hidden bg-black flex flex-col justify-between rounded-t-[8px] sm:rounded-t-[12px] md:rounded-t-[14px] rounded-b-none"
-            style={{
-              top: '2.65%',
-              left: '1.7%',
-              width: '96.6%',
-              height: '89.25%',
-            }}
-          >
-            {!isPlaceholder && image ? (
-              <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-zinc-950">
-                <ResponsiveImage
-                  src={image}
-                  alt={title}
-                  widths={[400, 800, 1200, 1600]}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-                  loading="eager"
-                  fetchPriority="auto"
-                  decoding="async"
-                  referrerPolicy="no-referrer"
-                  className={`w-full h-full object-cover object-top ${
-                    isVelobiedriba 
-                      ? "scale-[1.05] origin-top" 
-                      : ""
-                  }`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-75 pointer-events-none" />
-              </div>
-            ) : isPlaceholder ? (
-              <div className="relative w-full h-full flex flex-col items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800/90 group-hover:bg-[#BAFC50] border border-zinc-700 group-hover:border-[#BAFC50] flex items-center justify-center transition-all duration-75 shadow-md">
-                  <Plus className="h-5 w-5 sm:h-6 sm:w-6 text-[#BAFC50] group-hover:text-black transition-colors duration-75" />
+          {/* Screen Content inside CSS window */}
+          <div className="relative z-10 w-full h-full flex-1 overflow-hidden bg-gradient-to-br from-zinc-900/90 via-[#0a0a0c] to-black">
+            {!isPlaceholder ? (
+              image ? (
+                <div className="w-full h-full relative overflow-hidden bg-zinc-950 flex items-start justify-center">
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-300 font-medium mt-2 select-text cursor-text">
+              ) : (
+                <div className="w-full h-full p-4 sm:p-5 flex flex-col justify-between">
+                  {/* Brand & Category Highlight */}
+                  <div className="space-y-1.5">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[10px] font-mono font-bold uppercase tracking-wider">
+                      <Sparkles className="w-3 h-3" />
+                      <span>{category || "Web Project"}</span>
+                    </div>
+                    <h4 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-tight line-clamp-1 group-hover:text-[#BAFC50] transition-colors">
+                      {title}
+                    </h4>
+                  </div>
+
+                  {/* Interactive UI Mock Wireframe preview */}
+                  <div className="my-2 p-2.5 rounded-lg bg-zinc-950/80 border border-zinc-800/80 space-y-1.5">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                      <span className="flex items-center gap-1"><Layout className="w-3 h-3 text-[#BAFC50]" /> Responsive Web App</span>
+                      <span className="text-emerald-400 font-bold">100% Score</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-1.5 pt-1">
+                      <div className="h-4 rounded bg-zinc-800/80 border border-zinc-700/40" />
+                      <div className="h-4 rounded bg-[#BAFC50]/20 border border-[#BAFC50]/40" />
+                      <div className="h-4 rounded bg-zinc-800/80 border border-zinc-700/40" />
+                    </div>
+                  </div>
+
+                  {/* Bottom Tags / Domain */}
+                  <div className="flex items-center justify-between text-[10px] text-zinc-400 font-mono">
+                    <span className="flex items-center gap-1"><Smartphone className="w-3 h-3 text-zinc-400" /> Mobile & Desktop</span>
+                    <span className="text-white font-bold group-hover:text-[#BAFC50] transition-colors">{cleanDomain}</span>
+                  </div>
+                </div>
+              )
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center">
+                <div className="w-10 h-10 rounded-full bg-zinc-800/90 group-hover:bg-[#BAFC50] border border-zinc-700 group-hover:border-[#BAFC50] flex items-center justify-center transition-colors shadow-md mb-2">
+                  <Plus className="h-5 w-5 text-[#BAFC50] group-hover:text-black transition-colors" />
+                </div>
+                <p className="text-xs text-zinc-300 font-medium">
                   {subtitle || (lang === "EN" ? "Apply for project" : lang === "RU" ? "Заказать проект" : "Piesaki savu projektu")}
                 </p>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
-              </div>
-            ) : (
-              <div className="relative w-full h-full bg-gradient-to-br from-zinc-900 via-zinc-950 to-black flex flex-col items-center justify-center p-4 text-center">
-                <div className="p-3 bg-[#BAFC50]/10 border border-[#BAFC50]/30 rounded-full text-[#BAFC50] mb-2 shadow-sm">
-                  <Sparkles className="h-6 w-6" />
-                </div>
-                <span className="text-xs font-mono font-semibold text-white tracking-wider uppercase select-text cursor-text">{title}</span>
-                <span className="text-[10px] text-zinc-400 mt-0.5 select-text cursor-text">{cleanDomain}</span>
               </div>
             )}
           </div>
-
-          {/* Laptop/Tablet Frame */}
-          <ResponsiveImage
-            src="/portfolio.webp"
-            alt=""
-            aria-hidden="true"
-            widths={[400, 800]}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-            width={897}
-            height={535}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="w-full h-full object-contain pointer-events-none select-none relative z-20 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover:drop-shadow-[0_16px_36px_rgba(186,252,80,0.18)] transition-all duration-75"
-          />
         </div>
 
         {/* 2. Unified Description Section directly connected */}
-        <div className="flex-1 flex flex-col justify-between space-y-3 pt-1">
-          <div className="space-y-2.5">
+        <div className="flex-1 flex flex-col justify-between pt-0.5">
+          <div className="flex flex-col">
             {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 h-9 sm:h-9 overflow-hidden shrink-0">
+            <div className="flex items-center justify-between gap-2 h-7 sm:h-8 overflow-hidden shrink-0 mb-1.5 sm:mb-2">
               {/* Top-Left Corner: Domain Address Badge */}
               <button
                 type="button"
@@ -269,17 +270,17 @@ export default function PortfolioLaptopCard({
               )}
             </div>
 
-            {/* Title - Fixed Height Block for 1 or 2 lines */}
-            <div className="h-14 sm:h-14 flex items-center overflow-hidden shrink-0">
+            {/* Title - Fixed uniform height for all cards */}
+            <div className="h-11 sm:h-12 flex items-start overflow-hidden shrink-0 mb-1 sm:mb-1.5">
               <h3 className="text-base sm:text-lg font-normal text-white group-hover:text-[#BAFC50] transition-colors duration-75 tracking-tight leading-snug select-text cursor-text line-clamp-2">
                 {title}
               </h3>
             </div>
 
-            {/* Detailed Description - Fixed Height Block for 4 lines */}
-            <div className="h-24 sm:h-24 overflow-hidden shrink-0">
+            {/* Detailed Description - Fixed uniform height for all cards */}
+            <div className="h-[4.25rem] sm:h-[4.5rem] overflow-hidden shrink-0">
               {description ? (
-                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-4">
+                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-3 sm:line-clamp-4">
                   {description}
                 </p>
               ) : (
@@ -290,12 +291,12 @@ export default function PortfolioLaptopCard({
             </div>
           </div>
 
-          {/* Deliverables Badges / Tags - Fixed uniform height for all cards */}
-          <div className="pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-20 sm:h-[4.5rem] overflow-hidden shrink-0">
-            {activeTags.slice(0, 6).map((tag, idx) => (
+          {/* Deliverables Badges / Tags - Fixed uniform height for 2 rows of tags fully visible */}
+          <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[68px] sm:h-[72px] overflow-hidden shrink-0">
+            {activeTags.slice(0, 5).map((tag, idx) => (
               <span 
                 key={idx}
-                className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text whitespace-nowrap"
+                className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2 sm:px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text whitespace-nowrap"
               >
                 {idx === 0 ? (
                   <Sparkles className="h-3 w-3 text-[#BAFC50] shrink-0" />

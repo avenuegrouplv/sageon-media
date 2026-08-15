@@ -28,7 +28,6 @@ import {
   TrendingDown
 } from "lucide-react";
 import HeroSlider from "../components/HeroSlider";
-import ResponsiveImage from "../components/ResponsiveImage";
 import ContactForm from "../components/ContactForm";
 import CtaButton from "../components/CtaButton";
 import ValueGrowthIconAnimation from "../components/ValueGrowthIconAnimation";
@@ -49,88 +48,88 @@ const PORTFOLIO_ITEMS = [
     title: "Ceļošana var kļūt par Tavu dzīvesveidu",
     brand: "Travel with Martins",
     displayLink: "https://travelwithmartins.com",
+    image: "/Travel-with-martins-portfolio.webp",
     description: "Šī ir ceļojumu un konsultāciju mājaslapa, kura radīta ar mērķi piedāvāt cilvēkiem iespēju vairāk ceļot, kā arī mainīt savu skatījumu uz ceļošanu. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, mājaslapas saturs un pārdomāta informācijas arhitektūra.",
-    image: "/Travel-with-martins.webp",
     link: "https://travelwithmartins.com",
     isPlaceholder: false,
-    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
   },
   {
     id: 2,
     title: "Komercīpašumu apsaimniekošana | Juridiskā pārvaldība",
     brand: "Avenue Group",
     displayLink: "https://avenuegroup.lv",
-    description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
     image: "/Avenuegroup-portfolio.webp",
+    description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
     link: "https://avenuegroup.lv",
     isPlaceholder: false,
-    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
   },
   {
     id: 3,
     title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
     brand: "Avangart",
     displayLink: "https://avangart.lv",
+    image: "/avangart-portfolio.webp",
     description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
-    image: "/Avangart-portfolio.webp",
     link: "https://avangart.lv",
     isPlaceholder: false,
-    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
   },
   {
     id: 4,
     title: "Latvijas Restarts | Par Latvijas nākotni",
     brand: "Latvijas Restarts",
     displayLink: "https://latvijasrestarts.lv",
-    description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
     image: "/latvijas-restarts-portfolio.webp",
+    description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
     link: "https://latvijasrestarts.lv",
     isPlaceholder: false,
-    tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
   },
   {
     id: 5,
     title: "Enzīmi | Fermentēti dzērieni",
     brand: "enzimi.lv",
     displayLink: "https://enzimi.lv",
-    description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
     image: "/enzimi-portfolio.webp",
+    description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
     link: "https://enzimi.lv",
     isPlaceholder: false,
-    tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
+    tags: ["Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
   },
   {
     id: 6,
     title: "Demontāža 24 | Būvju un ēku demontāžas pakalpojumi",
     brand: "Demontāža 24",
     displayLink: "demontaza24",
-    description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
     image: "/demontaza24-portfolio.webp",
+    description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
     link: "https://demontaza24.eu",
     isPlaceholder: false,
-    tags: ["Multi-page", "CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+    tags: ["CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
   },
   {
     id: 7,
     title: "Velobiedrība | Drošas velobraukšanas entuziasti",
     brand: "Velobiedrība",
     displayLink: "velobiedriba",
-    description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
     image: "/velobiedriba-portfolio.webp",
+    description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
     link: "https://velobiedriba.lv",
     isPlaceholder: false,
-    tags: ["Landing page", "Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
+    tags: ["Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
   },
   {
     id: 8,
     title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
     brand: "Beauty studio",
     displayLink: "beautystudio",
-    description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
     image: "/beauty-portfolio.webp",
+    description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
     link: "https://beautystudio.lv",
     isPlaceholder: false,
-    tags: ["Multi-page", "Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
+    tags: ["Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
   }
 ];
 
@@ -737,7 +736,6 @@ export default function Home() {
             "@id": "https://sageonmedia.eu#organization",
             "name": "Sageon Media",
             "url": "https://sageonmedia.eu",
-            "logo": "https://sageonmedia.eu/Logo-new.webp",
             "email": "info@sageonmedia.eu",
             "telephone": "+371 26739899",
             "priceRange": "$$",
@@ -1054,17 +1052,18 @@ export default function Home() {
             
             {/* SECTION 1: Intro Text & 5 Problem Cards */}
             <div className="space-y-12">
-              {/* Zig-Zag 3-Row Feature Block */}
-              <div className="space-y-12 md:space-y-16 max-w-[1380px] mx-auto">
-                {/* Row 1: Text Left, Image Right */}
-                <div 
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-12 items-center py-2 md:py-4"
-                >
-                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+              {/* Zig-Zag 3-Row Feature Showcase Block */}
+              <div className="space-y-16 sm:space-y-24 max-w-[1380px] mx-auto">
+                {/* Row 1: Text Left, Image 1 Right (Mājaslapas izstrāde) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                  <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#BAFC50]/10 border border-[#BAFC50]/30 flex items-center justify-center text-[#BAFC50]">
+                      <TrendingUp className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                       {lang === 'EN' ? "Website Development" : lang === 'RU' ? "Разработка сайтов" : "Mājaslapas izstrāde"}
                     </h3>
-                    <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-zinc-200 font-light leading-relaxed">
                       {lang === 'EN'
                         ? "We develop fast and modern websites that highlight your brand and help you achieve your business goals faster. Every project is built considering your company's needs and future growth perspectives. As a result, you get a professional digital showcase that serves long-term and grows with your business."
                         : lang === 'RU'
@@ -1072,41 +1071,32 @@ export default function Home() {
                         : "Mēs izstrādājam ātras un mūsdienīgas mājaslapas, kas precīzi izceļ Jūsu zīmolu un palīdz ātrāk sasniegt nospraustos biznesa mērķus. Katrs projekts tiek veidots, ņemot vērā Jūsu uzņēmuma vajadzības un nākotnes attīstības perspektīvas. Rezultātā Jūs iegūstiet profesionālu digitālo vizītkarti, kas kalpo ilgtermiņā un aug kopā ar Jūsu biznesu."}
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative flex items-center justify-center mt-4 sm:mt-0 mx-auto w-full">
-                    <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <ResponsiveImage 
-                      src="/Iedod-savam-biznesam-jaunu-uzravienu.webp" 
-                      alt="Mājaslapas izstrāde un izaugsme" 
-                      loading="eager"
-                      decoding="async"
-                      width={600}
-                      height={380}
-                      className="relative z-10 w-[81%] sm:w-[92%] h-auto max-h-[308px] scale-[0.92] object-cover rounded-2xl sm:rounded-3xl border border-[#BAFC50]/20 shadow-[0_15px_45px_rgba(186,252,80,0.18),_0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 mx-auto"
+                  <div className="lg:col-span-6 flex items-center justify-center">
+                    <img 
+                      src="/iedod-savam-biznesam-jaunu-uzravienu-1.webp" 
+                      alt={lang === 'EN' ? "Website Development" : lang === 'RU' ? "Разработка сайтов" : "Mājaslapas izstrāde"} 
+                      className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
                 </div>
 
-                {/* Row 2: Image Left, Text Right */}
-                <div 
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
-                >
-                  <div className="lg:col-span-5 order-last lg:order-first relative flex items-center justify-center mx-auto w-full">
-                    <div className="absolute -inset-6 sm:-inset-10 bg-[#BAFC50]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <ResponsiveImage 
-                      src="/dizains-mobile-first.webp" 
-                      alt="Dizains un Mobile first" 
-                      loading="eager"
-                      decoding="async"
-                      width={600}
-                      height={380}
-                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain mx-auto"
+                {/* Row 2: Image 2 Left, Text Right (Dizains & mobile first) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                  <div className="lg:col-span-6 flex items-center justify-center order-2 lg:order-1">
+                    <img 
+                      src="/majaslapa-tavam-biznesam.webp" 
+                      alt={lang === 'EN' ? "Design & mobile first" : lang === 'RU' ? "Дизайн и mobile first" : "Dizains & mobile first"} 
+                      className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
-                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                      {lang === 'EN' ? "Design & Mobile First" : lang === 'RU' ? "Дизайн и Mobile First" : "Dizains & Mobile first"}
+                  <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left order-1 lg:order-2">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#BAFC50]/10 border border-[#BAFC50]/30 flex items-center justify-center text-[#BAFC50]">
+                      <Laptop className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                      {lang === 'EN' ? "Design & mobile first" : lang === 'RU' ? "Дизайн и mobile first" : "Dizains & mobile first"}
                     </h3>
-                    <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-zinc-200 font-light leading-relaxed">
                       {lang === 'EN'
                         ? "For every project, we craft an individual design that reflects your company identity and creates a professional first impression. Every visual element and section is tailored for desktops, tablets, and smartphones, ensuring a unified, attractive user experience on any device."
                         : lang === 'RU'
@@ -1116,15 +1106,16 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Row 3: Text Left, Image Right */}
-                <div 
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 md:py-4"
-                >
-                  <div className="lg:col-span-7 space-y-3 text-center lg:text-left">
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                {/* Row 3: Text Left, Image 3 Right (Struktūra & rezultāts) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                  <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#BAFC50]/10 border border-[#BAFC50]/30 flex items-center justify-center text-[#BAFC50]">
+                      <Target className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                       {lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"}
                     </h3>
-                    <p className="text-base md:text-xl text-zinc-200 font-light leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-zinc-200 font-light leading-relaxed">
                       {lang === 'EN'
                         ? "We plan website structures so visitors quickly find all necessary information and naturally reach the desired action. Clear navigation, thoughtful layout, and effective calls to action build trust among your clients and increase demand, inquiries, or sales results."
                         : lang === 'RU'
@@ -1132,16 +1123,11 @@ export default function Home() {
                         : "Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus."}
                     </p>
                   </div>
-                  <div className="lg:col-span-5 relative flex items-center justify-center mx-auto w-full">
-                    <div className="absolute -inset-6 sm:-inset-10 bg-[#38b000]/10 rounded-full blur-2xl pointer-events-none z-0" />
-                    <ResponsiveImage 
-                      src="/Web-izstrades-agentura.webp" 
-                      alt="Web izstrādes aģentūra — struktūra un rezultāts" 
-                      loading="eager"
-                      decoding="async"
-                      width={625}
-                      height={420}
-                      className="relative z-10 w-[88%] sm:w-auto h-auto max-h-[335px] object-contain mx-auto"
+                  <div className="lg:col-span-6 flex items-center justify-center">
+                    <img 
+                      src="/atra-majaslapa-tava-biznesa-izaugsmei.webp" 
+                      alt={lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"} 
+                      className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
                 </div>
@@ -1894,37 +1880,35 @@ export default function Home() {
                     >
                       <Link
                         to={`${getLocalizedPath('blog')}?id=${post.id}`}
-                        className="w-full bg-[#18181b] border border-zinc-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
+                        className="w-full bg-[#18181b] border border-zinc-800 p-5 overflow-hidden shadow-md hover:shadow-xl hover:border-[#BAFC50]/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
                       >
-                        <div>
-                          <div className="relative aspect-[3/2] overflow-hidden bg-zinc-900">
-                            {/* Green glow under blog image */}
-                            <div className="absolute -inset-3.5 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.25),rgba(186,252,80,0.18),transparent_75%)] pointer-events-none z-0 blur-[18px] opacity-85 group-hover:opacity-100 transition-opacity transform-gpu" />
-                            <ResponsiveImage
-                              src={post.image}
-                              alt={post.title}
-                              widths={[400, 800, 1200]}
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
-                              loading="lazy"
-                              decoding="async"
-                              referrerPolicy="no-referrer"
-                              onError={(e) => {
-                                (e.currentTarget as HTMLImageElement).src = "/Web-izstrades-agentura.webp";
-                              }}
-                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
-                            />
+                        <div className="space-y-3">
+                          {post.image && (
+                            <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+                              <img
+                                src={post.image}
+                                alt={post.title}
+                                className="w-full h-full object-cover select-none"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          <div className="flex items-center justify-end">
+                            <span className="text-[10px] font-mono text-zinc-400">
+                              {post.readTime || "3 min"}
+                            </span>
                           </div>
-                          <div className="p-5 space-y-3">
-                            <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
-                              {post.title}
-                            </h3>
-                            <p className="text-xs text-zinc-400 font-light line-clamp-2">
-                              {post.excerpt}
-                            </p>
-                          </div>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
+                            {post.title}
+                          </h3>
+                          <p className="text-xs text-zinc-400 font-light line-clamp-3 leading-relaxed">
+                            {post.excerpt}
+                          </p>
                         </div>
-                        <div className="px-5 pb-5 pt-1 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center gap-1">
-                          {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
+                        <div className="pt-4 border-t border-zinc-800/80 mt-4 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center justify-between">
+                          <span className="flex items-center gap-1">
+                            {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
+                          </span>
                         </div>
                       </Link>
                     </div>

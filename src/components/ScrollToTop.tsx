@@ -56,14 +56,26 @@ export default function ScrollToTop() {
       e.stopPropagation();
     }
 
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0, { duration: 1.15 });
-    } else {
+    try {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: false, duration: 0.9 });
+      }
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"
       });
+      if (document.documentElement) {
+        document.documentElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+      if (document.body) {
+        document.body.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+      if (document.scrollingElement) {
+        document.scrollingElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+    } catch {
+      window.scrollTo(0, 0);
     }
   }, []);
 
@@ -72,19 +84,19 @@ export default function ScrollToTop() {
       {isVisible && (
         <motion.button
           type="button"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           onClick={scrollToTop}
           onTouchEnd={scrollToTop}
           aria-label="Naviģēt uz lapas augšdaļu"
           title="Uz augšu"
-          className={`fixed right-4 sm:right-6 z-[9990] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#BAFC50] text-black shadow-[0_4px_25px_rgba(186,252,80,0.5)] flex items-center justify-center cursor-pointer border-2 border-black/10 hover:scale-105 active:scale-90 transition-transform duration-200 touch-manipulation group ${
+          className={`fixed right-4 sm:right-6 z-[9990] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#BAFC50] hover:bg-[#a8f235] text-black shadow-lg shadow-black/40 flex items-center justify-center cursor-pointer border border-black/10 transition-colors duration-150 touch-manipulation ${
             isCookieBannerVisible ? "bottom-[180px] sm:bottom-[100px]" : "bottom-5 sm:bottom-6"
           }`}
         >
-          <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6 stroke-[3] text-black group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6 stroke-[3] text-black" />
         </motion.button>
       )}
     </AnimatePresence>

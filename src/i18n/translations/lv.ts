@@ -150,7 +150,7 @@ export const lvTranslations: Translations = {
     navTitle: "Navigācija",
     servicesTitle: "Pakalpojumi",
     contactsTitle: "Kontakti",
-    rights: "Visas tiesības aizsargātas",
+    rights: "Visas tiesības aizsargātas.",
     privacy: "Privātuma politika",
     cookies: "Sīkdatņu politika",
   },
@@ -167,88 +167,88 @@ export const lvTranslations: Translations = {
       title: "Ceļošana var kļūt par Tavu dzīvesveidu",
       brand: "Travel with Martins",
       displayLink: "https://travelwithmartins.com",
+      image: "/Travel-with-martins-portfolio.webp",
       description: "Šī ir ceļojumu un konsultāciju mājaslapa, kura radīta ar mērķi piedāvāt cilvēkiem iespēju vairāk ceļot, kā arī mainīt savu skatījumu uz ceļošanu. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, mājaslapas saturs un pārdomāta informācijas arhitektūra.",
-      image: "/Travel-with-martins.webp",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
     },
     {
       id: 2,
       title: "Komercīpašumu apsaimniekošana | Juridiskā pārvaldība",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
-      description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
       image: "/Avenuegroup-portfolio.webp",
+      description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
     },
     {
       id: 3,
       title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
+      image: "/avangart-portfolio.webp",
       description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
-      image: "/Avangart-portfolio.webp",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
     },
     {
       id: 4,
       title: "Latvijas Restarts | Par Latvijas nākotni",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
-      description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
       image: "/latvijas-restarts-portfolio.webp",
+      description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
     },
     {
       id: 5,
       title: "Enzīmi | Fermentēti dzērieni",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
-      description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
       image: "/enzimi-portfolio.webp",
+      description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
+      tags: ["Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
     },
     {
       id: 6,
       title: "Demontāža 24 | Būvju un ēku demontāžas pakalpojumi",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
-      description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
       image: "/demontaza24-portfolio.webp",
+      description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["Multi-page", "CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+      tags: ["CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
     },
     {
       id: 7,
       title: "Velobiedrība | Drošas velobraukšanas entuziasti",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
-      description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
       image: "/velobiedriba-portfolio.webp",
+      description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
       link: "https://velobiedriba.lv",
       isPlaceholder: false,
-      tags: ["Landing page", "Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
+      tags: ["Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
     },
     {
       id: 8,
       title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
       brand: "Beauty studio",
       displayLink: "beautystudio",
-      description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
       image: "/beauty-portfolio.webp",
+      description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["Multi-page", "Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
+      tags: ["Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
     }
   ],
   pricingPlans: [
@@ -451,7 +451,7 @@ export const lvTranslations: Translations = {
       category: "Optimizācija",
       date: "17.07.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
+      image: "/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
       excerpt: "Tīmekļa meklēšana piedzīvo milzīgas pārmaiņas. Uzziniet, kā optimizēt savu mājaslapu GEO (Generative Engine Optimization) standartiem, lai ChatGPT, Gemini un citi mākslīgā intelekta aģenti ieteiktu tieši Jūsu uzņēmumu.",
       content: `Tīmekļa meklēšana šobrīd piedzīvo lielākās pārmaiņas kopš Google pirmsākumiem. Tradicionālo meklētājprogrammu vietā arvien vairāk lietotāju izmanto AI aģentus, ChatGPT, Google Gemini un Perplexity, lai saņemtu tūlītējas, personalizētas atbildes un ieteikumus. Šo jauno disciplīnu sauc par GEO (Generative Engine Optimization) jeb ģeneratīvo dzinēju optimizāciju.
 
@@ -478,7 +478,7 @@ Sageon Media savos projektos jau šodien iestrādā visus nepieciešamos tehnisk
       category: "Optimizācija",
       date: "14.07.2026",
       readTime: "4 min lasīšana",
-      image: "/blog/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
+      image: "/kapec-atrs-ielades-laiks-ir-kritisks-jusu-majaslapas-panakumiem.webp",
       excerpt: "Lapas ielādes ātrums ir pirmais iespaids par Jūsu uzņēmumu tīmeklī. Uzziniet, kā katra milisekunde ietekmē lietotāju pacietību un konversijas rādītājus.",
       content: `Mūsdienu dinamiskajā pasaulē lietotāju pacietība tīmeklī mērāma sekundes desmitdaļās. Ja Jūsu mājaslapa ielādējas ilgāk par 3 sekundēm, vairāk nekā puse apmeklētāju to pametīs vēl pirms satura ieraudzīšanas.
 
@@ -498,7 +498,7 @@ Sageon Media izmanto modernākās izstrādes tehnoloģijas (piemēram, React un 
       category: "Dizains",
       date: "08.07.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/5-butiskakie-UIUX-principi-kas-palielina-majaslapas-konversiju.webp",
+      image: "/butiskakie-ui-ux-principi-kas-palielina-majaslapas-konversiju.webp",
       excerpt: "Skaists dizains ir tikai puse no uzvaras. Pārdomāta lietotāju pieredze (UX) ir tas, kas palīdz pārvērst parastus apmeklētājus par reāliem maksājošiem klientiem.",
       content: `Mājaslapas dizainam ir jābūt ne tikai estētiskam, bet arī funkcionālam. Izcils UI/UX dizains vada lietotāju pa skaidru ceļu līdz vēlamajam rezultātam – pirkumam, pieteikumam vai saziņai.
 
@@ -518,7 +518,7 @@ Mēs Sageon Media katru dizainu veidojam no nulles, analizējot Jūsu mērķaudi
       category: "Drošība",
       date: "29.06.2026",
       readTime: "4 min lasīšana",
-      image: "/blog/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
+      image: "/majaslapas-uzturesana-kapec-drosiba-un-rezerves-kopijas-ir-obligatas.webp",
       excerpt: "Mājaslapas palaišana ir tikai sākums. Regulāri drošības atjauninājumi un rezerves kopijas pasargā Jūsu biznesu no negaidītiem datu zudumiem un uzbrukumiem.",
       content: `Daudzi uzņēmumi uzskata, ka pēc mājaslapas nodošanas ekspluatācijā par to var aizmirst. Tomēr tīmeklis nepārtraukti mainās – rodas jaunas drošības ievainojamības, spraudņu atjauninājumi un serveru tehnoloģiju pārmaiņas.
 
@@ -536,7 +536,7 @@ Mūsu uzturēšanas plāns parūpējas par visu tehnisko pusi, lai Jūs varētu 
       category: "Pārdošana",
       date: "25.06.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/majaslapa-ka-247-pardosanas-specialists.webp",
+      image: "/majaslapa-ka-247-pardosanas-specialists.webp",
       excerpt: "Labi izstrādāta mājaslapa strādā bez brīvdienām un pusdienlaika pārtraukumiem. Uzziniet, kā pareizi strukturēts saturs un skaidri aicinājumi uz darbību pārvērš nejaušus apmeklētājus par ilgtermiņa klientiem.",
       content: `Daudzi uzņēmumu īpašnieki uzskata mājaslapu par statisku vizītkarti. Patiesībā pareizi veidota mājaslapa ir Jūsu labākais pārdošanas speciālists, kas strādā 24 stundas diennaktī, 7 dienas nedēļā.
 
@@ -557,7 +557,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Lietojamība",
       date: "21.06.2026",
       readTime: "4 min lasīšana",
-      image: "/blog/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
+      image: "/kapec-vairak-neka-70_-lietotaju-izvelas-viedtalrunus.webp",
       excerpt: "Vairums Jūsu klientu pirmo iespaidu par uzņēmumu gūst savā telefonā. Uzziniet, kāpēc Mobile-First dizains un skārienekrānam draudzīga navigācija nosaka biznesa veiksmi.",
       content: `Vairāk nekā 70% no visas tīmekļa satiksmes šodien nāk no mobilajām ierīcēm. Ja Jūsu mājaslapa telefonā izskatās neērta, teksts ir par mazu vai pogas ir grūti nospiežamas, Jūs zaudējat lielāko daļu no saviem klientiem.
 
@@ -573,7 +573,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Stratēģija",
       date: "15.06.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
+      image: "/ka-pareizi-izveleties-majaslapas-strukturu-merklapa-vai-daudzu-lapu-risinajums.webp",
       excerpt: "Vai Jūsu biznesam piemērotāka ir mērķtiecīga Landing lapa vai apjomīga Multiple Page mājaslapa? Apskatām katra modeļa priekšrocības un piemērotību konkrētiem mērķiem.",
       content: `Pareizas mājaslapas arhitektūras izvēle ir pirmais un svarīgākais solis projekta plānošanā. Nepareizs formāts var apgrūtināt lietotājus vai sadārdzināt izstrādi.
 
@@ -591,7 +591,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "SEO",
       date: "10.06.2026",
       readTime: "6 min lasīšana",
-      image: "/blog/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
+      image: "/google-seo-pamati-ka-organiska-meklesana-sniedz-bezmaksas-klientu-plusmu.webp",
       excerpt: "Meklētājprogrammu optimizācija nav vienreizējs darbs, bet gan stratēģisks ieguldījums. Atklājiet svarīgākos atslēgvārdu, tehnisko uzlabojumu un satura optimizācijas stūrakmeņus.",
       content: `Katru dienu miljoniem cilvēku meklē pakalpojumus Google meklētājā. Nonākšana pirmajā lapā nodrošina nepārtrauktu, kvalitatīvu un bezmaksas potenciālo klientu plūsmu.
 
@@ -607,7 +607,7 @@ Lietotājam nevajadzētu meklēt, kā ar Jums sazināties. Saziņas pogām, zvan
       category: "Izstrāde",
       date: "04.06.2026",
       readTime: "5 min lasīšana",
-      image: "/blog/kapec-bezmaksas-majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
+      image: "/kapec-bezmaksas- majaslapu-konstruktori-biezi-izmaksa-dargak-neka-profesionala-izstrade.webp",
       excerpt: "Gatavās veidnes var šķist lēts sākums, taču slēptās izmaksas, lēns ātrums un ierobežota pielāgojamība bieži kļūst par šķērsli uzņēmuma tālākajai izaugsmei.",
       content: `Gatavie mājaslapu konstruktori no pirmā acu uzmetiena šķiet pievilcīgs un lēts veids, kā izveidot lapu pašu spēkiem. Tomēr praksē uzņēmumi ātri saskaras ar nemanāmiem šķēršļiem.
 
