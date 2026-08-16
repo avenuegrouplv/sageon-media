@@ -191,55 +191,15 @@ export default function PortfolioLaptopCard({
     }
   };
 
-  const touchStartXRef = React.useRef<number | null>(null);
-  const touchStartYRef = React.useRef<number | null>(null);
-  const isSwipingRef = React.useRef<boolean>(false);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    if (touch) {
-      touchStartXRef.current = touch.clientX;
-      touchStartYRef.current = touch.clientY;
-      isSwipingRef.current = false;
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    if (touchStartXRef.current !== null && touch) {
-      const diffX = Math.abs(touch.clientX - touchStartXRef.current);
-      const diffY = Math.abs(touch.clientY - (touchStartYRef.current || touch.clientY));
-      if (diffX > 8 || diffY > 8) {
-        isSwipingRef.current = true;
-      }
-    }
-  };
-
-  const handleCardClick = (e: React.MouseEvent) => {
-    if (isSwipingRef.current) {
-      isSwipingRef.current = false;
-      return;
-    }
-    // If the user was highlighting/selecting text, do NOT open the link or modal
-    const selection = window.getSelection();
-    if (selection && selection.toString().trim().length > 0) {
-      return;
-    }
-    openTarget(e);
-  };
-
   return (
     <>
       <div
-        onClick={handleCardClick}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        className="group flex flex-col h-full w-full select-text cursor-pointer rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-[1.2mm] sm:p-6 sm:pb-[1.2mm] transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-default rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-[1.2mm] sm:p-6 sm:pb-[1.2mm] transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
 
-        {/* 1. Device Mockup Section (Pure CSS Device Window) */}
+        {/* 1. Device Mockup Section (Pure CSS Device Window - purely visual, no navigation) */}
         <div className="relative w-full aspect-[16/10] mb-2 sm:mb-3 shrink-0 rounded-xl sm:rounded-2xl bg-[#0e0e11] border border-zinc-700/80 shadow-[0_12px_30px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col justify-between group-hover:border-[#BAFC50]/50 transition-colors duration-200">
           {/* Ambient Glow */}
           <div className="absolute -inset-4 sm:-inset-7 bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.2),rgba(186,252,80,0.15),transparent_75%)] pointer-events-none z-0 blur-[20px] opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
@@ -253,9 +213,10 @@ export default function PortfolioLaptopCard({
                     src={image}
                     alt={title}
                     onError={() => setImgError(true)}
-                    className="w-full h-full object-cover select-none"
+                    className="w-full h-full object-cover select-none pointer-events-none"
                     style={getImageStyle()}
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                 </div>
@@ -293,7 +254,10 @@ export default function PortfolioLaptopCard({
                 </div>
               )
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center">
+              <div 
+                onClick={(e) => openTarget(e)}
+                className="w-full h-full flex flex-col items-center justify-center p-3 text-center cursor-pointer"
+              >
                 <div className="w-10 h-10 rounded-full bg-zinc-800/90 group-hover:bg-[#BAFC50] border border-zinc-700 group-hover:border-[#BAFC50] flex items-center justify-center transition-colors shadow-md mb-2">
                   <Plus className="h-5 w-5 text-[#BAFC50] group-hover:text-black transition-colors" />
                 </div>

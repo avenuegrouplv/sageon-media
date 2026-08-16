@@ -4,7 +4,7 @@ import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
 
@@ -38,17 +38,19 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Automatically scroll to top on route change
+  // Automatically scroll to top on route change (unless there is a hash target)
   useEffect(() => {
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo({
-        top: 0,
-        behavior: "instant"
-      });
+    if (!hash) {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "instant"
+        });
+      }
     }
-  }, [pathname]);
+  }, [pathname, hash]);
 
   const scrollToTop = useCallback((e?: MouseEvent | TouchEvent) => {
     if (e) {

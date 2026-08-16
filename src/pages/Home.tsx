@@ -301,7 +301,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between min-h-[175px]"
           >
             <div className="space-y-2.5">
@@ -410,30 +410,36 @@ export default function Home() {
     "Orientēta uz rezultātu un klientu piesaisti"
   ];
 
-  // Infinite Carousel State
-  const [activeIndex, setActiveIndex] = useState(blogPostsList.length || 3);
+  // Infinite Carousel State (Blog / Noderīga informācija)
+  const totalBlogPosts = blogPostsList.length || 4;
+  const [activeIndex, setActiveIndex] = useState(totalBlogPosts * 2);
   const [disableTransition, setDisableTransition] = useState(false);
   const isBlogAnimatingRef = useRef(false);
 
-  // Reset transition state after seamless jump
+  // Reset transition state after seamless jump using double rAF
   useEffect(() => {
     if (disableTransition) {
-      const timer = setTimeout(() => {
-        setDisableTransition(false);
-        isBlogAnimatingRef.current = false;
-      }, 50);
-      return () => clearTimeout(timer);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setDisableTransition(false);
+          isBlogAnimatingRef.current = false;
+        });
+      });
+      return () => cancelAnimationFrame(raf);
     }
   }, [disableTransition]);
 
-  const handleTransitionEnd = (e: TransitionEvent) => {
+  const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return;
+    if (e.propertyName && e.propertyName !== 'transform') return;
     isBlogAnimatingRef.current = false;
     const total = blogPostsList.length;
-    if (activeIndex >= 2 * total) {
+    if (!total) return;
+    
+    if (activeIndex >= 3 * total) {
       setDisableTransition(true);
       setActiveIndex((prev) => prev - total);
-    } else if (activeIndex < total) {
+    } else if (activeIndex < 2 * total) {
       setDisableTransition(true);
       setActiveIndex((prev) => prev + total);
     }
@@ -450,7 +456,7 @@ export default function Home() {
     }
     setTimeout(() => {
       isBlogAnimatingRef.current = false;
-    }, 550);
+    }, 380);
   };
 
   const blogTouchStartX = useRef<number | null>(null);
@@ -558,10 +564,13 @@ export default function Home() {
 
   useEffect(() => {
     if (disablePortfolioTransition) {
-      const timer = setTimeout(() => {
-        setDisablePortfolioTransition(false);
-      }, 50);
-      return () => clearTimeout(timer);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setDisablePortfolioTransition(false);
+          isAnimatingPortfolioRef.current = false;
+        });
+      });
+      return () => cancelAnimationFrame(raf);
     }
   }, [disablePortfolioTransition]);
 
@@ -589,7 +598,7 @@ export default function Home() {
     }
     setTimeout(() => {
       isAnimatingPortfolioRef.current = false;
-    }, 550);
+    }, 360);
   };
 
   const planIcons = [
@@ -690,10 +699,13 @@ export default function Home() {
 
   useEffect(() => {
     if (disablePricingTransition) {
-      const timer = setTimeout(() => {
-        setDisablePricingTransition(false);
-      }, 50);
-      return () => clearTimeout(timer);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setDisablePricingTransition(false);
+          isAnimatingPricingRef.current = false;
+        });
+      });
+      return () => cancelAnimationFrame(raf);
     }
   }, [disablePricingTransition]);
 
@@ -721,7 +733,7 @@ export default function Home() {
     }
     setTimeout(() => {
       isAnimatingPricingRef.current = false;
-    }, 550);
+    }, 360);
   };
 
   return (
@@ -774,18 +786,13 @@ export default function Home() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />
 
-      {/* Ambient Lighting - Smooth Desktop Glows */}
-      <div className="hidden sm:block absolute top-[2%] -left-[10%] w-[800px] h-[500px] -rotate-12 rounded-full bg-gradient-to-br from-[#BAFC50]/[0.12] via-[#38b000]/[0.06] to-transparent blur-[140px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[20%] -right-[10%] w-[850px] h-[550px] rotate-12 rounded-full bg-gradient-to-bl from-[#38b000]/[0.12] via-[#BAFC50]/[0.06] to-transparent blur-[140px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[40%] -left-[8%] w-[800px] h-[500px] rotate-6 rounded-full bg-gradient-to-tr from-[#BAFC50]/[0.10] via-[#38b000]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[60%] -right-[8%] w-[850px] h-[520px] -rotate-6 rounded-full bg-gradient-to-tl from-[#38b000]/[0.10] via-[#BAFC50]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[80%] -left-[10%] w-[800px] h-[500px] -rotate-12 rounded-full bg-gradient-to-br from-[#BAFC50]/[0.10] via-[#38b000]/[0.05] to-transparent blur-[140px] pointer-events-none z-0" />
-
-      {/* Lightweight Mobile Ambient Glows (Zero lag, smooth 60fps) */}
-      <div className="sm:hidden absolute top-[1%] -left-12 w-64 h-52 rounded-full bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.05] to-transparent blur-[50px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[30%] -right-12 w-64 h-52 rounded-full bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[65%] -left-12 w-64 h-52 rounded-full bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[90%] -right-12 w-64 h-52 rounded-full bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[50px] pointer-events-none z-0" />
+      {/* Ambient Lighting - Smooth, Rich Green Aura for BOTH Desktop & Mobile (zero lag, 120fps) */}
+      <div className="absolute top-[2%] -left-[10%] w-[90vw] max-w-[850px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[18%] -right-[10%] w-[90vw] max-w-[850px] h-[550px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[38%] -left-[8%] w-[90vw] max-w-[850px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[58%] -right-[8%] w-[90vw] max-w-[850px] h-[540px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[78%] -left-[10%] w-[90vw] max-w-[850px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[92%] -right-[10%] w-[90vw] max-w-[850px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0" />
 
       {/* 1. HERO SLIDER (Loads instantly) */}
       <HeroSlider />
@@ -1123,11 +1130,13 @@ export default function Home() {
                         : "Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus."}
                     </p>
                   </div>
-                  <div className="lg:col-span-6 flex items-center justify-center">
+                  <div className="lg:col-span-6 flex items-center justify-center w-full">
                     <img 
                       src="/atra-majaslapa-tava-biznesa-izaugsmei.webp" 
                       alt={lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"} 
-                      className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
+                      className="w-full max-w-[423px] h-auto object-cover rounded-2xl shadow-lg block mx-auto"
+                      loading="eager"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -1230,7 +1239,7 @@ export default function Home() {
               >
                 <div 
                   onTransitionEnd={handlePricingTransitionEnd}
-                  className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
                     transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
                   }}
@@ -1400,7 +1409,7 @@ export default function Home() {
               >
                 <div 
                   onTransitionEnd={handlePortfolioTransitionEnd}
-                  className={`flex items-stretch portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  className={`flex items-stretch portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
                     transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
                   }}
@@ -1868,12 +1877,12 @@ export default function Home() {
               >
                 <div 
                   onTransitionEnd={handleTransitionEnd}
-                  className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-500 ease-out"}`}
+                  className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
                     transform: `translateX(calc(-${activeIndex} * (100% / var(--visible-count))))`,
                   }}
                 >
-                  {[...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
+                  {[...blogPostsList, ...blogPostsList, ...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
                     <div 
                       key={`${post.id}-${index}`} 
                       className="w-full sm:w-1/2 lg:w-1/4 p-3 flex-shrink-0 flex"
@@ -1889,7 +1898,8 @@ export default function Home() {
                                 src={post.image}
                                 alt={post.title}
                                 className="w-full h-full object-cover select-none"
-                                loading="lazy"
+                                loading="eager"
+                                decoding="async"
                               />
                             </div>
                           )}

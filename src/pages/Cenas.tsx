@@ -1,17 +1,49 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Check, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PageNavButtons from "../components/PageNavButtons";
 import ContactForm from "../components/ContactForm";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../i18n/LanguageContext";
 
+const planSlugs = ["landing-page", "multi-page", "e-komercija", "uzturesana", "google-riki"];
+
 export default function Cenas() {
   const { lang, t, getLocalizedPath } = useLanguage();
+  const location = useLocation();
+  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = t.seo.services.title;
   }, [t.seo.services.title]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetSlug = location.hash.replace("#", "");
+      setHighlightedSlug(targetSlug);
+
+      const scrollToTarget = () => {
+        const elem = document.getElementById(targetSlug);
+        if (elem) {
+          if (window.__lenis) {
+            window.__lenis.scrollTo(elem, { offset: -100, duration: 1.2 });
+          } else {
+            elem.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
+      };
+
+      const timer = setTimeout(scrollToTarget, 150);
+      const clearHighlightTimer = setTimeout(() => {
+        setHighlightedSlug(null);
+      }, 3500);
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(clearHighlightTimer);
+      };
+    }
+  }, [location.hash, location.pathname]);
 
   const pricingPlans = t.pricingPlans;
 
@@ -71,25 +103,14 @@ export default function Cenas() {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
 
-      {/* Irregular Green Ambient Background Glows */}
-      <div className="absolute -top-32 -left-20 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[10%] right-10 w-[750px] h-[450px] rotate-6 rounded-[35%_65%_50%_50%] bg-gradient-to-bl from-[#38b000]/[0.07] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[22%] -left-16 w-[800px] h-[480px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-tr from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[35%] right-16 w-[780px] h-[460px] rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[48%] -left-20 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="absolute top-[60%] -right-24 w-[900px] h-[550px] -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-tl from-[#38b000]/[0.09] via-[#BAFC50]/[0.05] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[72%] left-10 w-[800px] h-[480px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="hidden sm:block absolute top-[85%] right-10 w-[820px] h-[500px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      <div className="absolute -bottom-40 left-1/3 w-[850px] h-[500px] rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-tr from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[200px] pointer-events-none z-0" />
-      
-      {/* Mobile Glows */}
-      <div className="sm:hidden absolute top-[5%] -left-12 w-72 h-56 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.09] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[18%] -right-12 w-72 h-56 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[32%] -left-12 w-72 h-56 rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[46%] -right-12 w-72 h-56 -rotate-6 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[60%] -left-12 w-72 h-56 -rotate-6 rounded-[50%_50%_40%_60%] bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[74%] -right-12 w-72 h-56 rotate-12 rounded-[40%_60%_50%_50%] bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[110px] pointer-events-none z-0" />
-      <div className="sm:hidden absolute top-[88%] -left-12 w-72 h-56 -rotate-12 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.07] via-[#38b000]/[0.03] to-transparent blur-[110px] pointer-events-none z-0" />
+      {/* High-Performance Green Ambient Background Glows for Mobile & Desktop */}
+      <div className="absolute -top-32 -left-20 w-[90vw] max-w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[12%] right-10 w-[90vw] max-w-[780px] h-[480px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[28%] -left-16 w-[90vw] max-w-[800px] h-[480px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[45%] right-16 w-[90vw] max-w-[820px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[62%] -right-24 w-[90vw] max-w-[850px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[80%] left-10 w-[90vw] max-w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute -bottom-40 left-1/3 w-[90vw] max-w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
 
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 md:py-20 space-y-12 relative z-10">
         
@@ -117,10 +138,18 @@ export default function Cenas() {
             const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
             const isMultiPage = plan.title === "Multi-page";
             const mobileOrderClass = isMultiPage ? "order-first md:order-none" : "order-none";
+            const slug = planSlugs[index] || `service-${index}`;
+            const isTargeted = highlightedSlug === slug || location.hash === `#${slug}`;
+
             return (
               <div
                 key={index}
-                className={`bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden ${mobileOrderClass}`}
+                id={slug}
+                className={`bg-[#18181b] border-2 transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden scroll-mt-28 ${
+                  isTargeted 
+                    ? "border-[#BAFC50] ring-4 ring-[#BAFC50]/40 shadow-2xl shadow-[#BAFC50]/25 scale-[1.02]" 
+                    : "border-zinc-800 hover:border-[#BAFC50]"
+                } ${mobileOrderClass}`}
               >
                 <div>
                   {/* Header Section */}

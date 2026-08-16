@@ -73,6 +73,11 @@ export default function Kontakti() {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
       
+      {/* High-Performance Green Ambient Background Glows for Mobile & Desktop */}
+      <div className="absolute -top-32 -right-20 w-[90vw] max-w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[35%] -left-20 w-[90vw] max-w-[820px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.15),rgba(186,252,80,0.08),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute -bottom-40 right-1/4 w-[90vw] max-w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.16),rgba(56,176,0,0.08),transparent_70%)] pointer-events-none z-0" />
+      
       {/* Intro section */}
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-16 md:pt-20 pb-2 space-y-3 text-center">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase">

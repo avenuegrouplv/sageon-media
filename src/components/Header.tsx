@@ -14,30 +14,6 @@ export default function Header() {
   const location = useLocation();
   const { lang, t, switchLanguage, getLocalizedPath } = useLanguage();
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  // Track scroll position to toggle header style
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY || document.documentElement.scrollTop || 0;
-      setIsScrolled(scrollPos > 10);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   // Close menus on path changes
   useEffect(() => {
     setIsOpen(false);
@@ -171,18 +147,18 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               onClick={() => setIsOpen(false)}
-              className="lg:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-black/60 backdrop-blur-sm z-[9998]"
+              className="lg:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-black/75 z-[9998]"
             />
 
             {/* Compact Menu Panel */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="lg:hidden fixed top-[56px] sm:top-[68px] left-0 right-0 w-full bg-[#111114]/98 backdrop-blur-2xl z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              className="lg:hidden fixed top-[56px] sm:top-[68px] left-0 right-0 w-full bg-[#141418] z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
             >
               <div className="w-full max-w-md mx-auto space-y-3">
                 {/* Navigation Links - Clean typographic list without card styling */}

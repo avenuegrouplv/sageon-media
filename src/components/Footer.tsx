@@ -20,36 +20,111 @@ export default function Footer() {
     { key: "contact", name: t.nav.contact, path: getLocalizedPath("contact") },
   ];
 
+  const popularServices = [
+    { name: t.pricingPlans[0]?.title || "Landing Page", slug: "landing-page" },
+    { name: t.pricingPlans[1]?.title || "Multi-page", slug: "multi-page" },
+    { name: t.pricingPlans[2]?.title || "E-Komercija", slug: "e-komercija" },
+    { name: t.pricingPlans[3]?.title || "Uzturēšana", slug: "uzturesana" },
+  ];
+
+  const handleServiceClick = (slug: string) => {
+    const elem = document.getElementById(slug);
+    if (elem) {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(elem, { offset: -100, duration: 1.2 });
+      } else {
+        elem.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  };
+
   return (
     <footer className="bg-black text-slate-300 relative z-10 font-sans border-0 border-transparent">
-      <div className="pt-8 pb-8 md:pt-5 md:pb-5">
-        {/* TOP SECTION: Follow Us on Left, Nav Links & Contacts on Right */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 pb-6 md:pb-3">
+      <div className="pt-8 pb-8 md:pt-4 md:pb-3">
+        {/* TOP SECTION: Desktop (Left: Popular Services + Follow Us side-by-side, Right: Nav Links & Contacts) | Mobile (Nav links -> 2-row Popular Services -> Contacts -> Follow Us) */}
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-6 md:pb-0">
           
-          {/* Left Column: Follow Us with Icons */}
-          <div className="flex flex-col items-center md:items-start space-y-2">
-            <span className="text-[11px] font-sans font-bold tracking-widest uppercase text-[#BAFC50]">
-              {lang === "LV" ? "Seko mums" : lang === "EN" ? "Follow us" : "Подписывайтесь"}
-            </span>
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setShowSocialNotice(true)}
-                className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm cursor-pointer"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-4 w-4" />
-              </button>
+          {/* DESKTOP VIEW (md:flex) */}
+          <div className="hidden md:flex justify-between items-start gap-8">
+            {/* Left Group: Popular Services + Follow Us side-by-side */}
+            <div className="flex items-start gap-8 lg:gap-14">
+              {/* Popular Services Column */}
+              <div className="flex flex-col items-start space-y-2.5">
+                <span className="text-xs sm:text-[13px] font-sans font-extrabold tracking-wider uppercase text-[#BAFC50] drop-shadow-[0_0_8px_rgba(186,252,80,0.25)]">
+                  {lang === "LV" ? "Populārākie pakalpojumi" : lang === "EN" ? "Popular Services" : "Популярные услуги"}
+                </span>
+                <ul className="flex flex-col items-start space-y-1.5 text-xs sm:text-sm text-slate-300 font-medium">
+                  {popularServices.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        to={`${getLocalizedPath("services")}#${service.slug}`}
+                        onClick={() => handleServiceClick(service.slug)}
+                        className="hover:text-[#BAFC50] transition-colors duration-200 block py-0.5"
+                      >
+                        {service.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Follow Us (aligned at the same top baseline, right next to Popular Services) */}
+              <div className="flex flex-col items-start space-y-2.5">
+                <span className="text-xs sm:text-[13px] font-sans font-bold tracking-wider uppercase text-[#BAFC50]">
+                  {lang === "LV" ? "Seko mums" : lang === "EN" ? "Follow us" : "Подписывайтесь"}
+                </span>
+                <div className="flex items-center pt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setShowSocialNotice(true)}
+                    className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm cursor-pointer"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Nav links & Contacts */}
+            <div className="flex flex-col items-end space-y-3.5 text-right">
+              {/* Desktop Nav Links */}
+              <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm font-semibold text-slate-300">
+                {navLinks.map((link, idx, arr) => (
+                  <div key={link.key} className="flex items-center gap-4">
+                    <Link
+                      to={link.path}
+                      className="hover:text-[#BAFC50] transition-colors duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                    {idx < arr.length - 1 && <span className="text-slate-600 font-light select-none">|</span>}
+                  </div>
+                ))}
+              </div>
+
+              {/* Contacts */}
+              <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-xs sm:text-sm text-slate-400">
+                <p className="flex items-center gap-1.5 sm:gap-2">
+                  <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
+                  <span className="font-medium text-slate-200">+371 26739899</span>
+                </p>
+                <span className="text-slate-600 font-light">|</span>
+                <p className="flex items-center gap-2">
+                  <Mail className="h-3.5 w-3.5 text-[#BAFC50]" />
+                  <a href="mailto:info@sageonmedia.eu" className="hover:text-[#BAFC50] transition-colors font-medium text-slate-200">
+                    info@sageonmedia.eu
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Navigation Links in Row 1 & Contacts in Row 2 */}
-          <div className="flex flex-col items-center md:items-end space-y-3 text-center md:text-right w-full md:w-auto">
+          {/* MOBILE VIEW (md:hidden: Nav links -> 2-row Popular Services -> Contacts -> Follow Us) */}
+          <div className="flex flex-col items-center justify-center space-y-5 text-center w-full md:hidden">
             
-            {/* Nav links - Desktop: Single row | Mobile: 2 rows (1st: Sākums, Projekti, Pakalpojumi, BUJ; 2nd: Blogs, Kontakti) */}
-            
-            {/* Mobile Nav Links */}
-            <div className="flex flex-col items-center justify-center gap-2 text-xs font-semibold text-slate-300 w-full md:hidden">
+            {/* 1. Mobile Nav Links (2 rows) */}
+            <div className="flex flex-col items-center justify-center gap-2 text-xs font-semibold text-slate-300 w-full">
               {/* Row 1: Sākums | Projekti | Pakalpojumi | BUJ */}
               <div className="flex items-center justify-center gap-2 sm:gap-3 flex-nowrap">
                 {navLinks.slice(0, 4).map((link, idx) => (
@@ -81,23 +156,55 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm font-semibold text-slate-300">
-              {navLinks.map((link, idx, arr) => (
-                <div key={link.key} className="flex items-center gap-4">
+            {/* 2. Mobile Popular Services in 2 Rows (Below Nav links, Above Contacts) */}
+            <div className="flex flex-col items-center justify-center space-y-2 w-full pt-1 pb-1">
+              <span className="text-xs font-sans font-extrabold tracking-wider uppercase text-[#BAFC50] drop-shadow-[0_0_8px_rgba(186,252,80,0.25)]">
+                {lang === "LV" ? "Populārākie pakalpojumi" : lang === "EN" ? "Popular Services" : "Популярные услуги"}
+              </span>
+              
+              <div className="flex flex-col items-center justify-center gap-1.5 text-xs font-medium text-slate-300">
+                {/* Row 1: Landing Page | Multi-page */}
+                <div className="flex items-center justify-center gap-2.5">
                   <Link
-                    to={link.path}
+                    to={`${getLocalizedPath("services")}#${popularServices[0].slug}`}
+                    onClick={() => handleServiceClick(popularServices[0].slug)}
                     className="hover:text-[#BAFC50] transition-colors duration-200"
                   >
-                    {link.name}
+                    {popularServices[0].name}
                   </Link>
-                  {idx < arr.length - 1 && <span className="text-slate-600 font-light select-none">|</span>}
+                  <span className="text-slate-600 font-light select-none">|</span>
+                  <Link
+                    to={`${getLocalizedPath("services")}#${popularServices[1].slug}`}
+                    onClick={() => handleServiceClick(popularServices[1].slug)}
+                    className="hover:text-[#BAFC50] transition-colors duration-200"
+                  >
+                    {popularServices[1].name}
+                  </Link>
                 </div>
-              ))}
+
+                {/* Row 2: E-Komercija | Uzturēšana */}
+                <div className="flex items-center justify-center gap-2.5">
+                  <Link
+                    to={`${getLocalizedPath("services")}#${popularServices[2].slug}`}
+                    onClick={() => handleServiceClick(popularServices[2].slug)}
+                    className="hover:text-[#BAFC50] transition-colors duration-200"
+                  >
+                    {popularServices[2].name}
+                  </Link>
+                  <span className="text-slate-600 font-light select-none">|</span>
+                  <Link
+                    to={`${getLocalizedPath("services")}#${popularServices[3].slug}`}
+                    onClick={() => handleServiceClick(popularServices[3].slug)}
+                    className="hover:text-[#BAFC50] transition-colors duration-200"
+                  >
+                    {popularServices[3].name}
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            {/* Row 2: Contacts */}
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-3 sm:gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-400">
+            {/* 3. Mobile Contacts (Phone & Email) */}
+            <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-400">
               <p className="flex items-center gap-1.5 sm:gap-2">
                 <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
                 <span className="font-medium text-slate-200">+371 26739899</span>
@@ -111,14 +218,31 @@ export default function Footer() {
               </p>
             </div>
 
+            {/* 4. Mobile Follow Us with FB Icon */}
+            <div className="flex flex-col items-center justify-center space-y-2 pt-1">
+              <span className="text-[11px] font-sans font-bold tracking-widest uppercase text-[#BAFC50]">
+                {lang === "LV" ? "Seko mums" : lang === "EN" ? "Follow us" : "Подписывайтесь"}
+              </span>
+              <div className="flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowSocialNotice(true)}
+                  className="p-2.5 bg-[#18181b] hover:bg-[#BAFC50] hover:text-black text-white transition-all duration-300 border border-zinc-800 rounded-xl shadow-sm cursor-pointer"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
 
         {/* LOGO & BOTTOM COPYRIGHT SECTOR */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 md:pt-3 flex flex-col items-center gap-6 md:gap-3">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 md:pt-0 flex flex-col items-center gap-6 md:gap-0">
           {/* Centered Logo */}
-          <Link to={getLocalizedPath("home")} className="flex items-center justify-center shrink-0 py-2">
+          <Link to={getLocalizedPath("home")} className="flex items-center justify-center shrink-0 py-2 md:py-0 md:-mt-5">
             <img 
               src="/logo.webp" 
               alt="Sageon Media" 
@@ -153,7 +277,7 @@ export default function Footer() {
           </div>
 
           {/* Absolute Bottom Row: Copyright on Left, Policies on Right */}
-          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 md:pt-12 pb-2 text-xs sm:text-sm text-zinc-300">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 md:pt-2 pb-2 md:pb-0 text-xs sm:text-sm text-zinc-300">
             <div className="text-center sm:text-left font-medium">
               <span>2026 © SageOn Media I {t.footer.rights}</span>
             </div>
