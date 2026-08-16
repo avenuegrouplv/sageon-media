@@ -1130,13 +1130,11 @@ export default function Home() {
                         : "Mājaslapu struktūru mēs plānojam tā, lai tās apmeklētāji ātri atrastu visu nepieciešamo informāciju un dabiski nonāktu līdz vēlamajai darbībai. Skaidra navigācija, pārdomāts satura izvietojums un efektīvi uzaicinājumi rīkoties palīdz veidot uzticību Jūsu klientu vidū un palielināt pieprasījumu, pieteikumu vai pārdošanas rezultātus."}
                     </p>
                   </div>
-                  <div className="lg:col-span-6 flex items-center justify-center w-full">
+                  <div className="lg:col-span-6 flex items-center justify-center">
                     <img 
                       src="/atra-majaslapa-tava-biznesa-izaugsmei.webp" 
                       alt={lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"} 
-                      className="w-full max-w-[423px] h-auto object-cover rounded-2xl shadow-lg block mx-auto"
-                      loading="eager"
-                      decoding="async"
+                      className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
                 </div>
