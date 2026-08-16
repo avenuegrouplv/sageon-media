@@ -41,14 +41,10 @@ export default function ScrollToTop() {
   // Automatically scroll to top on route change (unless there is a hash target)
   useEffect(() => {
     if (!hash) {
-      if (window.__lenis) {
-        window.__lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "instant"
-        });
-      }
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
     }
   }, [pathname, hash]);
 
@@ -59,9 +55,6 @@ export default function ScrollToTop() {
     }
 
     try {
-      if (window.__lenis) {
-        window.__lenis.scrollTo(0, { immediate: false, duration: 0.9 });
-      }
       window.scrollTo({
         top: 0,
         left: 0,
@@ -72,9 +65,6 @@ export default function ScrollToTop() {
       }
       if (document.body) {
         document.body.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      }
-      if (document.scrollingElement) {
-        document.scrollingElement.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }
     } catch {
       window.scrollTo(0, 0);

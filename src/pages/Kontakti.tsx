@@ -13,7 +13,7 @@ export default function Kontakti() {
   }, [t.seo.contact.title]);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans text-left relative overflow-hidden">
+    <div className="min-h-screen min-h-[100dvh] bg-black text-white font-sans text-left relative overflow-hidden">
       <SEOHead
         title={t.seo.contact.title}
         description={t.seo.contact.description}

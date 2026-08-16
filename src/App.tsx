@@ -36,13 +36,19 @@ function AppContent() {
       <div id="top-anchor" className="absolute top-0 left-0 w-full h-0 pointer-events-none -z-50" />
       {/* Subtle grid pattern background & rich, formless ambient green aura across all pages */}
       <div className="fixed inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0" />
-      <div className="fixed top-[-10%] left-[10%] w-[90vw] max-w-[1200px] h-[550px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed top-[18%] -left-[10%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed top-[35%] right-[-5%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed top-[52%] left-[5%] w-[90vw] max-w-[1050px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed top-[68%] left-[-8%] w-[90vw] max-w-[1100px] h-[540px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed top-[82%] right-[-5%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
-      <div className="fixed bottom-[-10%] right-[5%] w-[95vw] max-w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.18),rgba(186,252,80,0.11),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      
+      {/* Mobile-optimized lightweight ambient glow */}
+      <div className="sm:hidden fixed top-0 left-0 w-full h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(186,252,80,0.12),transparent_70%)] pointer-events-none z-0" />
+      <div className="sm:hidden fixed bottom-0 right-0 w-full h-[350px] bg-[radial-gradient(ellipse_at_bottom,rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0" />
+
+      {/* Desktop rich, multi-layered ambient green aura */}
+      <div className="hidden sm:block fixed top-[-10%] left-[10%] w-[90vw] max-w-[1200px] h-[550px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed top-[18%] -left-[10%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed top-[35%] right-[-5%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed top-[52%] left-[5%] w-[90vw] max-w-[1050px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed top-[68%] left-[-8%] w-[90vw] max-w-[1100px] h-[540px] bg-[radial-gradient(ellipse_at_center,rgba(186,252,80,0.18),rgba(56,176,0,0.10),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed top-[82%] right-[-5%] w-[85vw] max-w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.16),rgba(186,252,80,0.09),transparent_70%)] pointer-events-none z-0 transform-gpu" />
+      <div className="hidden sm:block fixed bottom-[-10%] right-[5%] w-[95vw] max-w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(56,176,0,0.18),rgba(186,252,80,0.11),transparent_70%)] pointer-events-none z-0 transform-gpu" />
       
       {/* Fixed top overlay header */}
       <Header />

@@ -30,11 +30,7 @@ export default function Footer() {
   const handleServiceClick = (slug: string) => {
     const elem = document.getElementById(slug);
     if (elem) {
-      if (window.__lenis) {
-        window.__lenis.scrollTo(elem, { offset: -100, duration: 1.2 });
-      } else {
-        elem.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      elem.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 

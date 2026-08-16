@@ -25,11 +25,7 @@ export default function Cenas() {
       const scrollToTarget = () => {
         const elem = document.getElementById(targetSlug);
         if (elem) {
-          if (window.__lenis) {
-            window.__lenis.scrollTo(elem, { offset: -100, duration: 1.2 });
-          } else {
-            elem.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
+          elem.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       };
 
@@ -48,7 +44,7 @@ export default function Cenas() {
   const pricingPlans = t.pricingPlans;
 
   return (
-    <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+    <div className="min-h-screen min-h-[100dvh] bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
         title={t.seo.services.title}
         description={t.seo.services.description}

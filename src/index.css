@@ -74,53 +74,37 @@
   --light-border: #e4e4e7;
 }
 
-/* Base html & body resets with font synthesis prevention */
-html {
+/* Base html & body resets with font synthesis prevention & smooth inertial touch scroll */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  /* Ieslēdz dabisko inerciālo ritināšanu uz iOS ierīcēm */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: none;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-}
-
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
 }
 
 body {
   background-color: #000000 !important;
   color: #f4f4f5 !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   font-synthesis: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: clip;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
 #root {
@@ -129,8 +113,9 @@ body {
   width: 100%;
   max-width: 100%;
   min-height: 100vh;
-  overflow-x: clip;
-  touch-action: pan-y;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Elegant, proportional desktop scale reduction (0.9 scale on desktop) */
@@ -530,12 +515,19 @@ a.dark\:bg-sageon-dark:hover,
 }
 
 /* 60-120 FPS GPU Hardware Acceleration & Smooth Motion Utilities */
-.transform-gpu {
+.transform-gpu,
+.card-gpu {
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   perspective: 1000px;
+}
+
+/* Off-screen list & grid rendering optimization for mobile devices */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
 }
 
 /* Carousel Tracks - GPU Hardware Accelerated */

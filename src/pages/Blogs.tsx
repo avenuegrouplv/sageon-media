@@ -45,7 +45,7 @@ export default function Blogs() {
   }, [activeArticle, t.seo.blog.title]);
 
   return (
-    <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+    <div className="min-h-screen min-h-[100dvh] bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
         title={activeArticle ? `${activeArticle.title} | Sageon Media` : t.seo.blog.title}
         description={activeArticle ? activeArticle.excerpt : t.seo.blog.description}

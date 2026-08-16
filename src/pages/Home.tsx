@@ -38,7 +38,7 @@ import FreeConsultationAnimation from "../components/FreeConsultationAnimation";
 import ButtonArrowAnimation from "../components/ButtonArrowAnimation";
 import PortfolioLaptopCard from "../components/PortfolioLaptopCard";
 import StylizedCrossIcon from "../components/StylizedCrossIcon";
-import SwipeHintAnimation from "../components/SwipeHintAnimation";
+import { PricingMobileSlider, PortfolioMobileSlider, BlogMobileSlider } from "../components/MobileSliders";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -245,7 +245,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
       const diffX = touchStartX.current - endX;
       const diffY = (touchStartY.current ?? endY) - endY;
       
-      if (Math.abs(diffX) > 20 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
         if (diffX > 0) {
           nextSlide();
         } else {
@@ -285,7 +285,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
         className="relative overflow-hidden w-full touch-pan-y select-none"
-        style={{ touchAction: "pan-y" }}
+        style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleHeroTouchStart}
         onTouchMove={handleHeroTouchMove}
         onTouchEnd={handleHeroTouchEnd}
@@ -302,7 +302,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
             animate="center"
             exit="exit"
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between min-h-[175px]"
+            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between min-h-[175px] transform-gpu will-change-transform card-gpu"
           >
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
@@ -1052,8 +1052,8 @@ export default function Home() {
           className="pt-2 sm:pt-4 md:pt-6 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-36 right-1/4 w-[850px] h-[450px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -left-20 w-[800px] h-[450px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-36 right-1/4 w-[850px] h-[450px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -bottom-52 -left-20 w-[800px] h-[450px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-12 relative z-10">
             
@@ -1191,8 +1191,8 @@ export default function Home() {
           className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-36 -left-36 w-[850px] h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -right-28 w-[800px] h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-36 -left-36 w-[850px] h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -bottom-52 -right-28 w-[800px] h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-2 sm:px-3">
@@ -1208,9 +1208,8 @@ export default function Home() {
                 </h2>
               </div>
 
-              {/* Action buttons on top right: Mobile swipe indicator + Uzzināt vairāk button */}
-              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
-                <SwipeHintAnimation lang={lang} />
+              {/* Action button on top right: Uzzināt vairāk */}
+              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "Learn More" : lang === 'RU' ? "Узнать больше" : "Uzzināt vairāk"}
                   to={getLocalizedPath('services')}
@@ -1218,8 +1217,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Infinite Pricing Carousel Slider Container */}
-            <div className="relative w-full md:px-14 lg:px-16">
+            {/* Mobile Slideshow Carousel */}
+            <PricingMobileSlider 
+              plans={pricingPlans} 
+              servicesPath={getLocalizedPath('services')} 
+              lang={lang} 
+            />
+
+            {/* Desktop Infinite Pricing Carousel Slider Container */}
+            <div className="hidden sm:block relative w-full md:px-14 lg:px-16">
               {/* Desktop Left Button */}
               <button 
                 onClick={() => scrollPricing('left')}
@@ -1367,8 +1373,8 @@ export default function Home() {
           className="pt-4 pb-6 md:pt-6 md:pb-8 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-36 -left-24 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -right-24 w-[850px] h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-36 -left-24 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -bottom-52 -right-24 w-[850px] h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-3">
@@ -1378,9 +1384,8 @@ export default function Home() {
                 </h2>
               </div>
 
-              {/* Action buttons on top right: Mobile swipe indicator + Skatīt visus button */}
-              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
-                <SwipeHintAnimation lang={lang} />
+              {/* Action button on top right: Skatīt visus button */}
+              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "View All" : lang === 'RU' ? "Смотреть все" : "Skatīt visus"}
                   to={getLocalizedPath('portfolio')}
@@ -1388,8 +1393,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Infinite Portfolio Carousel Slider Container */}
-            <div className="relative w-full md:px-14 lg:px-16">
+            {/* Mobile Slideshow Carousel */}
+            <PortfolioMobileSlider items={portfolioItemsList} />
+
+            {/* Desktop Infinite Portfolio Carousel Slider Container */}
+            <div className="hidden sm:block relative w-full md:px-14 lg:px-16">
               {/* Desktop Left Button */}
               <button 
                 onClick={() => scrollPortfolio('left')}
@@ -1456,7 +1464,7 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Organic Green Glow at section start */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[400px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[170px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[400px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[170px] pointer-events-none z-0 transform-gpu" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
@@ -1761,8 +1769,8 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[950px] h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -left-24 w-[750px] h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-32 left-1/2 -translate-x-1/2 w-[950px] h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -bottom-52 -left-24 w-[750px] h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
@@ -1836,8 +1844,8 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-32 -right-36 w-[850px] h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -left-24 w-[800px] h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -top-32 -right-36 w-[850px] h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="hidden sm:block absolute -bottom-52 -left-24 w-[800px] h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-4 px-3">
@@ -1847,9 +1855,8 @@ export default function Home() {
                 </h2>
               </div>
 
-              {/* Action buttons on top right: Mobile swipe indicator + Lasīt blogu button */}
-              <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
-                <SwipeHintAnimation lang={lang} />
+              {/* Action button on top right: Lasīt blogu button */}
+              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "Read Blog" : lang === 'RU' ? "Читать блог" : "Lasīt blogu"}
                   to={getLocalizedPath('blog')}
@@ -1857,8 +1864,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* State-controlled Infinite Carousel Slider Container */}
-            <div className="relative w-full md:px-14 lg:px-16">
+            {/* Mobile Slideshow Carousel */}
+            <BlogMobileSlider 
+              posts={blogPostsList} 
+              blogPath={getLocalizedPath('blog')} 
+              lang={lang} 
+            />
+
+            {/* Desktop State-controlled Infinite Carousel Slider Container */}
+            <div className="hidden sm:block relative w-full md:px-14 lg:px-16">
               {/* Desktop Left Button */}
               <button 
                 onClick={() => scrollBlog('left')}

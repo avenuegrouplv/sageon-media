@@ -33,7 +33,7 @@ export default function Projekti() {
   };
 
   return (
-    <div className="min-h-screen bg-black font-sans text-left text-white relative overflow-hidden">
+    <div className="min-h-screen min-h-[100dvh] bg-black font-sans text-left text-white relative overflow-hidden">
       <SEOHead
         title={t.seo.portfolio.title}
         description={t.seo.portfolio.description}

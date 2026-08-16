@@ -40,7 +40,8 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.85)]"
+        style={{ transform: "translateZ(0)" }}
+        className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a]/95 sm:backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.85)] transform-gpu will-change-transform"
       >
         <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
           
