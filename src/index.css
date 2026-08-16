@@ -81,6 +81,10 @@ html {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html.lenis, html.lenis body {
@@ -108,6 +112,7 @@ body {
   color: #f4f4f5 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   font-synthesis: none;
   margin: 0;
   padding: 0;
@@ -115,6 +120,7 @@ body {
   min-height: 100vh;
   overflow-x: clip;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 #root {
@@ -124,6 +130,7 @@ body {
   max-width: 100%;
   min-height: 100vh;
   overflow-x: clip;
+  touch-action: pan-y;
 }
 
 /* Elegant, proportional desktop scale reduction (0.9 scale on desktop) */
@@ -520,6 +527,31 @@ a.dark\:bg-sageon-dark:hover,
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* 60-120 FPS GPU Hardware Acceleration & Smooth Motion Utilities */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Carousel Tracks - GPU Hardware Accelerated */
+.pricing-carousel-track,
+.portfolio-carousel-track,
+.blog-carousel-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Zero CLS image optimization */
+img {
+  text-indent: -9999px;
 }
 
 

@@ -1082,6 +1082,10 @@ export default function Home() {
                     <img 
                       src="/iedod-savam-biznesam-jaunu-uzravienu-1.webp" 
                       alt={lang === 'EN' ? "Website Development" : lang === 'RU' ? "Разработка сайтов" : "Mājaslapas izstrāde"} 
+                      width={423}
+                      height={294}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
@@ -1093,6 +1097,10 @@ export default function Home() {
                     <img 
                       src="/majaslapa-tavam-biznesam.webp" 
                       alt={lang === 'EN' ? "Design & mobile first" : lang === 'RU' ? "Дизайн и mobile first" : "Dizains & mobile first"} 
+                      width={423}
+                      height={294}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
@@ -1134,6 +1142,10 @@ export default function Home() {
                     <img 
                       src="/atra-majaslapa-tava-biznesa-izaugsmei.webp" 
                       alt={lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"} 
+                      width={423}
+                      height={294}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full max-w-[423px] h-auto max-h-[294px] object-cover rounded-2xl shadow-lg"
                     />
                   </div>
@@ -1239,7 +1251,7 @@ export default function Home() {
                   onTransitionEnd={handlePricingTransitionEnd}
                   className={`flex pricing-carousel-track ${disablePricingTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
-                    transform: `translateX(calc(-${pricingIndex} * (100% / var(--visible-count))))`,
+                    transform: `translate3d(calc(-${pricingIndex} * (100% / var(--visible-count))), 0, 0)`,
                   }}
                 >
                   {[...pricingPlans, ...pricingPlans, ...pricingPlans].map((plan, index) => {
@@ -1409,7 +1421,7 @@ export default function Home() {
                   onTransitionEnd={handlePortfolioTransitionEnd}
                   className={`flex items-stretch portfolio-carousel-track ${disablePortfolioTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
-                    transform: `translateX(calc(-${portfolioIndex} * (100% / var(--visible-count))))`,
+                    transform: `translate3d(calc(-${portfolioIndex} * (100% / var(--visible-count))), 0, 0)`,
                   }}
                 >
                   {[...portfolioItemsList, ...portfolioItemsList, ...portfolioItemsList].map((item, index) => (
@@ -1877,7 +1889,7 @@ export default function Home() {
                   onTransitionEnd={handleTransitionEnd}
                   className={`flex blog-carousel-track ${disableTransition ? "" : "transition-transform duration-350 ease-out"}`}
                   style={{ 
-                    transform: `translateX(calc(-${activeIndex} * (100% / var(--visible-count))))`,
+                    transform: `translate3d(calc(-${activeIndex} * (100% / var(--visible-count))), 0, 0)`,
                   }}
                 >
                   {[...blogPostsList, ...blogPostsList, ...blogPostsList, ...blogPostsList, ...blogPostsList].map((post, index) => (
@@ -1895,8 +1907,10 @@ export default function Home() {
                               <img
                                 src={post.image}
                                 alt={post.title}
+                                width={400}
+                                height={250}
                                 className="w-full h-full object-cover select-none"
-                                loading="eager"
+                                loading="lazy"
                                 decoding="async"
                               />
                             </div>

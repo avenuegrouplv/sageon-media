@@ -167,6 +167,11 @@ export default function HeroSlider() {
               <img
                 src="/hero.webp"
                 alt="Sageon Media"
+                width={680}
+                height={500}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="w-full h-auto max-h-[500px] object-contain select-none"
               />
             </div>

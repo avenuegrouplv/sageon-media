@@ -246,6 +246,10 @@ export default function Footer() {
             <img 
               src="/logo.webp" 
               alt="Sageon Media" 
+              width={180}
+              height={52}
+              loading="lazy"
+              decoding="async"
               className="h-[37px] sm:h-[45px] md:h-[52px] w-auto object-contain"
             />
           </Link>

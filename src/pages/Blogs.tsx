@@ -176,8 +176,10 @@ export default function Blogs() {
                     <img
                       src={post.image}
                       alt={post.title}
+                      width={500}
+                      height={312}
                       className="w-full h-full object-cover select-none"
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                     />
                   </div>

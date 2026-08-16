@@ -212,10 +212,12 @@ export default function PortfolioLaptopCard({
                   <img
                     src={image}
                     alt={title}
+                    width={560}
+                    height={350}
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover select-none pointer-events-none"
                     style={getImageStyle()}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
