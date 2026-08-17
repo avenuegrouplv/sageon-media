@@ -151,9 +151,12 @@ export default function WorkflowStepsAnimation({ className = "" }: WorkflowSteps
 
           {/* Flowing Energy Pulse Traveling along nodes */}
           <motion.circle
+            cx="9"
+            cy="22"
             r="3"
             fill="#FFFFFF"
             className="shadow-[0_0_8px_#ffffff]"
+            initial={{ cx: 9, cy: 22, opacity: 0.4 }}
             animate={{
               cx: [9, 18, 26, 35],
               cy: [22, 15, 29, 22],

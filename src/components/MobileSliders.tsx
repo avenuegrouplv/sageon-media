@@ -43,17 +43,14 @@ const slideVariants = {
   enter: (dir: number) => ({
     x: dir > 0 ? "100%" : "-100%",
     opacity: 0,
-    scale: 0.98,
   }),
   center: {
     x: "0%",
     opacity: 1,
-    scale: 1,
   },
   exit: (dir: number) => ({
     x: dir < 0 ? "100%" : "-100%",
     opacity: 0,
-    scale: 0.98,
   }),
 };
 
@@ -91,7 +88,7 @@ export function PricingMobileSlider({
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % plans.length);
-    }, 7500);
+    }, 8500);
     return () => clearInterval(timer);
   }, [isPaused, plans.length]);
 
@@ -141,9 +138,9 @@ export function PricingMobileSlider({
   const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
 
   return (
-    <div className="sm:hidden w-full relative px-1 py-1">
+    <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[745px]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -152,7 +149,7 @@ export function PricingMobileSlider({
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -160,13 +157,13 @@ export function PricingMobileSlider({
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-full transform-gpu will-change-transform"
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="w-full transform-gpu will-change-transform h-full"
           >
-            <div className="bg-[#18181b] border-2 border-zinc-800 rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden card-gpu">
+            <div className="bg-[#18181b] border-2 border-zinc-800 rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden card-gpu h-[735px] min-h-[735px]">
               <div>
                 {/* Header Section */}
-                <div className="p-5 border-b border-zinc-800/80 text-left space-y-3 relative">
+                <div className="p-4 sm:p-5 border-b border-zinc-800/80 text-left space-y-2.5 relative overflow-visible">
                   <div className="flex items-center justify-between min-h-[26px]">
                     <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
                       isBestChoice 
@@ -177,39 +174,40 @@ export function PricingMobileSlider({
                     </span>
                   </div>
                   
-                  <div className="space-y-1 flex flex-col justify-start items-start pt-1">
+                  <div className="space-y-1 h-[54px] min-h-[54px] flex flex-col justify-start items-start pt-0.5">
                     <h3 className="text-xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                    <p className="text-xs font-normal text-zinc-300">
+                    <p className="text-xs font-normal text-zinc-300 line-clamp-2">
                       {plan.subtitle}
                     </p>
                   </div>
 
                   {/* Highly visible pricing tag */}
-                  <div className="pt-4 pb-1 mt-4 border-l-4 border-[#BAFC50] pl-3 flex items-center gap-1.5 min-h-[50px] relative">
+                  <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] flex items-center relative overflow-visible">
                     {plan.originalPrice ? (
-                      <div className="flex items-center gap-1 relative w-full">
-                        <div className="absolute -top-7 left-8 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                          <span className="text-base font-black text-[#BAFC50]">€</span>
-                          <span className="text-3xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                      <div className="flex items-center relative">
+                        {/* New price positioned directly above the old price */}
+                        <div className="absolute -top-8 left-9 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
+                          <span className="text-lg font-black text-[#BAFC50]">€</span>
+                          <span className="text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                         </div>
-                        
-                        <span className="text-base font-black text-[#BAFC50]">€</span>
-                        <span className="text-3xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2">
+                        {/* Struck-through old price */}
+                        <span className="text-lg font-black text-[#BAFC50]">€</span>
+                        <span className="text-4xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2">
                           {plan.originalPrice}
                         </span>
-                        <span className="text-[10px] uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
+                        <span className="text-[10px] uppercase tracking-wider font-semibold font-sans ml-1.5 text-zinc-300">
                           / {plan.period}
                         </span>
                       </div>
                     ) : plan.price ? (
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-baseline gap-1">
                         {plan.pricePrefix && (
                           <span className="text-xs font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
                             {plan.pricePrefix}
                           </span>
                         )}
-                        <span className="text-base font-black text-[#BAFC50]">€</span>
-                        <span className="text-3xl font-black tracking-tight text-white">{plan.price}</span>
+                        <span className="text-lg font-black text-[#BAFC50]">€</span>
+                        <span className="text-4xl font-black tracking-tight text-white">{plan.price}</span>
                         <span className="text-[10px] uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
                           / {plan.period}
                         </span>
@@ -223,20 +221,20 @@ export function PricingMobileSlider({
                 </div>
 
                 {/* Features List */}
-                <ul className="p-5 space-y-3 text-left text-xs text-zinc-200 font-normal">
+                <ul className="p-4 sm:p-5 space-y-2 text-left text-xs text-zinc-200 font-normal">
                   {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start gap-2.5">
+                    <li key={fIndex} className="flex items-start gap-2">
                       <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
                         <Check className="h-3.5 w-3.5 stroke-[2.5]" />
                       </div>
-                      <span>{feature}</span>
+                      <span className="leading-snug">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* CTA Button */}
-              <div className="p-5 pt-1">
+              <div className="p-4 sm:p-5 pt-2 pb-[1.2mm]">
                 <Link
                   to={servicesPath}
                   className={`w-full py-3 px-4 font-bold tracking-wider text-xs uppercase transition-all duration-300 rounded-full text-center block shadow-sm ${
@@ -254,7 +252,7 @@ export function PricingMobileSlider({
       </div>
 
       {/* Navigation Controls */}
-      <div className="flex items-center justify-between pt-2 px-1 relative z-20">
+      <div className="flex items-center justify-between pt-3 px-1 relative z-20">
         {/* Left: Indicator dots positioned tightly next to each other */}
         <div className="flex items-center gap-0.5">
           {plans.map((_, idx) => (
@@ -338,7 +336,7 @@ export function PortfolioMobileSlider({
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % items.length);
-    }, 7500);
+    }, 8500);
     return () => clearInterval(timer);
   }, [isPaused, items.length]);
 
@@ -387,7 +385,7 @@ export function PortfolioMobileSlider({
   if (!item) return null;
 
   return (
-    <div className="sm:hidden w-full relative px-1 py-1">
+    <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
         className="relative overflow-hidden w-full select-none touch-pan-y"
         style={{ touchAction: "pan-y pinch-zoom" }}
@@ -398,7 +396,7 @@ export function PortfolioMobileSlider({
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -406,26 +404,28 @@ export function PortfolioMobileSlider({
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
             className="w-full transform-gpu will-change-transform"
           >
-            <PortfolioLaptopCard
-              title={item.title}
-              brand={item.brand}
-              displayLink={item.displayLink}
-              image={item.image}
-              link={item.link}
-              isPlaceholder={item.isPlaceholder}
-              description={item.description}
-              tags={item.tags}
-              hideStatusText={true}
-            />
+            <div className="w-full flex flex-col">
+              <PortfolioLaptopCard
+                title={item.title}
+                brand={item.brand}
+                displayLink={item.displayLink}
+                image={item.image}
+                link={item.link}
+                isPlaceholder={item.isPlaceholder}
+                description={item.description}
+                tags={item.tags}
+                hideStatusText={true}
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Navigation Controls */}
-      <div className="flex items-center justify-between pt-2 px-1 relative z-20">
+      <div className="flex items-center justify-between pt-3 px-1 relative z-20">
         {/* Left: Indicator dots positioned tightly next to each other */}
         <div className="flex items-center gap-0.5">
           {items.map((_, idx) => (
@@ -513,7 +513,7 @@ export function BlogMobileSlider({
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % posts.length);
-    }, 7500);
+    }, 8500);
     return () => clearInterval(timer);
   }, [isPaused, posts.length]);
 
@@ -562,9 +562,9 @@ export function BlogMobileSlider({
   if (!post) return null;
 
   return (
-    <div className="sm:hidden w-full relative px-1 py-1">
+    <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[380px]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -573,7 +573,7 @@ export function BlogMobileSlider({
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -581,35 +581,35 @@ export function BlogMobileSlider({
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-full transform-gpu will-change-transform"
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="w-full transform-gpu will-change-transform h-full"
           >
             <Link
               to={`${blogPath}?id=${post.id}`}
-              className="w-full bg-[#18181b] border border-zinc-800 p-5 overflow-hidden shadow-xl rounded-2xl flex flex-col justify-between block card-gpu"
+              className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-xl rounded-2xl flex flex-col justify-between h-[370px] min-h-[370px] card-gpu"
             >
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {post.image && (
-                  <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+                  <div className="w-full aspect-[16/9] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800 shrink-0">
                     <img
                       src={post.image}
                       alt={post.title}
                       width={400}
-                      height={250}
+                      height={225}
                       className="w-full h-full object-cover select-none"
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
                 )}
-                <h3 className="text-sm font-bold text-white uppercase tracking-tight line-clamp-2 leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-tight leading-snug line-clamp-3 h-[3.45rem] min-h-[3.45rem] block">
                   {post.title}
                 </h3>
-                <p className="text-xs text-zinc-400 font-light line-clamp-3 leading-relaxed">
+                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[3.25rem] min-h-[3.25rem] block">
                   {post.excerpt}
                 </p>
               </div>
-              <div className="pt-4 border-t border-zinc-800/80 mt-4 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center justify-between">
+              <div className="pt-2.5 border-t border-zinc-800/80 mt-2.5 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center justify-between">
                 <span className="flex items-center gap-1">
                   {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
                 </span>

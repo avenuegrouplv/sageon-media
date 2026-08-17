@@ -139,11 +139,7 @@ export default function PortfolioLaptopCard({
 
   const statusText = isPlaceholderCard
     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
-    : isDemontaza
-    ? (lang === "EN" ? "Completed Project" : lang === "RU" ? "Завершенный проект" : "Pabeigts projekts")
-    : isDevelopment
-    ? (lang === "EN" ? "In Development" : lang === "RU" ? "В разработке" : "Izstrādes stadijā")
-    : (lang === "EN" ? "Completed Project" : lang === "RU" ? "Завершенный проект" : "Pabeigts projekts");
+    : (lang === "EN" ? "In Development" : lang === "RU" ? "В разработке" : "Izstrādes stadijā");
 
   // Default localized tag labels for deliverables if custom tags not passed
   const defaultTagLabels = lang === "EN" ? [
@@ -194,7 +190,7 @@ export default function PortfolioLaptopCard({
   return (
     <>
       <div
-        className="group flex flex-col h-full w-full select-text cursor-default rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-[1.2mm] sm:p-6 sm:pb-[1.2mm] transition-all duration-75 ease-out shadow-xl hover:shadow-[0_16px_40px_rgba(186,252,80,0.15)] relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-default rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-4 sm:p-6 sm:pb-5 transition-colors duration-150 ease-out relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />
@@ -272,67 +268,56 @@ export default function PortfolioLaptopCard({
         </div>
 
         {/* 2. Unified Description Section directly connected */}
-        <div className="flex-1 flex flex-col justify-between pt-0.5">
-          <div className="flex flex-col">
-            {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
-            <div className="flex items-center justify-between gap-2 h-7 sm:h-8 overflow-hidden shrink-0 mb-1.5 sm:mb-2">
-              {/* Top-Left Corner: Domain Address Badge */}
-              <button
-                type="button"
-                onClick={(e) => openTarget(e)}
-                className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30 shrink-0"
-              >
-                <Globe className="w-3.5 h-3.5 text-[#BAFC50] group-hover/btn:text-black transition-colors duration-150 shrink-0" />
-                <span className="tracking-wide select-none truncate max-w-none">
-                  {isPlaceholderCard 
-                    ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
-                    : cleanDomain}
-                </span>
-                <ExternalLink className="h-3 w-3 opacity-80 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all duration-150 text-[#BAFC50] group-hover/btn:text-black shrink-0" />
-              </button>
+        <div className="flex flex-col pt-0.5 space-y-2">
+          {/* Top Row: Domain Badge in Top-Left + Status in Top-Right */}
+          <div className="flex items-center justify-between gap-2 shrink-0">
+            {/* Top-Left Corner: Domain Address Badge */}
+            <button
+              type="button"
+              onClick={(e) => openTarget(e)}
+              className="group/btn inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-black bg-zinc-900/90 border border-zinc-700/80 hover:border-[#BAFC50] hover:bg-[#BAFC50] shadow-sm py-1 px-3 rounded-full transition-all duration-150 cursor-pointer active:scale-95 z-30 shrink-0"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#BAFC50] group-hover/btn:text-black transition-colors duration-150 shrink-0" />
+              <span className="tracking-wide select-none truncate max-w-none">
+                {isPlaceholderCard 
+                  ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
+                  : cleanDomain}
+              </span>
+              <ExternalLink className="h-3 w-3 opacity-80 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all duration-150 text-[#BAFC50] group-hover/btn:text-black shrink-0" />
+            </button>
 
-              {/* Top-Right Corner: Project Status */}
-              {!hideStatusText && (
-                <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
-                  {isDevelopment && !isDemontaza ? (
-                    <>
-                      <Clock className="h-3.5 w-3.5 text-rose-400/80 shrink-0" />
-                      <span className="text-rose-300/90 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
-                    </>
-                  ) : (
-                    <>
-                      <ShieldCheck className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
-                      <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* Title - Fixed uniform height for all cards */}
-            <div className="h-11 sm:h-12 flex items-start overflow-hidden shrink-0 mb-1 sm:mb-1.5">
-              <h3 className="font-sans text-base sm:text-lg font-medium text-white group-hover:text-[#BAFC50] transition-colors duration-75 leading-snug select-text cursor-text line-clamp-2 tracking-normal">
-                {title}
-              </h3>
-            </div>
-
-            {/* Detailed Description - Fixed uniform height for all cards */}
-            <div className="h-[4.25rem] sm:h-[4.5rem] overflow-hidden shrink-0">
-              {description ? (
-                <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-3 sm:line-clamp-4">
-                  {description}
-                </p>
-              ) : (
-                <p className="text-xs sm:text-sm text-zinc-500 italic select-text cursor-text">
-                  {subtitle || ""}
-                </p>
-              )}
-            </div>
+            {/* Top-Right Corner: Project Status */}
+            {!hideStatusText && (
+              <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
+                <Clock className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
+                <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
+              </div>
+            )}
           </div>
 
-          {/* Deliverables Badges / Tags - Fixed uniform height for 2 rows of tags fully visible */}
-          <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 h-[68px] sm:h-[72px] overflow-hidden shrink-0">
-            {activeTags.slice(0, 5).map((tag, idx) => (
+          {/* Title - Fixed height so 1-line and 2-line titles are uniform */}
+          <div className="flex items-start min-h-[48px] sm:min-h-[52px]">
+            <h3 className="font-sans text-base sm:text-lg font-medium text-white group-hover:text-[#BAFC50] transition-colors duration-75 leading-snug select-text cursor-text tracking-normal line-clamp-2">
+              {title}
+            </h3>
+          </div>
+
+          {/* Detailed Description - Fixed uniform height for all cards */}
+          <div className="min-h-[80px] sm:min-h-[84px] flex items-start">
+            {description ? (
+              <p className="text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed select-text cursor-text line-clamp-4">
+                {description}
+              </p>
+            ) : (
+              <p className="text-xs sm:text-sm text-zinc-500 italic select-text cursor-text line-clamp-4">
+                {subtitle || ""}
+              </p>
+            )}
+          </div>
+
+          {/* Deliverables Badges / Tags - All 3 rows fully visible with uniform height */}
+          <div className="mt-1 pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[96px] sm:min-h-[104px]">
+            {activeTags.map((tag, idx) => (
               <span 
                 key={idx}
                 className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2 sm:px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text whitespace-nowrap"

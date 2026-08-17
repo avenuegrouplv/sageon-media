@@ -112,7 +112,7 @@ export default function DigitalGrowthObstacleAnimation({ className = "" }: Digit
 
           {/* Center Keyhole turning to glowing Checkmark */}
           <motion.path
-            d="M18.5 24.5 L21 L27 19.5"
+            d="M18.5 24.5 L21 26.5 L27 19.5"
             stroke="#BAFC50"
             strokeWidth="2.2"
             strokeLinecap="round"

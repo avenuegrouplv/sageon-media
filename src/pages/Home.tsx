@@ -173,10 +173,10 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
       Icon: Search,
       title: lang === 'EN' ? "Hard to find on Google" : lang === 'RU' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google",
       desc: lang === 'EN'
-        ? "Without quality SEO optimization, potential clients find your competitors first."
+        ? "Without quality SEO optimization and strategy, potential clients easily find your competitors in Google search results instead of your business."
         : lang === 'RU'
-        ? "Без качественной SEO-оптимизации потенциальные клиенты сначала находят ваших конкурентов."
-        : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu."
+        ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google первыми находят ваших конкурентов, а не ваше предложение."
+        : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma piedāvājumu."
     },
     {
       num: lang === 'EN' ? "04 / Reason" : lang === 'RU' ? "04 / Причина" : "04 / Iemesls",
@@ -191,7 +191,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     {
       num: lang === 'EN' ? "05 / Reason" : lang === 'RU' ? "05 / Причина" : "05 / Iemesls",
       Icon: HelpCircle,
-      title: lang === 'EN' ? <>Offer is not<br />convincing enough</> : lang === 'RU' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>,
+      title: lang === 'EN' ? "Offer is not convincing enough" : lang === 'RU' ? "Предложение недостаточно убедительно" : "Piedāvājums nav pārliecinošs",
       desc: lang === 'EN'
         ? "Without clearly showing company advantages and client benefits, it's harder for clients to decide."
         : lang === 'RU'
@@ -267,17 +267,14 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
     enter: (dir: number) => ({
       x: dir > 0 ? "100%" : "-100%",
       opacity: 0,
-      scale: 0.96,
     }),
     center: {
       x: "0%",
       opacity: 1,
-      scale: 1,
     },
     exit: (dir: number) => ({
       x: dir < 0 ? "100%" : "-100%",
       opacity: 0,
-      scale: 0.96,
     }),
   };
 
@@ -293,7 +290,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -301,10 +298,10 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between min-h-[175px] transform-gpu will-change-transform card-gpu"
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-5 shadow-2xl flex flex-col transform-gpu will-change-transform card-gpu"
           >
-            <div className="space-y-2.5">
+            <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-amber-500/80 font-semibold uppercase tracking-wider">
                   {currentCard.num}
@@ -316,7 +313,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
               <h3 className="font-bold text-white text-base leading-snug tracking-tight">
                 {currentCard.title}
               </h3>
-              <p className="text-xs text-zinc-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                 {currentCard.desc}
               </p>
             </div>
@@ -856,7 +853,7 @@ export default function Home() {
               className="text-center space-y-4 max-w-5xl mx-auto flex flex-col items-center"
             >
               <DigitalGrowthObstacleAnimation className="mb-2" />
-              <div className="inline-flex items-start sm:items-center justify-center gap-2 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
+              <h2 className="inline-flex items-start sm:items-center justify-center gap-2 px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[11px] font-sans font-semibold tracking-wider uppercase text-center mx-auto">
                 <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-[#BAFC50] mt-[2px] sm:mt-0" />
                 <span className="text-center">
                   {lang === 'EN' ? (
@@ -867,7 +864,7 @@ export default function Home() {
                     <>Kas stāv ceļā Jūsu izaugsmei<br className="sm:hidden" /> digitālajā vidē</>
                   )}
                 </span>
-              </div>
+              </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light leading-relaxed">
                 {lang === 'EN'
                   ? "Your business website is live, but it isn't attracting new clients or growing inquiries? Today, a simple online business card is no longer enough — a website must become an effective digital tool for business growth. If you recognize any of the situations below, it might be time for a change."
@@ -948,10 +945,10 @@ export default function Home() {
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     {lang === 'EN'
-                      ? "Without quality SEO optimization, potential clients find your competitors first."
+                      ? "Without quality SEO optimization and strategy, potential clients easily find your competitors in Google search results instead of your business."
                       : lang === 'RU'
-                      ? "Без качественной SEO-оптимизации потенциальные клиенты сначала находят ваших конкурентов."
-                      : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti pirmos atrod Jūsu konkurentus, nevis Jūsu uzņēmumu."}
+                      ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google первыми находят ваших конкурентов, а не ваше предложение."
+                      : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma piedāvājumu."}
                   </p>
                 </div>
               </div>
@@ -992,7 +989,7 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg leading-snug tracking-tight group-hover:text-amber-300 transition-colors">
-                    {lang === 'EN' ? <>Offer is not<br />convincing enough</> : lang === 'RU' ? <>Предложение недостаточно<br />убедительно</> : <>Piedāvājums nav<br />pārliecinošs</>}
+                    {lang === 'EN' ? "Offer is not convincing enough" : lang === 'RU' ? "Предложение недостаточно убедительно" : "Piedāvājums nav pārliecinošs"}
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     {lang === 'EN'
@@ -1052,8 +1049,8 @@ export default function Home() {
           className="pt-2 sm:pt-4 md:pt-6 pb-12 md:pb-24 bg-transparent overflow-visible relative z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="hidden sm:block absolute -top-36 right-1/4 w-[850px] h-[450px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="hidden sm:block absolute -bottom-52 -left-20 w-[800px] h-[450px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -top-36 right-1/4 w-[90vw] max-w-[850px] h-[360px] sm:h-[450px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-20 w-[90vw] max-w-[800px] h-[360px] sm:h-[450px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-12 relative z-10">
             
@@ -1140,7 +1137,7 @@ export default function Home() {
                   </div>
                   <div className="lg:col-span-6 flex items-center justify-center">
                     <img 
-                      src="/atra-majaslapa-tava-biznesa-izaugsmei.webp" 
+                      src="/atra-majaslapa-tavam-biznesam.webp" 
                       alt={lang === 'EN' ? "Structure & Results" : lang === 'RU' ? "Структура и результат" : "Struktūra & rezultāts"} 
                       width={423}
                       height={294}
@@ -1191,13 +1188,13 @@ export default function Home() {
           className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="hidden sm:block absolute -top-36 -left-36 w-[850px] h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="hidden sm:block absolute -bottom-52 -right-28 w-[800px] h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -top-36 -left-20 sm:-left-36 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -right-16 sm:-right-28 w-[90vw] max-w-[800px] h-[360px] sm:h-[500px] rotate-12 rounded-[30%_70%_50%_50%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-2 sm:px-3">
-              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 pb-2 px-2 sm:px-3">
+              <div className="space-y-2 text-center sm:text-left w-full sm:w-auto relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight text-center sm:text-left">
                   {lang === 'EN' ? (
                     <>Services &amp;<br className="hidden sm:inline" /> Pricing</>
                   ) : lang === 'RU' ? (
@@ -1209,7 +1206,7 @@ export default function Home() {
               </div>
 
               {/* Action button on top right: Uzzināt vairāk */}
-              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
+              <div className="flex items-center justify-center sm:justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "Learn More" : lang === 'RU' ? "Узнать больше" : "Uzzināt vairāk"}
                   to={getLocalizedPath('services')}
@@ -1219,7 +1216,7 @@ export default function Home() {
 
             {/* Mobile Slideshow Carousel */}
             <PricingMobileSlider 
-              plans={pricingPlans} 
+              plans={pricingPlans.slice(0, 4)} 
               servicesPath={getLocalizedPath('services')} 
               lang={lang} 
             />
@@ -1292,33 +1289,32 @@ export default function Home() {
                               </div>
 
                               {/* Highly visible high-contrast pricing tag container */}
-                              <div className="pt-4 sm:pt-6 pb-1.5 sm:pb-2 mt-8 sm:mt-1 border-l-4 border-[#BAFC50] pl-3 sm:pl-3.5 flex items-center gap-1.5 min-h-[50px] relative">
+                              <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] sm:min-h-[76px] flex items-center relative overflow-visible">
                                 {plan.originalPrice ? (
-                                  <div className="flex items-center gap-1 relative w-full">
-                                    {/* New price (450) placed floating ABOVE the old price, increased by 50%, raised up by 2mm, shifted left by 1.3cm (now -6mm) */}
-                                    <div className="absolute -top-8 sm:-top-6 left-8 sm:left-14 translate-x-[3mm] sm:-translate-x-[6mm] -translate-y-[1mm] sm:-translate-y-[2mm] flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                                      <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                      <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                                  <div className="flex items-center relative">
+                                    {/* New price positioned directly above the old price */}
+                                    <div className="absolute -top-8 sm:-top-9 left-9 sm:left-12 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
+                                      <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
+                                      <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                                     </div>
-                                    
-                                    {/* Old price (890) in exact same size and visual style as other cards */}
-                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
+                                    {/* Struck-through old price */}
+                                    <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
+                                    <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
                                       {plan.originalPrice}
                                     </span>
-                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
                                       / {plan.period}
                                     </span>
                                   </div>
                                 ) : plan.price ? (
-                                  <div className="flex items-center gap-1">
+                                  <div className="flex items-baseline gap-1">
                                     {plan.pricePrefix && (
                                       <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
                                         {plan.pricePrefix}
                                       </span>
                                     )}
-                                    <span className="text-base sm:text-lg font-black text-[#BAFC50]">€</span>
-                                    <span className="text-3xl sm:text-5xl font-black tracking-tight text-white">{plan.price}</span>
+                                    <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
+                                    <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">{plan.price}</span>
                                     <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
                                       / {plan.period}
                                     </span>
@@ -1345,7 +1341,7 @@ export default function Home() {
                           </div>
 
                           {/* CTA Action Button */}
-                          <div className="p-4 sm:p-6 sm:pt-0 pt-2">
+                          <div className="p-4 sm:p-6 sm:pt-0 pt-2 pb-[1.2mm] sm:pb-[1.2mm]">
                             <span
                               className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
                                 plan.highlight
@@ -1373,19 +1369,19 @@ export default function Home() {
           className="pt-4 pb-6 md:pt-6 md:pb-8 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="hidden sm:block absolute -top-36 -left-24 w-[850px] h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="hidden sm:block absolute -bottom-52 -right-24 w-[850px] h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -top-36 -left-24 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] -rotate-12 rounded-[55%_45%_65%_35%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -right-24 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] rotate-12 rounded-[35%_65%_45%_55%] bg-gradient-to-tl from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2 px-3">
-              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 pb-2 px-3">
+              <div className="space-y-2 text-center sm:text-left w-full sm:w-auto relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center sm:text-left">
                   {lang === 'EN' ? "Insight into Our Recent Projects" : lang === 'RU' ? "Обзор наших недавних проектов" : "Ieskats mūsu nesenajos projektos"}
                 </h2>
               </div>
 
               {/* Action button on top right: Skatīt visus button */}
-              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
+              <div className="flex items-center justify-center sm:justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "View All" : lang === 'RU' ? "Смотреть все" : "Skatīt visus"}
                   to={getLocalizedPath('portfolio')}
@@ -1458,13 +1454,15 @@ export default function Home() {
         </section>
       </LazyLoadSection>
 
-      {/* 2C. KĀPĒC IZVĒLĒTIES MŪS */}
+      {/* 2C. KĀPĒC IZVĒLĒTIES MŪS / KO JŪS IEGŪSIET */}
       <LazyLoadSection>
         <section 
           className="py-10 md:py-14 bg-transparent overflow-visible relative z-10"
         >
-          {/* Ambient Organic Green Glow at section start */}
-          <div className="hidden sm:block absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[400px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[170px] pointer-events-none z-0 transform-gpu" />
+          {/* Ambient Organic Green Glows (Vibrant & Rich especially on Mobile) */}
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[95vw] max-w-[850px] h-[380px] sm:h-[420px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.26] via-[#38b000]/[0.16] to-transparent blur-[90px] sm:blur-[170px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute top-1/3 -left-14 sm:-left-28 w-[85vw] max-w-[650px] h-[340px] sm:h-[450px] rotate-12 rounded-full bg-gradient-to-tr from-[#38b000]/[0.25] via-[#BAFC50]/[0.16] to-transparent blur-[85px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-24 -right-12 sm:-right-24 w-[90vw] max-w-[750px] h-[360px] sm:h-[450px] -rotate-12 rounded-full bg-gradient-to-bl from-[#BAFC50]/[0.25] via-[#38b000]/[0.15] to-transparent blur-[90px] sm:blur-[170px] pointer-events-none z-0 transform-gpu" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-12 w-full max-w-[1380px] mx-auto space-y-10 relative z-10">
             {/* SECTION 2: Kāpēc izvēlēties mūs & Kāpēc uzņēmumi izvēlas mūsu pakalpojumus? */}
@@ -1619,10 +1617,12 @@ export default function Home() {
       {/* KĀ NOTIEK SADARBĪBA SECTION */}
       <LazyLoadSection>
         <section 
-          className="py-10 md:py-14 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-hidden z-10"
+          className="py-10 md:py-14 bg-transparent px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative overflow-visible z-10"
         >
-          {/* Ambient Glow background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#BAFC50]/[0.16] via-[#38b000]/[0.10] to-transparent rounded-full blur-[160px] pointer-events-none z-0 transform-gpu" />
+          {/* Ambient Glows (Vibrant, Multi-layered Green Aura for Mobile & Desktop) */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[95vw] max-w-[950px] h-[380px] sm:h-[500px] bg-gradient-to-r from-[#BAFC50]/[0.28] via-[#38b000]/[0.18] to-transparent rounded-full blur-[90px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-24 -left-12 sm:-left-24 w-[90vw] max-w-[800px] h-[360px] sm:h-[480px] rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-tr from-[#38b000]/[0.26] via-[#BAFC50]/[0.16] to-transparent blur-[85px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute bottom-6 -right-12 sm:-right-24 w-[85vw] max-w-[700px] h-[350px] sm:h-[450px] -rotate-12 rounded-full bg-gradient-to-tl from-[#BAFC50]/[0.25] via-[#38b000]/[0.15] to-transparent blur-[85px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-16 relative z-10">
             
@@ -1633,7 +1633,7 @@ export default function Home() {
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>{lang === 'EN' ? "Stages of Collaboration" : lang === 'RU' ? "Этапы сотрудничества" : "Sadarbības posmi"}</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight text-center">
                 {lang === 'EN' ? "How We Work Together" : lang === 'RU' ? "Как проходит сотрудничество" : "Kā notiek sadarbība"}
               </h2>
               <p className="text-base md:text-lg text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
@@ -1769,13 +1769,13 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="hidden sm:block absolute -top-32 left-1/2 -translate-x-1/2 w-[950px] h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="hidden sm:block absolute -bottom-52 -left-24 w-[750px] h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[90vw] max-w-[950px] h-[360px] sm:h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-24 w-[90vw] max-w-[750px] h-[360px] sm:h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
             <div className="text-center space-y-3 flex flex-col items-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight text-center">
                 {lang === 'EN' ? "Frequently Asked Questions" : lang === 'RU' ? "Часто задаваемые вопросы" : "Biežāk uzdotie jautājumi"}
               </h2>
             </div>
@@ -1844,19 +1844,19 @@ export default function Home() {
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="hidden sm:block absolute -top-32 -right-36 w-[850px] h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="hidden sm:block absolute -bottom-52 -left-24 w-[800px] h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -top-32 -right-16 sm:-right-36 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-52 -left-16 sm:-left-24 w-[90vw] max-w-[800px] h-[360px] sm:h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-4 px-3">
-              <div className="space-y-2 text-left relative sm:left-[1.3cm]">
-                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 pb-4 px-3">
+              <div className="space-y-2 text-center sm:text-left w-full sm:w-auto relative sm:left-[1.3cm]">
+                <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight text-center sm:text-left">
                   {lang === 'EN' ? "Useful Articles & Insights" : lang === 'RU' ? "Полезная информация" : "Noderīga informācija"}
                 </h2>
               </div>
 
               {/* Action button on top right: Lasīt blogu button */}
-              <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
+              <div className="flex items-center justify-center sm:justify-end gap-3 w-full sm:w-auto">
                 <CtaButton
                   text={lang === 'EN' ? "Read Blog" : lang === 'RU' ? "Читать блог" : "Lasīt blogu"}
                   to={getLocalizedPath('blog')}
@@ -1913,11 +1913,11 @@ export default function Home() {
                     >
                       <Link
                         to={`${getLocalizedPath('blog')}?id=${post.id}`}
-                        className="w-full bg-[#18181b] border border-zinc-800 p-5 overflow-hidden shadow-md hover:shadow-xl hover:border-[#BAFC50]/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl"
+                        className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-md hover:shadow-xl hover:border-[#BAFC50]/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl h-[370px] min-h-[370px]"
                       >
-                        <div className="space-y-3">
+                        <div className="space-y-2.5">
                           {post.image && (
-                            <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+                            <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800 shrink-0">
                               <img
                                 src={post.image}
                                 alt={post.title}
@@ -1929,14 +1929,14 @@ export default function Home() {
                               />
                             </div>
                           )}
-                          <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-2 leading-snug">
+                          <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-3 h-[3.45rem] min-h-[3.45rem] block leading-snug">
                             {post.title}
                           </h3>
-                          <p className="text-xs text-zinc-400 font-light line-clamp-3 leading-relaxed">
+                          <p className="text-xs text-zinc-400 font-light line-clamp-3 h-[3.25rem] min-h-[3.25rem] block leading-relaxed">
                             {post.excerpt}
                           </p>
                         </div>
-                        <div className="pt-4 border-t border-zinc-800/80 mt-4 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center justify-between">
+                        <div className="pt-2.5 border-t border-zinc-800/80 mt-2.5 text-[10px] font-bold text-[#BAFC50] uppercase tracking-wider flex items-center justify-between">
                           <span className="flex items-center gap-1">
                             {lang === 'EN' ? "Read article" : lang === 'RU' ? "Читать статью" : "Lasīt rakstu"} <ArrowRight className="h-3 w-3" />
                           </span>

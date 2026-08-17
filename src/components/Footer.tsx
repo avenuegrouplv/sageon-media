@@ -35,10 +35,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-slate-300 relative z-10 font-sans border-0 border-transparent">
-      <div className="pt-8 pb-8 md:pt-4 md:pb-3">
+    <footer className="bg-black text-slate-300 relative z-10 font-sans border-0 border-transparent -mt-[2.3cm] sm:mt-0">
+      <div className="pt-[3mm] pb-8 sm:pt-6 md:pt-4 md:pb-3">
         {/* TOP SECTION: Desktop (Left: Popular Services + Follow Us side-by-side, Right: Nav Links & Contacts) | Mobile (Nav links -> 2-row Popular Services -> Contacts -> Follow Us) */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-6 md:pb-0">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-2 md:pb-0">
           
           {/* DESKTOP VIEW (md:flex) */}
           <div className="hidden md:flex justify-between items-start gap-8">
@@ -236,9 +236,9 @@ export default function Footer() {
         </div>
 
         {/* LOGO & BOTTOM COPYRIGHT SECTOR */}
-        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 md:pt-0 flex flex-col items-center gap-6 md:gap-0">
+        <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-2 md:pt-0 flex flex-col items-center gap-6 md:gap-0">
           {/* Centered Logo */}
-          <Link to={getLocalizedPath("home")} className="flex items-center justify-center shrink-0 py-2 md:py-0 md:-mt-5">
+          <Link to={getLocalizedPath("home")} className="flex items-center justify-center shrink-0 py-1 md:py-0 md:-mt-5">
             <img 
               src="/logo.webp" 
               alt="Sageon Media" 

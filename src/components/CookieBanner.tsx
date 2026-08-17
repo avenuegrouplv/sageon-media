@@ -28,12 +28,12 @@ export default function CookieBanner() {
       if (!consent) {
         timer = setTimeout(() => {
           setIsVisible(true);
-        }, 3000);
+        }, 1000);
       }
     } catch (e) {
       timer = setTimeout(() => {
         setIsVisible(true);
-      }, 3000);
+      }, 1000);
     }
 
     return () => {

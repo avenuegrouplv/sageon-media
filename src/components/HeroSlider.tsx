@@ -51,7 +51,7 @@ export default function HeroSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setPhraseIndex((prev) => (prev + 1) % phrases.length);
-    }, 3200);
+    }, 5000);
     return () => clearInterval(timer);
   }, [phrases.length]);
 
@@ -59,10 +59,8 @@ export default function HeroSlider() {
     <section id="hero-section" className="relative w-full min-h-auto lg:min-h-[85vh] bg-transparent text-white overflow-visible flex items-center pt-[78px] sm:pt-[96px] lg:pt-[110px] pb-6 sm:pb-10 md:pb-16 touch-pan-y">
       {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
-      <div className="hidden sm:block absolute top-1/4 -left-16 w-[700px] h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[160px] pointer-events-none" />
-      <div className="hidden sm:block absolute bottom-1/4 -right-16 w-[700px] h-[400px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tl from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[160px] pointer-events-none" />
-      <div className="sm:hidden absolute top-8 -left-12 w-48 h-36 -rotate-12 rounded-full bg-gradient-to-r from-[#BAFC50]/[0.08] via-[#38b000]/[0.04] to-transparent blur-[50px] pointer-events-none" />
-      <div className="sm:hidden absolute bottom-8 -right-12 w-48 h-36 rotate-12 rounded-full bg-gradient-to-l from-[#38b000]/[0.08] via-[#BAFC50]/[0.04] to-transparent blur-[50px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-16 w-[320px] sm:w-[700px] h-[260px] sm:h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[100px] sm:blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-16 w-[320px] sm:w-[700px] h-[260px] sm:h-[400px] rotate-12 rounded-[40%_60%_30%_70%] bg-gradient-to-tl from-[#38b000]/[0.15] via-[#BAFC50]/[0.08] to-transparent blur-[100px] sm:blur-[160px] pointer-events-none" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-0">
@@ -121,18 +119,18 @@ export default function HeroSlider() {
                     : "Мы разрабатываем современные сайты, которые..."}
               </h1>
               
-              <div className="min-h-[70px] sm:min-h-[85px] md:min-h-[95px] lg:min-h-[100px] flex items-center justify-center lg:justify-start relative w-full my-1 overflow-hidden">
+              <div className="h-[84px] sm:h-[96px] lg:h-[106px] w-full relative my-1 overflow-hidden grid grid-cols-1 grid-rows-1 items-center justify-center lg:justify-start">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={`${lang}-${phraseIndex}`}
-                    initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                    initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: -10, filter: "blur(3px)" }}
+                    exit={{ opacity: 0, y: -6, filter: "blur(3px)" }}
                     transition={{
-                      duration: 0.55,
-                      ease: [0.25, 0.1, 0.25, 1],
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left transform-gpu"
+                    className="col-start-1 row-start-1 text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.35rem] font-extrabold text-[#BAFC50] tracking-normal leading-tight block text-center lg:text-left transform-gpu"
                   >
                     {phrases[phraseIndex % phrases.length]}
                   </motion.span>

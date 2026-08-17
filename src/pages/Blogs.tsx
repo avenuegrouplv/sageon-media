@@ -168,11 +168,11 @@ export default function Blogs() {
             <article
               key={post.id}
               onClick={() => setActiveArticle(post)}
-              className="bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 p-6 shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl transition-colors duration-200 overflow-hidden"
+              className="bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 p-5 pb-[calc(1.25rem+2.2mm)] shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl transition-colors duration-200 overflow-hidden h-[380px] min-h-[380px]"
             >
-              <div className="space-y-3.5">
+              <div className="space-y-2.5">
                 {post.image && (
-                  <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
+                  <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800 shrink-0">
                     <img
                       src={post.image}
                       alt={post.title}
@@ -185,17 +185,17 @@ export default function Blogs() {
                   </div>
                 )}
 
-                <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-2 leading-snug">
+                <h3 className="text-base font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors duration-200 line-clamp-3 h-[3.85rem] min-h-[3.85rem] block leading-snug">
                   {post.title}
                 </h3>
                 
-                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3">
+                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[3.25rem] min-h-[3.25rem] block">
                   {post.excerpt}
                 </p>
               </div>
 
               {/* Read Action Row */}
-              <div className="pt-4 border-t border-zinc-800/80 mt-4 flex items-center justify-between">
+              <div className="pt-3 border-t border-zinc-800/80 mt-3 flex items-center justify-between">
                 <span className="text-[10px] font-sans font-bold text-[#BAFC50] uppercase tracking-widest flex items-center gap-1">
                   {lang === "LV" ? "Lasīt rakstu" : lang === "EN" ? "Read article" : "Читать статью"} <ArrowRight className="h-3 w-3" />
                 </span>

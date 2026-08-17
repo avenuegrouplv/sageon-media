@@ -39,7 +39,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
   return (
     <section 
       id="contact-section" 
-      className="relative py-12 md:py-16 overflow-visible font-sans text-left text-white bg-transparent"
+      className="relative pt-8 pb-0 sm:py-12 md:py-16 overflow-visible font-sans text-left text-white bg-transparent"
     >
       {/* Background Mesh Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none z-0" />
@@ -79,7 +79,7 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
         )}
 
         {/* Upper Part: Modern Frosted Glass Contact Form with Site Neutral Dark Tone */}
-        <div className="bg-[#18181b]/95 backdrop-blur-xl border border-zinc-800 p-6 md:p-10 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
+        <div className="bg-[#18181b]/95 backdrop-blur-xl border border-zinc-800 p-5 sm:p-6 md:p-10 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
           <div className="mb-6 pb-6 border-b border-zinc-800 flex items-center justify-between flex-wrap gap-2">
             <div>
               <h3 className="text-lg font-bold uppercase tracking-tight text-white flex items-center gap-2">

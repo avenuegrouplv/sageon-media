@@ -150,7 +150,7 @@ export const lvTranslations: Translations = {
     navTitle: "Navigācija",
     servicesTitle: "Pakalpojumi",
     contactsTitle: "Kontakti",
-    rights: "Visas tiesības aizsargātas",
+    rights: "Visas tiesības aizsargātas.",
     privacy: "Privātuma politika",
     cookies: "Sīkdatņu politika",
   },
@@ -171,7 +171,7 @@ export const lvTranslations: Translations = {
       description: "Šī ir ceļojumu un konsultāciju mājaslapa, kura radīta ar mērķi piedāvāt cilvēkiem iespēju vairāk ceļot, kā arī mainīt savu skatījumu uz ceļošanu. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, mājaslapas saturs un pārdomāta informācijas arhitektūra.",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs"]
     },
     {
       id: 2,
@@ -182,7 +182,7 @@ export const lvTranslations: Translations = {
       description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
       link: "https://avenuegroup.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "CMS"]
     },
     {
       id: 3,
@@ -193,7 +193,7 @@ export const lvTranslations: Translations = {
       description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Galerija"]
     },
     {
       id: 4,
@@ -204,7 +204,7 @@ export const lvTranslations: Translations = {
       description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
     },
     {
       id: 5,
@@ -212,10 +212,10 @@ export const lvTranslations: Translations = {
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
       image: "/enzimi-portfolio.webp",
-      description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
+      description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai un prasībām.",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
     },
     {
       id: 6,
@@ -226,7 +226,7 @@ export const lvTranslations: Translations = {
       description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Tehnikas katalogs", "Mobile First"]
     },
     {
       id: 7,
@@ -234,10 +234,10 @@ export const lvTranslations: Translations = {
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
       image: "/velobiedriba-portfolio.webp",
-      description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
+      description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Projekta gaitā izstrādāts unikāls dizains un zīmola logo.",
       link: "https://velobiedriba.lv",
       isPlaceholder: false,
-      tags: ["Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pasākumu kalendārs", "Galerija", "Mobile First"]
     },
     {
       id: 8,
@@ -245,10 +245,10 @@ export const lvTranslations: Translations = {
       brand: "Beauty studio",
       displayLink: "beautystudio",
       image: "/beauty-portfolio.webp",
-      description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
+      description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu, pakalpojumu aprakstiem un zīmola logo. Projektā integrēts iepirkumu grozs, procedūru rezervāciju kalendārs, pieteikumu forma un sociālo tīklu saziņas iespējas.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu forma", "Mobile First"]
     }
   ],
   pricingPlans: [
@@ -261,7 +261,7 @@ export const lvTranslations: Translations = {
       features: [
         "Unikāls UI/UX dizains",
         "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Vienas lapas mājaslapa līdz 5 sadaļām divās valodās",
+        "Mājaslapa līdz 5 sadaļām divās valodās.",
         "Viena attēla pievienošana katrā sadaļā",
         "Viena hero attēla pievienošana mājaslapas augšdaļā",
         "WhatsApp saziņas integrācija",
@@ -270,7 +270,7 @@ export const lvTranslations: Translations = {
         "Pamata SEO optimizācija",
         "Search Console pieslēgšana",
         "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde un tā vadības sistēmas integrācija (papildus samaksa)",
+        "Mājaslapas satura izstrāde un CMS integrācija",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
         "Izstrādes laiks: 1-3 darba dienas"
       ],
@@ -298,7 +298,6 @@ export const lvTranslations: Translations = {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 2-3 nedēļas"
       ],
       cta: "Pieteikt biznesa lapu",
@@ -324,7 +323,6 @@ export const lvTranslations: Translations = {
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
         "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
-        "Satura vadības sistēmas integrācija (bezmaksas)",
         "Izstrādes laiks: 3-5 nedēļas"
       ],
       cta: "Pieteikt e-komercijas lapu",
@@ -332,10 +330,10 @@ export const lvTranslations: Translations = {
     },
     {
       title: "Uzturēšana",
-      subtitle: "Mēneša abonēšanas maksa",
+      subtitle: "Mājaslapas tehniskā uzraudzība un drošība",
       price: "49",
       period: "mēneša abonēšanas maksa",
-      badge: "Miers un drošība Jums",
+      badge: "Ilgtermiņa sadarbība",
       features: [
         "Satura izmaiņas līdz 1 stundai mēnesī",
         "Mājaslapas ātrdarbības analīze",
@@ -344,7 +342,13 @@ export const lvTranslations: Translations = {
         "Mājaslapas SSL sertifikāta uzraudzība",
         "Tehnisko kļūdu novēršana",
         "Konsultācijas un tehniskais atbalsts",
-        "Abonements atceļams jebkurā laikā"
+        "Abonements atceļams jebkurā laikā",
+        "Regulāras drošības un sistēmas pārbaudes",
+        "Mājaslapas failu un datubāzes rezerves kopijas",
+        "Spraudņu un skriptu profilaktiska atjaunināšana",
+        "Servera darbības nepārtrauktības uzraudzība (Uptime)",
+        "Mājaslapas saišu un 404 kļūdu regulāra pārbaude",
+        "Prioritāra reakcija un operatīvs ikdienas atbalsts"
       ],
       cta: "Pieteikt uzturēšanu",
       highlight: false
@@ -364,7 +368,12 @@ export const lvTranslations: Translations = {
         "Sitemap.xml konfigurēšana",
         "Robots.txt konfigurēšana",
         "Domēna verifikācija Google pakalpojumos",
-        "Mājaslapas iesniegšana Google indeksācijai"
+        "Mājaslapas iesniegšana Google indeksācijai",
+        "Konversiju un mērķu (Goals) izsekošanas iestatīšana",
+        "Vietējo atsauksmju (Reviews) moduļa pieslēgšana",
+        "Google meklēšanas vaicājumu un klikšķu analīze",
+        "Indeksācijas kļūdu un pārklājuma audita ziņojums",
+        "Konsultācija par Google rīku ikdienas lietošanu"
       ],
       cta: "Pieteikt Google pakalpojumus",
       highlight: false
@@ -384,7 +393,12 @@ export const lvTranslations: Translations = {
         "Klientu portālu izstrāde",
         "API integrācijas ar ārējām sistēmām",
         "AI čatbotu un virtuālo asistentu integrācija",
-        "Citu individuālu risinājumu izstrāde pēc vienošanās"
+        "Citu individuālu risinājumu izstrāde pēc vienošanās",
+        "Individuālu datu filtru un meklēšanas izstrāde",
+        "Automātiska e-pastu un SMS paziņojumu nosūtīšana",
+        "Pielāgotu datu bāzu un lietotāju lomu pārvaldība",
+        "Pilna koda testēšana un veiktspējas optimizācija",
+        "Tehniskā dokumentācija un personīga apmācība"
       ],
       cta: "Pieteikt funkciju izstrādi",
       highlight: false
@@ -404,7 +418,12 @@ export const lvTranslations: Translations = {
         "Sociālo tīklu metadatu optimizācija",
         "Iekšējo saišu pārbaude un optimizācija",
         "Pamata tehniskā SEO analīze",
-        "Mājaslapas ātrdarbības analīze"
+        "Mājaslapas ātrdarbības analīze",
+        "GEO un AI meklētāju (ChatGPT, Gemini) optimizācija",
+        "Strukturēto datu (Schema JSON-LD) integrācija",
+        "Konkurentu SEO stratēģijas un pozīciju analīze",
+        "Dublētā satura un 404 kļūdu novēršana",
+        "Detalizēta SEO audita un ieteikumu atskaite"
       ],
       cta: "Pieteikt SEO optimizāciju",
       highlight: false
@@ -452,7 +471,7 @@ export const lvTranslations: Translations = {
       date: "17.07.2026",
       readTime: "5 min lasīšana",
       image: "/ka-panakt-lai-AI-agents-pec-mekletaja-pieprasijuma-piedava-tiesi-jusu-majaslapu.webp",
-      excerpt: "Tīmekļa meklēšana piedzīvo milzīgas pārmaiņas. Uzziniet, kā optimizēt savu mājaslapu GEO (Generative Engine Optimization) standartiem, lai ChatGPT, Gemini un citi mākslīgā intelekta aģenti ieteiktu tieši Jūsu uzņēmumu.",
+      excerpt: "Tīmekļa meklēšana piedzīvo milzīgas pārmaiņas. Uzziniet, kā optimizēt savu mājaslapu GEO standartiem, lai ChatGPT, Gemini un citi mākslīgā intelekta aģenti ieteiktu tieši Jūsu uzņēmumu un pakalpojumus.",
       content: `Tīmekļa meklēšana šobrīd piedzīvo lielākās pārmaiņas kopš Google pirmsākumiem. Tradicionālo meklētājprogrammu vietā arvien vairāk lietotāju izmanto AI aģentus, ChatGPT, Google Gemini un Perplexity, lai saņemtu tūlītējas, personalizētas atbildes un ieteikumus. Šo jauno disciplīnu sauc par GEO (Generative Engine Optimization) jeb ģeneratīvo dzinēju optimizāciju.
 
 ### Kāpēc tradicionālais SEO vairs nav pilnīgs?

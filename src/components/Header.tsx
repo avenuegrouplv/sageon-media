@@ -152,18 +152,18 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.12 }}
               onClick={() => setIsOpen(false)}
-              className="lg:hidden fixed inset-0 top-[56px] sm:top-[68px] bg-black/75 z-[9998]"
+              className="lg:hidden fixed inset-0 top-[52px] sm:top-[64px] bg-black/80 backdrop-blur-sm z-[9998] cursor-pointer"
             />
 
             {/* Compact Menu Panel */}
             <motion.div
-              initial={{ opacity: 0, y: -6 }}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
-              className="lg:hidden fixed top-[56px] sm:top-[68px] left-0 right-0 w-full bg-[#141418] z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.14, ease: "easeOut" }}
+              className="lg:hidden fixed top-[52px] sm:top-[64px] left-0 right-0 w-full bg-[#121215]/98 backdrop-blur-xl z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
             >
               <div className="w-full max-w-md mx-auto space-y-3">
                 {/* Navigation Links - Clean typographic list without card styling */}
@@ -175,9 +175,9 @@ export default function Header() {
                         <Link
                           to={link.path}
                           onClick={() => setIsOpen(false)}
-                          className={`flex items-center justify-between font-business text-[13.5px] sm:text-sm font-normal uppercase tracking-wider py-2.5 px-1.5 transition-colors touch-manipulation ${
+                          className={`flex items-center justify-between font-business text-[13.5px] sm:text-sm font-normal uppercase tracking-wider py-3 px-2 rounded-lg transition-all duration-150 touch-manipulation active:bg-zinc-800/60 ${
                             isActive
-                              ? "text-[#BAFC50] font-medium"
+                              ? "text-[#BAFC50] font-medium bg-[#BAFC50]/5"
                               : "text-zinc-300 hover:text-white"
                           }`}
                         >
@@ -206,9 +206,9 @@ export default function Header() {
                         key={item.code}
                         type="button"
                         onClick={() => handleSelectLanguage(item.code)}
-                        className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold tracking-wider transition-colors cursor-pointer touch-manipulation ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold tracking-wider transition-all duration-150 cursor-pointer touch-manipulation active:scale-95 ${
                           lang === item.code
-                            ? "bg-zinc-800 text-[#BAFC50] border border-[#BAFC50]/50"
+                            ? "bg-[#BAFC50]/15 text-[#BAFC50] border border-[#BAFC50]/50"
                             : "bg-zinc-900/80 text-zinc-400 border border-zinc-800 hover:text-white"
                         }`}
                       >
@@ -220,7 +220,7 @@ export default function Header() {
                   {/* Compact Direct Contact */}
                   <a
                     href="tel:+37126739899"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#BAFC50] hover:text-[#BAFC50]/80 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#BAFC50] hover:text-[#BAFC50]/80 transition-colors py-1.5 px-2 rounded-lg bg-zinc-900/60 border border-zinc-800"
                   >
                     <Phone className="h-3.5 w-3.5 text-[#BAFC50]" />
                     <span>+371 26739899</span>

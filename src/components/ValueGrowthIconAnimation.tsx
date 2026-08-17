@@ -73,6 +73,7 @@ export default function ValueGrowthIconAnimation({ className = "" }: ValueGrowth
             rx="2.5"
             fill="#BAFC50"
             opacity="0.5"
+            initial={{ height: 10, y: 26, opacity: 0.5 }}
             animate={{
               height: [8, 14, 8],
               y: [28, 22, 28],
@@ -95,6 +96,7 @@ export default function ValueGrowthIconAnimation({ className = "" }: ValueGrowth
             rx="2.5"
             fill="#BAFC50"
             opacity="0.8"
+            initial={{ height: 16, y: 20, opacity: 0.8 }}
             animate={{
               height: [12, 22, 12],
               y: [24, 14, 24],
@@ -116,6 +118,7 @@ export default function ValueGrowthIconAnimation({ className = "" }: ValueGrowth
             height="22"
             rx="2.5"
             fill="#BAFC50"
+            initial={{ height: 22, y: 14, opacity: 1 }}
             animate={{
               height: [16, 26, 16],
               y: [20, 10, 20],
