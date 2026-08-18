@@ -171,7 +171,7 @@ export const enTranslations: Translations = {
       description: "This is a travel and consultation website created to offer people the opportunity to travel more and change their perspective on traveling. As part of the project, a unique design, brand logo, website content, and well-thought-out information architecture were developed.",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Content"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Destination Guides", "Mobile First", "Content"]
     },
     {
       id: 2,
@@ -193,7 +193,7 @@ export const enTranslations: Translations = {
       description: "Website for a manufacturer of exclusive wooden stairs and premium class furniture. This project included developing a unique design with wood imitation elements, a brand logo, prepared website content, and a portfolio gallery with completed projects.",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "Gallery"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Content", "Mobile First", "Projects Gallery"]
     },
     {
       id: 4,
@@ -204,7 +204,7 @@ export const enTranslations: Translations = {
       description: "An association website bringing together professionals across fields to successfully overcome crises and drive dynamic development in Latvia. During the project, a unique design with national flag color accents, member profiles, and news sections were developed.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Member Profiles", "News Section", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Application Form", "Member Profiles", "News Section", "Mobile First"]
     },
     {
       id: 5,
@@ -248,7 +248,7 @@ export const enTranslations: Translations = {
       description: "Beauty service provider website with custom design, service descriptions, and brand logo. Features an integrated shopping cart, appointment booking calendar, application form, and direct social chat options.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Shopping Cart", "Application Form", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Shopping Cart", "Booking Calendar", "Mobile First"]
     }
   ],
   pricingPlans: [

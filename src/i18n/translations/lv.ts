@@ -171,7 +171,7 @@ export const lvTranslations: Translations = {
       description: "Šī ir ceļojumu un konsultāciju mājaslapa, kura radīta ar mērķi piedāvāt cilvēkiem iespēju vairāk ceļot, kā arī mainīt savu skatījumu uz ceļošanu. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, mājaslapas saturs un pārdomāta informācijas arhitektūra.",
       link: "https://travelwithmartins.com",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Galamērķu apraksti", "Mobile First", "Saturs"]
     },
     {
       id: 2,
@@ -193,7 +193,7 @@ export const lvTranslations: Translations = {
       description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
       link: "https://avangart.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Galerija"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Saturs", "Mobile First", "Projektu galerija"]
     },
     {
       id: 4,
@@ -204,7 +204,7 @@ export const lvTranslations: Translations = {
       description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Pieteikuma forma", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
     },
     {
       id: 5,
@@ -248,7 +248,7 @@ export const lvTranslations: Translations = {
       description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu, pakalpojumu aprakstiem un zīmola logo. Projektā integrēts iepirkumu grozs, procedūru rezervāciju kalendārs, pieteikumu forma un sociālo tīklu saziņas iespējas.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu forma", "Mobile First"]
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu kalendārs", "Mobile First"]
     }
   ],
   pricingPlans: [

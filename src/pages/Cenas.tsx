@@ -174,7 +174,7 @@ export default function Cenas() {
                     {plan.originalPrice ? (
                       <div className="relative w-full overflow-visible">
                         {/* New price positioned ~1mm directly above the white price */}
-                        <div className="absolute -top-[calc(1.4rem+1mm)] sm:-top-[calc(1.5rem+1mm)] left-0 sm:left-[2cm] flex items-center text-[#BAFC50] font-black z-20">
+                        <div className="absolute -top-[calc(1.4rem+1mm)] sm:-top-[calc(1.5rem+1mm)] left-[1.2cm] sm:left-[2cm] flex items-center text-[#BAFC50] font-black z-20">
                           <span className="text-2xl sm:text-3xl lg:text-3xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                         </div>
                         {/* Struck-through old price in white */}
