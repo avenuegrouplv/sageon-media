@@ -67,6 +67,8 @@ export function PricingMobileSlider({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const [maxHeight, setMaxHeight] = useState<number>(0);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -82,6 +84,15 @@ export function PricingMobileSlider({
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
   };
+
+  useEffect(() => {
+    if (cardRef.current && currentIndex !== 3) {
+      const h = cardRef.current.offsetHeight;
+      if (h > 0 && h > maxHeight) {
+        setMaxHeight(h);
+      }
+    }
+  }, [currentIndex, maxHeight]);
 
   useEffect(() => {
     if (isPaused || plans.length <= 1) return;
@@ -136,11 +147,12 @@ export function PricingMobileSlider({
   const plan = plans[currentIndex];
   if (!plan) return null;
   const isBestChoice = plan.badge === "Labākā izvēle biznesam" || plan.badge === "Best choice for business" || plan.badge === "Лучший выбор для бизнеса";
+  const isUzturesana = plan.title.toLowerCase().includes("uzturēšan") || plan.title.toLowerCase().includes("maintenance") || plan.title.toLowerCase().includes("поддержк") || currentIndex === 3;
 
   return (
-    <div className="sm:hidden w-full relative px-1 py-1 mb-2">
+    <div className="sm:hidden w-full relative px-0 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[calc(810px-2cm)]"
+        className="relative overflow-hidden w-full select-none touch-pan-y"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -160,71 +172,88 @@ export function PricingMobileSlider({
             transition={{ duration: 0.28, ease: "easeOut" }}
             className="w-full transform-gpu will-change-transform h-full"
           >
-            <div className="bg-[#18181b] border-2 border-zinc-800 rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden card-gpu h-[calc(800px-2cm)] min-h-[calc(800px-2cm)] max-h-[calc(800px-2cm)]">
+            <div 
+              ref={cardRef}
+              style={isUzturesana && maxHeight > 0 ? { minHeight: `${maxHeight}px` } : undefined}
+              className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer scroll-mt-28 h-full"
+            >
               <div>
                 {/* Header Section */}
-                <div className="p-4 sm:p-5 border-b border-zinc-800/80 text-left space-y-2.5 relative overflow-visible">
-                  <div className="flex items-center justify-between min-h-[26px]">
-                    <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
-                      isBestChoice 
-                        ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
-                        : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
-                    }`}>
-                      {isBestChoice ? "★ " : ""}{plan.badge}
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-1 h-[54px] min-h-[54px] flex flex-col justify-start items-start pt-0.5">
-                    <h3 className="text-xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                    <p className="text-xs font-normal text-zinc-300 line-clamp-2">
-                      {plan.subtitle}
-                    </p>
+                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                  <div>
+                    <div className="flex items-center justify-between min-h-[26px]">
+                      <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
+                        isBestChoice 
+                          ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
+                          : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
+                      }`}>
+                        {isBestChoice ? "★ " : ""}{plan.badge}
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
+                      <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
+                        {plan.subtitle}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Highly visible pricing tag */}
-                  <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] flex items-center relative overflow-visible">
+                  {/* Highly visible high-contrast pricing tag container with payment term placed underneath */}
+                  <div className="pt-7 pb-1 mt-2 border-l-4 border-[#BAFC50] pl-3.5 min-h-[68px] sm:min-h-[calc(72px+1.2mm)] flex flex-col justify-center relative overflow-visible">
                     {plan.originalPrice ? (
-                      <div className="flex items-baseline gap-1 relative">
-                        {/* New price positioned ~1mm directly above the old price, smaller than white price, without green € sign */}
-                        <div className="absolute -top-[calc(1.35rem+1mm)] left-9 flex items-center text-[#BAFC50] font-black z-20">
-                          <span className="text-2xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                      <div className="relative w-full overflow-visible">
+                        {/* New price positioned ~1mm directly above the white price */}
+                        <div className="absolute -top-[calc(1.4rem+1mm)] sm:-top-[calc(1.5rem+1mm)] left-0 sm:left-[2cm] flex items-center text-[#BAFC50] font-black z-20">
+                          <span className="text-2xl sm:text-3xl lg:text-3xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                         </div>
-                        {/* Struck-through old price */}
-                        <span className="text-lg font-black text-[#BAFC50]">€</span>
-                        <span className="text-4xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2">
-                          {plan.originalPrice}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-wider font-semibold font-sans ml-1.5 text-zinc-300">
+                        {/* Struck-through old price in white */}
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                          <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px] shrink-0">
+                            {plan.originalPrice}
+                          </span>
+                        </div>
+                        {/* Subtitle / Payment period placed under the white price */}
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
                           / {plan.period}
-                        </span>
+                        </div>
                       </div>
                     ) : plan.price ? (
-                      <div className="flex items-baseline gap-1">
-                        {plan.pricePrefix && (
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                            {plan.pricePrefix}
-                          </span>
-                        )}
-                        <span className="text-lg font-black text-[#BAFC50]">€</span>
-                        <span className="text-4xl font-black tracking-tight text-white">{plan.price}</span>
-                        <span className="text-[10px] uppercase tracking-wider font-semibold font-sans ml-1 text-zinc-300">
+                      <div className="relative w-full overflow-visible">
+                        <div className="flex items-baseline gap-1">
+                          {plan.pricePrefix && (
+                            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5 shrink-0">
+                              {plan.pricePrefix}
+                            </span>
+                          )}
+                          <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                          <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white shrink-0">{plan.price}</span>
+                        </div>
+                        {/* Subtitle / Payment period placed under the white price */}
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
                           / {plan.period}
-                        </span>
+                        </div>
                       </div>
                     ) : (
-                      <span className="text-base font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
-                        {plan.period}
-                      </span>
+                      <div className="relative w-full overflow-visible">
+                        <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] block">
+                          {plan.period}
+                        </span>
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-400 mt-1 whitespace-nowrap">
+                          / individuāls risinājums
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
 
                 {/* Features List */}
-                <ul className="p-4 sm:p-5 space-y-2 text-left text-xs text-zinc-200 font-normal">
+                <ul className="p-4 sm:px-6 pt-1.5 pb-0 sm:pt-2 sm:pb-0 space-y-1 sm:space-y-1.5 text-left text-xs sm:text-sm text-zinc-200 font-normal">
                   {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start gap-2">
+                    <li key={fIndex} className="flex items-start gap-2.5">
                       <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
-                        <Check className="h-3.5 w-3.5 stroke-[2.5]" />
+                        <Check className="h-4 w-4 stroke-[2.5]" />
                       </div>
                       <span className="leading-snug">{feature}</span>
                     </li>
@@ -232,14 +261,14 @@ export function PricingMobileSlider({
                 </ul>
               </div>
 
-              {/* CTA Button */}
-              <div className="p-4 sm:p-5 pt-1 pb-[1.3mm] mt-auto">
+              {/* CTA Button directly below bullet points with exact 0.5cm gap and 1.3mm bottom margin */}
+              <div className="p-4 sm:px-6 pt-[0.5cm] pb-[1.3mm] sm:pt-[0.5cm] sm:pb-[1.3mm] mt-auto">
                 <Link
                   to={servicesPath}
-                  className={`w-full py-3.5 px-4 font-bold tracking-wider text-xs uppercase transition-all duration-300 rounded-full text-center block shadow-sm ${
+                  className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
                     plan.highlight
-                      ? "bg-[#BAFC50] text-black font-extrabold"
-                      : "bg-zinc-800 text-white"
+                      ? "bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold"
+                      : "bg-zinc-800 hover:bg-zinc-700 text-white hover:text-[#BAFC50]"
                   }`}
                 >
                   {plan.cta}

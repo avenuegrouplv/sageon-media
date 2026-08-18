@@ -613,7 +613,7 @@ export default function Home() {
     icon: planIcons[idx % planIcons.length]
   }));
 
-  const pricingPlans = rawPlans;
+  const pricingPlans = rawPlans.slice(0, 4);
 
   // Infinite Pricing Carousel State
   const [pricingIndex, setPricingIndex] = useState(() => {
@@ -1185,7 +1185,7 @@ export default function Home() {
       {/* 3. PAKALPOJUMI */}
       <LazyLoadSection>
         <section 
-          className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
+          className="pt-4 pb-10 md:pt-6 md:pb-14 bg-transparent px-4 sm:px-6 md:px-12 relative overflow-visible z-10"
         >
           {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
           <div className="absolute -top-36 -left-20 sm:-left-36 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] -rotate-12 rounded-[50%_50%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
@@ -1217,7 +1217,7 @@ export default function Home() {
             {/* Mobile Slideshow Carousel */}
             <PricingMobileSlider 
               plans={pricingPlans.slice(0, 4)} 
-              servicesPath={getLocalizedPath('services')} 
+              servicesPath={getLocalizedPath('contact')} 
               lang={lang} 
             />
 
@@ -1264,15 +1264,14 @@ export default function Home() {
                         key={`${plan.title}-${index}`} 
                         className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col"
                       >
-                        <Link
-                          to={getLocalizedPath('services')}
+                        <div
                           className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer h-full"
                         >
                           <div>
                             {/* Header Section - Increased by 1.2mm on desktop */}
-                            <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                            <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
                               <div>
-                                <div className="flex items-center justify-between min-h-[24px] sm:min-h-[26px]">
+                                <div className="flex items-center justify-between min-h-[26px]">
                                   <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
                                     isBestChoice 
                                       ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
@@ -1283,7 +1282,7 @@ export default function Home() {
                                 </div>
                                 
                                 <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
-                                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
                                   <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
                                     {plan.subtitle}
                                   </p>
@@ -1352,19 +1351,20 @@ export default function Home() {
                             </ul>
                           </div>
 
-                          {/* CTA Action Button directly below bullet points with 1.3mm bottom margin */}
-                          <div className="p-4 sm:px-6 pt-0 pb-[1.3mm] sm:pt-0 sm:pb-[1.3mm] mt-auto">
-                            <span
-                              className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md ${
+                          {/* CTA Action Button directly below bullet points with 0.5cm gap and 1.3mm bottom margin */}
+                          <div className="p-4 sm:px-6 pt-[0.5cm] pb-[1.3mm] sm:pt-[0.5cm] sm:pb-[1.3mm] mt-auto">
+                            <Link
+                              to={getLocalizedPath("contact")}
+                              className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
                                 plan.highlight
-                                  ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black font-extrabold"
-                                  : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
+                                  ? "bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold"
+                                  : "bg-zinc-800 hover:bg-zinc-700 text-white hover:text-[#BAFC50]"
                               }`}
                             >
                               {plan.cta}
-                            </span>
+                            </Link>
                           </div>
-                        </Link>
+                        </div>
                       </div>
                     );
                   })}

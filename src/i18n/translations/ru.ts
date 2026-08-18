@@ -150,7 +150,7 @@ export const ruTranslations: Translations = {
     navTitle: "Навигация",
     servicesTitle: "Услуги",
     contactsTitle: "Контакты",
-    rights: "Все права защищены.",
+    rights: "Все права защищены",
     privacy: "Политика конфиденциальности",
     cookies: "Политика использования куки",
   },

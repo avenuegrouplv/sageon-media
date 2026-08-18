@@ -141,7 +141,7 @@ export default function Cenas() {
               <div
                 key={index}
                 id={slug}
-                className={`bg-[#18181b] border-2 transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer h-full scroll-mt-28 ${
+                className={`bg-[#18181b] border-2 transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer scroll-mt-28 h-full ${
                   isTargeted 
                     ? "border-[#BAFC50] ring-4 ring-[#BAFC50]/40 shadow-2xl scale-[1.02]" 
                     : "border-zinc-800 hover:border-[#BAFC50]"
@@ -231,8 +231,8 @@ export default function Cenas() {
                 </ul>
               </div>
 
-                {/* CTA Action Button directly below bullet points with 1.3mm bottom margin */}
-                <div className="p-4 sm:px-6 pt-0 pb-[1.3mm] sm:pt-0 sm:pb-[1.3mm] mt-auto">
+                {/* CTA Action Button directly below bullet points with 0.5cm gap and 1.3mm bottom margin */}
+                <div className="p-4 sm:px-6 pt-[0.5cm] pb-[1.3mm] sm:pt-[0.5cm] sm:pb-[1.3mm] mt-auto">
                   <Link
                     to={getLocalizedPath("contact")}
                     className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
