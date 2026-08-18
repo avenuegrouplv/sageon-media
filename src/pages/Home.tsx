@@ -1262,90 +1262,102 @@ export default function Home() {
                     return (
                       <div 
                         key={`${plan.title}-${index}`} 
-                        className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col justify-between"
+                        className="w-full sm:w-1/2 lg:w-1/4 p-2 sm:p-3 flex-shrink-0 flex flex-col"
                       >
                         <Link
                           to={getLocalizedPath('services')}
-                          className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden cursor-pointer h-full"
+                          className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-300 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer h-full"
                         >
                           <div>
-                            {/* Header Section */}
-                            <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 sm:space-y-4 relative">
-                              <div className="flex items-center justify-between min-h-[24px] sm:min-h-[28px]">
-                                <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
-                                  isBestChoice 
-                                    ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
-                                    : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
-                                }`}>
-                                  {isBestChoice ? "★ " : ""}{plan.badge}
-                                </span>
-                              </div>
-                              
-                              <div className="space-y-1 sm:space-y-1.5 h-auto sm:h-[88px] sm:min-h-[88px] flex flex-col justify-start items-start pt-1">
-                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
-                                <p className="text-xs sm:text-sm font-normal text-zinc-300">
-                                  {plan.subtitle}
-                                </p>
+                            {/* Header Section - Increased by 1.2mm on desktop */}
+                            <div className="p-4 sm:p-6 border-b border-zinc-800/80 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                              <div>
+                                <div className="flex items-center justify-between min-h-[24px] sm:min-h-[26px]">
+                                  <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
+                                    isBestChoice 
+                                      ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
+                                      : "bg-zinc-800 text-zinc-200 border border-zinc-700/60"
+                                  }`}>
+                                    {isBestChoice ? "★ " : ""}{plan.badge}
+                                  </span>
+                                </div>
+                                
+                                <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
+                                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight group-hover:text-[#BAFC50] transition-colors">{plan.title}</h3>
+                                  <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
+                                    {plan.subtitle}
+                                  </p>
+                                </div>
                               </div>
 
-                              {/* Highly visible high-contrast pricing tag container */}
-                              <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] sm:min-h-[76px] flex items-center relative overflow-visible">
+                              {/* Highly visible high-contrast pricing tag container with payment term placed underneath */}
+                              <div className="pt-7 pb-1 mt-2 border-l-4 border-[#BAFC50] pl-3.5 min-h-[68px] sm:min-h-[calc(72px+1.2mm)] flex flex-col justify-center relative overflow-visible">
                                 {plan.originalPrice ? (
-                                  <div className="flex items-center relative">
-                                    {/* New price positioned directly above the old price */}
-                                    <div className="absolute -top-8 sm:-top-9 left-9 sm:left-12 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                                      <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                                      <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                                  <div className="relative w-full overflow-visible">
+                                    {/* New price positioned ~1mm directly above the white price */}
+                                    <div className="absolute -top-[calc(1.4rem+1mm)] sm:-top-[calc(1.5rem+1mm)] left-0 sm:left-[2cm] flex items-center text-[#BAFC50] font-black z-20">
+                                      <span className="text-2xl sm:text-3xl lg:text-3xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                                     </div>
-                                    {/* Struck-through old price */}
-                                    <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                                    <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
-                                      {plan.originalPrice}
-                                    </span>
-                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
+                                    {/* Struck-through old price in white */}
+                                    <div className="flex items-baseline gap-1">
+                                      <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                                      <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px] shrink-0">
+                                        {plan.originalPrice}
+                                      </span>
+                                    </div>
+                                    {/* Subtitle / Payment period placed under the white price */}
+                                    <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
                                       / {plan.period}
-                                    </span>
+                                    </div>
                                   </div>
                                 ) : plan.price ? (
-                                  <div className="flex items-baseline gap-1">
-                                    {plan.pricePrefix && (
-                                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
-                                        {plan.pricePrefix}
-                                      </span>
-                                    )}
-                                    <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                                    <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">{plan.price}</span>
-                                    <span className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans ml-1 sm:ml-2 text-zinc-300">
+                                  <div className="relative w-full overflow-visible">
+                                    <div className="flex items-baseline gap-1">
+                                      {plan.pricePrefix && (
+                                        <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5 shrink-0">
+                                          {plan.pricePrefix}
+                                        </span>
+                                      )}
+                                      <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                                      <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white shrink-0">{plan.price}</span>
+                                    </div>
+                                    {/* Subtitle / Payment period placed under the white price */}
+                                    <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
                                       / {plan.period}
-                                    </span>
+                                    </div>
                                   </div>
                                 ) : (
-                                  <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
-                                    {plan.period}
-                                  </span>
+                                  <div className="relative w-full overflow-visible">
+                                    <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] block">
+                                      {plan.period}
+                                    </span>
+                                    <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-400 mt-1 whitespace-nowrap">
+                                      / individuāls risinājums
+                                    </div>
+                                  </div>
                                 )}
                               </div>
                             </div>
 
                             {/* Features List */}
-                            <ul className="p-4 sm:p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                            <ul className="p-4 sm:px-6 pt-1.5 pb-0 sm:pt-2 sm:pb-0 space-y-1 sm:space-y-1.5 text-left text-xs sm:text-sm text-zinc-200 font-normal">
                               {plan.features.map((feature, fIndex) => (
                                 <li key={fIndex} className="flex items-start gap-2.5">
                                   <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
                                     <Check className="h-4 w-4 stroke-[2.5]" />
                                   </div>
-                                  <span>{feature}</span>
+                                  <span className="leading-snug">{feature}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
 
-                          {/* CTA Action Button */}
-                          <div className="p-4 sm:p-6 sm:pt-0 pt-2 pb-[1.2mm] sm:pb-[1.2mm]">
+                          {/* CTA Action Button directly below bullet points with 1.3mm bottom margin */}
+                          <div className="p-4 sm:px-6 pt-0 pb-[1.3mm] sm:pt-0 sm:pb-[1.3mm] mt-auto">
                             <span
-                              className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md btn-shimmer ${
+                              className={`w-full py-2.5 sm:py-3.5 px-4 font-bold tracking-wider text-xs sm:text-sm uppercase transition-all duration-300 rounded-full text-center block shadow-sm hover:shadow-md ${
                                 plan.highlight
-                                  ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
+                                  ? "bg-[#BAFC50] group-hover:bg-[#a8f235] text-black font-extrabold"
                                   : "bg-zinc-800 group-hover:bg-[#BAFC50] text-white group-hover:text-black"
                               }`}
                             >
@@ -1768,9 +1780,10 @@ export default function Home() {
         <section 
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible text-left z-10"
         >
-          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[90vw] max-w-[950px] h-[360px] sm:h-[450px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -left-24 w-[90vw] max-w-[750px] h-[360px] sm:h-[450px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          {/* Ambient Multi-layered Organic Green Glows for FAQ */}
+          <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[95vw] max-w-[950px] h-[380px] sm:h-[500px] -rotate-6 rounded-[50%_50%_60%_40%] bg-gradient-to-r from-[#BAFC50]/[0.28] via-[#38b000]/[0.18] to-transparent blur-[90px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute top-1/2 -right-16 sm:-right-28 w-[85vw] max-w-[700px] h-[360px] sm:h-[480px] rotate-12 rounded-full bg-gradient-to-tl from-[#BAFC50]/[0.25] via-[#38b000]/[0.15] to-transparent blur-[85px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-48 -left-20 sm:-left-32 w-[90vw] max-w-[800px] h-[360px] sm:h-[480px] rotate-12 rounded-[60%_40%_50%_50%] bg-gradient-to-br from-[#38b000]/[0.26] via-[#BAFC50]/[0.16] to-transparent blur-[90px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-5xl xl:max-w-6xl mx-auto space-y-10 relative z-10">
             
@@ -1843,9 +1856,10 @@ export default function Home() {
         <section 
           className="py-10 md:py-14 bg-transparent px-6 md:px-12 relative overflow-visible z-10"
         >
-          {/* Ambient Formless Organic Green Glows Bleeding Seamlessly Across Sections */}
-          <div className="absolute -top-32 -right-16 sm:-right-36 w-[90vw] max-w-[850px] h-[360px] sm:h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
-          <div className="absolute -bottom-52 -left-16 sm:-left-24 w-[90vw] max-w-[800px] h-[360px] sm:h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.14] via-[#BAFC50]/[0.07] to-transparent blur-[120px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          {/* Ambient Multi-layered Organic Green Glows for Useful Info */}
+          <div className="absolute -top-28 -right-12 sm:-right-36 w-[95vw] max-w-[850px] h-[380px] sm:h-[500px] -rotate-12 rounded-[45%_55%_65%_35%] bg-gradient-to-bl from-[#BAFC50]/[0.28] via-[#38b000]/[0.18] to-transparent blur-[90px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute top-1/3 -left-14 sm:-left-28 w-[85vw] max-w-[650px] h-[340px] sm:h-[450px] rotate-12 rounded-full bg-gradient-to-tr from-[#38b000]/[0.25] via-[#BAFC50]/[0.16] to-transparent blur-[85px] sm:blur-[160px] pointer-events-none z-0 transform-gpu" />
+          <div className="absolute -bottom-48 -left-12 sm:-left-24 w-[90vw] max-w-[800px] h-[360px] sm:h-[500px] rotate-12 rounded-[55%_45%_35%_65%] bg-gradient-to-tr from-[#38b000]/[0.26] via-[#BAFC50]/[0.15] to-transparent blur-[90px] sm:blur-[180px] pointer-events-none z-0 transform-gpu" />
 
           <div className="w-full max-w-[1380px] mx-auto space-y-8 relative z-10">
             <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 pb-4 px-3">

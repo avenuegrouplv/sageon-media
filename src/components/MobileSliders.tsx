@@ -140,7 +140,7 @@ export function PricingMobileSlider({
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[745px]"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[calc(810px-2cm)]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -160,7 +160,7 @@ export function PricingMobileSlider({
             transition={{ duration: 0.28, ease: "easeOut" }}
             className="w-full transform-gpu will-change-transform h-full"
           >
-            <div className="bg-[#18181b] border-2 border-zinc-800 rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden card-gpu h-[735px] min-h-[735px]">
+            <div className="bg-[#18181b] border-2 border-zinc-800 rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden card-gpu h-[calc(800px-2cm)] min-h-[calc(800px-2cm)] max-h-[calc(800px-2cm)]">
               <div>
                 {/* Header Section */}
                 <div className="p-4 sm:p-5 border-b border-zinc-800/80 text-left space-y-2.5 relative overflow-visible">
@@ -184,11 +184,10 @@ export function PricingMobileSlider({
                   {/* Highly visible pricing tag */}
                   <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] flex items-center relative overflow-visible">
                     {plan.originalPrice ? (
-                      <div className="flex items-center relative">
-                        {/* New price positioned directly above the old price */}
-                        <div className="absolute -top-8 left-9 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                          <span className="text-lg font-black text-[#BAFC50]">€</span>
-                          <span className="text-4xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                      <div className="flex items-baseline gap-1 relative">
+                        {/* New price positioned ~1mm directly above the old price, smaller than white price, without green € sign */}
+                        <div className="absolute -top-[calc(1.35rem+1mm)] left-9 flex items-center text-[#BAFC50] font-black z-20">
+                          <span className="text-2xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
                         </div>
                         {/* Struck-through old price */}
                         <span className="text-lg font-black text-[#BAFC50]">€</span>
@@ -234,12 +233,12 @@ export function PricingMobileSlider({
               </div>
 
               {/* CTA Button */}
-              <div className="p-4 sm:p-5 pt-2 pb-[1.2mm]">
+              <div className="p-4 sm:p-5 pt-1 pb-[1.3mm] mt-auto">
                 <Link
                   to={servicesPath}
-                  className={`w-full py-3 px-4 font-bold tracking-wider text-xs uppercase transition-all duration-300 rounded-full text-center block shadow-sm ${
+                  className={`w-full py-3.5 px-4 font-bold tracking-wider text-xs uppercase transition-all duration-300 rounded-full text-center block shadow-sm ${
                     plan.highlight
-                      ? "bg-[#BAFC50] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
+                      ? "bg-[#BAFC50] text-black font-extrabold"
                       : "bg-zinc-800 text-white"
                   }`}
                 >

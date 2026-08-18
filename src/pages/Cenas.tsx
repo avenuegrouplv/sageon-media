@@ -141,16 +141,17 @@ export default function Cenas() {
               <div
                 key={index}
                 id={slug}
-                className={`bg-[#18181b] border-2 transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-hidden scroll-mt-28 ${
+                className={`bg-[#18181b] border-2 transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer h-full scroll-mt-28 ${
                   isTargeted 
-                    ? "border-[#BAFC50] ring-4 ring-[#BAFC50]/40 shadow-2xl shadow-[#BAFC50]/25 scale-[1.02]" 
+                    ? "border-[#BAFC50] ring-4 ring-[#BAFC50]/40 shadow-2xl scale-[1.02]" 
                     : "border-zinc-800 hover:border-[#BAFC50]"
                 } ${mobileOrderClass}`}
               >
                 <div>
-                  {/* Header Section */}
-                  <div className="p-6 border-b border-zinc-800 text-left space-y-4 relative">
-                    <div className="flex items-center justify-between min-h-[28px]">
+                {/* Header Section - Increased by 1.2mm on desktop */}
+                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                  <div>
+                    <div className="flex items-center justify-between min-h-[26px]">
                       <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
                         isBestChoice 
                           ? "bg-[#BAFC50] text-black font-extrabold shadow-sm" 
@@ -160,78 +161,89 @@ export default function Cenas() {
                       </span>
                     </div>
                     
-                    <div className="space-y-1.5 h-[88px] min-h-[88px] flex flex-col justify-start items-start pt-1">
-                      <h3 className="text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                      <p className="text-sm font-normal text-zinc-300">
+                    <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
+                      <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
                         {plan.subtitle}
                       </p>
                     </div>
+                  </div>
 
-                    {/* Highly visible high-contrast pricing tag container */}
-                    <div className="pt-9 pb-2 mt-5 border-l-4 border-[#BAFC50] pl-3.5 min-h-[72px] sm:min-h-[76px] flex items-center relative overflow-visible">
-                      {plan.originalPrice ? (
-                        <div className="flex items-center relative">
-                          {/* New price positioned directly above the old price */}
-                          <div className="absolute -top-8 sm:-top-9 left-9 sm:left-12 flex items-center gap-0.5 text-[#BAFC50] font-black z-20">
-                            <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                            <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
-                          </div>
-                          {/* Struck-through old price */}
-                          <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                          <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px]">
+                  {/* Highly visible high-contrast pricing tag container with payment term placed underneath */}
+                  <div className="pt-7 pb-1 mt-2 border-l-4 border-[#BAFC50] pl-3.5 min-h-[68px] sm:min-h-[calc(72px+1.2mm)] flex flex-col justify-center relative overflow-visible">
+                    {plan.originalPrice ? (
+                      <div className="relative w-full overflow-visible">
+                        {/* New price positioned ~1mm directly above the white price */}
+                        <div className="absolute -top-[calc(1.4rem+1mm)] sm:-top-[calc(1.5rem+1mm)] left-0 sm:left-[2cm] flex items-center text-[#BAFC50] font-black z-20">
+                          <span className="text-2xl sm:text-3xl lg:text-3xl font-black tracking-tight text-[#BAFC50]">{plan.price}</span>
+                        </div>
+                        {/* Struck-through old price in white */}
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                          <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white line-through decoration-red-500 decoration-2 sm:decoration-[3px] shrink-0">
                             {plan.originalPrice}
                           </span>
-                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
-                            / {plan.period}
-                          </span>
                         </div>
-                      ) : plan.price ? (
+                        {/* Subtitle / Payment period placed under the white price */}
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
+                          / {plan.period}
+                        </div>
+                      </div>
+                    ) : plan.price ? (
+                      <div className="relative w-full overflow-visible">
                         <div className="flex items-baseline gap-1">
                           {plan.pricePrefix && (
-                            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5">
+                            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BAFC50] mr-0.5 shrink-0">
                               {plan.pricePrefix}
                             </span>
                           )}
-                          <span className="text-lg sm:text-xl font-black text-[#BAFC50]">€</span>
-                          <span className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">{plan.price}</span>
-                          <span className="text-xs uppercase tracking-wider font-semibold font-sans ml-2 text-zinc-300">
-                            / {plan.period}
-                          </span>
+                          <span className="text-base sm:text-lg font-black text-[#BAFC50] shrink-0">€</span>
+                          <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white shrink-0">{plan.price}</span>
                         </div>
-                      ) : (
-                        <span className="text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] self-center">
+                        {/* Subtitle / Payment period placed under the white price */}
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-300 mt-1 whitespace-nowrap">
+                          / {plan.period}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative w-full overflow-visible">
+                        <span className="text-sm sm:text-base md:text-lg font-extrabold uppercase tracking-wider font-sans text-[#BAFC50] block">
                           {plan.period}
                         </span>
-                      )}
-                    </div>
+                        <div className="text-[10px] sm:text-xs uppercase tracking-wider font-semibold font-sans text-zinc-400 mt-1 whitespace-nowrap">
+                          / individuāls risinājums
+                        </div>
+                      </div>
+                    )}
                   </div>
+                </div>
 
                 {/* Features List */}
-                <ul className="p-6 space-y-3.5 text-left text-sm text-zinc-200 font-normal">
+                <ul className="p-4 sm:px-6 pt-1.5 pb-0 sm:pt-2 sm:pb-0 space-y-1 sm:space-y-1.5 text-left text-xs sm:text-sm text-zinc-200 font-normal">
                   {plan.features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-2.5">
                       <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
                         <Check className="h-4 w-4 stroke-[2.5]" />
                       </div>
-                      <span>{feature}</span>
+                      <span className="leading-snug">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* CTA Action Button */}
-              <div className="p-6 pt-0 pb-[1.2mm]">
-                <Link
-                  to={getLocalizedPath("contact")}
-                  className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
-                    plan.highlight
-                      ? "bg-[#BAFC50] hover:bg-[#a8f235] text-black shadow-lg shadow-[#BAFC50]/20 font-extrabold"
-                      : "bg-zinc-800 hover:bg-zinc-700 text-white hover:text-[#BAFC50]"
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
-              </div>
+                {/* CTA Action Button directly below bullet points with 1.3mm bottom margin */}
+                <div className="p-4 sm:px-6 pt-0 pb-[1.3mm] sm:pt-0 sm:pb-[1.3mm] mt-auto">
+                  <Link
+                    to={getLocalizedPath("contact")}
+                    className={`w-full py-3.5 px-4 font-bold tracking-wider text-sm uppercase transition-all duration-300 rounded-full text-center block cursor-pointer shadow-sm hover:shadow-md ${
+                      plan.highlight
+                        ? "bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold"
+                        : "bg-zinc-800 hover:bg-zinc-700 text-white hover:text-[#BAFC50]"
+                    }`}
+                  >
+                    {plan.cta}
+                  </Link>
+                </div>
             </div>
           );
         })}

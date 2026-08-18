@@ -190,7 +190,7 @@ export default function PortfolioLaptopCard({
   return (
     <>
       <div
-        className="group flex flex-col h-full w-full select-text cursor-default rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-4 sm:p-6 sm:pb-5 transition-colors duration-150 ease-out relative overflow-hidden justify-between"
+        className="group flex flex-col h-full w-full select-text cursor-default rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#18181b]/95 via-[#141417]/95 to-[#0e0e11]/98 border border-zinc-800/80 hover:border-[#BAFC50]/60 p-4 pb-[1.2mm] sm:p-6 sm:pb-[1.2mm] transition-colors duration-150 ease-out relative overflow-hidden justify-between"
       >
         {/* Top Accent Highlight */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#BAFC50]/30 to-transparent group-hover:via-[#BAFC50] transition-all duration-75" />

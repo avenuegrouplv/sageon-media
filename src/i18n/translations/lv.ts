@@ -261,7 +261,7 @@ export const lvTranslations: Translations = {
       features: [
         "Unikāls UI/UX dizains",
         "Responsīvs dizains visām ierīcēm (Mobile-first)",
-        "Mājaslapa līdz 5 sadaļām divās valodās.",
+        "Mājaslapa līdz 5 sadaļām divās valodās",
         "Viena attēla pievienošana katrā sadaļā",
         "Viena hero attēla pievienošana mājaslapas augšdaļā",
         "WhatsApp saziņas integrācija",
@@ -270,8 +270,8 @@ export const lvTranslations: Translations = {
         "Pamata SEO optimizācija",
         "Search Console pieslēgšana",
         "CTA elementu izstrāde",
-        "Mājaslapas satura izstrāde un CMS integrācija",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
+        "Mājaslapas satura izstrāde",
+        "Tehniskais atbalsts domēna un e‑pasta pieslēgšanā",
         "Izstrādes laiks: 1-3 darba dienas"
       ],
       cta: "Pieteikt Landing lapu",
@@ -297,7 +297,7 @@ export const lvTranslations: Translations = {
         "Search Console pieslēgšana",
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
+        "Tehniskais atbalsts domēna un e‑pasta pieslēgšanā",
         "Izstrādes laiks: 2-3 nedēļas"
       ],
       cta: "Pieteikt biznesa lapu",
@@ -305,7 +305,7 @@ export const lvTranslations: Translations = {
     },
     {
       title: "E-Komercija",
-      subtitle: "Profesionāls un pelnošs interneta veikals",
+      subtitle: "Profesionāls interneta veikals",
       price: "2450",
       period: "vienreizējs maksājums",
       badge: "Pilna tirdzniecības sistēma",
@@ -322,7 +322,7 @@ export const lvTranslations: Translations = {
         "Search Console pieslēgšana",
         "CTA elementu izstrāde",
         "Mājaslapas satura izstrāde",
-        "Tehniskais atbalsts domēna un e-pasta pieslēgšanā",
+        "Tehniskais atbalsts domēna un e‑pasta pieslēgšanā",
         "Izstrādes laiks: 3-5 nedēļas"
       ],
       cta: "Pieteikt e-komercijas lapu",
@@ -330,7 +330,7 @@ export const lvTranslations: Translations = {
     },
     {
       title: "Uzturēšana",
-      subtitle: "Mājaslapas tehniskā uzraudzība un drošība",
+      subtitle: "Mājaslapas tehniskā uzraudzība un pilnveide",
       price: "49",
       period: "mēneša abonēšanas maksa",
       badge: "Ilgtermiņa sadarbība",
@@ -342,13 +342,7 @@ export const lvTranslations: Translations = {
         "Mājaslapas SSL sertifikāta uzraudzība",
         "Tehnisko kļūdu novēršana",
         "Konsultācijas un tehniskais atbalsts",
-        "Abonements atceļams jebkurā laikā",
-        "Regulāras drošības un sistēmas pārbaudes",
-        "Mājaslapas failu un datubāzes rezerves kopijas",
-        "Spraudņu un skriptu profilaktiska atjaunināšana",
-        "Servera darbības nepārtrauktības uzraudzība (Uptime)",
-        "Mājaslapas saišu un 404 kļūdu regulāra pārbaude",
-        "Prioritāra reakcija un operatīvs ikdienas atbalsts"
+        "Abonents var tikt atcelts jebkurā laikā"
       ],
       cta: "Pieteikt uzturēšanu",
       highlight: false
@@ -360,20 +354,20 @@ export const lvTranslations: Translations = {
       period: "Pēc vienošanās",
       badge: "Google pakalpojumi",
       features: [
-        "Google Business Profile izveide vai konfigurācija",
+        "Google Business Profile konfigurācija",
         "Google Search Console konfigurēšana",
         "Google Analytics 4 konfigurēšana",
         "Google Tag Manager integrācija",
         "Google Maps integrācija mājaslapā",
         "Sitemap.xml konfigurēšana",
         "Robots.txt konfigurēšana",
-        "Domēna verifikācija Google pakalpojumos",
-        "Mājaslapas iesniegšana Google indeksācijai",
-        "Konversiju un mērķu (Goals) izsekošanas iestatīšana",
-        "Vietējo atsauksmju (Reviews) moduļa pieslēgšana",
-        "Google meklēšanas vaicājumu un klikšķu analīze",
-        "Indeksācijas kļūdu un pārklājuma audita ziņojums",
-        "Konsultācija par Google rīku ikdienas lietošanu"
+        "Domēna verifikācija Google rīkos",
+        "Iesniegšana Google indeksācijai",
+        "Konversiju un mērķu (Goals) izsekošana",
+        "Google Reviews atsauksmju pieslēgšana",
+        "Meklēšanas vaicājumu un klikšķu analīze",
+        "Indeksācijas kļūdu audita ziņojums",
+        "Konsultācija par Google rīku lietošanu"
       ],
       cta: "Pieteikt Google pakalpojumus",
       highlight: false
@@ -385,20 +379,20 @@ export const lvTranslations: Translations = {
       period: "Pēc vienošanās",
       badge: "Individuāli risinājumi",
       features: [
-        "Pielāgotu funkciju izstrāde pēc klienta vajadzībām",
-        "Cenu kalkulatoru integrācija",
-        "Rezervāciju un kalendāru sistēmu integrācija",
+        "Pielāgotu funkciju izstrāde pēc vajadzībām",
+        "Cenu kalkulatoru izstrāde un integrācija",
+        "Rezervāciju un kalendāru sistēmas",
         "Daudzsoļu pieteikumu formas",
-        "Dokumentu augšupielādes izstrāde",
-        "Klientu portālu izstrāde",
+        "Dokumentu augšupielādes moduļi",
+        "Klientu pašapkalpošanās portāli",
         "API integrācijas ar ārējām sistēmām",
-        "AI čatbotu un virtuālo asistentu integrācija",
-        "Citu individuālu risinājumu izstrāde pēc vienošanās",
-        "Individuālu datu filtru un meklēšanas izstrāde",
-        "Automātiska e-pastu un SMS paziņojumu nosūtīšana",
-        "Pielāgotu datu bāzu un lietotāju lomu pārvaldība",
-        "Pilna koda testēšana un veiktspējas optimizācija",
-        "Tehniskā dokumentācija un personīga apmācība"
+        "AI čatbotu un asistentu integrācija",
+        "Individuālu datu filtru izstrāde",
+        "E-pastu un SMS paziņojumu automatizācija",
+        "Pielāgotu datu bāzu pārvaldība",
+        "Pilna koda testēšana un optimizācija",
+        "Tehniskā dokumentācija un apmācība",
+        "Citu individuālu risinājumu izstrāde"
       ],
       cta: "Pieteikt funkciju izstrādi",
       highlight: false
@@ -419,11 +413,11 @@ export const lvTranslations: Translations = {
         "Iekšējo saišu pārbaude un optimizācija",
         "Pamata tehniskā SEO analīze",
         "Mājaslapas ātrdarbības analīze",
-        "GEO un AI meklētāju (ChatGPT, Gemini) optimizācija",
-        "Strukturēto datu (Schema JSON-LD) integrācija",
-        "Konkurentu SEO stratēģijas un pozīciju analīze",
+        "GEO un AI (ChatGPT, Gemini) SEO",
+        "Schema JSON-LD strukturētie dati",
+        "Konkurentu SEO pozīciju analīze",
         "Dublētā satura un 404 kļūdu novēršana",
-        "Detalizēta SEO audita un ieteikumu atskaite"
+        "Detalizēta SEO audita atskaite"
       ],
       cta: "Pieteikt SEO optimizāciju",
       highlight: false
