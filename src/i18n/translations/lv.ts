@@ -175,6 +175,17 @@ export const lvTranslations: Translations = {
     },
     {
       id: 2,
+      title: "JustioPro | Juridiskie pakalpojumi un konsultācijas",
+      brand: "JustioPro",
+      displayLink: "https://justiopro.lv",
+      image: "/justiopro-portfolio.webp",
+      description: "Juridisko pakalpojumu un konsultāciju sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, dizains, pakalpojumu apraksti un darbības jomas, kā arī zīmola logo.",
+      link: "https://justiopro.lv",
+      isPlaceholder: false,
+      tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Saturs", "Pakalpojumu apraksti", "Mobile First"]
+    },
+    {
+      id: 3,
       title: "Komercīpašumu apsaimniekošana | Juridiskā pārvaldība",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
@@ -185,7 +196,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "CMS"]
     },
     {
-      id: 3,
+      id: 4,
       title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
@@ -196,7 +207,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Saturs", "Mobile First", "Projektu galerija"]
     },
     {
-      id: 4,
+      id: 5,
       title: "Latvijas Restarts | Par Latvijas nākotni",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
@@ -207,7 +218,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Pieteikuma forma", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
     },
     {
-      id: 5,
+      id: 6,
       title: "Enzīmi | Dabiski fermentēti dzērieni Tavai veselībai",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
@@ -218,7 +229,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
     },
     {
-      id: 6,
+      id: 7,
       title: "Demontāža 24 | Būvju un ēku demontāžas pakalpojumi",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
@@ -229,7 +240,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Tehnikas katalogs", "Mobile First"]
     },
     {
-      id: 7,
+      id: 8,
       title: "Velobiedrība | Drošas velobraukšanas entuziasti",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
@@ -240,7 +251,7 @@ export const lvTranslations: Translations = {
       tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pasākumu kalendārs", "Galerija", "Mobile First"]
     },
     {
-      id: 8,
+      id: 9,
       title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
       brand: "Beauty studio",
       displayLink: "beautystudio",

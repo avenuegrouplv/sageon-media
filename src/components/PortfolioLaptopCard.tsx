@@ -40,16 +40,16 @@ export default function PortfolioLaptopCard({
 
   const cleanDomain = displayLink.replace("https://", "").replace("http://", "");
 
-  const isDemontaza = 
+  const isDevelopment = 
+    isInDevelopment ||
+    cleanDomain.toLowerCase().includes("enzim") ||
+    link.toLowerCase().includes("enzim") ||
+    title.toLowerCase().includes("enzīm") ||
+    title.toLowerCase().includes("enzim") ||
     cleanDomain.toLowerCase().includes("demontaza") || 
     link.toLowerCase().includes("demontaza") || 
     title.toLowerCase().includes("demontāž") ||
     title.toLowerCase().includes("demontaza") ||
-    (image ? image.toLowerCase().includes("demontaza") : false);
-
-  const isDevelopment = 
-    isInDevelopment ||
-    isDemontaza || 
     cleanDomain.toLowerCase().includes("velobiedriba") ||
     link.toLowerCase().includes("velobiedriba") ||
     title.toLowerCase().includes("velobiedrīb") ||
@@ -57,13 +57,6 @@ export default function PortfolioLaptopCard({
     cleanDomain.toLowerCase().includes("beauty") ||
     link.toLowerCase().includes("beauty") ||
     title.toLowerCase().includes("beauty");
-
-  const isVelobiedriba =
-    cleanDomain.toLowerCase().includes("velobiedriba") ||
-    link.toLowerCase().includes("velobiedriba") ||
-    title.toLowerCase().includes("velobiedrīb") ||
-    title.toLowerCase().includes("velobiedriba") ||
-    (image ? image.toLowerCase().includes("velobiedriba") : false);
 
   const isPlaceholderCard = isPlaceholder || cleanDomain.includes("tavaprojekts") || cleanDomain.includes("biznesam") || cleanDomain.includes("jaunslapa");
 
@@ -74,6 +67,13 @@ export default function PortfolioLaptopCard({
     if (target.includes("travel") || target.includes("martins")) {
       return {
         objectPosition: "-0.75cm top",
+      };
+    }
+
+    // justiopro centrets saturs, redzams logo un bez melnam malam
+    if (target.includes("justio")) {
+      return {
+        objectPosition: "center top",
       };
     }
 
@@ -139,7 +139,9 @@ export default function PortfolioLaptopCard({
 
   const statusText = isPlaceholderCard
     ? (lang === "EN" ? "Apply for Project" : lang === "RU" ? "Заказать проект" : "Pieteikt projektu")
-    : (lang === "EN" ? "In Development" : lang === "RU" ? "В разработке" : "Izstrādes stadijā");
+    : isDevelopment
+    ? (lang === "EN" ? "In Development" : lang === "RU" ? "В разработке" : "Izstrādes stadijā")
+    : (lang === "EN" ? "Completed Project" : lang === "RU" ? "Завершенный проект" : "Pabeigts projekts");
 
   // Default localized tag labels for deliverables if custom tags not passed
   const defaultTagLabels = lang === "EN" ? [
@@ -288,9 +290,15 @@ export default function PortfolioLaptopCard({
 
             {/* Top-Right Corner: Project Status */}
             {!hideStatusText && (
-              <div className="flex items-center gap-1.5 text-xs font-mono shrink-0">
-                <Clock className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
-                <span className="text-zinc-300 font-medium select-text cursor-text whitespace-nowrap">{statusText}</span>
+              <div className={`flex items-center gap-1.5 text-xs font-mono shrink-0 ${isDevelopment ? 'text-[#d97757]' : 'text-zinc-300'}`}>
+                {isDevelopment ? (
+                  <Clock className="h-3.5 w-3.5 text-[#d97757] shrink-0" />
+                ) : isPlaceholderCard ? (
+                  <Plus className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
+                ) : (
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#BAFC50] shrink-0" />
+                )}
+                <span className={`font-medium select-text cursor-text whitespace-nowrap ${isDevelopment ? 'text-[#d97757]' : 'text-zinc-300'}`}>{statusText}</span>
               </div>
             )}
           </div>

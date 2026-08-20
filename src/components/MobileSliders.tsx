@@ -445,7 +445,7 @@ export function PortfolioMobileSlider({
                 isPlaceholder={item.isPlaceholder}
                 description={item.description}
                 tags={item.tags}
-                hideStatusText={true}
+                hideStatusText={false}
               />
             </div>
           </motion.div>

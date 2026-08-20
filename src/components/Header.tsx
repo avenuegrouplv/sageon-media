@@ -41,7 +41,7 @@ export default function Header() {
     <>
       <header
         style={{ transform: "translateZ(0)" }}
-        className="fixed top-0 left-0 w-full z-50 py-2.5 sm:py-3 bg-[#0a0a0a]/95 sm:backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.85)] transform-gpu will-change-transform"
+        className="fixed top-0 left-0 w-full z-50 pt-[calc(0.625rem+2mm)] pb-[calc(0.625rem+1mm)] sm:py-3 bg-[#0a0a0a]/95 sm:backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.85)] transform-gpu will-change-transform"
       >
         <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center relative">
           
@@ -154,7 +154,7 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.12 }}
               onClick={() => setIsOpen(false)}
-              className="lg:hidden fixed inset-0 top-[52px] sm:top-[64px] bg-black/80 backdrop-blur-sm z-[9998] cursor-pointer"
+              className="lg:hidden fixed inset-0 top-[calc(52px+3mm)] sm:top-[64px] bg-black/80 backdrop-blur-sm z-[9998] cursor-pointer"
             />
 
             {/* Compact Menu Panel */}
@@ -163,7 +163,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.14, ease: "easeOut" }}
-              className="lg:hidden fixed top-[52px] sm:top-[64px] left-0 right-0 w-full bg-[#121215]/98 backdrop-blur-xl z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
+              className="lg:hidden fixed top-[calc(52px+3mm)] sm:top-[64px] left-0 right-0 w-full bg-[#121215]/98 backdrop-blur-xl z-[9999] border-b border-zinc-800 shadow-2xl px-4 py-3.5 sm:px-6"
             >
               <div className="w-full max-w-md mx-auto space-y-3">
                 {/* Navigation Links - Clean typographic list without card styling */}

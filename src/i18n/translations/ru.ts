@@ -175,6 +175,17 @@ export const ruTranslations: Translations = {
     },
     {
       id: 2,
+      title: "JustioPro | Юридические услуги и консультации",
+      brand: "JustioPro",
+      displayLink: "https://justiopro.lv",
+      image: "/justiopro-portfolio.webp",
+      description: "Сайт поставщика юридических услуг и консультаций. В ходе разработки проекта были созданы контент сайта, дизайн, описания услуг и сфер деятельности, а также логотип бренда.",
+      link: "https://justiopro.lv",
+      isPlaceholder: false,
+      tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Контент", "Описания услуг", "Адаптивность"]
+    },
+    {
+      id: 3,
       title: "Управление коммерческой недвижимостью | Юридическое управление",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
@@ -185,7 +196,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Адаптивность", "CMS"]
     },
     {
-      id: 3,
+      id: 4,
       title: "Эксклюзивные деревянные лестницы | Мебель Premium класса",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
@@ -196,7 +207,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Контент", "Адаптивность", "Галерея проектов"]
     },
     {
-      id: 4,
+      id: 5,
       title: "Latvijas Restarts | За будущее Латвии",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
@@ -207,7 +218,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Форма заявки", "Профили участников", "Раздел новостей", "Адаптивность"]
     },
     {
-      id: 5,
+      id: 6,
       title: "Enzīmi | Натуральные ферментированные напитки для твоего здоровья",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
@@ -218,7 +229,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Каталог продукции", "Корзина товаров", "Адаптивность"]
     },
     {
-      id: 6,
+      id: 7,
       title: "Demontāža 24 | Услуги по демонтажу зданий и сооружений",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
@@ -229,7 +240,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Описания услуг", "Каталог техники", "Адаптивность"]
     },
     {
-      id: 7,
+      id: 8,
       title: "Velobiedrība | Энтузиасты безопасной езды на велосипеде",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
@@ -240,7 +251,7 @@ export const ruTranslations: Translations = {
       tags: ["SEO-оптимизация", "Уникальный UI/UX", "Логотип бренда", "Календарь событий", "Галерея", "Адаптивность"]
     },
     {
-      id: 8,
+      id: 9,
       title: "Beauty Studio | Услуги красоты и эстетического ухода",
       brand: "Beauty studio",
       displayLink: "beautystudio",

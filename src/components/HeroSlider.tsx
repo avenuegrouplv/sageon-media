@@ -56,7 +56,7 @@ export default function HeroSlider() {
   }, [phrases.length]);
 
   return (
-    <section id="hero-section" className="relative w-full min-h-auto lg:min-h-[85vh] bg-transparent text-white overflow-visible flex items-center pt-[78px] sm:pt-[96px] lg:pt-[110px] pb-6 sm:pb-10 md:pb-16 touch-pan-y">
+    <section id="hero-section" className="relative w-full min-h-auto lg:min-h-[85vh] bg-transparent text-white overflow-visible flex items-center pt-[calc(78px+3mm)] sm:pt-[96px] lg:pt-[110px] pb-6 sm:pb-10 md:pb-16 touch-pan-y">
       {/* Background Grid & Ambient Glows - GPU Hardware Composited */}
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-15 pointer-events-none overflow-hidden" />
       <div className="absolute top-1/4 -left-16 w-[320px] sm:w-[700px] h-[260px] sm:h-[400px] -rotate-12 rounded-[60%_40%_70%_30%] bg-gradient-to-br from-[#BAFC50]/[0.15] via-[#38b000]/[0.08] to-transparent blur-[100px] sm:blur-[160px] pointer-events-none" />
@@ -66,7 +66,7 @@ export default function HeroSlider() {
       <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-0">
         
         {/* Centered Phone & Email Pill Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-0 mb-3 sm:mb-5 lg:mb-6 w-full max-w-full">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-[3mm] sm:mt-0 mb-3 sm:mb-5 lg:mb-6 w-full max-w-full">
           <a
             href="tel:+37126739899"
             className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#18181b]/90 hover:bg-zinc-800 border border-[#BAFC50]/50 hover:border-[#BAFC50] text-white text-[11px] sm:text-[13px] font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md whitespace-nowrap shrink-0"

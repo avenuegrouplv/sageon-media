@@ -52,10 +52,21 @@ const PORTFOLIO_ITEMS = [
     description: "Šī ir ceļojumu un konsultāciju mājaslapa, kura radīta ar mērķi piedāvāt cilvēkiem iespēju vairāk ceļot, kā arī mainīt savu skatījumu uz ceļošanu. Projekta ietvaros tika izstrādāts unikāls dizains, zīmola logo, mājaslapas saturs un pārdomāta informācijas arhitektūra.",
     link: "https://travelwithmartins.com",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Galamērķu apraksti"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Galamērķu apraksti", "Mobile First", "Saturs"]
   },
   {
     id: 2,
+    title: "JustioPro | Juridiskie pakalpojumi un konsultācijas",
+    brand: "JustioPro",
+    displayLink: "https://justiopro.lv",
+    image: "/justiopro-portfolio.webp",
+    description: "Juridisko pakalpojumu un konsultāciju sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, dizains, pakalpojumu apraksti un darbības jomas, kā arī zīmola logo.",
+    link: "https://justiopro.lv",
+    isPlaceholder: false,
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Saturs", "Pakalpojumu apraksti", "Mobile First"]
+  },
+  {
+    id: 3,
     title: "Komercīpašumu apsaimniekošana | Juridiskā pārvaldība",
     brand: "Avenue Group",
     displayLink: "https://avenuegroup.lv",
@@ -63,10 +74,10 @@ const PORTFOLIO_ITEMS = [
     description: "Mājaslapa pārstāv nekustamo īpašumu apsaimniekošanas un juridisko pakalpojumu jomu, kuri tiek nodrošināti vienuviet. Šajā projektā tika izstrādāta mājaslapas struktūra, pakalpojumu apraksti, izveidots zīmols, kā arī radīts premium dizains.",
     link: "https://avenuegroup.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "CMS", "Stripe", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Bloga raksti"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "CMS"]
   },
   {
-    id: 3,
+    id: 4,
     title: "Ekskluzīvas koka kāpnes | Premium klases mēbeles",
     brand: "Avangart",
     displayLink: "https://avangart.lv",
@@ -74,10 +85,10 @@ const PORTFOLIO_ITEMS = [
     description: "Ekskluzīvu koka kāpņu un augstas klases mēbeļu ražotāja mājaslapa. Šajā projektā tika izstrādāts unikāls dizains ar koka imitācijas elementiem, zīmola logo, sagatavots mājaslapas saturs, kā arī izvietota portfolio galerija ar jau īstenotajiem projektiem.",
     link: "https://avangart.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First", "Saturs", "Attēlu galerijas"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Saturs", "Mobile First", "Projektu galerija"]
   },
   {
-    id: 4,
+    id: 5,
     title: "Latvijas Restarts | Par Latvijas nākotni",
     brand: "Latvijas Restarts",
     displayLink: "https://latvijasrestarts.lv",
@@ -85,21 +96,21 @@ const PORTFOLIO_ITEMS = [
     description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
     link: "https://latvijasrestarts.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Pieteikuma forma", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
   },
   {
-    id: 5,
+    id: 6,
     title: "Enzīmi | Dabiski fermentēti dzērieni Tavai veselībai",
     brand: "enzimi.lv",
     displayLink: "https://enzimi.lv",
     image: "/enzimi-portfolio.webp",
-    description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai.",
+    description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai un prasībām.",
     link: "https://enzimi.lv",
     isPlaceholder: false,
-    tags: ["Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
   },
   {
-    id: 6,
+    id: 7,
     title: "Demontāža 24 | Būvju un ēku demontāžas pakalpojumi",
     brand: "Demontāža 24",
     displayLink: "demontaza24",
@@ -107,29 +118,29 @@ const PORTFOLIO_ITEMS = [
     description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
     link: "https://demontaza24.eu",
     isPlaceholder: false,
-    tags: ["CMS", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Tehnikas katalogs", "Mobile First"]
   },
   {
-    id: 7,
+    id: 8,
     title: "Velobiedrība | Drošas velobraukšanas entuziasti",
     brand: "Velobiedrība",
     displayLink: "velobiedriba",
     image: "/velobiedriba-portfolio.webp",
-    description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus, kuri ir apvienojušies ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Mājaslapas saturs ir izstrādes stadijā.",
+    description: "Biedrība, kas apvieno velobraukšanas profesionāļus un entuziastus ar mērķi dalīties pieredzē un rīkot apmācības un pasākumus, lai popularizētu drošu velobraukšanu pa Latvijas ceļiem. Projekta gaitā izstrādāts unikāls dizains un zīmola logo.",
     link: "https://velobiedriba.lv",
     isPlaceholder: false,
-    tags: ["Unikāls UI/UX", "Galerija", "Mobile First", "Saturs"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pasākumu kalendārs", "Galerija", "Mobile First"]
   },
   {
-    id: 8,
+    id: 9,
     title: "Beauty Studio I Skaistumkopšanas pakalpojumi",
     brand: "Beauty studio",
     displayLink: "beautystudio",
     image: "/beauty-portfolio.webp",
-    description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu un aprakstiem. Projektā integrēts iepirkumu grozs, kalendārs, pieteikumu forma.",
+    description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu, pakalpojumu aprakstiem un zīmola logo. Projektā integrēts iepirkumu grozs, procedūru rezervāciju kalendārs, pieteikumu forma un sociālo tīklu saziņas iespējas.",
     link: "https://beautystudio.lv",
     isPlaceholder: false,
-    tags: ["Unikāls UI/UX", "Mobile First", "Pirkumu grozs", "Kalendārs", "Pieteikumu forma"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu kalendārs", "Mobile First"]
   }
 ];
 
@@ -173,20 +184,20 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
       Icon: Search,
       title: lang === 'EN' ? "Hard to find on Google" : lang === 'RU' ? "Сложно найти в Google" : "Uzņēmumu grūti atrast Google",
       desc: lang === 'EN'
-        ? "Without quality SEO optimization and strategy, potential clients easily find your competitors in Google search results instead of your business."
+        ? "Without quality SEO optimization, potential clients in Google search find your competitors first, rather than your company website offer."
         : lang === 'RU'
-        ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google первыми находят ваших конкурентов, а не ваше предложение."
-        : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma piedāvājumu."
+        ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google сначала находят ваших конкурентов, а не предложение сайта вашей компании."
+        : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma mājaslapas piedāvājumu."
     },
     {
       num: lang === 'EN' ? "04 / Reason" : lang === 'RU' ? "04 / Причина" : "04 / Iemesls",
       Icon: Clock,
       title: lang === 'EN' ? "Website loads too slowly" : lang === 'RU' ? "Сайт загружается слишком медленно" : "Mājaslapa ielādējas pārāk lēni",
       desc: lang === 'EN'
-        ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
+        ? "Slow website loading impairs user experience, decreases advertising effectiveness, and negatively affects rankings in Google search and AI platforms."
         : lang === 'RU'
-        ? "Медленная загрузка ухудшает пользовательский опыт, снижает эффективность рекламы и позиции в Google."
-        : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā."
+        ? "Медленная загрузка сайта ухудшает пользовательский опыт, снижает эффективность рекламы и негативно влияет на позиции в поиске Google и платформах ИИ."
+        : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā un MI platformās."
     },
     {
       num: lang === 'EN' ? "05 / Reason" : lang === 'RU' ? "05 / Причина" : "05 / Iemesls",
@@ -945,10 +956,10 @@ export default function Home() {
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     {lang === 'EN'
-                      ? "Without quality SEO optimization and strategy, potential clients easily find your competitors in Google search results instead of your business."
+                      ? "Without quality SEO optimization, potential clients in Google search find your competitors first, rather than your company website offer."
                       : lang === 'RU'
-                      ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google первыми находят ваших конкурентов, а не ваше предложение."
-                      : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma piedāvājumu."}
+                      ? "Без качественной SEO-оптимизации потенциальные клиенты в поиске Google сначала находят ваших конкурентов, а не предложение сайта вашей компании."
+                      : "Bez kvalitatīvas SEO optimizācijas potenciālie klienti Google meklētājā vispirms atrod Jūsu konkurentus, nevis Jūsu uzņēmuma mājaslapas piedāvājumu."}
                   </p>
                 </div>
               </div>
@@ -969,10 +980,10 @@ export default function Home() {
                   </h3>
                   <p className="text-xs md:text-sm text-zinc-300 font-light leading-relaxed">
                     {lang === 'EN'
-                      ? "Slow loading hurts user experience, reduces ad efficiency, and negatively impacts Google rankings."
+                      ? "Slow website loading impairs user experience, decreases advertising effectiveness, and negatively affects rankings in Google search and AI platforms."
                       : lang === 'RU'
-                      ? "Медленная загрузка ухудшает пользовательский опыт, снижает эффективность рекламы и позиции в Google."
-                      : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā."}
+                      ? "Медленная загрузка сайта ухудшает пользовательский опыт, снижает эффективность рекламы и негативно влияет на позиции в поиске Google и платформах ИИ."
+                      : "Lēna mājaslapas ielāde pasliktina lietotāju pieredzi, samazina reklāmu efektivitāti un negatīvi ietekmē pozīcijas Google meklētājā un MI platformās."}
                   </p>
                 </div>
               </div>

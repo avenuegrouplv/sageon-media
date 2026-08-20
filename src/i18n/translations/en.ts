@@ -175,6 +175,17 @@ export const enTranslations: Translations = {
     },
     {
       id: 2,
+      title: "JustioPro | Legal Services & Consultations",
+      brand: "JustioPro",
+      displayLink: "https://justiopro.lv",
+      image: "/justiopro-portfolio.webp",
+      description: "Website for a provider of legal services and consultations. During the project, website content, design, service descriptions, practice areas, and a brand logo were developed.",
+      link: "https://justiopro.lv",
+      isPlaceholder: false,
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Content", "Service Descriptions", "Mobile First"]
+    },
+    {
+      id: 3,
       title: "Commercial Property Management | Legal Governance",
       brand: "Avenue Group",
       displayLink: "https://avenuegroup.lv",
@@ -185,7 +196,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Mobile First", "CMS"]
     },
     {
-      id: 3,
+      id: 4,
       title: "Exclusive Wooden Stairs | Premium Class Furniture",
       brand: "Avangart",
       displayLink: "https://avangart.lv",
@@ -196,7 +207,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Content", "Mobile First", "Projects Gallery"]
     },
     {
-      id: 4,
+      id: 5,
       title: "Latvijas Restarts | For the Future of Latvia",
       brand: "Latvijas Restarts",
       displayLink: "https://latvijasrestarts.lv",
@@ -207,7 +218,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Application Form", "Member Profiles", "News Section", "Mobile First"]
     },
     {
-      id: 5,
+      id: 6,
       title: "Enzīmi | Naturally Fermented Drinks for Your Health",
       brand: "enzimi.lv",
       displayLink: "https://enzimi.lv",
@@ -218,7 +229,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Product Catalog", "Shopping Cart", "Mobile First"]
     },
     {
-      id: 6,
+      id: 7,
       title: "Demontāža 24 | Demolition & Dismantling Services",
       brand: "Demontāža 24",
       displayLink: "demontaza24",
@@ -229,7 +240,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Equipment Catalog", "Mobile First"]
     },
     {
-      id: 7,
+      id: 8,
       title: "Velobiedrība | Safe Cycling Enthusiasts",
       brand: "Velobiedrība",
       displayLink: "velobiedriba",
@@ -240,7 +251,7 @@ export const enTranslations: Translations = {
       tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Event Calendar", "Gallery", "Mobile First"]
     },
     {
-      id: 8,
+      id: 9,
       title: "Beauty Studio | Beauty & Aesthetic Services",
       brand: "Beauty studio",
       displayLink: "beautystudio",
