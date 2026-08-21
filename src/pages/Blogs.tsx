@@ -168,7 +168,7 @@ export default function Blogs() {
             <article
               key={post.id}
               onClick={() => setActiveArticle(post)}
-              className="bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 p-5 pb-[calc(1.25rem+2.2mm)] shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl transition-colors duration-200 overflow-hidden h-[380px] min-h-[380px]"
+              className="bg-[#18181b] border border-zinc-800 hover:border-[#BAFC50]/50 p-5 pb-[calc(1.25rem+2.2mm)] shadow-md flex flex-col justify-between group cursor-pointer rounded-2xl transition-colors duration-200 overflow-hidden h-[calc(385px+2mm)] min-h-[calc(385px+2mm)]"
             >
               <div className="space-y-2.5">
                 {post.image && (
@@ -189,7 +189,7 @@ export default function Blogs() {
                   {post.title}
                 </h3>
                 
-                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[3.25rem] min-h-[3.25rem] block">
+                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[calc(3.45rem+2mm)] min-h-[calc(3.45rem+2mm)] block">
                   {post.excerpt}
                 </p>
               </div>

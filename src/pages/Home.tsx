@@ -292,7 +292,7 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full touch-pan-y select-none"
+        className="relative overflow-hidden w-full touch-pan-y select-none min-h-[220px]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleHeroTouchStart}
         onTouchMove={handleHeroTouchMove}
@@ -310,10 +310,10 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
             animate="center"
             exit="exit"
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-5 shadow-2xl flex flex-col transform-gpu will-change-transform card-gpu"
+            className="w-full bg-[#141417]/95 border border-zinc-800/90 rounded-2xl p-5 shadow-2xl flex flex-col justify-between transform-gpu will-change-transform card-gpu h-[220px] min-h-[220px]"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
+            <div className="space-y-2.5 flex flex-col justify-between h-full">
+              <div className="flex items-center justify-between shrink-0">
                 <span className="font-mono text-xs text-amber-500/80 font-semibold uppercase tracking-wider">
                   {currentCard.num}
                 </span>
@@ -321,10 +321,10 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
                   <IconComp className="h-4.5 w-4.5" />
                 </div>
               </div>
-              <h3 className="font-bold text-white text-base leading-snug tracking-tight">
+              <h3 className="font-bold text-white text-base leading-snug tracking-tight min-h-[24px]">
                 {currentCard.title}
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed min-h-[72px] flex items-start">
                 {currentCard.desc}
               </p>
             </div>
@@ -332,8 +332,8 @@ function ProblemCardsMobileSlider({ lang }: { lang: string }) {
         </AnimatePresence>
       </div>
 
-      {/* Navigation controls - positioned tightly right below the card */}
-      <div className="flex items-center justify-between pt-2 px-1 relative z-20">
+      {/* Navigation controls - positioned at fixed, static distance below the card */}
+      <div className="flex items-center justify-between pt-3 px-1 relative z-20">
         {/* Left: Indicator dots positioned tightly next to each other */}
         <div className="flex items-center gap-0.5">
           {cards.map((_, idx) => (
@@ -1938,7 +1938,7 @@ export default function Home() {
                     >
                       <Link
                         to={`${getLocalizedPath('blog')}?id=${post.id}`}
-                        className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-md hover:shadow-xl hover:border-[#BAFC50]/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl h-[370px] min-h-[370px]"
+                        className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-md hover:shadow-xl hover:border-[#BAFC50]/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer rounded-2xl h-[calc(375px+2mm)] min-h-[calc(375px+2mm)]"
                       >
                         <div className="space-y-2.5">
                           {post.image && (
@@ -1957,7 +1957,7 @@ export default function Home() {
                           <h3 className="text-sm font-bold text-white uppercase tracking-tight group-hover:text-[#BAFC50] transition-colors line-clamp-3 h-[3.45rem] min-h-[3.45rem] block leading-snug">
                             {post.title}
                           </h3>
-                          <p className="text-xs text-zinc-400 font-light line-clamp-3 h-[3.25rem] min-h-[3.25rem] block leading-relaxed">
+                          <p className="text-xs text-zinc-400 font-light line-clamp-3 h-[calc(3.45rem+2mm)] min-h-[calc(3.45rem+2mm)] block leading-relaxed">
                             {post.excerpt}
                           </p>
                         </div>

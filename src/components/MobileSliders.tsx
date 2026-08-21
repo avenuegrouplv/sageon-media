@@ -152,7 +152,7 @@ export function PricingMobileSlider({
   return (
     <div className="sm:hidden w-full relative px-0 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[800px]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -174,10 +174,9 @@ export function PricingMobileSlider({
           >
             <div 
               ref={cardRef}
-              style={maxHeight > 0 ? { minHeight: `${maxHeight}px` } : undefined}
-              className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer scroll-mt-28 h-full"
+              className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer scroll-mt-28 h-full min-h-[800px]"
             >
-              <div>
+              <div className="flex flex-col flex-1">
                 {/* Header Section */}
                 <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[calc(220px+2mm)] sm:h-[calc(240px+3.2mm)] min-h-[calc(220px+2mm)] sm:min-h-[calc(240px+3.2mm)] flex flex-col justify-between overflow-visible">
                   <div>
@@ -248,8 +247,8 @@ export function PricingMobileSlider({
                   </div>
                 </div>
 
-                {/* Features List */}
-                <ul className="p-4 sm:px-6 pt-1.5 pb-0 sm:pt-2 sm:pb-0 space-y-1 sm:space-y-1.5 text-left text-xs sm:text-sm text-zinc-200 font-normal">
+                {/* Features List with uniform height across all plans including Uzturēšana */}
+                <ul className="p-4 sm:px-6 pt-1.5 pb-0 sm:pt-2 sm:pb-0 space-y-1 sm:space-y-1.5 text-left text-xs sm:text-sm text-zinc-200 font-normal min-h-[470px] flex-1">
                   {plan.features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-2.5">
                       <div className="p-0.5 bg-[#BAFC50]/20 text-[#BAFC50] mt-0.5 shrink-0 rounded-sm">
@@ -415,7 +414,7 @@ export function PortfolioMobileSlider({
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[500px]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -433,9 +432,9 @@ export function PortfolioMobileSlider({
             animate="center"
             exit="exit"
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="w-full transform-gpu will-change-transform"
+            className="w-full transform-gpu will-change-transform h-full"
           >
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col h-full min-h-[500px]">
               <PortfolioLaptopCard
                 title={item.title}
                 brand={item.brand}
@@ -592,7 +591,7 @@ export function BlogMobileSlider({
   return (
     <div className="sm:hidden w-full relative px-1 py-1 mb-2">
       <div 
-        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[380px]"
+        className="relative overflow-hidden w-full select-none touch-pan-y min-h-[calc(385px+2mm)]"
         style={{ touchAction: "pan-y pinch-zoom" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -614,7 +613,7 @@ export function BlogMobileSlider({
           >
             <Link
               to={`${blogPath}?id=${post.id}`}
-              className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-xl rounded-2xl flex flex-col justify-between h-[370px] min-h-[370px] card-gpu"
+              className="w-full bg-[#18181b] border border-zinc-800 p-4 sm:p-5 pb-[calc(1rem+2.2mm)] sm:pb-[calc(1.25rem+2.2mm)] overflow-hidden shadow-xl rounded-2xl flex flex-col justify-between h-[calc(375px+2mm)] min-h-[calc(375px+2mm)] card-gpu"
             >
               <div className="space-y-2.5">
                 {post.image && (
@@ -633,7 +632,7 @@ export function BlogMobileSlider({
                 <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-tight leading-snug line-clamp-3 h-[3.45rem] min-h-[3.45rem] block">
                   {post.title}
                 </h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[3.25rem] min-h-[3.25rem] block">
+                <p className="text-xs text-zinc-400 font-light leading-relaxed line-clamp-3 h-[calc(3.45rem+2mm)] min-h-[calc(3.45rem+2mm)] block">
                   {post.excerpt}
                 </p>
               </div>
@@ -648,7 +647,7 @@ export function BlogMobileSlider({
       </div>
 
       {/* Navigation Controls */}
-      <div className="flex items-center justify-between pt-2 px-1 relative z-20">
+      <div className="flex items-center justify-between pt-3 px-1 relative z-20">
         {/* Left: Indicator dots positioned tightly next to each other */}
         <div className="flex items-center gap-0.5">
           {posts.map((_, idx) => (
