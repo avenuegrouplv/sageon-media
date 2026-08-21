@@ -148,8 +148,8 @@ export default function Cenas() {
                 } ${mobileOrderClass}`}
               >
                 <div>
-                {/* Header Section - Increased by 1.2mm on desktop */}
-                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                {/* Header Section */}
+                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[calc(220px+2mm)] sm:h-[calc(240px+3.2mm)] min-h-[calc(220px+2mm)] sm:min-h-[calc(240px+3.2mm)] flex flex-col justify-between overflow-visible">
                   <div>
                     <div className="flex items-center justify-between min-h-[26px]">
                       <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
@@ -161,9 +161,9 @@ export default function Cenas() {
                       </span>
                     </div>
                     
-                    <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
+                    <div className="space-y-1 mt-2 min-h-[calc(48px+2mm)] sm:min-h-[calc(52px+2mm)] flex flex-col justify-start items-start">
                       <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                      <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
+                      <p className="text-xs sm:text-sm font-normal text-zinc-300 py-[1mm] leading-normal select-text cursor-text">
                         {plan.subtitle}
                       </p>
                     </div>

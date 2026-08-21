@@ -29,7 +29,23 @@ export default function Projekti() {
         ? "Your company's modern new website can be here. We will craft a unique design, custom logo, and engaging service descriptions tailored to your industry." 
         : "Здесь может быть новый современный сайт вашей компании. Мы разработаем уникальный дизайн, логотип и описания услуг для вашей сферы.",
     displayLink: "tavaprojekts.lv",
-    link: getLocalizedPath("contact")
+    link: getLocalizedPath("contact"),
+    tags: lang === "EN" ? [
+      "Custom UI/UX",
+      "Brand Logo",
+      "Service Descriptions",
+      "Mobile First"
+    ] : lang === "RU" ? [
+      "Уникальный UI/UX",
+      "Логотип бренда",
+      "Описания услуг",
+      "Адаптивность"
+    ] : [
+      "Unikāls UI/UX",
+      "Zīmola logo",
+      "Pakalpojumu apraksti",
+      "Mobile First"
+    ]
   };
 
   return (
@@ -92,10 +108,10 @@ export default function Projekti() {
           </h1>
         </div>
 
-        {/* Portfolio Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-[1380px] mx-auto px-2 sm:px-4 items-stretch">
+        {/* Portfolio Cards Grid - Scaled down by 17% (max-w-[1145px] vs 1380px) with strictly uniform size */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1145px] mx-auto px-2 sm:px-4 items-stretch justify-items-stretch">
           {portfolioCards.map((card) => (
-            <div key={card.id} className="h-full flex flex-col">
+            <div key={card.id} className="w-full h-full flex flex-col items-stretch">
               <PortfolioLaptopCard
                 title={card.title}
                 brand={card.brand}
@@ -110,7 +126,7 @@ export default function Projekti() {
           ))}
 
           {/* Empty/Placeholder laptop */}
-          <div key={emptyPortfolioCard.id} className="h-full flex flex-col">
+          <div key={emptyPortfolioCard.id} className="w-full h-full flex flex-col items-stretch">
             <PortfolioLaptopCard
               title={emptyPortfolioCard.title}
               displayLink={emptyPortfolioCard.displayLink}
@@ -118,12 +134,13 @@ export default function Projekti() {
               isPlaceholder={true}
               subtitle={emptyPortfolioCard.subtitle}
               description={emptyPortfolioCard.description}
+              tags={emptyPortfolioCard.tags}
             />
           </div>
         </div>
 
         {/* Dynamic Contact Form for Pricing Proposal Request */}
-        <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl">
+        <div className="border border-zinc-800 overflow-hidden shadow-md rounded-2xl max-w-[1145px] mx-auto">
           <ContactForm 
             title={lang === "LV" ? "Saņemt cenas piedāvājumu" : lang === "EN" ? "Get a Pricing Offer" : "Получить предложение по цене"} 
             subtitle={t.contactForm.defaultSubtitle} 

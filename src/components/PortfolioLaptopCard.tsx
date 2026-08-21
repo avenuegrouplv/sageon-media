@@ -42,10 +42,6 @@ export default function PortfolioLaptopCard({
 
   const isDevelopment = 
     isInDevelopment ||
-    cleanDomain.toLowerCase().includes("enzim") ||
-    link.toLowerCase().includes("enzim") ||
-    title.toLowerCase().includes("enzīm") ||
-    title.toLowerCase().includes("enzim") ||
     cleanDomain.toLowerCase().includes("demontaza") || 
     link.toLowerCase().includes("demontaza") || 
     title.toLowerCase().includes("demontāž") ||

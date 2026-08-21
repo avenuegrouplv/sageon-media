@@ -86,7 +86,7 @@ export function PricingMobileSlider({
   };
 
   useEffect(() => {
-    if (cardRef.current && currentIndex !== 3) {
+    if (cardRef.current) {
       const h = cardRef.current.offsetHeight;
       if (h > 0 && h > maxHeight) {
         setMaxHeight(h);
@@ -174,12 +174,12 @@ export function PricingMobileSlider({
           >
             <div 
               ref={cardRef}
-              style={isUzturesana && maxHeight > 0 ? { minHeight: `${maxHeight}px` } : undefined}
+              style={maxHeight > 0 ? { minHeight: `${maxHeight}px` } : undefined}
               className="bg-[#18181b] border-2 border-zinc-800 hover:border-[#BAFC50] transition-all duration-500 flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl group relative overflow-visible cursor-pointer scroll-mt-28 h-full"
             >
               <div>
                 {/* Header Section */}
-                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[215px] sm:h-[calc(235px+1.2mm)] min-h-[215px] sm:min-h-[calc(235px+1.2mm)] flex flex-col justify-between overflow-visible">
+                <div className="p-6 border-b border-zinc-800 text-left space-y-3 relative h-[calc(220px+2mm)] sm:h-[calc(240px+3.2mm)] min-h-[calc(220px+2mm)] sm:min-h-[calc(240px+3.2mm)] flex flex-col justify-between overflow-visible">
                   <div>
                     <div className="flex items-center justify-between min-h-[26px]">
                       <span className={`px-2.5 py-1 font-sans text-xs uppercase tracking-wider font-bold rounded-lg ${
@@ -191,9 +191,9 @@ export function PricingMobileSlider({
                       </span>
                     </div>
                     
-                    <div className="space-y-1 mt-2 h-[46px] sm:h-[50px] flex flex-col justify-start items-start">
+                    <div className="space-y-1 mt-2 min-h-[calc(48px+2mm)] sm:min-h-[calc(52px+2mm)] flex flex-col justify-start items-start">
                       <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase text-white leading-tight">{plan.title}</h3>
-                      <p className="text-xs sm:text-sm font-normal text-zinc-300 line-clamp-1">
+                      <p className="text-xs sm:text-sm font-normal text-zinc-300 py-[1mm] leading-normal select-text cursor-text">
                         {plan.subtitle}
                       </p>
                     </div>
@@ -445,7 +445,7 @@ export function PortfolioMobileSlider({
                 isPlaceholder={item.isPlaceholder}
                 description={item.description}
                 tags={item.tags}
-                hideStatusText={false}
+                hideStatusText={true}
               />
             </div>
           </motion.div>
