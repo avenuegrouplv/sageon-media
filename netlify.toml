@@ -1,6 +1,16 @@
 [build]
   publish = "dist"
   command = "npm run build"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
@@ -61,4 +71,3 @@
   for = "/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-

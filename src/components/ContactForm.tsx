@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -16,24 +16,103 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
     name: "",
     email: "",
     phone: "",
-    service: t.contactForm.serviceOptions.multi,
     message: ""
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       return;
     }
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      service: "Mājaslapas pieteikums",
+      message: formData.message.trim(),
+    };
+
+    try {
+      let response: Response;
+      
+      // Primary attempt: standard /api/send-email endpoint (Express dev/prod server or Netlify redirect)
+      try {
+        response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        // If 404 or 502 received, fallback to direct Netlify serverless function path
+        if (response.status === 404 || response.status === 502) {
+          response = await fetch("/.netlify/functions/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+        }
+      } catch (networkErr: any) {
+        // Network fail on /api, try direct Netlify functions endpoint fallback
+        response = await fetch("/.netlify/functions/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      }
+
+      let data: any = {};
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        data = {};
+      }
+
+      if (!response.ok || !data.success) {
+        const errorText = 
+          data?.error || 
+          data?.message || 
+          (lang === "LV" 
+            ? `Kļūda nosūtot e-pastu (${response.status}). Lūdzu, mēģiniet vēlreiz.` 
+            : lang === "EN" 
+              ? `Error sending message (${response.status}). Please try again.` 
+              : `Ошибка при отправке (${response.status}). Пожалуйста, попробуйте еще раз.`);
+        throw new Error(errorText);
+      }
+
+      // Success
       setSubmitted(true);
+      setErrorMessage(null);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      });
+    } catch (err: any) {
+      console.error("Error submitting contact form:", err);
+      setErrorMessage(
+        err?.message || 
+        (lang === "LV" 
+          ? "Neizdevās nosūtīt ziņojumu. Lūdzu, pārbaudiet interneta savienojumu vai sazinieties ar mums tieši." 
+          : lang === "EN" 
+            ? "Could not send message. Please check your connection or contact us directly." 
+            : "Не удалось отправить сообщение. Пожалуйста, попробуйте позже.")
+      );
+    } finally {
       setLoading(false);
-      setFormData({ name: "", email: "", phone: "", service: t.contactForm.serviceOptions.multi, message: "" });
-    }, 800);
+    }
   };
 
   return (
@@ -78,9 +157,9 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
           </div>
         )}
 
-        {/* Upper Part: Modern Frosted Glass Contact Form with Site Neutral Dark Tone */}
-        <div className="bg-[#18181b]/95 backdrop-blur-xl border border-zinc-800 p-5 sm:p-6 md:p-10 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
-          <div className="mb-6 pb-6 border-b border-zinc-800 flex items-center justify-between flex-wrap gap-2">
+        {/* Form Container - Horizontally narrower, vertically taller and focused */}
+        <div className="bg-[#18181b]/95 backdrop-blur-xl border border-zinc-800 p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] max-w-2xl mx-auto">
+          <div className="mb-6 pb-5 border-b border-zinc-800 flex items-center justify-between flex-wrap gap-2">
             <div>
               <h3 className="text-lg font-bold uppercase tracking-tight text-white flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#BAFC50] animate-ping" />
@@ -117,11 +196,12 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
               </button>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Row 1: Vārds and E-pasts */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Vārds Input */}
-                <div className="space-y-2">
-                  <label htmlFor="form-name" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
+                <div className="space-y-1.5">
+                  <label htmlFor="form-name" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-300">
                     {t.contactForm.nameLabel} <span className="text-[#BAFC50] font-bold">*</span>
                   </label>
                   <input
@@ -131,13 +211,13 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder=""
-                    className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl placeholder-zinc-500"
+                    className="w-full bg-[#e4e4e7] hover:bg-[#ececf0] focus:bg-[#ffffff] border border-zinc-300 focus:border-[#BAFC50] focus:ring-2 focus:ring-[#BAFC50]/30 focus:outline-none px-4 py-3 text-sm text-zinc-900 font-medium transition-all rounded-xl placeholder-zinc-500 shadow-inner"
                   />
                 </div>
 
                 {/* E-pasts Input */}
-                <div className="space-y-2">
-                  <label htmlFor="form-email" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
+                <div className="space-y-1.5">
+                  <label htmlFor="form-email" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-300">
                     {t.contactForm.emailLabel} <span className="text-[#BAFC50] font-bold">*</span>
                   </label>
                   <input
@@ -147,49 +227,30 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder=""
-                    className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl placeholder-zinc-500"
-                  />
-                </div>
-
-                {/* Tālrunis Input */}
-                <div className="space-y-2">
-                  <label htmlFor="form-phone" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                    {t.contactForm.phoneLabel} <span className="text-[#BAFC50] font-bold">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="form-phone"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder=""
-                    className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl placeholder-zinc-500"
+                    className="w-full bg-[#e4e4e7] hover:bg-[#ececf0] focus:bg-[#ffffff] border border-zinc-300 focus:border-[#BAFC50] focus:ring-2 focus:ring-[#BAFC50]/30 focus:outline-none px-4 py-3 text-sm text-zinc-900 font-medium transition-all rounded-xl placeholder-zinc-500 shadow-inner"
                   />
                 </div>
               </div>
 
-              {/* Mājaslapas veids / Pakalpojuma izvēlne */}
-              <div className="space-y-2">
-                <label htmlFor="form-service" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
-                  {t.contactForm.serviceLabel} <span className="text-[#BAFC50] font-bold">*</span>
+              {/* Row 2: Tālrunis (Below Vārds and E-pasts) */}
+              <div className="space-y-1.5">
+                <label htmlFor="form-phone" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-300">
+                  {t.contactForm.phoneLabel} <span className="text-[#BAFC50] font-bold">*</span>
                 </label>
-                <select
-                  id="form-service"
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl cursor-pointer"
-                >
-                  <option value={t.contactForm.serviceOptions.landing}>{t.contactForm.serviceOptions.landing}</option>
-                  <option value={t.contactForm.serviceOptions.multi}>{t.contactForm.serviceOptions.multi}</option>
-                  <option value={t.contactForm.serviceOptions.ecommerce}>{t.contactForm.serviceOptions.ecommerce}</option>
-                  <option value={t.contactForm.serviceOptions.maintenance}>{t.contactForm.serviceOptions.maintenance}</option>
-                  <option value={t.contactForm.serviceOptions.other}>{t.contactForm.serviceOptions.other}</option>
-                </select>
+                <input
+                  type="tel"
+                  id="form-phone"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder=""
+                  className="w-full bg-[#e4e4e7] hover:bg-[#ececf0] focus:bg-[#ffffff] border border-zinc-300 focus:border-[#BAFC50] focus:ring-2 focus:ring-[#BAFC50]/30 focus:outline-none px-4 py-3 text-sm text-zinc-900 font-medium transition-all rounded-xl placeholder-zinc-500 shadow-inner"
+                />
               </div>
 
-              {/* Ziņa Input */}
-              <div className="space-y-2">
-                <label htmlFor="form-message" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">
+              {/* Row 3: Ziņojums */}
+              <div className="space-y-1.5">
+                <label htmlFor="form-message" className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-300">
                   {t.contactForm.messageLabel} <span className="text-[#BAFC50] font-bold">*</span>
                 </label>
                 <textarea
@@ -200,21 +261,35 @@ export default function ContactForm({ title, subtitle, hideHeader = false }: Con
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder={
                     lang === "LV" 
-                      ? "Aprakstiet savu projektu, mērķus un vēlamo izstrādes laiku..."
+                      ? "Lūdzu, aprakstiet savu projektu, mērķus un vēlamo izstrādes laiku..."
                       : lang === "EN"
-                        ? "Describe your project, goals, and desired timeline..."
-                        : "Опишите ваш проект, цели и желаемые сроки..."
+                        ? "Please describe your project, goals, and desired timeline..."
+                        : "Пожалуйста, опишите ваш проект, цели и желаемые сроки..."
                   }
-                  className="w-full bg-[#121215] border border-zinc-800 focus:border-[#BAFC50] focus:outline-none px-4 py-3 text-sm text-white transition-colors rounded-xl placeholder-zinc-500 resize-none"
+                  className="w-full bg-[#e4e4e7] hover:bg-[#ececf0] focus:bg-[#ffffff] border border-zinc-300 focus:border-[#BAFC50] focus:ring-2 focus:ring-[#BAFC50]/30 focus:outline-none px-4 py-3 text-sm text-zinc-900 font-medium transition-all rounded-xl placeholder-zinc-500 resize-none shadow-inner"
                 />
               </div>
 
+              {/* Error Message Display */}
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start gap-3 text-red-300 text-xs sm:text-sm"
+                >
+                  <AlertCircle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-semibold">{errorMessage}</p>
+                  </div>
+                </motion.div>
+              )}
+
               {/* Submit Button */}
-              <div className="flex justify-end pt-2">
+              <div className="flex justify-end pt-3">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full md:w-auto px-10 py-4 bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold tracking-widest text-xs uppercase transition-all duration-300 rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(186,252,80,0.5)] flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-10 py-4 bg-[#BAFC50] hover:bg-[#a8f235] text-black font-extrabold tracking-widest text-xs uppercase transition-all duration-300 rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(186,252,80,0.5)] flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? t.contactForm.submittingBtn : t.contactForm.submitBtn}
                   <Send className="h-4 w-4 stroke-[2.5]" />
