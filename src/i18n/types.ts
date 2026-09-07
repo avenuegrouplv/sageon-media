@@ -23,6 +23,8 @@ export interface PortfolioItem {
   link: string;
   isPlaceholder: boolean;
   tags?: string[];
+  category?: string;
+  isInDevelopment?: boolean;
 }
 
 export interface PricingPlan {

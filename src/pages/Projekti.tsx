@@ -121,6 +121,8 @@ export default function Projekti() {
                 description={card.description}
                 isPlaceholder={card.isPlaceholder}
                 tags={card.tags}
+                category={card.category}
+                isInDevelopment={card.isInDevelopment}
               />
             </div>
           ))}

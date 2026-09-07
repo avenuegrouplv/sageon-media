@@ -96,7 +96,7 @@ const PORTFOLIO_ITEMS = [
     description: "Biedrības mājaslapa, kas apvieno dažādu jomu profesionāļus sekmīgai krīžu pārvarēšanai un dinamiskai Latvijas attīstībai. Projekta gaitā tika izstrādāts unikāls dizains ar nacionālā karoga krāsas elementiem, izveidoti biedru profili un sadaļas ar jaunākajām aktualitātēm.",
     link: "https://latvijasrestarts.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Pieteikuma forma", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Biedru profili", "Aktualitāšu sadaļa", "Mobile First"]
   },
   {
     id: 6,
@@ -107,7 +107,7 @@ const PORTFOLIO_ITEMS = [
     description: "Šī ir fermentēto dzērienu mājražotāja mājaslapa, kurā izveidots produktu apraksts, produktu katalogs, kā arī citu ražotāja piedāvāto pakalpojumu sadaļa. Izstrādāts mājaslapas saturs, unikāls dizains un zīmola logo, atbilstoši klienta vīzijai un prasībām.",
     link: "https://enzimi.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Produktu katalogs", "Produktu grozs", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Mobile First", "Produktu katalogs", "Produktu grozs"]
   },
   {
     id: 7,
@@ -118,7 +118,7 @@ const PORTFOLIO_ITEMS = [
     description: "Būvju un ēku demontāžas pakalpojumu sniedzēja mājaslapa. Projekta izstrādes gaitā izstrādāts mājaslapas saturs, pakalpojumu apraksti, zīmola logo, kā arī galerija ar pieejamo nomas tehniku un īstenotajiem projektiem. Darbs pie projekta izstrādes vēl turpinās.",
     link: "https://demontaza24.eu",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Tehnikas katalogs", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pakalpojumu apraksti", "Tehnikas katalogs"]
   },
   {
     id: 8,
@@ -140,7 +140,20 @@ const PORTFOLIO_ITEMS = [
     description: "Skaistumkopšanas pakalpojumu sniedzēja mājaslapa, ar izstrādātu unikālu dizainu, pakalpojumu aprakstiem un zīmola logo. Projektā integrēts iepirkumu grozs, procedūru rezervāciju kalendārs, pieteikumu forma un sociālo tīklu saziņas iespējas.",
     link: "https://beautystudio.lv",
     isPlaceholder: false,
-    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu kalendārs", "Mobile First"]
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Zīmola logo", "Pirkumu grozs", "Pieteikumu kalendārs"]
+  },
+  {
+    id: 10,
+    title: "Upworx I Metālapstrādes iekārtas",
+    brand: "Upworx",
+    displayLink: "upworx.com",
+    image: "/upworx-portfolio.webp",
+    description: "Metālapstrādes iekārtu tirdzniecības uzņēmuma mājaslapa, kurā pieejami daudzi no pazīstamākajiem šīs industrijas pasaules zīmoliem.",
+    link: "https://upworx.com",
+    isPlaceholder: false,
+    isInDevelopment: true,
+    category: "Metālapstrādes iekārtas",
+    tags: ["SEO optimizācija", "Unikāls UI/UX", "Mobile First", "Zīmola logo", "Iekārtu katalogs"]
   }
 ];
 
@@ -1465,6 +1478,8 @@ export default function Home() {
                         isPlaceholder={item.isPlaceholder}
                         description={item.description}
                         tags={item.tags}
+                        category={item.category}
+                        isInDevelopment={item.isInDevelopment}
                         hideStatusText={true}
                       />
                     </div>

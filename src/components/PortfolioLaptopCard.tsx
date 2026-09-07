@@ -52,7 +52,10 @@ export default function PortfolioLaptopCard({
     title.toLowerCase().includes("velobiedriba") ||
     cleanDomain.toLowerCase().includes("beauty") ||
     link.toLowerCase().includes("beauty") ||
-    title.toLowerCase().includes("beauty");
+    title.toLowerCase().includes("beauty") ||
+    cleanDomain.toLowerCase().includes("upworx") ||
+    link.toLowerCase().includes("upworx") ||
+    title.toLowerCase().includes("upworx");
 
   const isPlaceholderCard = isPlaceholder || cleanDomain.includes("tavaprojekts") || cleanDomain.includes("biznesam") || cleanDomain.includes("jaunslapa");
 
@@ -125,6 +128,13 @@ export default function PortfolioLaptopCard({
     if (target.includes("beauty")) {
       return {
         objectPosition: "-0.5cm top",
+      };
+    }
+
+    // upworx
+    if (target.includes("upworx")) {
+      return {
+        objectPosition: "-0.4cm top",
       };
     }
 
@@ -202,7 +212,10 @@ export default function PortfolioLaptopCard({
           <div className="relative z-10 w-full h-full flex-1 overflow-hidden bg-gradient-to-br from-zinc-900/90 via-[#0a0a0c] to-black">
             {!isPlaceholder ? (
               image && !imgError ? (
-                <div className="w-full h-full relative overflow-hidden bg-zinc-950 flex items-start justify-start">
+                <div 
+                  onClick={(e) => openTarget(e)}
+                  className="w-full h-full relative overflow-hidden bg-zinc-950 flex items-start justify-start cursor-pointer"
+                >
                   <img
                     src={image}
                     alt={title}
@@ -217,7 +230,10 @@ export default function PortfolioLaptopCard({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                 </div>
               ) : (
-                <div className="w-full h-full p-4 sm:p-5 flex flex-col justify-between">
+                <div 
+                  onClick={(e) => { if (isDevelopment) openTarget(e); }}
+                  className={`w-full h-full p-4 sm:p-5 flex flex-col justify-between ${isDevelopment ? 'cursor-pointer' : ''}`}
+                >
                   {/* Brand & Category Highlight */}
                   <div className="space-y-1.5">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#BAFC50]/10 border border-[#BAFC50]/30 text-[#BAFC50] text-[10px] font-mono font-bold uppercase tracking-wider">
@@ -321,19 +337,28 @@ export default function PortfolioLaptopCard({
 
           {/* Deliverables Badges / Tags - All 3 rows fully visible with uniform height */}
           <div className="mt-1 pt-2.5 sm:pt-3 border-t border-zinc-800/80 flex flex-wrap items-start content-start gap-1.5 sm:gap-2 min-h-[96px] sm:min-h-[104px]">
-            {activeTags.map((tag, idx) => (
-              <span 
-                key={idx}
-                className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-medium text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 rounded-md px-2 sm:px-2.5 py-1 group-hover:border-zinc-500 transition-colors duration-75 select-text cursor-text whitespace-nowrap"
-              >
-                {idx === 0 ? (
-                  <Sparkles className="h-3 w-3 text-[#BAFC50] shrink-0" />
-                ) : (
-                  <CheckCircle2 className="h-3 w-3 text-[#BAFC50] shrink-0" />
-                )}
-                {tag}
-              </span>
-            ))}
+            {activeTags.map((tag, idx) => {
+              const isDevTag = tag.toLowerCase().includes("izstrād") || tag.toLowerCase().includes("development") || tag.toLowerCase().includes("разработ");
+              return (
+                <span 
+                  key={idx}
+                  className={`inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-medium rounded-md px-2 sm:px-2.5 py-1 transition-colors duration-75 select-text cursor-text whitespace-nowrap ${
+                    isDevTag
+                      ? "text-[#d97757] bg-[#d97757]/10 border border-[#d97757]/50 font-semibold shadow-sm"
+                      : "text-zinc-200 bg-zinc-900/90 border border-zinc-700/60 group-hover:border-zinc-500"
+                  }`}
+                >
+                  {isDevTag ? (
+                    <Clock className="h-3 w-3 text-[#d97757] shrink-0" />
+                  ) : idx === 0 ? (
+                    <Sparkles className="h-3 w-3 text-[#BAFC50] shrink-0" />
+                  ) : (
+                    <CheckCircle2 className="h-3 w-3 text-[#BAFC50] shrink-0" />
+                  )}
+                  {tag}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

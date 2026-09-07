@@ -215,7 +215,7 @@ export const enTranslations: Translations = {
       description: "An association website bringing together professionals across fields to successfully overcome crises and drive dynamic development in Latvia. During the project, a unique design with national flag color accents, member profiles, and news sections were developed.",
       link: "https://latvijasrestarts.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Application Form", "Member Profiles", "News Section", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Member Profiles", "News Section", "Mobile First"]
     },
     {
       id: 6,
@@ -226,7 +226,7 @@ export const enTranslations: Translations = {
       description: "This is a fermented beverage producer's website featuring product descriptions, a product catalog, and additional service sections. Unique design, brand logo, and custom content were developed according to the client's vision and requirements.",
       link: "https://enzimi.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Product Catalog", "Shopping Cart", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Mobile First", "Product Catalog", "Shopping Cart"]
     },
     {
       id: 7,
@@ -237,7 +237,7 @@ export const enTranslations: Translations = {
       description: "Building and structure demolition service provider website. During development, website content, service descriptions, brand logo, and a rental equipment/completed project gallery were created. Work on the project is still ongoing.",
       link: "https://demontaza24.eu",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Equipment Catalog", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Service Descriptions", "Equipment Catalog"]
     },
     {
       id: 8,
@@ -259,7 +259,20 @@ export const enTranslations: Translations = {
       description: "Beauty service provider website with custom design, service descriptions, and brand logo. Features an integrated shopping cart, appointment booking calendar, application form, and direct social chat options.",
       link: "https://beautystudio.lv",
       isPlaceholder: false,
-      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Shopping Cart", "Booking Calendar", "Mobile First"]
+      tags: ["SEO Optimization", "Custom UI/UX", "Brand Logo", "Shopping Cart", "Booking Calendar"]
+    },
+    {
+      id: 10,
+      title: "Upworx | Metalworking Machinery",
+      brand: "Upworx",
+      displayLink: "upworx.com",
+      image: "/upworx-portfolio.webp",
+      description: "Website for a metalworking equipment trading company, featuring many of the world's most renowned brands in this industry.",
+      link: "https://upworx.com",
+      isPlaceholder: false,
+      isInDevelopment: true,
+      category: "Metalworking Machinery",
+      tags: ["SEO Optimization", "Custom UI/UX", "Mobile First", "Brand Logo", "Equipment Catalog"]
     }
   ],
   pricingPlans: [
@@ -279,7 +292,6 @@ export const enTranslations: Translations = {
         "Contact form integration",
         "Social media integration",
         "Essential Google SEO setup",
-        "Google Search Console configuration",
         "CTA element development",
         "Website content creation",
         "Domain & email setup support",
@@ -305,7 +317,6 @@ export const enTranslations: Translations = {
         "Contact form integration",
         "Social media integration",
         "Essential Google SEO setup",
-        "Google Search Console configuration",
         "Conversion CTA element development",
         "Website content creation",
         "Domain & email setup support",
@@ -330,7 +341,6 @@ export const enTranslations: Translations = {
         "Contact form integration",
         "Social media integration",
         "Essential Google SEO setup",
-        "Google Search Console configuration",
         "Conversion CTA element development",
         "Website content creation",
         "Domain & email setup support",
@@ -348,7 +358,7 @@ export const enTranslations: Translations = {
       features: [
         "Up to 1 hour of content updates per month",
         "Website performance & speed monitoring",
-        "Search Console health monitoring",
+        "Search Console setup & data analysis",
         "Google Analytics traffic reports",
         "SSL security certificate management",
         "Bug fixes & technical updates",

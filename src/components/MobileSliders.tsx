@@ -22,11 +22,13 @@ interface PortfolioItem {
   title: string;
   brand: string;
   displayLink: string;
-  image: string;
+  image?: string;
   description: string;
   link: string;
   isPlaceholder?: boolean;
   tags?: string[];
+  category?: string;
+  isInDevelopment?: boolean;
 }
 
 interface BlogPost {
@@ -444,6 +446,8 @@ export function PortfolioMobileSlider({
                 isPlaceholder={item.isPlaceholder}
                 description={item.description}
                 tags={item.tags}
+                category={item.category}
+                isInDevelopment={item.isInDevelopment}
                 hideStatusText={true}
               />
             </div>
