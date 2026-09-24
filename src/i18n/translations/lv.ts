@@ -304,7 +304,7 @@ export const lvTranslations: Translations = {
       title: "Multi-page",
       subtitle: "Pilnvērtīga uzņēmuma biznesa mājaslapa",
       originalPrice: "890",
-      price: "450",
+      price: "490",
       period: "vienreizējs maksājums",
       badge: "Labākā izvēle biznesam",
       features: [
@@ -447,7 +447,7 @@ export const lvTranslations: Translations = {
   faqItems: [
     {
       question: "Cik maksā mājaslapas izstrāde un no kā atkarīga cena?",
-      answer: "Mājaslapas izstrādes cena ir atkarīga no projekta apjoma un nepieciešamās funkcionalitātes. Vienas lapas (Landing Page) risinājums izmaksā 300 €, pilnvērtīga biznesa mājaslapa (Multi-page) – sākot no 450 €, bet interneta veikals (E-komercija) – sākot no 2450 €. Precīza tāme tiek saskaņota pirms darbu uzsākšanas un paliek fiksēta bez slēptām izmaksām."
+      answer: "Mājaslapas izstrādes cena ir atkarīga no projekta apjoma un nepieciešamās funkcionalitātes. Vienas lapas (Landing Page) risinājums izmaksā 300 €, pilnvērtīga biznesa mājaslapa (Multi-page) – sākot no 490 €, bet interneta veikals (E-komercija) – sākot no 2450 €. Precīza tāme tiek saskaņota pirms darbu uzsākšanas un paliek fiksēta bez slēptām izmaksām."
     },
     {
       question: "Cik ilgu laiku aizņem mājaslapas izstrāde?",

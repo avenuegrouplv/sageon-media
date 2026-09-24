@@ -304,7 +304,7 @@ export const enTranslations: Translations = {
       title: "Multi-page",
       subtitle: "Full-scale corporate business website",
       originalPrice: "890",
-      price: "450",
+      price: "490",
       period: "one-time payment",
       badge: "Best Choice for Business",
       features: [
@@ -447,7 +447,7 @@ export const enTranslations: Translations = {
   faqItems: [
     {
       question: "How much does website development cost and what factors influence the price?",
-      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page costs €300, a Multi-page corporate website starts at €450, and an E-Commerce online store starts at €2450. All estimates are agreed upon prior to launch with zero hidden charges."
+      answer: "Website pricing depends on the scope of the project and functional complexity. A Landing Page costs €300, a Multi-page corporate website starts at €490, and an E-Commerce online store starts at €2450. All estimates are agreed upon prior to launch with zero hidden charges."
     },
     {
       question: "How long does it take to complete a website?",
